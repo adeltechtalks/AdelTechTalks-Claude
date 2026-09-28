@@ -623,8 +623,187 @@ def install_steps(lang, skill="social-cover-studio"):
     return svg(W, H, css, "".join(parts), "Install in three steps" if not rtl else "التسطيب في 3 خطوات")
 
 
+# ---------- main page pieces ----------
+
+def _wrap(text, file, size, max_w):
+    words, lines, cur = text.split(), [], ""
+    for w in words:
+        trial = (cur + " " + w).strip()
+        if width(file, trial, size) <= max_w or not cur:
+            cur = trial
+        else:
+            lines.append(cur)
+            cur = w
+    if cur:
+        lines.append(cur)
+    return lines
+
+
+def width_mixed(text, size, weight=400):
+    ar = f"readex-pro-arabic-{weight}-normal.woff2"
+    lat = f"readex-pro-latin-{min(weight, 600)}-normal.woff2"
+    return sum(width(ar if "\u0600" <= c <= "\u08FF" else lat, c, size) for c in text)
+
+
+def _wrap_ar(text, size, max_w):
+    # Arabic glyph widths are measured on isolated forms, so keep a safety margin
+    words, lines, cur = text.split(), [], ""
+    for w in words:
+        trial = (cur + " " + w).strip()
+        if width_mixed(trial, size) <= max_w * 0.9 or not cur:
+            cur = trial
+        else:
+            lines.append(cur)
+            cur = w
+    if cur:
+        lines.append(cur)
+    return lines
+
+
+def stage_card(stage, lang):
+    rtl = lang == "ar"
+    W, H = 560, 236
+    skills = stage["skills"]
+    ready = sum(1 for s in skills if s["status"] == "available")
+    soon = len(skills) - ready
+    pad = 30
+    X = W - pad if rtl else pad
+    num = stage["id"][:2]
+    name = stage["name"]
+    summary = stage["summary_ar"] if rtl else stage["summary"]
+    lines = (_wrap_ar(summary, 16, W - 2 * pad) if rtl else _wrap(summary, "readex-pro-latin-400-normal.woff2", 16, W - 2 * pad))[:2]
+    parts = [f'<rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="18" fill="#FFFFFF" stroke="{SOFT}" stroke-width="2"/>']
+    if ready:
+        parts.append(f'<rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="18" fill="none" stroke="{BLUE}" stroke-width="2"/>')
+    nx = X
+    parts.append(f'<text x="{nx}" y="{pad + 22}" text-anchor="{"end" if rtl else "start"}" font-family="J" font-weight="500" font-size="18" fill="{BLUE}">{num}</text>')
+    title = name if not rtl else f"{name} · {stage['name_ar']}"
+    if rtl:
+        parts.append(f'<text x="{X}" y="{pad + 62}" text-anchor="start" direction="rtl" font-family="R" font-weight="600" font-size="25" fill="{GRAPHITE}">{escape(title)}</text>')
+    else:
+        parts.append(f'<text x="{X}" y="{pad + 62}" font-family="M" font-weight="700" font-size="25" fill="{GRAPHITE}">{escape(title)}</text>')
+    for k, line in enumerate(lines):
+        dirattr = ' direction="rtl"' if rtl else ""
+        parts.append(f'<text x="{X}" y="{pad + 96 + k * 24}" text-anchor="start"{dirattr} font-family="R" font-weight="400" font-size="16" fill="{SLATE}">{escape(line)}</text>')
+    # status pills
+    pills = []
+    if ready:
+        pills.append((f"{ready} ready" if not rtl else f"{ready} جاهزة", MINT, "#0B5E49", True))
+    pills.append((f"{soon} coming" if not rtl else f"{soon} قريباً", "#EEF1F5", SLATE, False))
+    x = X
+    for label, bg, fg, live in pills:
+        f = "readex-pro-arabic-600-normal.woff2" if rtl else "montserrat-latin-600-normal.woff2"
+        lw = (width_mixed(label, 14, 600) if rtl else width(f, label, 14)) + (18 if live else 0)
+        pw = lw + 28
+        x0 = x - pw if rtl else x
+        dot = ""
+        if live:
+            dx = x0 + pw - 18 if rtl else x0 + 16
+            dot = f'<circle class="pulse" cx="{dx}" cy="{H - pad - 15}" r="4.5" fill="#0B5E49"/>'
+        tx = x0 + pw - 14 - (18 if live else 0) if rtl else x0 + 14 + (18 if live else 0)
+        ta = 'text-anchor="start" direction="rtl"' if rtl else ""
+        parts.append(f'<rect x="{x0:.1f}" y="{H - pad - 30}" width="{pw:.1f}" height="30" rx="15" fill="{bg if live else bg}" opacity="{".35" if live else "1"}"/>{dot}'
+                     f'<text x="{tx:.1f}" y="{H - pad - 10}" {ta} font-family="{"R" if rtl else "M"}" font-weight="600" font-size="14" fill="{fg}">{escape(label)}</text>')
+        x = x0 - 10 if rtl else x0 + pw + 10
+    arrow_x = pad + 6 if rtl else W - pad - 6
+    arrow = f'M{arrow_x + 8} {pad + 12} L{arrow_x} {pad + 20} L{arrow_x + 8} {pad + 28}' if rtl else f'M{arrow_x - 8} {pad + 12} L{arrow_x} {pad + 20} L{arrow_x - 8} {pad + 28}'
+    parts.append(f'<path d="{arrow}" fill="none" stroke="{SLATE}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>')
+    text = num + title + "".join(lines) + "".join(p[0] for p in pills)
+    css = font_css(text, {"M", "R", "J"}) + BASE_CSS
+    return svg(W, H, css, "".join(parts), title)
+
+
+def button(label, kind, lang, icon=None):
+    rtl = lang == "ar"
+    f = "readex-pro-arabic-600-normal.woff2" if rtl and any("؀" <= c <= "ࣿ" for c in label) else "montserrat-latin-700-normal.woff2"
+    tw = width(f, label, 16)
+    ic = 26 if icon else 0
+    W, H = int(tw + 48 + ic), 48
+    fill, fg, stroke = {"primary": (BLUE, "#FFFFFF", BLUE), "dark": (GRAPHITE, "#FFFFFF", GRAPHITE), "ghost": ("#FFFFFF", GRAPHITE, "#D0D5DD")}[kind]
+    parts = [f'<rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="{(H - 2) / 2}" fill="{fill}" stroke="{stroke}"/>']
+    cx = W / 2 + (ic / 2 if not rtl else -ic / 2)
+    if icon == "star":
+        sx = 24 if not rtl else W - 24
+        pts = []
+        import math
+        for k in range(10):
+            r = 8 if k % 2 == 0 else 3.6
+            a = -math.pi / 2 + k * math.pi / 5
+            pts.append(f"{sx + r * math.cos(a):.1f},{24 + r * math.sin(a):.1f}")
+        parts.append(f'<polygon points="{" ".join(pts)}" fill="{"#F5B301" if kind != "primary" else "#FFFFFF"}"/>')
+    elif icon == "down":
+        sx = 24 if not rtl else W - 24
+        parts.append(f'<path d="M{sx} 15 v14 m-6 -6 l6 6 l6 -6 M{sx - 8} 33 h16" fill="none" stroke="{fg}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>')
+    elif icon == "grid":
+        sx = 18 if not rtl else W - 30
+        parts.append("".join(f'<rect x="{sx + (k % 2) * 7}" y="{17 + (k // 2) * 7}" width="5" height="5" rx="1" fill="{fg}"/>' for k in range(4)))
+    fam = "R" if f.startswith("readex") else "M"
+    parts.append(f'<text x="{cx:.1f}" y="30" text-anchor="middle" font-family="{fam}" font-weight="{600 if fam == "R" else 700}" font-size="16" fill="{fg}">{escape(label)}</text>')
+    css = font_css(label, {"M", "R"})
+    return svg(W, H, css, "".join(parts), label)
+
+
+def principles(lang):
+    rtl = lang == "ar"
+    W, H = 1600, 250
+    items = ([("The AI suggests. You decide.", "Nothing is published without your approval."),
+              ("Real over generated.", "Real photos, tests and numbers."),
+              ("One source, many formats.", "Write once; every platform gets its cut."),
+              ("Verified before published.", "Checked against official sources.")] if not rtl else
+             [("الـ AI يقترح، وإنت تقرر.", "مفيش حاجة بتتنشر من غير موافقتك."),
+              ("الحقيقي قبل المتولّد.", "صور وتجارب وأرقام حقيقية."),
+              ("مصدر واحد، وفورماتات كتير.", "بتكتبها مرة، وكل منصة تاخد نسختها."),
+              ("بنراجع قبل ما ننشر.", "من المصادر الرسمية.")])
+    gap, n = 20, 4
+    cw = (W - 100 - gap * (n - 1)) / n
+    parts = [f'<rect width="{W}" height="{H}" fill="{WARM}"/>']
+    for i, (tt, sub) in enumerate(items):
+        c = (n - 1 - i) if rtl else i
+        x = 50 + c * (cw + gap)
+        X = x + cw - 26 if rtl else x + 26
+        a = 'text-anchor="start" direction="rtl"' if rtl else ""
+        tfam, tw_ = ("R", 600) if rtl else ("M", 700)
+        tl = _wrap_ar(tt, 21, cw - 52) if rtl else _wrap(tt, "montserrat-latin-700-normal.woff2", 21, cw - 52)
+        sl = _wrap_ar(sub, 16, cw - 52) if rtl else _wrap(sub, "readex-pro-latin-400-normal.woff2", 16, cw - 52)
+        g = [f'<rect x="{x:.1f}" y="30" width="{cw:.1f}" height="{H - 60}" rx="18" fill="#FFFFFF" stroke="{SOFT}"/>',
+             f'<rect x="{(x + cw - 26 - 30) if rtl else (x + 26):.1f}" y="56" width="30" height="4" rx="2" fill="{BLUE if i else MINT}"/>']
+        for k, l in enumerate(tl[:2]):
+            g.append(f'<text x="{X:.1f}" y="{100 + k * 28}" {a} font-family="{tfam}" font-weight="{tw_}" font-size="21" fill="{GRAPHITE}">{escape(l)}</text>')
+        y0 = 100 + len(tl[:2]) * 28 + 10
+        for k, l in enumerate(sl[:2]):
+            g.append(f'<text x="{X:.1f}" y="{y0 + k * 23}" {a} font-family="R" font-weight="400" font-size="16" fill="{SLATE}">{escape(l)}</text>')
+        parts.append(f'<g class="fu" style="{d(0.1 + i * 0.12)}">' + "".join(g) + "</g>")
+    text = "".join(a + b for a, b in items)
+    css = font_css(text, {"M", "R"}) + BASE_CSS
+    return svg(W, H, css, "".join(parts), "Principles" if not rtl else "المبادئ")
+
+
+def build_main_page_art():
+    import json
+    catalog = json.loads((ROOT / "catalog.json").read_text(encoding="utf-8"))
+    stages_dir = OUT / "stages"
+    stages_dir.mkdir(parents=True, exist_ok=True)
+    for st in catalog["stages"]:
+        for lang in ("en", "ar"):
+            (stages_dir / f"{st['id']}-{lang}.svg").write_text(stage_card(st, lang), encoding="utf-8")
+    btns = {
+        "en": [("download", "Download ZIP", "primary", "down"), ("more", "How it works", "ghost", None),
+               ("browse", "Browse skills", "primary", "grid"), ("install", "Install", "ghost", "down"), ("star", "Star the repo", "ghost", "star")],
+        "ar": [("download", "حمّل الـ ZIP", "primary", "down"), ("more", "اعرف أكتر", "ghost", None),
+               ("browse", "تصفّح الـ Skills", "primary", "grid"), ("install", "التسطيب", "ghost", "down"), ("star", "Star للريبو", "ghost", "star")],
+    }
+    for lang, items in btns.items():
+        for key, label, kind, icon in items:
+            (OUT / f"btn-{key}-{lang}.svg").write_text(button(label, kind, lang, icon), encoding="utf-8")
+    for lang in ("en", "ar"):
+        (OUT / f"principles-{lang}.svg").write_text(principles(lang), encoding="utf-8")
+        (OUT / f"install-{lang}.svg").write_text(install_steps(lang, "any-skill"), encoding="utf-8")
+    print(f"built main page art: {len(catalog['stages'])} stage cards, buttons, principles, install cards")
+
+
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
+    build_main_page_art()
     for name, content in (("banner-en.svg", banner("en")), ("banner-ar.svg", banner("ar")),
                           ("flow-en.svg", flow("en")), ("flow-ar.svg", flow("ar"))):
         (OUT / name).write_text(content, encoding="utf-8")

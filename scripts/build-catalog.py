@@ -86,16 +86,16 @@ def stage_page(stage, ar=False):
     return "\n".join(lines)
 
 
-def catalog_block(ar=False):
+def catalog_block(ar=False, prefix="skills/"):
     out = []
     for st in stages:
-        title = f"### {st['icon']} [{st['name']}](skills/{st['id']}/{'README.ar.md' if ar else ''})"
+        title = f"### {st['icon']} [{st['name']}]({prefix}{st['id']}/{'README.ar.md' if ar else ''})"
         if ar:
             title += f" · {st['name_ar']}"
         out += [title, "", st["summary_ar"] if ar else st["summary"], "", *table_header(ar)]
         for s in st["skills"]:
             if s["status"] == "available":
-                page = f"skills/{st['id']}/{s['slug']}/" + ("README.ar.md" if ar else "")
+                page = f"{prefix}{st['id']}/{s['slug']}/" + ("README.ar.md" if ar else "")
                 name = f"**[{s['name']}]({page})**"
                 action = f"[**⬇ ZIP**]({DL}/{s['slug']}.zip)"
             else:
@@ -108,22 +108,66 @@ def catalog_block(ar=False):
     return f'<div dir="rtl">\n\n{body}\n</div>\n' if ar else body
 
 
+def featured_block(ar=False):
+    lang = "ar" if ar else "en"
+    out = []
+    for st in stages:
+        for s in st["skills"]:
+            if s["status"] != "available":
+                continue
+            page = f"skills/{st['id']}/{s['slug']}/" + ("README.ar.md" if ar else "")
+            hero = ROOT / "docs" / s["slug"] / f"hero-{lang}.svg"
+            desc = s["desc_ar"] if ar else s["desc"]
+            if hero.exists():
+                out.append(f'<a href="{page}"><img src="docs/{s["slug"]}/hero-{lang}.svg" alt="{s["name"]} — {desc}" width="100%"></a>')
+                out.append("")
+            out.append(f'<p align="center"><a href="{DL}/{s["slug"]}.zip"><img src="docs/assets/btn-download-{lang}.svg" alt="Download" height="48"></a>&nbsp;&nbsp;'
+                       f'<a href="{page}"><img src="docs/assets/btn-more-{lang}.svg" alt="How it works" height="48"></a></p>')
+            out.append("")
+    return "\n".join(out)
+
+
+def stages_block(ar=False):
+    lang = "ar" if ar else "en"
+    cells = [f'<td width="50%"><a href="skills/{st["id"]}/{"README.ar.md" if ar else ""}"><img src="docs/assets/stages/{st["id"]}-{lang}.svg" alt="{st["name"]}" width="100%"></a></td>' for st in stages]
+    if len(cells) % 2:
+        cells.append('<td width="50%"></td>')
+    rows = "\n".join(f"<tr>\n{cells[i]}\n{cells[i + 1]}\n</tr>" for i in range(0, len(cells), 2))
+    table = f"<table>\n{rows}\n</table>"
+    return f'<div dir="rtl">\n\n{table}\n\n</div>\n' if ar else table + "\n"
+
+
+def all_skills_page(ar=False):
+    if ar:
+        head = ['<p dir="rtl"><a href="../README.ar.md">→ الصفحة الرئيسية</a></p>', "", "# كل الـ Skills", "",
+                '<div dir="rtl">', "", "كل الـ Skills مترتبة بمراحل الـ Content Creation OS. الـ **Free** مفتوحة هنا، والـ **🔒 Pro** جزء من [Content Creation OS Pro](../course/README.ar.md).", "", "</div>", ""]
+    else:
+        head = ["[← Home](../README.md)", "", "# All skills", "",
+                "Every skill, grouped by stage of the Content Creation OS. **Free** skills are open here; **🔒 Pro** skills ship with [Content Creation OS Pro](../course/).", ""]
+    return lang_toggle(ar).replace("../../docs", "../docs") + "\n".join(head) + "\n" + catalog_block(ar, prefix="")
+
+
 for st in stages:
     d = ROOT / "skills" / st["id"]
     d.mkdir(parents=True, exist_ok=True)
     (d / "README.md").write_text(lang_toggle() + stage_page(st), encoding="utf-8")
     (d / "README.ar.md").write_text(lang_toggle(True) + stage_page(st, ar=True), encoding="utf-8")
 
+(ROOT / "skills" / "README.md").write_text(all_skills_page(), encoding="utf-8")
+(ROOT / "skills" / "README.ar.md").write_text(all_skills_page(True), encoding="utf-8")
+
 available = sum(1 for st in stages for s in st["skills"] if s["status"] == "available")
+blocks = {"featured": featured_block, "stages": stages_block, "catalog": catalog_block}
 for name, ar in (("README.md", False), ("README.ar.md", True)):
     p = ROOT / name
     text = p.read_text(encoding="utf-8")
-    text = re.sub(
-        r"(<!-- catalog:start -->\n).*?(<!-- catalog:end -->)",
-        lambda m: m.group(1) + "\n" + catalog_block(ar) + "\n" + m.group(2),
-        text,
-        flags=re.S,
-    )
+    for key, fn in blocks.items():
+        text = re.sub(
+            rf"(<!-- {key}:start -->\n).*?(<!-- {key}:end -->)",
+            lambda m: m.group(1) + "\n" + fn(ar) + "\n" + m.group(2),
+            text,
+            flags=re.S,
+        )
     text = re.sub(r"badge/skills-\d+", f"badge/skills-{available}", text)
     p.write_text(text, encoding="utf-8")
 

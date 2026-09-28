@@ -4,148 +4,105 @@
 
 <img src="docs/assets/banner-ar.svg" alt="Claude Skills لصنّاع المحتوى — AdelTechTalks" width="100%">
 
+<br>
+
+<p dir="rtl"><b><a href="https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview">Claude Skills</a> مجانية وجاهزة لكل خطوة في صناعة المحتوى: من أول فكرة لحد تحليل اللي نجح.</b></p>
+
+<br>
+
+<a href="skills/README.ar.md"><img src="docs/assets/btn-browse-ar.svg" alt="تصفّح الـ Skills" height="48"></a>&nbsp;&nbsp;<a href="#install"><img src="docs/assets/btn-install-ar.svg" alt="التسطيب" height="48"></a>&nbsp;&nbsp;<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/stargazers"><img src="docs/assets/btn-star-ar.svg" alt="Star للريبو" height="48"></a>
+
+<br>
 
 [![Stars](https://img.shields.io/github/stars/adeltechtalks/AdelTechTalks-Claude?style=flat-square&color=2563EB&labelColor=171A1F)](https://github.com/adeltechtalks/AdelTechTalks-Claude/stargazers)
-[![Skills](https://img.shields.io/badge/skills-1-2563EB?style=flat-square&labelColor=171A1F)](#الـ-skills)
-[![Works with Claude](https://img.shields.io/badge/works%20with-Claude.ai%20%7C%20Claude%20Code-2DD4A8?style=flat-square&labelColor=171A1F)](#التسطيب)
+[![Skills](https://img.shields.io/badge/skills-1-2563EB?style=flat-square&labelColor=171A1F)](skills/README.ar.md)
+[![Works with Claude](https://img.shields.io/badge/works%20with-Claude.ai%20%7C%20Claude%20Code-2DD4A8?style=flat-square&labelColor=171A1F)](#install)
 [![License: MIT](https://img.shields.io/badge/license-MIT-667085?style=flat-square&labelColor=171A1F)](LICENSE)
 
 </div>
 
+---
+
 <div dir="rtl">
 
-**Claude Skills for Content Creators** هي طبقة الـ Skills والـ Agents بتاعة **Content Creation OS**: System كامل لصناعة المحتوى بالـ AI، من أول ما تبني الـ Brand بتاعك لحد ما تحلل إيه اللي نجح. كل خطوة في الـ Flow ليها [Claude Skill](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview) بتشيل الشغل التقيل، وإنت اللي بتاخد كل القرارات.
+## متاحة دلوقتي
 
-> 💡 اعمل **Star** ⭐، و **Watch → Custom → Releases**، عشان يوصلك إشعار مع كل Skill جديدة.
+</div>
+
+<!-- featured:start -->
+
+<a href="skills/04-publish-grow/social-cover-studio/README.ar.md"><img src="docs/social-cover-studio/hero-ar.svg" alt="Social Cover Studio — Covers و Thumbnails بالـ Brand بتاعك من صورة واحدة، بكل المقاسات." width="100%"></a>
+
+<p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip"><img src="docs/assets/btn-download-ar.svg" alt="Download" height="48"></a>&nbsp;&nbsp;<a href="skills/04-publish-grow/social-cover-studio/README.ar.md"><img src="docs/assets/btn-more-ar.svg" alt="How it works" height="48"></a></p>
+
+<!-- featured:end -->
 
 ---
 
+<div dir="rtl">
+
 ## الـ System
+
+كل فكرة بتمشي في نفس الـ 14 خطوة، وكل خطوة ليها Skill. الـ Foundations بتتعمل مرة واحدة، والـ Lanes والـ Monetization شغالين جنب الـ Flow. **[اقرا الـ Method كامل ←](os/README.ar.md)**
 
 </div>
 
 <img src="docs/assets/flow-ar.svg" alt="من الفكرة للتحليل — 14 خطوة" width="100%">
 
-<div dir="rtl">
-
-| الطبقة | بتغطي إيه | بتستخدمها إمتى |
-|:--|:--|:--|
-| **🧭 Foundations** | الـ Niche، والـ Brand، والـ Studio، والـ Tools، والوقت | مرة واحدة، وترجعلها كل 3 شهور |
-| **🔁 The Flow** | 14 خطوة: Ideas و Pre-Production و Production و Publish & Grow | مع كل فكرة |
-| **⚡ Lanes** | Fast Track و AI Lane و Live و Events | لما الأسبوع يحتاج محتوى أكتر بمجهود أقل |
-| **💰 Monetization** | Affiliate و Brand deals و Media kit | جنب كل حاجة بتنشرها |
-| **🤖 [Agents](agents/README.ar.md)** | الـ Content Machine اللي بيمشي معاك في الـ Flow | لما تحب الـ System هو اللي يسوق |
-
-الخريطة الكاملة في **[Content Creation OS](os/README.ar.md)**.
-
 ---
 
-## الـ Skills
+<div dir="rtl">
 
-كل Skill عليها **Free** أو **🔒 Pro**. الـ Free مفتوحة في الريبو ده، والـ Pro جزء من [Content Creation OS Pro](course/README.ar.md).
+## الـ Skills حسب المرحلة
+
+دوس على أي مرحلة عشان تشوف الـ Skills بتاعتها. الـ **Free** مفتوحة في الريبو ده، والـ **🔒 Pro** جزء من [Content Creation OS Pro](course/README.ar.md). **[شوف كل الـ Skills في لستة واحدة ←](skills/README.ar.md)**
 
 </div>
 
-<!-- catalog:start -->
+<!-- stages:start -->
 
 <div dir="rtl">
 
-### 🧭 [Foundations](skills/00-foundations/README.ar.md) · التأسيس
-
-حاجات بتتعمل مرة واحدة: الـ Niche، والـ Brand، والـ Studio والـ Tools، والوقت اللي عندك فعلاً.
-
-| الخطوة | الـ Skill | بتعمل إيه | الـ Tier | تحميل |
-|:-:|:--|:--|:-:|:-:|
-| — | **Niche Compass** | تلاقي الـ Sweet Spot بتاعك وتطلع منه الـ Pillars والـ Positioning. | Free | قريباً |
-| — | **Brand Foundations** | نوع الـ Brand، والاسم، والوعد، والـ Voice، وبداية الـ Visual Identity. | Free | قريباً |
-| — | **Account Security Audit** | مراجعة أمان خطوة بخطوة للـ Email والـ Domain وكل المنصات. | Free | قريباً |
-| — | **Studio Profile** | بتسجل معداتك وأماكن التصوير والـ Apps والمنصات وساعاتك، وكل الـ Skills التانية بتقرا منه. | Free | قريباً |
-| — | **Asset Library & License Gate** | شكل الفولدرات، وقواعد التسمية، ومصادر الـ Assets، وسجل الـ Licenses. | 🔒 Pro | قريباً |
-
-### 💡 [Ideas](skills/01-ideas/README.ar.md) · الأفكار
-
-من الفكرة الخام لـ Brief جاهز: تلتقط، وتفلتر، وتدوّر، وتخطط.
-
-| الخطوة | الـ Skill | بتعمل إيه | الـ Tier | تحميل |
-|:-:|:--|:--|:-:|:-:|
-| 00 | **Idea Capture** | تحوّل Voice note أو Screenshot أو لينك لـ Idea card واضح. | Free | قريباً |
-| 01 | **Idea Gate** | أربع أسئلة وقرار Go أو Park أو Kill، ومعاه الـ Angle بتاعك. | Free | قريباً |
-| 02 | **Research & Reference** | مين عمل نفس الفكرة، إيه اللي نجح وإيه الناقص، وإزاي تعملها أحسن. | 🔒 Pro | قريباً |
-| 03 | **Brief Builder** | Brief في صفحة: الـ Pillar، ونوع المحتوى، والهدف، والـ AI Angle، وخطة المنصات. | 🔒 Pro | قريباً |
-
-### ✍️ [Pre-Production](skills/02-pre-production/README.ar.md) · قبل التصوير
-
-كل حاجة جاهزة قبل ما تدوس Record: الـ Hooks، والـ Script، واللقطات، والـ Setup.
-
-| الخطوة | الـ Skill | بتعمل إيه | الـ Tier | تحميل |
-|:-:|:--|:--|:-:|:-:|
-| 04 | **Hook & Script Writer** | 3 Hooks، وهيكل Script، و CTA، بصوتك وبلهجتك. | Free | قريباً |
-| 05 | **Shot List Builder** | Shot List كاملة (A-roll و B-roll و Hero shots) على حسب نوع المحتوى. | 🔒 Pro | قريباً |
-| 06 | **Setup Recipe** | الكاميرا والمايك والإضاءة والمكان، من الـ Studio Profile بتاعك. | 🔒 Pro | قريباً |
-
-### 🎬 [Production](skills/03-production/README.ar.md) · التصوير والمونتاج
-
-تصوّر وتلم الملفات وتعمل Edit بنفس الـ Standard كل مرة.
-
-| الخطوة | الـ Skill | بتعمل إيه | الـ Tier | تحميل |
-|:-:|:--|:--|:-:|:-:|
-| 08 | **Footage Ingest** | Project folder وتسمية الملفات والـ Backup من كل الأجهزة. | 🔒 Pro | قريباً |
-| 09 | **Edit Plan** | Editor brief لقطة بلقطة: القص، والكلام على الشاشة، والـ Motion، والـ SFX، والـ B-roll. | 🔒 Pro | قريباً |
-| 09 | **Captions** | Captions و Subtitles مظبوطة بأي لغة. | Free | قريباً |
-
-### 📤 [Publish & Grow](skills/04-publish-grow/README.ar.md) · النشر والنمو
-
-من الـ Final cut للدرس الجاي: مراجعة، وتجهيز، ونشر، وتفاعل، وتحليل.
-
-| الخطوة | الـ Skill | بتعمل إيه | الـ Tier | تحميل |
-|:-:|:--|:--|:-:|:-:|
-| 10 | **Publish Gate** | مراجعة قبل النشر: اللينكات، والـ Disclosure، والـ Safe zone، والـ Licenses. | Free | قريباً |
-| 11 | **[Social Cover Studio](skills/04-publish-grow/social-cover-studio/README.ar.md)** | Covers و Thumbnails بالـ Brand بتاعك من صورة واحدة، بكل المقاسات. | Free | [**⬇ ZIP**](https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip) |
-| 11 | **Package & Publish** | Caption و Hashtags ومواعيد لكل منصة من نفس الـ Brief. | 🔒 Pro | قريباً |
-| 12 | **Engage Inbox** | يلم الأسئلة المتكررة من الكومنتات والـ DMs ويحوّلها أفكار. | 🔒 Pro | قريباً |
-| 13 | **Analyze & Monthly Review** | أرقام يوم 1 و 7 و 30، ودرس واحد لكل بوست، ومراجعة شهرية. | 🔒 Pro | قريباً |
-
-### ⚡ [Lanes](skills/05-lanes/README.ar.md) · المسارات
-
-تنشر أكتر بمجهود أقل: الأخبار المستعجلة، وبوستات الـ AI Lane، والـ Live، والمؤتمرات.
-
-| الخطوة | الـ Skill | بتعمل إيه | الـ Tier | تحميل |
-|:-:|:--|:--|:-:|:-:|
-| — | **Fast Track** | خبر أو Launch يتنشر خلال 48 ساعة من غير ما يبوّظ أسبوعك. | Free | قريباً |
-| — | **AI Lane** | الـ AI بيدوّر ويكتب ويصمم، وإنت تراجع وتوافق. | 🔒 Pro | قريباً |
-| — | **Event Lane** | تغطية المؤتمرات والـ Events في دقايق. | 🔒 Pro | قريباً |
-
-### 💰 [Monetization](skills/06-monetization/README.ar.md) · الفلوس
-
-كل محتوى بيجيب فلوس منين: الـ Affiliate، والـ Brand deals، والـ Media kit.
-
-| الخطوة | الـ Skill | بتعمل إيه | الـ Tier | تحميل |
-|:-:|:--|:--|:-:|:-:|
-| — | **Affiliate Tracker** | تتابع اللينكات والكليكات والأرباح لكل منتج وبوست. | Free | قريباً |
-| — | **Media Kit** | Media kit احترافي من أرقامك الحقيقية. | 🔒 Pro | قريباً |
-| — | **Brand Deal Desk** | تقيّم الـ Brand deals وتسعّرها وترد عليها، وتكشف الـ Scams. | 🔒 Pro | قريباً |
+<table>
+<tr>
+<td width="50%"><a href="skills/00-foundations/README.ar.md"><img src="docs/assets/stages/00-foundations-ar.svg" alt="Foundations" width="100%"></a></td>
+<td width="50%"><a href="skills/01-ideas/README.ar.md"><img src="docs/assets/stages/01-ideas-ar.svg" alt="Ideas" width="100%"></a></td>
+</tr>
+<tr>
+<td width="50%"><a href="skills/02-pre-production/README.ar.md"><img src="docs/assets/stages/02-pre-production-ar.svg" alt="Pre-Production" width="100%"></a></td>
+<td width="50%"><a href="skills/03-production/README.ar.md"><img src="docs/assets/stages/03-production-ar.svg" alt="Production" width="100%"></a></td>
+</tr>
+<tr>
+<td width="50%"><a href="skills/04-publish-grow/README.ar.md"><img src="docs/assets/stages/04-publish-grow-ar.svg" alt="Publish & Grow" width="100%"></a></td>
+<td width="50%"><a href="skills/05-lanes/README.ar.md"><img src="docs/assets/stages/05-lanes-ar.svg" alt="Lanes" width="100%"></a></td>
+</tr>
+<tr>
+<td width="50%"><a href="skills/06-monetization/README.ar.md"><img src="docs/assets/stages/06-monetization-ar.svg" alt="Monetization" width="100%"></a></td>
+<td width="50%"></td>
+</tr>
+</table>
 
 </div>
 
-<!-- catalog:end -->
-
-<div dir="rtl">
-
-محتاج Skill معينة في شغلك؟ [اطلبها من هنا](https://github.com/adeltechtalks/AdelTechTalks-Claude/issues/new).
+<!-- stages:end -->
 
 ---
+
+<a id="install"></a>
+
+<div dir="rtl">
 
 ## التسطيب
 
-### على Claude.ai (Web أو Desktop أو Mobile)
+</div>
 
-1. حمّل ملف الـ **ZIP** بتاع الـ Skill من الجدول فوق.
-2. في Claude روح لـ **Settings → Capabilities**، وشغّل **Code execution and file creation**.
-3. روح لـ **Customize → Skills**، ودوس **+**، وارفع ملف الـ ZIP زي ما هو، **من غير ما تفكه**.
+<img src="docs/assets/install-ar.svg" alt="1 حمّل ملف الـ ZIP · 2 شغّل Code execution من Settings → Capabilities · 3 ارفع الـ Skill من Customize → Skills → +" width="100%">
 
-الـ Skills شغالة على كل خطط Claude. ولو إنت على Team أو Enterprise، الأدمن لازم يكون مفعّل Skills للمؤسسة.
+<div dir="rtl">
 
-### على Claude Code
+<sub>شغالة على كل خطط Claude. ولو إنت على Team أو Enterprise، الأدمن لازم يفعّل الـ Skills الأول.</sub>
+
+**بتستخدم Claude Code؟**
 
 </div>
 
@@ -154,33 +111,68 @@
 /plugin install publish-grow-skills@adeltechtalks-claude
 ```
 
-<div dir="rtl">
-
-أو انسخ فولدر الـ Skill نفسه (مثلاً `skills/04-publish-grow/social-cover-studio`) جوه `~/.claude/skills/`.
-
 ---
+
+<div dir="rtl">
 
 ## المبادئ
 
-- **الـ AI يقترح، وإنت تقرر.** مفيش حاجة بتتنشر أو بتتبعت من غير موافقتك.
-- **الحقيقي قبل المتولّد.** صور حقيقية، وتجارب حقيقية، وأرقام حقيقية. الـ AI بيسد فجوة، مش بيزيّف نتيجة.
-- **مصدر واحد، وفورماتات كتير.** بتكتبها مرة واحدة، وكل منصة بتاخد النسخة بتاعتها.
-- **بنراجع قبل ما ننشر.** أي معلومة عن الأدوات والمنصات بتتراجع من المصادر الرسمية.
+</div>
+
+<img src="docs/assets/principles-ar.svg" alt="الـ AI يقترح وإنت تقرر · الحقيقي قبل المتولّد · مصدر واحد وفورماتات كتير · بنراجع قبل ما ننشر" width="100%">
 
 ---
 
-## المساهمة
+<div dir="rtl">
 
-كل Skill جديدة بتمشي على القالب اللي في [`templates/skill-template`](templates/skill-template/). والخطوات كلها في [CONTRIBUTING.md](CONTRIBUTING.md).
+<details>
+<summary><b>🤖 الـ Agents: الـ Content Machine</b></summary>
 
-## License
+<br>
 
-الـ Free Skills متاحة بـ [MIT License](LICENSE). ومحتوى الـ Pro ليه License منفصل.
+كل Skill بتعمل حاجة واحدة. الـ **Content Machine** بيربطهم ببعض وبيمشي معاك في الـ Flow كله: بيقترح في كل خطوة، وإنت اللي بتوافق. لسه في مرحلة التصميم، وهينزل مع [Content Creation OS Pro](course/README.ar.md). **[شوف الـ Agent Map ←](agents/README.ar.md)**
+
+</details>
+
+<details>
+<summary><b>📁 شكل الريبو</b></summary>
+
+<br>
 
 </div>
 
-<div align="center">
+```
+os/                               الـ Content Creation OS: الـ Method اللي ورا الـ Skills
+skills/<المرحلة>/<الـ-skill>/       الـ Free Skills مترتبة بالمراحل
+agents/                           الـ Content Machine والـ Agent map
+course/                           مسار التعلم والـ Pro
+docs/                             الصور والأدلة (بتتعمل بـ scripts/build-art.py)
+downloads/<الـ-skill>.zip          ملفات الـ ZIP الجاهزة (scripts/build-zips.sh)
+catalog.json                      مصدر كل الـ Skills (scripts/build-catalog.py)
+templates/skill-template/         قالب أي Skill جديدة
+.claude-plugin/marketplace.json   للتسطيب من Claude Code
+```
+
+<div dir="rtl">
+
+</details>
+
+<details>
+<summary><b>🛠 المساهمة</b></summary>
+
 <br>
+
+كل Skill جديدة بتمشي على القالب اللي في [`templates/skill-template`](templates/skill-template/)، والخطوات كلها في [CONTRIBUTING.md](CONTRIBUTING.md).
+
+</details>
+
+</div>
+
+---
+
+<div align="center">
+<sub>الـ Free Skills متاحة بـ <a href="LICENSE">MIT License</a> · ومحتوى الـ Pro ليه License منفصل</sub>
+<br><br>
 <sub><b>AdelTechTalks</b> · Curated by Adel · <i>Experience it. Don't just consume it.</i></sub>
 <br>
 <sub><a href="https://instagram.com/adeltechtalks">Instagram</a> · <a href="https://adeltechtalks.com">adeltechtalks.com</a></sub>
