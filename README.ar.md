@@ -17,8 +17,7 @@
 
 **Claude Skills for Content Creators** هي طبقة الـ Skills والـ Agents بتاعة **Content Creation OS**: System كامل لصناعة المحتوى بالـ AI، من أول ما تبني الـ Brand بتاعك لحد ما تحلل إيه اللي نجح. كل خطوة في الـ Flow ليها [Claude Skill](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview) بتشيل الشغل التقيل، وإنت اللي بتاخد كل القرارات.
 
-> [!TIP]
-> اعمل **Star** ⭐، و **Watch → Custom → Releases**، عشان يوصلك إشعار مع كل Skill جديدة.
+> 💡 اعمل **Star** ⭐، و **Watch → Custom → Releases**، عشان يوصلك إشعار مع كل Skill جديدة.
 
 ---
 

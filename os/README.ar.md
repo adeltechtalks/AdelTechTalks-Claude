@@ -62,7 +62,6 @@
 
 ---
 
-> [!NOTE]
-> الـ Workbooks الكاملة للكتاب الأول والتاني، جاهزة للطباعة، جزء من [Content Creation OS Pro](../course/README.ar.md).
+> 📘 الـ Workbooks الكاملة للكتاب الأول والتاني، جاهزة للطباعة، جزء من [Content Creation OS Pro](../course/README.ar.md).
 
 </div>
