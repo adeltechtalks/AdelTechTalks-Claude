@@ -1,8 +1,10 @@
+<p align="center"><a href="README.md"><img src="https://img.shields.io/badge/English-2C313A?style=for-the-badge" alt="English"></a>&nbsp;<a href="README.ar.md"><img src="https://img.shields.io/badge/%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-2563EB?style=for-the-badge" alt="العربية"></a></p>
+
 <div align="center">
 
 <img src="../../../docs/social-cover-studio/hero-ar.svg" alt="Social Cover Studio — صورة واحدة تدخل، و Cover بالـ Brand بتاعك لكل منصة يطلع" width="100%">
 
-[← كل الـ Skills](../../../README.ar.md) · [Publish & Grow](../README.ar.md) · [English](README.md) · **العربية**
+[← كل الـ Skills](../../../README.ar.md) · [Publish & Grow](../README.ar.md)
 
 <br>
 
@@ -34,7 +36,7 @@
 
 </div>
 
-<img src="../../../docs/social-cover-studio/templates-beats-360.jpg" alt="الـ 5 Templates على نفس الصورة" width="100%">
+<img src="../../../docs/social-cover-studio/templates-gallery.jpg" alt="الـ 5 Templates" width="100%">
 
 <div dir="rtl">
 

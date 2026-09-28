@@ -1,10 +1,9 @@
+<p align="center"><a href="README.md"><img src="https://img.shields.io/badge/English-2563EB?style=for-the-badge" alt="English"></a>&nbsp;<a href="README.ar.md"><img src="https://img.shields.io/badge/%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-2C313A?style=for-the-badge" alt="العربية"></a></p>
+
 <div align="center">
 
 <img src="docs/assets/banner-en.svg" alt="Claude Skills for Content Creators — by AdelTechTalks" width="100%">
 
-<br>
-
-**English** · [العربية](README.ar.md)
 
 [![Stars](https://img.shields.io/github/stars/adeltechtalks/AdelTechTalks-Claude?style=flat-square&color=2563EB&labelColor=171A1F)](https://github.com/adeltechtalks/AdelTechTalks-Claude/stargazers)
 [![Skills](https://img.shields.io/badge/skills-1-2563EB?style=flat-square&labelColor=171A1F)](#skills)

@@ -21,6 +21,14 @@ def tier(s, ar=False):
     return "Free" if s["tier"] == "free" else "🔒 Pro"
 
 
+def lang_toggle(ar=False):
+    on, off = "2563EB", "2C313A"
+    en = f"https://img.shields.io/badge/English-{off if ar else on}?style=for-the-badge"
+    arb = f"https://img.shields.io/badge/%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-{on if ar else off}?style=for-the-badge"
+    return (f'<p align="center"><a href="README.md"><img src="{en}" alt="English"></a>&nbsp;'
+            f'<a href="README.ar.md"><img src="{arb}" alt="العربية"></a></p>\n\n')
+
+
 def table_header(ar=False):
     if ar:
         return ["| الخطوة | الـ Skill | بتعمل إيه | الـ Tier | تحميل |", "|:-:|:--|:--|:-:|:-:|"]
@@ -43,7 +51,7 @@ def stage_page(stage, ar=False):
         lines = [
             f"# {stage['icon']} {stage['name']} · {stage['name_ar']}",
             "",
-            "[← كل الـ Skills](../../README.ar.md) · [English](README.md) · **العربية**",
+            "[← كل الـ Skills](../../README.ar.md)",
             "",
             '<div dir="rtl">',
             "",
@@ -63,7 +71,7 @@ def stage_page(stage, ar=False):
         lines = [
             f"# {stage['icon']} {stage['name']}",
             "",
-            "[← All skills](../../README.md) · **English** · [العربية](README.ar.md)",
+            "[← All skills](../../README.md)",
             "",
             stage["summary"],
             "",
@@ -103,8 +111,8 @@ def catalog_block(ar=False):
 for st in stages:
     d = ROOT / "skills" / st["id"]
     d.mkdir(parents=True, exist_ok=True)
-    (d / "README.md").write_text(stage_page(st), encoding="utf-8")
-    (d / "README.ar.md").write_text(stage_page(st, ar=True), encoding="utf-8")
+    (d / "README.md").write_text(lang_toggle() + stage_page(st), encoding="utf-8")
+    (d / "README.ar.md").write_text(lang_toggle(True) + stage_page(st, ar=True), encoding="utf-8")
 
 available = sum(1 for st in stages for s in st["skills"] if s["status"] == "available")
 for name, ar in (("README.md", False), ("README.ar.md", True)):
