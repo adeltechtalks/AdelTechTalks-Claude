@@ -1,8 +1,8 @@
-# 🎬 Video Editing
+# 🌐 Web
 
-Skills للمونتاج والـ Subtitles والقص.
+Skills لبناء صفحاتك على الويب.
 
-**قريباً:** مونتاج Reels، Subtitles عربي، قص Shorts من فيديو طويل.
+**قريباً:** Landing page، Link-in-bio.
 
 اعمل ⭐ **Star** و 👁 **Watch → Releases** للريبو عشان يوصلك إشعار أول ما تنزل Skills جديدة هنا.
 

@@ -1,8 +1,8 @@
-# 🎬 Video Editing
+# 🤝 Business
 
-Skills للمونتاج والـ Subtitles والقص.
+Skills لشغل الـ Brands والفلوس.
 
-**قريباً:** مونتاج Reels، Subtitles عربي، قص Shorts من فيديو طويل.
+**قريباً:** Media kit، الرد على الـ Brand deals، التسعير.
 
 اعمل ⭐ **Star** و 👁 **Watch → Releases** للريبو عشان يوصلك إشعار أول ما تنزل Skills جديدة هنا.
 

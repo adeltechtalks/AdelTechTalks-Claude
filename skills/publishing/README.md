@@ -1,8 +1,8 @@
-# 🎬 Video Editing
+# 📤 Publishing
 
-Skills للمونتاج والـ Subtitles والقص.
+Skills للنشر والتنظيم.
 
-**قريباً:** مونتاج Reels، Subtitles عربي، قص Shorts من فيديو طويل.
+**قريباً:** Content calendar، Hashtags، مواعيد النشر، خطة رمضان والمواسم.
 
 اعمل ⭐ **Star** و 👁 **Watch → Releases** للريبو عشان يوصلك إشعار أول ما تنزل Skills جديدة هنا.
 
