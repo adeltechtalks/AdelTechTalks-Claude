@@ -4,17 +4,17 @@
     "name": "AdelTechTalks"
   },
   "metadata": {
-    "description": "Claude Skills for content creators by AdelTechTalks — from the first idea to the published post.",
+    "description": "Skills and agents for the Content Creation OS by AdelTechTalks — from the first idea to the analysis of what worked.",
     "version": "1.0.0"
   },
   "plugins": [
     {
-      "name": "design-skills",
-      "description": "Design skills: branded covers and thumbnails for Instagram, TikTok, Facebook and YouTube.",
+      "name": "publish-grow-skills",
+      "description": "Publish & Grow: branded covers and thumbnails for Instagram, TikTok, Facebook and YouTube.",
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/design/social-cover-studio"
+        "./skills/04-publish-grow/social-cover-studio"
       ]
     }
   ]

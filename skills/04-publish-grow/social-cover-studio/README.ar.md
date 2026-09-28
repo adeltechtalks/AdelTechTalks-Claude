@@ -1,6 +1,8 @@
 # Social Cover Studio 🎨
 
-[← كل الـ Skills](../../../README.ar.md) · [English](README.md) · **العربية**
+[← كل الـ Skills](../../../README.ar.md) · [Publish & Grow](../README.ar.md) · [English](README.md) · **العربية**
+
+`Stage: Publish & Grow` `Step 11 · Package & Publish` `Free`
 
 **Claude Skill** مجانية بتعملك Covers و Thumbnails بالـ Brand بتاعك، من صورة واحدة، وبكل المقاسات: Instagram و TikTok و Facebook و YouTube.
 

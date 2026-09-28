@@ -5,7 +5,9 @@
 
 # Skill Name [emoji]
 
-[← كل الـ Skills](../../../README.ar.md) · [English](README.md) · **العربية**
+[← كل الـ Skills](../../../README.ar.md) · [Stage](../README.ar.md) · [English](README.md) · **العربية**
+
+`Stage: [stage name]` `Step [NN · step name]` `Free`
 
 <div dir="rtl">
 

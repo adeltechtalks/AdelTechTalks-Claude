@@ -1,6 +1,8 @@
 # Social Cover Studio 🎨
 
-[← All skills](../../../README.md) · **English** · [العربية](README.ar.md)
+[← All skills](../../../README.md) · [Publish & Grow](../) · **English** · [العربية](README.ar.md)
+
+`Stage: Publish & Grow` `Step 11 · Package & Publish` `Free`
 
 A Claude Skill that turns a single photo into **branded covers and thumbnails** — in your colours and fonts, exported for every platform: Instagram, TikTok, Facebook and YouTube.
 

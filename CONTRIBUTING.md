@@ -6,15 +6,14 @@
 
 1. **Copy the template** — `templates/skill-template/` → `skills/<stage>/<skill-name>/`.
    Use kebab-case (e.g. `reel-hook-writer`); it must match `name` in `SKILL.md`.
-2. **Pick a stage** — `ideation-research` · `writing` · `design` · `video-editing` · `publishing` · `analytics` · `business` · `web`
+2. **Pick a stage** — `00-foundations` · `01-ideas` · `02-pre-production` · `03-production` · `04-publish-grow` · `05-lanes` · `06-monetization`. Pro skills never go in this repo.
 3. **Write `SKILL.md`** — the `description` decides when Claude loads the skill. Make it specific: what it does, the phrases users type, and what it is *not* for.
 4. **Write the skill pages** — `README.md` (English) and `README.ar.md` (Arabic): a hero image, install steps, and a copy-paste prompt.
 5. **Add media** to `docs/<skill-name>/` — never inside the skill folder, so the ZIP stays small.
 6. **Build the ZIP** — `./scripts/build-zips.sh`
 7. **Register the skill**
-   - Add a row to the Skills table in `README.md` and `README.ar.md`, and to the stage page `skills/<stage>/README.md`.
+   - Add or update its entry in `catalog.json` (set `"status": "available"`), then run `python3 scripts/build-catalog.py` — it rebuilds the stage pages, both README catalogs and the skills badge.
    - Add its path to `.claude-plugin/marketplace.json` under that stage's plugin (create `<stage>-skills` if it doesn't exist), then run `claude plugin validate .`.
-   - Update the `skills-N` badge count in both READMEs.
 8. **Publish a GitHub Release** (e.g. `social-cover-studio v1.0.0`) with the ZIP attached, so watchers get notified.
 
 ### Before you publish
@@ -37,7 +36,7 @@ By contributing, you agree to release your work under the repository's [MIT Lice
 3. **صفحات الـ Skill:** `README.md` بالإنجليزي، و `README.ar.md` بالعربي.
 4. **الصور:** تتحط في `docs/<اسم-الـ-skill>/`.
 5. **اعمل الـ ZIP:** بأمر `./scripts/build-zips.sh`.
-6. **سجّل الـ Skill:** في الجدولين، وفي صفحة المرحلة، وفي `.claude-plugin/marketplace.json`، وحدّث عداد الـ Skills.
+6. **سجّل الـ Skill:** في `catalog.json` وشغّل `python3 scripts/build-catalog.py`، وضيفها في `.claude-plugin/marketplace.json`.
 7. **اعمل Release:** عشان اللي عامل Watch يوصله إشعار.
 
 قبل الرفع: جرّب الـ ZIP على Claude.ai، واتأكد إن مفيش أي API keys أو بيانات شخصية.

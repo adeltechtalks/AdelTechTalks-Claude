@@ -1,12 +1,14 @@
 <!--
   Skill page template (English).
-  Copy this folder to skills/<stage>/<skill-name>/ and replace every [placeholder] and every "skill-name".
+  Copy this folder to skills/<stage>/<skill-name>/ (e.g. skills/01-ideas/idea-gate/) and replace every [placeholder] and every "skill-name".
   Links below are written for that final location (three levels deep).
 -->
 
 # Skill Name [emoji]
 
-[← All skills](../../../README.md) · **English** · [العربية](README.ar.md)
+[← All skills](../../../README.md) · [Stage](../) · **English** · [العربية](README.ar.md)
+
+`Stage: [stage name]` `Step [NN · step name]` `Free`
 
 [One-sentence value proposition: what the creator gets, in their words.]
 
