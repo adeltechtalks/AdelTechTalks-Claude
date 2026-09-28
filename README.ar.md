@@ -6,7 +6,7 @@
 
 [English](README.md) · **العربية**
 
-[![Stars](https://img.shields.io/github/stars/adeltechtalks/att-claude-creator-skills?style=flat-square&color=2563EB&labelColor=171A1F)](https://github.com/adeltechtalks/att-claude-creator-skills/stargazers)
+[![Stars](https://img.shields.io/github/stars/adeltechtalks/AdelTechTalks-Claude?style=flat-square&color=2563EB&labelColor=171A1F)](https://github.com/adeltechtalks/AdelTechTalks-Claude/stargazers)
 [![Skills](https://img.shields.io/badge/skills-1-2563EB?style=flat-square&labelColor=171A1F)](#الـ-skills)
 [![Works with Claude](https://img.shields.io/badge/works%20with-Claude.ai%20%7C%20Claude%20Code-2DD4A8?style=flat-square&labelColor=171A1F)](#التسطيب)
 [![License: MIT](https://img.shields.io/badge/license-MIT-667085?style=flat-square&labelColor=171A1F)](LICENSE)
@@ -102,7 +102,7 @@
 | الخطوة | الـ Skill | بتعمل إيه | الـ Tier | تحميل |
 |:-:|:--|:--|:-:|:-:|
 | 10 | **Publish Gate** | مراجعة قبل النشر: اللينكات، والـ Disclosure، والـ Safe zone، والـ Licenses. | Free | قريباً |
-| 11 | **[Social Cover Studio](skills/04-publish-grow/social-cover-studio/README.ar.md)** | Covers و Thumbnails بالـ Brand بتاعك من صورة واحدة، بكل المقاسات. | Free | [**⬇ ZIP**](https://github.com/adeltechtalks/att-claude-creator-skills/raw/main/downloads/social-cover-studio.zip) |
+| 11 | **[Social Cover Studio](skills/04-publish-grow/social-cover-studio/README.ar.md)** | Covers و Thumbnails بالـ Brand بتاعك من صورة واحدة، بكل المقاسات. | Free | [**⬇ ZIP**](https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip) |
 | 11 | **Package & Publish** | Caption و Hashtags ومواعيد لكل منصة من نفس الـ Brief. | 🔒 Pro | قريباً |
 | 12 | **Engage Inbox** | يلم الأسئلة المتكررة من الكومنتات والـ DMs ويحوّلها أفكار. | 🔒 Pro | قريباً |
 | 13 | **Analyze & Monthly Review** | أرقام يوم 1 و 7 و 30، ودرس واحد لكل بوست، ومراجعة شهرية. | 🔒 Pro | قريباً |
@@ -133,7 +133,7 @@
 
 <div dir="rtl">
 
-محتاج Skill معينة في شغلك؟ [اطلبها من هنا](https://github.com/adeltechtalks/att-claude-creator-skills/issues/new).
+محتاج Skill معينة في شغلك؟ [اطلبها من هنا](https://github.com/adeltechtalks/AdelTechTalks-Claude/issues/new).
 
 ---
 
@@ -152,8 +152,8 @@
 </div>
 
 ```bash
-/plugin marketplace add adeltechtalks/att-claude-creator-skills
-/plugin install publish-grow-skills@adeltechtalks-skills
+/plugin marketplace add adeltechtalks/AdelTechTalks-Claude
+/plugin install publish-grow-skills@adeltechtalks-claude
 ```
 
 <div dir="rtl">

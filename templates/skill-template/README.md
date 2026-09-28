@@ -15,7 +15,7 @@
 ![Before / After](../../../docs/skill-name/hero.png)
 
 <p align="center">
-  <a href="https://github.com/adeltechtalks/att-claude-creator-skills/raw/main/downloads/skill-name.zip"><b>⬇ Download skill-name.zip</b></a>
+  <a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/skill-name.zip"><b>⬇ Download skill-name.zip</b></a>
 </p>
 
 ---
@@ -28,7 +28,7 @@
 
 ## Installation
 
-1. **[Download the ZIP](https://github.com/adeltechtalks/att-claude-creator-skills/raw/main/downloads/skill-name.zip).**
+1. **[Download the ZIP](https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/skill-name.zip).**
 2. In Claude, open **Settings → Capabilities** and turn on **Code execution and file creation** *(only if the skill runs code)*.
 3. Go to **Customize → Skills**, click **+**, and upload the ZIP as it is — **don't unzip it**.
 

@@ -33,7 +33,7 @@
 ## التسطيب (5 دقايق، مرة واحدة)
 
 ### 1. نزّل الـ Skill
-**[⬇ social-cover-studio.zip](https://github.com/adeltechtalks/att-claude-creator-skills/raw/main/downloads/social-cover-studio.zip)** ← التحميل هيبدأ على طول.
+**[⬇ social-cover-studio.zip](https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip)** ← التحميل هيبدأ على طول.
 
 ولو عايز الدليل كامل بالصور: **[📄 الدليل PDF](../../../docs/social-cover-studio/guide.pdf)**
 

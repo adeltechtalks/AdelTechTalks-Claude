@@ -9,7 +9,7 @@ A Claude Skill that turns a single photo into **branded covers and thumbnails** 
 ![Before / After](../../../docs/social-cover-studio/before-after.png)
 
 <p align="center">
-  <a href="https://github.com/adeltechtalks/att-claude-creator-skills/raw/main/downloads/social-cover-studio.zip"><b>⬇ Download social-cover-studio.zip</b></a>
+  <a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip"><b>⬇ Download social-cover-studio.zip</b></a>
   &nbsp;·&nbsp;
   <a href="../../../docs/social-cover-studio/guide.pdf">📄 Full guide (PDF, Arabic)</a>
 </p>
@@ -38,7 +38,7 @@ Send Claude a photo of a product — or of yourself holding it — and it will:
 
 ## Installation
 
-1. **[Download the ZIP](https://github.com/adeltechtalks/att-claude-creator-skills/raw/main/downloads/social-cover-studio.zip).**
+1. **[Download the ZIP](https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip).**
 2. In Claude, open **Settings → Capabilities** and turn on **Code execution and file creation**.
 3. Go to **Customize → Skills**, click **+**, and upload the ZIP as it is — **don't unzip it**.
 

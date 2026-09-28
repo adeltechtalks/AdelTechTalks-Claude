@@ -10,7 +10,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-REPO = "https://github.com/adeltechtalks/att-claude-creator-skills"
+REPO = "https://github.com/adeltechtalks/AdelTechTalks-Claude"
 DL = f"{REPO}/raw/main/downloads"
 
 catalog = json.loads((ROOT / "catalog.json").read_text(encoding="utf-8"))
