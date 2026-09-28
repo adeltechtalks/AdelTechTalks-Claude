@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/assets/banner.png" alt="Claude Skills for Content Creators — by AdelTechTalks" width="100%">
+<img src="docs/assets/banner-ar.svg" alt="Claude Skills لصنّاع المحتوى — AdelTechTalks" width="100%">
 
 <br>
 
@@ -26,7 +26,7 @@
 
 </div>
 
-<img src="docs/assets/flow.png" alt="From Idea to Analysis — 14 خطوة" width="100%">
+<img src="docs/assets/flow-ar.svg" alt="من الفكرة للتحليل — 14 خطوة" width="100%">
 
 <div dir="rtl">
 

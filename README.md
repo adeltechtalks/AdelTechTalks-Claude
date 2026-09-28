@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/assets/banner.png" alt="Claude Skills for Content Creators — by AdelTechTalks" width="100%">
+<img src="docs/assets/banner-en.svg" alt="Claude Skills for Content Creators — by AdelTechTalks" width="100%">
 
 <br>
 
@@ -22,7 +22,7 @@
 
 ## The system
 
-<img src="docs/assets/flow.png" alt="From Idea to Analysis — the 14-step flow" width="100%">
+<img src="docs/assets/flow-en.svg" alt="From Idea to Analysis — the 14-step flow" width="100%">
 
 | Layer | What it covers | When you use it |
 |:--|:--|:--|
@@ -160,7 +160,7 @@ os/                               The Content Creation OS — the method behind 
 skills/<stage>/<skill>/           Free skills, grouped by stage (SKILL.md + scripts + assets + pages)
 agents/                           The Content Machine and the agent map
 course/                           Learning path and Pro access
-docs/                             Images and guides
+docs/                             Images and guides (animated art built by scripts/build-art.py)
 downloads/<skill>.zip             Ready-to-upload ZIPs (scripts/build-zips.sh)
 catalog.json                      Single source of truth for the catalog (scripts/build-catalog.py)
 templates/skill-template/         Starting point for a new skill

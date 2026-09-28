@@ -29,7 +29,7 @@
 
 </div>
 
-<img src="../docs/assets/flow.png" alt="From Idea to Analysis" width="100%">
+<img src="../docs/assets/flow-ar.svg" alt="From Idea to Analysis" width="100%">
 
 <div dir="rtl">
 

@@ -25,7 +25,7 @@ Set up the foundations before your first idea. Revisit every three months.
 
 ## Book 2 · From Idea to Analysis — *every idea*
 
-<img src="../docs/assets/flow.png" alt="From Idea to Analysis" width="100%">
+<img src="../docs/assets/flow-en.svg" alt="From Idea to Analysis" width="100%">
 
 | Part | Steps | Output | Skills |
 |:--|:--|:--|:--|
