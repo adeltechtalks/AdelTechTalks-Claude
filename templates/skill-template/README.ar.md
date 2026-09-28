@@ -18,7 +18,7 @@
 ![Before / After](../../../docs/skill-name/hero.png)
 
 <p align="center">
-  <a href="https://github.com/adeltechtalks/Claude-Skills/raw/main/downloads/skill-name.zip"><b>⬇ حمّل skill-name.zip</b></a>
+  <a href="https://github.com/adeltechtalks/att-claude-creator-skills/raw/main/downloads/skill-name.zip"><b>⬇ حمّل skill-name.zip</b></a>
 </p>
 
 <div dir="rtl">
@@ -33,7 +33,7 @@
 
 ## التسطيب
 
-1. **[حمّل ملف الـ ZIP](https://github.com/adeltechtalks/Claude-Skills/raw/main/downloads/skill-name.zip).**
+1. **[حمّل ملف الـ ZIP](https://github.com/adeltechtalks/att-claude-creator-skills/raw/main/downloads/skill-name.zip).**
 2. في Claude روح لـ **Settings → Capabilities**، وشغّل **Code execution and file creation** *(لو الـ Skill بتشغّل كود)*.
 3. روح لـ **Customize → Skills**، ودوس **+**، وارفع ملف الـ ZIP زي ما هو، **من غير ما تفكه**.
 

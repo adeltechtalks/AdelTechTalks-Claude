@@ -6,7 +6,7 @@
 
 **English** · [العربية](README.ar.md)
 
-[![Stars](https://img.shields.io/github/stars/adeltechtalks/Claude-Skills?style=flat-square&color=2563EB&labelColor=171A1F)](https://github.com/adeltechtalks/Claude-Skills/stargazers)
+[![Stars](https://img.shields.io/github/stars/adeltechtalks/att-claude-creator-skills?style=flat-square&color=2563EB&labelColor=171A1F)](https://github.com/adeltechtalks/att-claude-creator-skills/stargazers)
 [![Skills](https://img.shields.io/badge/skills-1-2563EB?style=flat-square&labelColor=171A1F)](#skills)
 [![Works with Claude](https://img.shields.io/badge/works%20with-Claude.ai%20%7C%20Claude%20Code-2DD4A8?style=flat-square&labelColor=171A1F)](#installation)
 [![License: MIT](https://img.shields.io/badge/license-MIT-667085?style=flat-square&labelColor=171A1F)](LICENSE)
@@ -92,7 +92,7 @@ From final cut to the next lesson: review, package, publish, engage, analyze.
 | Step | Skill | What it does | Tier | Get it |
 |:-:|:--|:--|:-:|:-:|
 | 10 | **Publish Gate** | Pre-publish check: links, disclosure, safe zones and licenses. | Free | Soon |
-| 11 | **[Social Cover Studio](skills/04-publish-grow/social-cover-studio/)** | Branded covers and thumbnails from a single photo, exported for every platform. | Free | [**⬇ ZIP**](https://github.com/adeltechtalks/Claude-Skills/raw/main/downloads/social-cover-studio.zip) |
+| 11 | **[Social Cover Studio](skills/04-publish-grow/social-cover-studio/)** | Branded covers and thumbnails from a single photo, exported for every platform. | Free | [**⬇ ZIP**](https://github.com/adeltechtalks/att-claude-creator-skills/raw/main/downloads/social-cover-studio.zip) |
 | 11 | **Package & Publish** | Captions, hashtags and schedule for each platform from one brief. | 🔒 Pro | Soon |
 | 12 | **Engage Inbox** | Group repeated questions from comments and DMs into new ideas. | 🔒 Pro | Soon |
 | 13 | **Analyze & Monthly Review** | Day 1 · 7 · 30 numbers, one lesson per post and a monthly review. | 🔒 Pro | Soon |
@@ -119,7 +119,7 @@ Where every piece of content makes money: affiliates, brand deals and your media
 
 <!-- catalog:end -->
 
-Missing a skill in your workflow? [Request it](https://github.com/adeltechtalks/Claude-Skills/issues/new).
+Missing a skill in your workflow? [Request it](https://github.com/adeltechtalks/att-claude-creator-skills/issues/new).
 
 ---
 
@@ -136,7 +136,7 @@ Skills are available on all Claude plans. On Team and Enterprise, an admin must 
 ### Claude Code
 
 ```bash
-/plugin marketplace add adeltechtalks/Claude-Skills
+/plugin marketplace add adeltechtalks/att-claude-creator-skills
 /plugin install publish-grow-skills@adeltechtalks-skills
 ```
 
