@@ -1,4 +1,4 @@
-<p align="center"><a href="README.md"><img src="https://img.shields.io/badge/English-2C313A?style=for-the-badge" alt="English"></a>&nbsp;<a href="README.ar.md"><img src="https://img.shields.io/badge/%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-2563EB?style=for-the-badge" alt="العربية"></a></p>
+<p align="center"><a href="README.md"><img src="../../docs/assets/lang-en-off.svg" alt="English" height="40"></a>&nbsp;&nbsp;<a href="README.ar.md"><img src="../../docs/assets/lang-ar-on.svg" alt="العربية" height="40"></a></p>
 
 # 💰 Monetization · الفلوس
 

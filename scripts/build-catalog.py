@@ -22,11 +22,11 @@ def tier(s, ar=False):
 
 
 def lang_toggle(ar=False):
-    on, off = "2563EB", "2C313A"
-    en = f"https://img.shields.io/badge/English-{off if ar else on}?style=for-the-badge"
-    arb = f"https://img.shields.io/badge/%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-{on if ar else off}?style=for-the-badge"
-    return (f'<p align="center"><a href="README.md"><img src="{en}" alt="English"></a>&nbsp;'
-            f'<a href="README.ar.md"><img src="{arb}" alt="العربية"></a></p>\n\n')
+    a = "../../docs/assets/"
+    en = f"{a}lang-en-{'off' if ar else 'on'}.svg"
+    arb = f"{a}lang-ar-{'on' if ar else 'off'}.svg"
+    return (f'<p align="center"><a href="README.md"><img src="{en}" alt="English" height="40"></a>&nbsp;&nbsp;'
+            f'<a href="README.ar.md"><img src="{arb}" alt="العربية" height="40"></a></p>\n\n')
 
 
 def table_header(ar=False):

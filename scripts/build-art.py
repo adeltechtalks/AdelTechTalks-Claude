@@ -390,12 +390,32 @@ def cover_hero(lang):
     return svg(W, H, css, body, title)
 
 
+def lang_button(lang, active):
+    """Pill used by the English / العربية switch at the top of every page."""
+    W, H = 148, 44
+    fill, fg = (BLUE, "#FFFFFF") if active else (GRAPHITE, "#C9CED6")
+    stroke = BLUE if active else "#3A404A"
+    if lang == "ar":
+        label = "العربية"
+        text = f'<text x="{W / 2}" y="29" text-anchor="middle" font-family="R" font-weight="600" font-size="18" fill="{fg}">{label}</text>'
+    else:
+        label = "English"
+        text = f'<text x="{W / 2}" y="28.5" text-anchor="middle" font-family="M" font-weight="700" font-size="16" fill="{fg}">{label}</text>'
+    body = f'<rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="{(H - 2) / 2}" fill="{fill}" stroke="{stroke}"/>{text}'
+    return svg(W, H, font_css(label, {"M", "R"}), body, label)
+
+
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
     for name, content in (("banner-en.svg", banner("en")), ("banner-ar.svg", banner("ar")),
                           ("flow-en.svg", flow("en")), ("flow-ar.svg", flow("ar"))):
         (OUT / name).write_text(content, encoding="utf-8")
         print(f"built docs/assets/{name} ({len(content.encode()) // 1024} KB)")
+    for lang in ("en", "ar"):
+        for active in (True, False):
+            name = f"lang-{lang}-{'on' if active else 'off'}.svg"
+            (OUT / name).write_text(lang_button(lang, active), encoding="utf-8")
+            print(f"built docs/assets/{name}")
     for lang in ("en", "ar"):
         target = ROOT / "docs" / "social-cover-studio" / f"hero-{lang}.svg"
         content = cover_hero(lang)
