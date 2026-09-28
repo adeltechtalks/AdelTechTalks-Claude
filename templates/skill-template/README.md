@@ -1,60 +1,90 @@
 <!--
-  Skill page template (English).
-  Copy this folder to skills/<stage>/<skill-name>/ (e.g. skills/01-ideas/idea-gate/) and replace every [placeholder] and every "skill-name".
-  Links below are written for that final location (three levels deep).
+  Skill page template (English). Copy this folder to skills/<stage>/<skill-name>/ and replace every [placeholder] and "skill-name".
+  Structure: hero → download → quick facts → how it works → showcase → get started → tips/troubleshooting (collapsed) → credits.
 -->
 
-# Skill Name [emoji]
+<div align="center">
+
+<img src="../../../docs/skill-name/hero-en.svg" alt="Skill Name — [one-line promise]" width="100%">
 
 [← All skills](../../../README.md) · [Stage](../) · **English** · [العربية](README.ar.md)
 
-`Stage: [stage name]` `Step [NN · step name]` `Free`
+<br>
 
-[One-sentence value proposition: what the creator gets, in their words.]
+<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/skill-name.zip"><img src="https://img.shields.io/badge/Download-skill--name.zip-2563EB?style=for-the-badge&labelColor=171A1F" alt="Download the skill"></a>
+&nbsp;
+<a href="../../../docs/skill-name/guide.pdf"><img src="https://img.shields.io/badge/Guide-PDF-2DD4A8?style=for-the-badge&labelColor=171A1F" alt="Read the guide"></a>
 
-![Before / After](../../../docs/skill-name/hero.png)
+</div>
 
-<p align="center">
-  <a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/skill-name.zip"><b>⬇ Download skill-name.zip</b></a>
-</p>
+<br>
+
+| You give | You get | [Key number] | Works in |
+|:--|:--|:-:|:--|
+| [input] | [output] | [count or —] | Claude.ai · Claude Code |
 
 ---
 
-## What it does
+## How it works
 
-1. [Outcome 1]
-2. [Outcome 2]
-3. [Outcome 3]
+| **1 · [Step]** | **2 · [Step]** | **3 · [Step]** |
+|:--|:--|:--|
+| [What the user does] | [What Claude does] | [What they get] |
 
-## Installation
+---
 
-1. **[Download the ZIP](https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/skill-name.zip).**
-2. In Claude, open **Settings → Capabilities** and turn on **Code execution and file creation** *(only if the skill runs code)*.
+## [Showcase]
+
+<img src="../../../docs/skill-name/showcase.jpg" alt="[What the image shows]" width="100%">
+
+[Optional table of modes, templates or outputs.]
+
+---
+
+## Get started
+
+### 1 · Install — once, 5 minutes
+
+1. **[Download the ZIP](https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/skill-name.zip)**.
+2. In Claude, open **Settings → Capabilities** and turn on **Code execution and file creation**.
 3. Go to **Customize → Skills**, click **+**, and upload the ZIP as it is — **don't unzip it**.
 
-## Quick start
+### 2 · [One-time setup, if any]
+
+```
+[Setup prompt]
+```
+
+### 3 · [First result]
 
 ```
 [A prompt people can copy and try right away]
 ```
 
-[What they get back — a screenshot or a short table of outputs.]
+[What they get back.]
 
-## Tips
+---
+
+<details>
+<summary><b>Tips</b></summary>
+
+<br>
 
 - [Tip]
-- [Tip]
 
-## Troubleshooting
+</details>
+
+<details>
+<summary><b>Troubleshooting</b></summary>
+
+<br>
 
 | Problem | Fix |
 |:--|:--|
 | Claude doesn't use the skill | Say it explicitly: *"Use skill-name"* |
 
+</details>
+
 ---
 
-## Credits
-
-Built by **[@AdelTechTalks](https://instagram.com/adeltechtalks)** · [third-party credits]
-
-Released under the [MIT License](../../../LICENSE).
+<sub>Built by <b><a href="https://instagram.com/adeltechtalks">@AdelTechTalks</a></b> · [third-party credits] · Released under the <a href="../../../LICENSE">MIT License</a></sub>

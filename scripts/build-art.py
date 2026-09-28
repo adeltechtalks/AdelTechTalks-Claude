@@ -305,9 +305,99 @@ def flow(lang):
     return svg(W, H, css, body, title)
 
 
+def cover_hero(lang):
+    """Hero for the Social Cover Studio page: title on one side, before → after on the other."""
+    rtl = lang == "ar"
+    W, H, L = 1600, 680, 88
+    R = W - L
+    img_dir = ROOT / "docs" / "social-cover-studio"
+    b64 = {k: base64.b64encode((img_dir / f"{k}.jpg").read_bytes()).decode() for k in ("before", "after")}
+
+    bw, bh, aw, ah = 270, 486, 290, 522
+    if rtl:
+        ax, arrow_x0, arrow_x1 = L, L + aw + 48, L + aw + 12
+        bx = L + aw + 60
+    else:
+        bx = R - aw - 60 - bw
+        arrow_x0, arrow_x1 = bx + bw + 12, bx + bw + 48
+        ax = R - aw
+    by, ay = (H - bh) // 2 - 14, (H - ah) // 2 - 14
+    cy = ay + ah / 2
+
+    css_extra = (
+        ".pop{animation:pop .8s cubic-bezier(.2,.8,.2,1.1) both;transform-box:fill-box;transform-origin:center}"
+        "@keyframes pop{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}"
+        ".ring{animation:ring 2.6s ease-in-out infinite both}"
+        "@keyframes ring{0%,100%{opacity:1}50%{opacity:.35}}"
+        f".shine{{animation:shine 4.5s ease-in-out infinite both;animation-delay:2.2s}}"
+        f"@keyframes shine{{0%{{transform:translateX(-{aw + 160}px) skewX(-18deg)}}35%,100%{{transform:translateX({aw + 160}px) skewX(-18deg)}}}}"
+    )
+
+    parts = [f'<rect width="{W}" height="{H}" fill="{GRAPHITE}"/>',
+             f'<defs><clipPath id="cb"><rect x="{bx}" y="{by}" width="{bw}" height="{bh}" rx="18"/></clipPath>'
+             f'<clipPath id="ca"><rect x="{ax}" y="{ay}" width="{aw}" height="{ah}" rx="20"/></clipPath></defs>']
+
+    # before
+    parts.append(f'<g class="fu" style="{d(0.4)}"><image clip-path="url(#cb)" href="data:image/jpeg;base64,{b64["before"]}" x="{bx}" y="{by}" width="{bw}" height="{bh}" preserveAspectRatio="xMidYMid slice"/>'
+                 f'<rect x="{bx}" y="{by}" width="{bw}" height="{bh}" rx="18" fill="none" stroke="#2C313A"/>'
+                 + (f'<text x="{bx + bw / 2}" y="{ay + ah + 44}" text-anchor="middle" font-family="R" font-weight="600" font-size="18" fill="#98A2B3">قبل</text>' if rtl else
+                    f'<text x="{bx + bw / 2}" y="{ay + ah + 44}" text-anchor="middle" font-family="J" font-weight="500" font-size="14" letter-spacing="2.4" fill="#98A2B3">BEFORE</text>')
+                 + "</g>")
+    # arrow
+    head = f"M{arrow_x1 + (8 if rtl else -8)} {cy - 8} L{arrow_x1} {cy} L{arrow_x1 + (8 if rtl else -8)} {cy + 8}"
+    parts.append(f'<g class="fi" style="{d(1.0)}"><line class="draw" style="--len:40;{d(1.0)}" x1="{arrow_x0}" y1="{cy}" x2="{arrow_x1}" y2="{cy}" stroke="{BLUE}" stroke-width="3" stroke-linecap="round" stroke-dasharray="40"/>'
+                 f'<path d="{head}" fill="none" stroke="{BLUE}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>')
+    # after
+    parts.append(f'<g class="pop" style="{d(1.3)}"><image clip-path="url(#ca)" href="data:image/jpeg;base64,{b64["after"]}" x="{ax}" y="{ay}" width="{aw}" height="{ah}" preserveAspectRatio="xMidYMid slice"/>'
+                 f'<g clip-path="url(#ca)"><rect class="shine" x="{ax + aw / 2 - 40}" y="{ay - 40}" width="80" height="{ah + 80}" fill="#FFFFFF" opacity=".16"/></g>'
+                 f'<rect class="ring" style="{d(2.0)}" x="{ax - 5}" y="{ay - 5}" width="{aw + 10}" height="{ah + 10}" rx="24" fill="none" stroke="{BLUE}" stroke-width="3"/>'
+                 + (f'<text x="{ax + aw / 2}" y="{ay + ah + 44}" text-anchor="middle" font-family="R" font-weight="600" font-size="18" fill="{BLUE}">بعد</text>' if rtl else
+                    f'<text x="{ax + aw / 2}" y="{ay + ah + 44}" text-anchor="middle" font-family="J" font-weight="500" font-size="14" letter-spacing="2.4" fill="{BLUE}">AFTER</text>')
+                 + "</g>")
+
+    # text column
+    X = R if rtl else L
+    anc = "end" if rtl else "start"
+    eyebrow = "PUBLISH & GROW · STEP 11 · FREE"
+    parts.append(f'<text class="fi" style="{d(0.1)}" x="{X}" y="168" text-anchor="{anc}" font-family="J" font-weight="500" font-size="16" letter-spacing="2.5" fill="{MINT}">{escape(eyebrow)}</text>')
+    parts.append(f'<text class="fu" style="{d(0.2)}" x="{X}" y="262" text-anchor="{anc}" font-family="M" font-weight="800" font-size="80" letter-spacing="-2.2" fill="{WARM}">Social Cover</text>')
+    parts.append(f'<text class="fu" style="{d(0.35)}" x="{X}" y="350" text-anchor="{anc}" font-family="M" font-weight="800" font-size="80" letter-spacing="-2.2" fill="{BLUE}">Studio</text>')
+    if rtl:
+        subs = ["صورة واحدة تدخل،", "و Cover بالـ Brand بتاعك لكل منصة يطلع."]
+        for k, s in enumerate(subs):
+            parts.append(f'<text class="fu" style="{d(0.5 + k * 0.08)}" x="{X}" y="{418 + k * 40}" text-anchor="start" direction="rtl" font-family="R" font-weight="400" font-size="26" fill="#C9CED6">{escape(s)}</text>')
+    else:
+        subs = ["One photo in. A branded cover", "for every platform out."]
+        for k, s in enumerate(subs):
+            parts.append(f'<text class="fu" style="{d(0.5 + k * 0.08)}" x="{X}" y="{416 + k * 38}" font-family="R" font-weight="400" font-size="26" fill="#C9CED6">{escape(s)}</text>')
+
+    chips = [("9:16", "Reels · TikTok"), ("4:5", "Feed"), ("16:9", "YouTube")]
+    jf, mf = "jetbrains-mono-latin-500-normal.woff2", "montserrat-latin-600-normal.woff2"
+    x, cyp = X, 512
+    for i, (ratio, label) in enumerate(chips):
+        rw, lw = width(jf, ratio, 15), width(mf, label, 16)
+        pw = 18 + rw + 10 + lw + 18
+        x0 = x - pw if rtl else x
+        parts.append(f'<g class="fu" style="{d(0.7 + i * 0.08)}"><rect x="{x0:.1f}" y="{cyp}" width="{pw:.1f}" height="44" rx="22" fill="#1E2229" stroke="#2C313A"/>'
+                     f'<text x="{x0 + 18:.1f}" y="{cyp + 28}" font-family="J" font-weight="500" font-size="15" fill="{BLUE}">{ratio}</text>'
+                     f'<text x="{x0 + 18 + rw + 10:.1f}" y="{cyp + 28}" font-family="M" font-weight="600" font-size="16" fill="{WARM}">{escape(label)}</text></g>')
+        x = x0 - 12 if rtl else x0 + pw + 12
+
+    body = "".join(parts)
+    text = eyebrow + "Social CoverStudio" + "".join(subs) + "".join(a + b for a, b in chips) + "BEFOREAFTERقبلبعد"
+    css = font_css(text, {"M", "R", "J"}) + BASE_CSS + css_extra
+    title = "Social Cover Studio — one photo in, a branded cover for every platform out"
+    return svg(W, H, css, body, title)
+
+
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
     for name, content in (("banner-en.svg", banner("en")), ("banner-ar.svg", banner("ar")),
                           ("flow-en.svg", flow("en")), ("flow-ar.svg", flow("ar"))):
         (OUT / name).write_text(content, encoding="utf-8")
         print(f"built docs/assets/{name} ({len(content.encode()) // 1024} KB)")
+    for lang in ("en", "ar"):
+        target = ROOT / "docs" / "social-cover-studio" / f"hero-{lang}.svg"
+        content = cover_hero(lang)
+        target.write_text(content, encoding="utf-8")
+        print(f"built docs/social-cover-studio/hero-{lang}.svg ({len(content.encode()) // 1024} KB)")
