@@ -13,7 +13,7 @@
 
 <br>
 
-<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/skill-name.zip"><img src="https://img.shields.io/badge/Download-skill--name.zip-2563EB?style=for-the-badge&labelColor=171A1F" alt="حمّل الـ Skill"></a>
+<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/skill-name.zip"><img src="../../../docs/assets/btn-download-ar.svg" alt="Download ZIP" height="44"></a>
 
 </div>
 

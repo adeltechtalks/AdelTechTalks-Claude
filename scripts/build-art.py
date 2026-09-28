@@ -870,9 +870,9 @@ def build_main_page_art():
     for lang in ("en", "ar"):
         (skills_dir / f"coming-{lang}.svg").write_text(coming_card(catalog, lang), encoding="utf-8")
     btns = {
-        "en": [("download", "Download ZIP", "primary", "down"), ("more", "How it works", "ghost", None),
+        "en": [("download", "Download ZIP", "primary", "down"), ("more", "How it works", "ghost", None), ("guide", "Guide PDF", "ghost", None), ("watch", "Get notified", "dark", None),
                ("browse", "Browse skills", "primary", "grid"), ("install", "Install", "ghost", "down"), ("star", "Star the repo", "ghost", "star")],
-        "ar": [("download", "حمّل الـ ZIP", "primary", "down"), ("more", "اعرف أكتر", "ghost", None),
+        "ar": [("download", "حمّل الـ ZIP", "primary", "down"), ("more", "اعرف أكتر", "ghost", None), ("guide", "الدليل PDF", "ghost", None), ("watch", "وصّلني الجديد", "dark", None),
                ("browse", "تصفّح الـ Skills", "primary", "grid"), ("install", "التسطيب", "ghost", "down"), ("star", "Star للريبو", "ghost", "star")],
     }
     for lang, items in btns.items():

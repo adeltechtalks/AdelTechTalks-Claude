@@ -13,9 +13,9 @@
 
 <br>
 
-<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/skill-name.zip"><img src="https://img.shields.io/badge/Download-skill--name.zip-2563EB?style=for-the-badge&labelColor=171A1F" alt="Download the skill"></a>
+<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/skill-name.zip"><img src="../../../docs/assets/btn-download-en.svg" alt="Download ZIP" height="44"></a>
 &nbsp;
-<a href="../../../docs/skill-name/guide.pdf"><img src="https://img.shields.io/badge/Guide-PDF-2DD4A8?style=for-the-badge&labelColor=171A1F" alt="Read the guide"></a>
+<a href="../../../docs/skill-name/guide.pdf"><img src="../../../docs/assets/btn-guide-en.svg" alt="Guide PDF" height="44"></a>
 
 </div>
 

@@ -8,9 +8,9 @@
 
 <br>
 
-<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip"><img src="https://img.shields.io/badge/Download-social--cover--studio.zip-2563EB?style=for-the-badge&labelColor=171A1F" alt="حمّل الـ Skill"></a>
+<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip"><img src="../../../docs/assets/btn-download-ar.svg" alt="Download ZIP" height="44"></a>
 &nbsp;
-<a href="../../../docs/social-cover-studio/guide.pdf"><img src="https://img.shields.io/badge/Guide-PDF-2DD4A8?style=for-the-badge&labelColor=171A1F" alt="الدليل"></a>
+<a href="../../../docs/social-cover-studio/guide.pdf"><img src="../../../docs/assets/btn-guide-ar.svg" alt="Guide PDF" height="44"></a>
 
 </div>
 

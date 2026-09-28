@@ -116,12 +116,13 @@ def featured_block(ar=False):
             if s["status"] != "available":
                 continue
             page = f"skills/{st['id']}/{s['slug']}/" + ("README.ar.md" if ar else "")
-            dl, more = ("⬇ حمّل الـ ZIP", "اعرف أكتر ←") if ar else ("⬇ Download ZIP", "How it works →")
             cells.append(f'<td width="50%" valign="top"><a href="{page}"><img src="docs/assets/skills/{s["slug"]}-{lang}.svg" alt="{s["name"]}" width="100%"></a>'
-                         f'<p align="center"><a href="{DL}/{s["slug"]}.zip"><b>{dl}</b></a> · <a href="{page}">{more}</a></p></td>')
+                         f'<p align="center"><a href="{DL}/{s["slug"]}.zip"><img src="docs/assets/btn-download-{lang}.svg" alt="Download ZIP" height="40"></a>&nbsp;'
+                         f'<a href="{page}"><img src="docs/assets/btn-more-{lang}.svg" alt="How it works" height="40"></a></p></td>')
     if len(cells) % 2:
         watch = "https://github.com/adeltechtalks/AdelTechTalks-Claude/subscription"
-        cells.append(f'<td width="50%" valign="top"><a href="{watch}"><img src="docs/assets/skills/coming-{lang}.svg" alt="Coming next" width="100%"></a></td>')
+        cells.append(f'<td width="50%" valign="top"><a href="{watch}"><img src="docs/assets/skills/coming-{lang}.svg" alt="Coming next" width="100%"></a>'
+                     f'<p align="center"><a href="{watch}"><img src="docs/assets/btn-watch-{lang}.svg" alt="Get notified" height="40"></a></p></td>')
     rows = "\n".join(f"<tr>\n{cells[i]}\n{cells[i + 1]}\n</tr>" for i in range(0, len(cells), 2))
     table = f"<table>\n{rows}\n</table>"
     return f'<div dir="rtl">\n\n{table}\n\n</div>\n' if ar else table + "\n"
