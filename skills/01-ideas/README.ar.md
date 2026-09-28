@@ -12,7 +12,7 @@
 
 | الخطوة | الـ Skill | بتعمل إيه | الـ Tier | تحميل |
 |:-:|:--|:--|:-:|:-:|
-| 00 | **Idea Capture** | تحوّل Voice note أو Screenshot أو لينك لـ Idea card واضح. | Free | قريباً |
+| 00 | **Idea Capture** | تحوّل Voice note أو Screenshot أو Link لـ Idea card واضح. | Free | قريباً |
 | 01 | **Idea Gate** | أربع أسئلة وقرار Go أو Park أو Kill، ومعاه الـ Angle بتاعك. | Free | قريباً |
 | 02 | **Research & Reference** | مين عمل نفس الفكرة، إيه اللي نجح وإيه الناقص، وإزاي تعملها أحسن. | 🔒 Pro | قريباً |
 | 03 | **Brief Builder** | Brief في صفحة: الـ Pillar، ونوع المحتوى، والهدف، والـ AI Angle، وخطة المنصات. | 🔒 Pro | قريباً |

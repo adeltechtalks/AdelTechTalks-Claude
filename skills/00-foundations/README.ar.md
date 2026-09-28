@@ -16,7 +16,7 @@
 | — | **Brand Foundations** | نوع الـ Brand، والاسم، والوعد، والـ Voice، وبداية الـ Visual Identity. | Free | قريباً |
 | — | **Account Security Audit** | مراجعة أمان خطوة بخطوة للـ Email والـ Domain وكل المنصات. | Free | قريباً |
 | — | **Studio Profile** | بتسجل معداتك وأماكن التصوير والـ Apps والمنصات وساعاتك، وكل الـ Skills التانية بتقرا منه. | Free | قريباً |
-| — | **Asset Library & License Gate** | شكل الفولدرات، وقواعد التسمية، ومصادر الـ Assets، وسجل الـ Licenses. | 🔒 Pro | قريباً |
+| — | **Asset Library & License Gate** | شكل الـ Folders، وقواعد التسمية، ومصادر الـ Assets، وسجل الـ Licenses. | 🔒 Pro | قريباً |
 
 **Free** مجانية للكل، و **🔒 Pro** جزء من الـ [Content Creation OS Pro](../../course/README.ar.md).
 

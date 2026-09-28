@@ -6,7 +6,7 @@
 
 <div dir="rtl">
 
-الـ Content Creation OS هو الـ Method اللي ورا كل Skill في الريبو ده. بيحوّل صناعة المحتوى من قرارات كتير كل يوم لـ System واحد: **تقرر مرة واحدة، وكل فكرة بتمشي في نفس الطريق.**
+الـ Content Creation OS هو الـ Method اللي ورا كل Skill في الـ Repo ده. بيحوّل صناعة المحتوى من قرارات كتير كل يوم لـ System واحد: **تقرر مرة واحدة، وكل فكرة بتمشي في نفس الطريق.**
 
 وهو جزئين.
 
@@ -40,7 +40,7 @@
 | **01 · Ideas** | Capture ← Idea Gate ← Research ← Brief | من 3 لـ 5 أفكار Go كل أسبوع، وكل واحدة ليها Brief | [01-ideas](../skills/01-ideas/README.ar.md) |
 | **02 · Pre-Production** | Hook & Script ← Shot List ← Setup & Gear | كل حاجة جاهزة قبل ما تدوس Record | [02-pre-production](../skills/02-pre-production/README.ar.md) |
 | **03 · Production** | Shoot ← Ingest ← Edit | الـ Final cut | [03-production](../skills/03-production/README.ar.md) |
-| **04 · Publish & Grow** | Publish Gate ← Package & Publish ← Engage ← Analyze | بوستات منشورة، ودرس واحد للـ Brief الجاي | [04-publish-grow](../skills/04-publish-grow/README.ar.md) |
+| **04 · Publish & Grow** | Publish Gate ← Package & Publish ← Engage ← Analyze | Posts منشورة، ودرس واحد للـ Brief الجاي | [04-publish-grow](../skills/04-publish-grow/README.ar.md) |
 | **05 · Lanes** | Fast Track و AI Lane و Live Track و Event Lane | محتوى ثابت حتى في الأسابيع المشغولة | [05-lanes](../skills/05-lanes/README.ar.md) |
 | **06 · Monetization** | Monetization map و Affiliate tracker و Brand tracker و Media kit | كل محتوى عارف بيجيب فلوس منين | [06-monetization](../skills/06-monetization/README.ar.md) |
 | **07 · Reference** | Events calendar و Channel matrix و Video sizes و Agent map | صفحات بترجعلها وقت ما تحتاج | [agents](../agents/README.ar.md) |

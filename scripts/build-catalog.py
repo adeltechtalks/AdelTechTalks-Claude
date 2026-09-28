@@ -108,21 +108,21 @@ def catalog_block(ar=False, prefix="skills/"):
     return f'<div dir="rtl">\n\n{body}\n</div>\n' if ar else body
 
 
-def featured_block(ar=False):
+def featured_block(ar=False, up="", pages="skills/"):
     lang = "ar" if ar else "en"
     cells = []
     for st in stages:
         for s in st["skills"]:
             if s["status"] != "available":
                 continue
-            page = f"skills/{st['id']}/{s['slug']}/" + ("README.ar.md" if ar else "")
-            cells.append(f'<td width="50%" valign="top"><a href="{page}"><img src="docs/assets/skills/{s["slug"]}-{lang}.svg" alt="{s["name"]}" width="100%"></a>'
-                         f'<p align="center"><a href="{DL}/{s["slug"]}.zip"><img src="docs/assets/btn-download-{lang}.svg" alt="Download ZIP" height="40"></a>&nbsp;'
-                         f'<a href="{page}"><img src="docs/assets/btn-more-{lang}.svg" alt="How it works" height="40"></a></p></td>')
+            page = f"{pages}{st['id']}/{s['slug']}/" + ("README.ar.md" if ar else "")
+            cells.append(f'<td width="50%" valign="top"><a href="{page}"><img src="{up}docs/assets/skills/{s["slug"]}-{lang}.svg" alt="{s["name"]}" width="100%"></a>'
+                         f'<p align="center"><a href="{DL}/{s["slug"]}.zip"><img src="{up}docs/assets/btn-download-{lang}.svg" alt="Download ZIP" height="40"></a>&nbsp;'
+                         f'<a href="{page}"><img src="{up}docs/assets/btn-more-{lang}.svg" alt="How it works" height="40"></a></p></td>')
     if len(cells) % 2:
         watch = "https://github.com/adeltechtalks/AdelTechTalks-Claude/subscription"
-        cells.append(f'<td width="50%" valign="top"><a href="{watch}"><img src="docs/assets/skills/coming-{lang}.svg" alt="Coming next" width="100%"></a>'
-                     f'<p align="center"><a href="{watch}"><img src="docs/assets/btn-watch-{lang}.svg" alt="Get notified" height="40"></a></p></td>')
+        cells.append(f'<td width="50%" valign="top"><a href="{watch}"><img src="{up}docs/assets/skills/coming-{lang}.svg" alt="Coming next" width="100%"></a>'
+                     f'<p align="center"><a href="{watch}"><img src="{up}docs/assets/btn-watch-{lang}.svg" alt="Get notified" height="40"></a></p></td>')
     rows = "\n".join(f"<tr>\n{cells[i]}\n{cells[i + 1]}\n</tr>" for i in range(0, len(cells), 2))
     table = f"<table>\n{rows}\n</table>"
     return f'<div dir="rtl">\n\n{table}\n\n</div>\n' if ar else table + "\n"
@@ -138,14 +138,40 @@ def stages_block(ar=False):
     return f'<div dir="rtl">\n\n{table}\n\n</div>\n' if ar else table + "\n"
 
 
+def stage_rows(ar=False):
+    """Browse page: one row per stage — the stage card next to its skill list."""
+    lang = "ar" if ar else "en"
+    rows = []
+    for st in stages:
+        items = []
+        for s in st["skills"]:
+            ready = s["status"] == "available"
+            mark = "✅" if ready else ("🔒" if s["tier"] == "pro" else "⏳")
+            name = f'<a href="{st["id"]}/{s["slug"]}/{"README.ar.md" if ar else ""}"><b>{s["name"]}</b></a>' if ready else f"<b>{s['name']}</b>"
+            step = f"Step {s['step']} · " if s.get("step") else ""
+            tier = "Free" if s["tier"] == "free" else "Pro"
+            state = ("جاهزة" if ar else "Ready") if ready else ("قريباً" if ar else "Soon")
+            desc = s["desc_ar"] if ar else s["desc"]
+            items.append(f"{mark} {name} <sub>· {step}{tier} · {state}</sub><br><sub>{desc}</sub>")
+        card = f'<a href="{st["id"]}/{"README.ar.md" if ar else ""}"><img src="../docs/assets/stages/{st["id"]}-{lang}.svg" alt="{st["name"]}" width="100%"></a>'
+        rows.append(f'<tr>\n<td width="44%" valign="top">{card}</td>\n<td valign="top">\n\n' + "<br><br>\n".join(items) + "\n\n</td>\n</tr>")
+    table = "<table>\n" + "\n".join(rows) + "\n</table>"
+    return f'<div dir="rtl">\n\n{table}\n\n</div>\n' if ar else table + "\n"
+
+
 def all_skills_page(ar=False):
+    lang = "ar" if ar else "en"
+    toggle = lang_toggle(ar).replace("../../docs", "../docs")
     if ar:
-        head = ['<p dir="rtl"><a href="../README.ar.md">→ الصفحة الرئيسية</a></p>', "", "# كل الـ Skills", "",
-                '<div dir="rtl">', "", "كل الـ Skills مترتبة بمراحل الـ Content Creation OS. الـ **Free** مفتوحة هنا، والـ **🔒 Pro** جزء من [Content Creation OS Pro](../course/README.ar.md).", "", "</div>", ""]
-    else:
-        head = ["[← Home](../README.md)", "", "# All skills", "",
-                "Every skill, grouped by stage of the Content Creation OS. **Free** skills are open here; **🔒 Pro** skills ship with [Content Creation OS Pro](../course/).", ""]
-    return lang_toggle(ar).replace("../../docs", "../docs") + "\n".join(head) + "\n" + catalog_block(ar, prefix="")
+        return (toggle + '<p dir="rtl"><a href="../README.ar.md">→ الصفحة الرئيسية</a></p>\n\n'
+                '<div dir="rtl">\n\n# كل الـ Skills\n\nكل الـ Skills مترتبة بمراحل الـ Content Creation OS.\n\n'
+                '✅ جاهزة للتحميل · ⏳ Free وجاية قريب · 🔒 Pro، جزء من [Content Creation OS Pro](../course/README.ar.md)\n\n---\n\n## متاحة دلوقتي\n\n</div>\n\n'
+                + featured_block(True, up="../", pages="") +
+                '\n---\n\n<div dir="rtl">\n\n## حسب المرحلة\n\nدوس على كارت المرحلة عشان تفتح صفحتها.\n\n</div>\n\n' + stage_rows(True))
+    return (toggle + "[← Home](../README.md)\n\n# All skills\n\nEvery skill, grouped by stage of the Content Creation OS.\n\n"
+            "✅ Ready to download · ⏳ Free, coming soon · 🔒 Pro, part of [Content Creation OS Pro](../course/)\n\n---\n\n## Available now\n\n"
+            + featured_block(False, up="../", pages="") +
+            "\n---\n\n## By stage\n\nTap a stage card to open its page.\n\n" + stage_rows(False))
 
 
 for st in stages:

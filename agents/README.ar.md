@@ -23,7 +23,7 @@
 | **Setup & Gear** | يقترح المعدات من الـ Studio Profile بتاعك | تأكد |
 | **Footage Ingest** | يعمل الـ Project folder ويسمّي الملفات | تنقل الـ Footage |
 | **Edit** | يكتب الـ Edit plan والـ Captions، ويسحب من الـ Post-production kit | الـ Edit النهائي |
-| **Publish Gate** | يعمل Check أوتوماتيك على اللينكات والـ Disclosure والـ Safe zone والـ Licenses | Approve أو Back to edit |
+| **Publish Gate** | يعمل Check أوتوماتيك على الـ Links والـ Disclosure والـ Safe zone والـ Licenses | Approve أو Back to edit |
 | **Package & Publish** | Caption و Hashtags ومواعيد لكل منصة | توافق على النشر |
 | **Engage** | يلم الأسئلة المتكررة ويحوّلها أفكار | ترد على الناس |
 | **Analyze** | يجيب الأرقام ويقترح الدرس | تكتب الدرس |
@@ -42,6 +42,6 @@
 
 ## الحالة
 
-الـ Content Machine لسه **في مرحلة التصميم**. هينزل كـ Claude Code agent، وكجزء من [Content Creation OS Pro](../course/README.ar.md). والـ Free Skills اللي في الريبو ده هي الأجزاء اللي بيتبني منها، وكل واحدة فيها شغالة لوحدها من دلوقتي.
+الـ Content Machine لسه **في مرحلة التصميم**. هينزل كـ Claude Code agent، وكجزء من [Content Creation OS Pro](../course/README.ar.md). والـ Free Skills اللي في الـ Repo ده هي الأجزاء اللي بيتبني منها، وكل واحدة فيها شغالة لوحدها من دلوقتي.
 
 </div>

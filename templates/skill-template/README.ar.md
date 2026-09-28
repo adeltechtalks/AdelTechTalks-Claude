@@ -1,5 +1,5 @@
 <!--
-  قالب صفحة الـ Skill بالعربي. انسخ الفولدر لـ skills/<المرحلة>/<اسم-الـ-skill>/، وغيّر كل [placeholder] وكل "skill-name".
+  قالب صفحة الـ Skill بالعربي. انسخ الـ Folder لـ skills/<المرحلة>/<اسم-الـ-skill>/، وغيّر كل [placeholder] وكل "skill-name".
   الترتيب: Hero ← تحميل ← الملخص ← بتشتغل إزاي ← أمثلة ← ابدأ ← نصايح ومشاكل (مقفولين) ← Credits.
 -->
 
@@ -49,7 +49,7 @@
 
 ## ابدأ
 
-### 1 · التسطيب: مرة واحدة
+### 1 · Install: مرة واحدة
 
 1. **[حمّل ملف الـ ZIP](https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/skill-name.zip)**.
 2. في Claude روح لـ **Settings → Capabilities**، وشغّل **Code execution and file creation** *(لو الـ Skill بتشغّل كود)*.

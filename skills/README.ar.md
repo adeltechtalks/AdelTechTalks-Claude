@@ -2,89 +2,119 @@
 
 <p dir="rtl"><a href="../README.ar.md">→ الصفحة الرئيسية</a></p>
 
-# كل الـ Skills
-
 <div dir="rtl">
 
-كل الـ Skills مترتبة بمراحل الـ Content Creation OS. الـ **Free** مفتوحة هنا، والـ **🔒 Pro** جزء من [Content Creation OS Pro](../course/README.ar.md).
+# كل الـ Skills
+
+كل الـ Skills مترتبة بمراحل الـ Content Creation OS.
+
+✅ جاهزة للتحميل · ⏳ Free وجاية قريب · 🔒 Pro، جزء من [Content Creation OS Pro](../course/README.ar.md)
+
+---
+
+## متاحة دلوقتي
 
 </div>
 
 <div dir="rtl">
 
-### 🧭 [Foundations](00-foundations/README.ar.md) · التأسيس
+<table>
+<tr>
+<td width="50%" valign="top"><a href="04-publish-grow/social-cover-studio/README.ar.md"><img src="../docs/assets/skills/social-cover-studio-ar.svg" alt="Social Cover Studio" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip"><img src="../docs/assets/btn-download-ar.svg" alt="Download ZIP" height="40"></a>&nbsp;<a href="04-publish-grow/social-cover-studio/README.ar.md"><img src="../docs/assets/btn-more-ar.svg" alt="How it works" height="40"></a></p></td>
+<td width="50%" valign="top"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/subscription"><img src="../docs/assets/skills/coming-ar.svg" alt="Coming next" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/subscription"><img src="../docs/assets/btn-watch-ar.svg" alt="Get notified" height="40"></a></p></td>
+</tr>
+</table>
 
-حاجات بتتعمل مرة واحدة: الـ Niche، والـ Brand، والـ Studio والـ Tools، والوقت اللي عندك فعلاً.
+</div>
 
-| الخطوة | الـ Skill | بتعمل إيه | الـ Tier | تحميل |
-|:-:|:--|:--|:-:|:-:|
-| — | **Niche Compass** | تلاقي الـ Sweet Spot بتاعك وتطلع منه الـ Pillars والـ Positioning. | Free | قريباً |
-| — | **Brand Foundations** | نوع الـ Brand، والاسم، والوعد، والـ Voice، وبداية الـ Visual Identity. | Free | قريباً |
-| — | **Account Security Audit** | مراجعة أمان خطوة بخطوة للـ Email والـ Domain وكل المنصات. | Free | قريباً |
-| — | **Studio Profile** | بتسجل معداتك وأماكن التصوير والـ Apps والمنصات وساعاتك، وكل الـ Skills التانية بتقرا منه. | Free | قريباً |
-| — | **Asset Library & License Gate** | شكل الفولدرات، وقواعد التسمية، ومصادر الـ Assets، وسجل الـ Licenses. | 🔒 Pro | قريباً |
+---
 
-### 💡 [Ideas](01-ideas/README.ar.md) · الأفكار
+<div dir="rtl">
 
-من الفكرة الخام لـ Brief جاهز: تلتقط، وتفلتر، وتدوّر، وتخطط.
+## حسب المرحلة
 
-| الخطوة | الـ Skill | بتعمل إيه | الـ Tier | تحميل |
-|:-:|:--|:--|:-:|:-:|
-| 00 | **Idea Capture** | تحوّل Voice note أو Screenshot أو لينك لـ Idea card واضح. | Free | قريباً |
-| 01 | **Idea Gate** | أربع أسئلة وقرار Go أو Park أو Kill، ومعاه الـ Angle بتاعك. | Free | قريباً |
-| 02 | **Research & Reference** | مين عمل نفس الفكرة، إيه اللي نجح وإيه الناقص، وإزاي تعملها أحسن. | 🔒 Pro | قريباً |
-| 03 | **Brief Builder** | Brief في صفحة: الـ Pillar، ونوع المحتوى، والهدف، والـ AI Angle، وخطة المنصات. | 🔒 Pro | قريباً |
+دوس على كارت المرحلة عشان تفتح صفحتها.
 
-### ✍️ [Pre-Production](02-pre-production/README.ar.md) · قبل التصوير
+</div>
 
-كل حاجة جاهزة قبل ما تدوس Record: الـ Hooks، والـ Script، واللقطات، والـ Setup.
+<div dir="rtl">
 
-| الخطوة | الـ Skill | بتعمل إيه | الـ Tier | تحميل |
-|:-:|:--|:--|:-:|:-:|
-| 04 | **Hook & Script Writer** | 3 Hooks، وهيكل Script، و CTA، بصوتك وبلهجتك. | Free | قريباً |
-| 05 | **Shot List Builder** | Shot List كاملة (A-roll و B-roll و Hero shots) على حسب نوع المحتوى. | 🔒 Pro | قريباً |
-| 06 | **Setup Recipe** | الكاميرا والمايك والإضاءة والمكان، من الـ Studio Profile بتاعك. | 🔒 Pro | قريباً |
+<table>
+<tr>
+<td width="44%" valign="top"><a href="00-foundations/README.ar.md"><img src="../docs/assets/stages/00-foundations-ar.svg" alt="Foundations" width="100%"></a></td>
+<td valign="top">
 
-### 🎬 [Production](03-production/README.ar.md) · التصوير والمونتاج
+⏳ <b>Niche Compass</b> <sub>· Free · قريباً</sub><br><sub>تلاقي الـ Sweet Spot بتاعك وتطلع منه الـ Pillars والـ Positioning.</sub><br><br>
+⏳ <b>Brand Foundations</b> <sub>· Free · قريباً</sub><br><sub>نوع الـ Brand، والاسم، والوعد، والـ Voice، وبداية الـ Visual Identity.</sub><br><br>
+⏳ <b>Account Security Audit</b> <sub>· Free · قريباً</sub><br><sub>مراجعة أمان خطوة بخطوة للـ Email والـ Domain وكل المنصات.</sub><br><br>
+⏳ <b>Studio Profile</b> <sub>· Free · قريباً</sub><br><sub>بتسجل معداتك وأماكن التصوير والـ Apps والمنصات وساعاتك، وكل الـ Skills التانية بتقرا منه.</sub><br><br>
+🔒 <b>Asset Library & License Gate</b> <sub>· Pro · قريباً</sub><br><sub>شكل الـ Folders، وقواعد التسمية، ومصادر الـ Assets، وسجل الـ Licenses.</sub>
 
-تصوّر وتلم الملفات وتعمل Edit بنفس الـ Standard كل مرة.
+</td>
+</tr>
+<tr>
+<td width="44%" valign="top"><a href="01-ideas/README.ar.md"><img src="../docs/assets/stages/01-ideas-ar.svg" alt="Ideas" width="100%"></a></td>
+<td valign="top">
 
-| الخطوة | الـ Skill | بتعمل إيه | الـ Tier | تحميل |
-|:-:|:--|:--|:-:|:-:|
-| 08 | **Footage Ingest** | Project folder وتسمية الملفات والـ Backup من كل الأجهزة. | 🔒 Pro | قريباً |
-| 09 | **Edit Plan** | Editor brief لقطة بلقطة: القص، والكلام على الشاشة، والـ Motion، والـ SFX، والـ B-roll. | 🔒 Pro | قريباً |
-| 09 | **Captions** | Captions و Subtitles مظبوطة بأي لغة. | Free | قريباً |
+⏳ <b>Idea Capture</b> <sub>· Step 00 · Free · قريباً</sub><br><sub>تحوّل Voice note أو Screenshot أو Link لـ Idea card واضح.</sub><br><br>
+⏳ <b>Idea Gate</b> <sub>· Step 01 · Free · قريباً</sub><br><sub>أربع أسئلة وقرار Go أو Park أو Kill، ومعاه الـ Angle بتاعك.</sub><br><br>
+🔒 <b>Research & Reference</b> <sub>· Step 02 · Pro · قريباً</sub><br><sub>مين عمل نفس الفكرة، إيه اللي نجح وإيه الناقص، وإزاي تعملها أحسن.</sub><br><br>
+🔒 <b>Brief Builder</b> <sub>· Step 03 · Pro · قريباً</sub><br><sub>Brief في صفحة: الـ Pillar، ونوع المحتوى، والهدف، والـ AI Angle، وخطة المنصات.</sub>
 
-### 📤 [Publish & Grow](04-publish-grow/README.ar.md) · النشر والنمو
+</td>
+</tr>
+<tr>
+<td width="44%" valign="top"><a href="02-pre-production/README.ar.md"><img src="../docs/assets/stages/02-pre-production-ar.svg" alt="Pre-Production" width="100%"></a></td>
+<td valign="top">
 
-من الـ Final cut للدرس الجاي: مراجعة، وتجهيز، ونشر، وتفاعل، وتحليل.
+⏳ <b>Hook & Script Writer</b> <sub>· Step 04 · Free · قريباً</sub><br><sub>3 Hooks، وهيكل Script، و CTA، بصوتك وبلهجتك.</sub><br><br>
+🔒 <b>Shot List Builder</b> <sub>· Step 05 · Pro · قريباً</sub><br><sub>Shot List كاملة (A-roll و B-roll و Hero shots) على حسب نوع المحتوى.</sub><br><br>
+🔒 <b>Setup Recipe</b> <sub>· Step 06 · Pro · قريباً</sub><br><sub>الكاميرا والمايك والإضاءة والمكان، من الـ Studio Profile بتاعك.</sub>
 
-| الخطوة | الـ Skill | بتعمل إيه | الـ Tier | تحميل |
-|:-:|:--|:--|:-:|:-:|
-| 10 | **Publish Gate** | مراجعة قبل النشر: اللينكات، والـ Disclosure، والـ Safe zone، والـ Licenses. | Free | قريباً |
-| 11 | **[Social Cover Studio](04-publish-grow/social-cover-studio/README.ar.md)** | Covers و Thumbnails بالـ Brand بتاعك من صورة واحدة، بكل المقاسات. | Free | [**⬇ ZIP**](https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip) |
-| 11 | **Package & Publish** | Caption و Hashtags ومواعيد لكل منصة من نفس الـ Brief. | 🔒 Pro | قريباً |
-| 12 | **Engage Inbox** | يلم الأسئلة المتكررة من الكومنتات والـ DMs ويحوّلها أفكار. | 🔒 Pro | قريباً |
-| 13 | **Analyze & Monthly Review** | أرقام يوم 1 و 7 و 30، ودرس واحد لكل بوست، ومراجعة شهرية. | 🔒 Pro | قريباً |
+</td>
+</tr>
+<tr>
+<td width="44%" valign="top"><a href="03-production/README.ar.md"><img src="../docs/assets/stages/03-production-ar.svg" alt="Production" width="100%"></a></td>
+<td valign="top">
 
-### ⚡ [Lanes](05-lanes/README.ar.md) · المسارات
+🔒 <b>Footage Ingest</b> <sub>· Step 08 · Pro · قريباً</sub><br><sub>Project folder وتسمية الملفات والـ Backup من كل الأجهزة.</sub><br><br>
+🔒 <b>Edit Plan</b> <sub>· Step 09 · Pro · قريباً</sub><br><sub>Editor brief لقطة بلقطة: القص، والكلام على الشاشة، والـ Motion، والـ SFX، والـ B-roll.</sub><br><br>
+⏳ <b>Captions</b> <sub>· Step 09 · Free · قريباً</sub><br><sub>Captions و Subtitles مظبوطة بأي لغة.</sub>
 
-تنشر أكتر بمجهود أقل: الأخبار المستعجلة، وبوستات الـ AI Lane، والـ Live، والمؤتمرات.
+</td>
+</tr>
+<tr>
+<td width="44%" valign="top"><a href="04-publish-grow/README.ar.md"><img src="../docs/assets/stages/04-publish-grow-ar.svg" alt="Publish & Grow" width="100%"></a></td>
+<td valign="top">
 
-| الخطوة | الـ Skill | بتعمل إيه | الـ Tier | تحميل |
-|:-:|:--|:--|:-:|:-:|
-| — | **Fast Track** | خبر أو Launch يتنشر خلال 48 ساعة من غير ما يبوّظ أسبوعك. | Free | قريباً |
-| — | **AI Lane** | الـ AI بيدوّر ويكتب ويصمم، وإنت تراجع وتوافق. | 🔒 Pro | قريباً |
-| — | **Event Lane** | تغطية المؤتمرات والـ Events في دقايق. | 🔒 Pro | قريباً |
+⏳ <b>Publish Gate</b> <sub>· Step 10 · Free · قريباً</sub><br><sub>مراجعة قبل النشر: الـ Links، والـ Disclosure، والـ Safe zone، والـ Licenses.</sub><br><br>
+✅ <a href="04-publish-grow/social-cover-studio/README.ar.md"><b>Social Cover Studio</b></a> <sub>· Step 11 · Free · جاهزة</sub><br><sub>Covers و Thumbnails بالـ Brand بتاعك من صورة واحدة، بكل المقاسات.</sub><br><br>
+🔒 <b>Package & Publish</b> <sub>· Step 11 · Pro · قريباً</sub><br><sub>Caption و Hashtags ومواعيد لكل منصة من نفس الـ Brief.</sub><br><br>
+🔒 <b>Engage Inbox</b> <sub>· Step 12 · Pro · قريباً</sub><br><sub>يلم الأسئلة المتكررة من الكومنتات والـ DMs ويحوّلها أفكار.</sub><br><br>
+🔒 <b>Analyze & Monthly Review</b> <sub>· Step 13 · Pro · قريباً</sub><br><sub>أرقام يوم 1 و 7 و 30، ودرس واحد لكل Post، ومراجعة شهرية.</sub>
 
-### 💰 [Monetization](06-monetization/README.ar.md) · الفلوس
+</td>
+</tr>
+<tr>
+<td width="44%" valign="top"><a href="05-lanes/README.ar.md"><img src="../docs/assets/stages/05-lanes-ar.svg" alt="Lanes" width="100%"></a></td>
+<td valign="top">
 
-كل محتوى بيجيب فلوس منين: الـ Affiliate، والـ Brand deals، والـ Media kit.
+⏳ <b>Fast Track</b> <sub>· Free · قريباً</sub><br><sub>خبر أو Launch يتنشر خلال 48 ساعة من غير ما يبوّظ أسبوعك.</sub><br><br>
+🔒 <b>AI Lane</b> <sub>· Pro · قريباً</sub><br><sub>الـ AI بيدوّر ويكتب ويصمم، وإنت تراجع وتوافق.</sub><br><br>
+🔒 <b>Event Lane</b> <sub>· Pro · قريباً</sub><br><sub>تغطية المؤتمرات والـ Events في دقايق.</sub>
 
-| الخطوة | الـ Skill | بتعمل إيه | الـ Tier | تحميل |
-|:-:|:--|:--|:-:|:-:|
-| — | **Affiliate Tracker** | تتابع اللينكات والكليكات والأرباح لكل منتج وبوست. | Free | قريباً |
-| — | **Media Kit** | Media kit احترافي من أرقامك الحقيقية. | 🔒 Pro | قريباً |
-| — | **Brand Deal Desk** | تقيّم الـ Brand deals وتسعّرها وترد عليها، وتكشف الـ Scams. | 🔒 Pro | قريباً |
+</td>
+</tr>
+<tr>
+<td width="44%" valign="top"><a href="06-monetization/README.ar.md"><img src="../docs/assets/stages/06-monetization-ar.svg" alt="Monetization" width="100%"></a></td>
+<td valign="top">
+
+⏳ <b>Affiliate Tracker</b> <sub>· Free · قريباً</sub><br><sub>تتابع الـ Links والكليكات والأرباح لكل منتج وPost.</sub><br><br>
+🔒 <b>Media Kit</b> <sub>· Pro · قريباً</sub><br><sub>Media kit احترافي من أرقامك الحقيقية.</sub><br><br>
+🔒 <b>Brand Deal Desk</b> <sub>· Pro · قريباً</sub><br><sub>تقيّم الـ Brand deals وتسعّرها وترد عليها، وتكشف الـ Scams.</sub>
+
+</td>
+</tr>
+</table>
 
 </div>

@@ -10,7 +10,7 @@
 
 <br>
 
-<a href="skills/README.ar.md"><img src="docs/assets/btn-browse-ar.svg" alt="تصفّح الـ Skills" height="48"></a>&nbsp;&nbsp;<a href="#install"><img src="docs/assets/btn-install-ar.svg" alt="التسطيب" height="48"></a>&nbsp;&nbsp;<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/stargazers"><img src="docs/assets/btn-star-ar.svg" alt="Star للريبو" height="48"></a>
+<a href="skills/README.ar.md"><img src="docs/assets/btn-browse-ar.svg" alt="تصفّح الـ Skills" height="48"></a>&nbsp;&nbsp;<a href="#install"><img src="docs/assets/btn-install-ar.svg" alt="Install" height="48"></a>&nbsp;&nbsp;<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/stargazers"><img src="docs/assets/btn-star-ar.svg" alt="Star للـ Repo" height="48"></a>
 
 <br>
 
@@ -62,7 +62,7 @@
 
 ## الـ Skills حسب المرحلة
 
-دوس على أي مرحلة عشان تشوف الـ Skills بتاعتها. الـ **Free** مفتوحة في الريبو ده، والـ **🔒 Pro** جزء من [Content Creation OS Pro](course/README.ar.md). **[شوف كل الـ Skills في لستة واحدة ←](skills/README.ar.md)**
+دوس على أي مرحلة عشان تشوف الـ Skills بتاعتها. الـ **Free** مفتوحة في الـ Repo ده، والـ **🔒 Pro** جزء من [Content Creation OS Pro](course/README.ar.md). **[شوف كل الـ Skills في لستة واحدة ←](skills/README.ar.md)**
 
 </div>
 
@@ -99,7 +99,7 @@
 
 <div dir="rtl">
 
-## التسطيب
+## Install
 
 </div>
 
@@ -142,7 +142,7 @@
 </details>
 
 <details>
-<summary><b>📁 شكل الريبو</b></summary>
+<summary><b>📁 شكل الـ Repo</b></summary>
 
 <br>
 
@@ -157,7 +157,7 @@ docs/                             الصور والأدلة (بتتعمل بـ s
 downloads/<الـ-skill>.zip          ملفات الـ ZIP الجاهزة (scripts/build-zips.sh)
 catalog.json                      مصدر كل الـ Skills (scripts/build-catalog.py)
 templates/skill-template/         قالب أي Skill جديدة
-.claude-plugin/marketplace.json   للتسطيب من Claude Code
+.claude-plugin/marketplace.json   للـ Install من Claude Code
 ```
 
 <div dir="rtl">

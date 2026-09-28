@@ -620,7 +620,7 @@ def install_steps(lang, skill="social-cover-studio"):
     parts.append(_arrows(rtl, 0.7))
     text = "".join(titles) + "".join("".join(c) for c in caps) + fname + skill + uploaded + " ✓" + "Code execution and file creationSettings → CapabilitiesSkillsZIP0123456789"
     css = font_css(text, {"M", "R", "J"}) + BASE_CSS + STEP_CSS
-    return svg(W, H, css, "".join(parts), "Install in three steps" if not rtl else "التسطيب في 3 خطوات")
+    return svg(W, H, css, "".join(parts), "Install in three steps" if not rtl else "Install في 3 خطوات")
 
 
 # ---------- main page pieces ----------
@@ -874,7 +874,7 @@ def build_main_page_art():
         "en": [("download", "Download ZIP", "primary", "down"), ("more", "How it works", "ghost", None), ("guide", "Guide PDF", "ghost", None), ("watch", "Get notified", "dark", None),
                ("browse", "Browse skills", "primary", "grid"), ("install", "Install", "ghost", "down"), ("star", "Star the repo", "ghost", "star")],
         "ar": [("download", "حمّل الـ ZIP", "primary", "down"), ("more", "اعرف أكتر", "ghost", None), ("guide", "الدليل PDF", "ghost", None), ("watch", "وصّلني الجديد", "dark", None),
-               ("browse", "تصفّح الـ Skills", "primary", "grid"), ("install", "التسطيب", "ghost", "down"), ("star", "Star للريبو", "ghost", "star")],
+               ("browse", "تصفّح الـ Skills", "primary", "grid"), ("install", "Install", "ghost", "down"), ("star", "Star للـ Repo", "ghost", "star")],
     }
     for lang, items in btns.items():
         for key, label, kind, icon in items:
