@@ -405,6 +405,224 @@ def lang_button(lang, active):
     return svg(W, H, font_css(label, {"M", "R"}), body, label)
 
 
+# ---------- step cards: "How it works" and "Install" as illustrated, animated cards ----------
+
+CARD_W, CARD_H, CARD_GAP, CARD_Y = 436, 460, 96, 30
+
+
+def _card_x(i, rtl, W=1600):
+    total = 3 * CARD_W + 2 * CARD_GAP
+    x0 = (W - total) / 2
+    c = 2 - i if rtl else i
+    return x0 + c * (CARD_W + CARD_GAP)
+
+
+def _img(path, w=None):
+    return "data:image/jpeg;base64," + base64.b64encode(path.read_bytes()).decode()
+
+
+def _card(i, rtl, title, caption, art, delay):
+    x = _card_x(i, rtl)
+    y = CARD_Y
+    pad = 32
+    tx = x + CARD_W - pad if rtl else x + pad
+    anc = "start" if rtl else "start"
+    dir_ = ' direction="rtl"' if rtl else ""
+    num = f"{i + 1:02d}"
+    out = [f'<g class="fu" style="{d(delay)}">',
+           f'<rect x="{x:.1f}" y="{y}" width="{CARD_W}" height="{CARD_H}" rx="22" fill="#FFFFFF" stroke="{SOFT}"/>',
+           f'<rect x="{x + 16:.1f}" y="{y + 16}" width="{CARD_W - 32}" height="270" rx="14" fill="#F4F6FA"/>',
+           art(x, y),
+           f'<text x="{tx:.1f}" y="{y + 336}" text-anchor="{"end" if rtl else "start"}" font-family="J" font-weight="500" font-size="16" fill="{BLUE}">{num}</text>',
+           f'<text x="{tx:.1f}" y="{y + 372}" text-anchor="{anc}"{dir_} font-family="{"R" if rtl else "M"}" font-weight="{600 if rtl else 700}" font-size="{25 if rtl else 24}" fill="{GRAPHITE}">{escape(title)}</text>']
+    for k, line in enumerate(caption):
+        ltr = not any('\u0600' <= c <= '\u08FF' for c in line)
+        if rtl and ltr:
+            out.append(f'<text x="{tx:.1f}" y="{y + 408 + k * 26}" text-anchor="end" font-family="R" font-weight="400" font-size="17" fill="{SLATE}">{escape(line)}</text>')
+        else:
+            out.append(f'<text x="{tx:.1f}" y="{y + 408 + k * 26}" text-anchor="start"{dir_} font-family="R" font-weight="400" font-size="17" fill="{SLATE}">{escape(line)}</text>')
+    out.append("</g>")
+    return "".join(out)
+
+
+def _arrows(rtl, delay):
+    out = []
+    for i in range(2):
+        xa = _card_x(i, rtl) + (0 if rtl else CARD_W)
+        xb = _card_x(i + 1, rtl) + (CARD_W if rtl else 0)
+        x1, x2 = (xa - 22, xb + 22) if rtl else (xa + 22, xb - 22)
+        cy = CARD_Y + 151
+        hd = 9 if rtl else -9
+        out.append(f'<g class="fi" style="{d(delay + i * 0.35)}"><line class="draw" style="--len:60;{d(delay + i * 0.35)}" x1="{x1:.1f}" y1="{cy}" x2="{x2:.1f}" y2="{cy}" stroke="{BLUE}" stroke-width="3" stroke-linecap="round" stroke-dasharray="60"/>'
+                   f'<path d="M{x2 + hd:.1f} {cy - 9} L{x2:.1f} {cy} L{x2 + hd:.1f} {cy + 9}" fill="none" stroke="{BLUE}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>')
+    return "".join(out)
+
+
+STEP_CSS = """
+.pop{animation:pop .7s cubic-bezier(.2,.8,.2,1.1) both;transform-box:fill-box;transform-origin:center}
+@keyframes pop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+.bob{animation:bob 1.8s ease-in-out infinite both}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+.knob{animation:knob 3.2s ease-in-out infinite both}
+@keyframes knob{0%,30%{transform:translateX(0)}42%,100%{transform:translateX(26px)}}
+.track{animation:track 3.2s ease-in-out infinite both}
+@keyframes track{0%,30%{fill:#C9CED6}42%,100%{fill:#2563EB}}
+.drop{animation:drop 3.6s cubic-bezier(.4,0,.2,1) infinite both}
+@keyframes drop{0%,10%{transform:translate(0,-70px);opacity:0}25%{opacity:1}45%,100%{transform:translate(0,0);opacity:1}}
+.row{animation:row 3.6s ease-out infinite both}
+@keyframes row{0%,48%{opacity:0}58%,100%{opacity:1}}
+"""
+
+
+def _pick_css(n, cyc=6.0):
+    frames = []
+    for i in range(n):
+        a, b = i / n * 100, (i + 0.8) / n * 100
+        frames.append(f"{a:.1f}%,{b:.1f}%{{transform:translateX({i * 74}px)}}")
+    frames.append("100%{transform:translateX(0)}")
+    return f".pick{{animation:pick {cyc}s cubic-bezier(.4,0,.2,1) infinite both;animation-delay:1.4s}}@keyframes pick{{{''.join(frames)}}}"
+
+
+def _cycle_css(name, n, cyc):
+    on = 100 / n
+    return (f".{name}{{animation:{name} {cyc}s ease-in-out infinite both}}"
+            f"@keyframes {name}{{0%{{opacity:0}}3%{{opacity:1}}{on - 3:.1f}%{{opacity:1}}{on:.1f}%{{opacity:0}}100%{{opacity:0}}}}")
+
+
+def how_it_works(lang):
+    rtl = lang == "ar"
+    W, H = 1600, 520
+    root = ROOT / "docs" / "social-cover-studio"
+    before, after = _img(root / "before.jpg"), _img(root / "after.jpg")
+    thumbs = [_img(root / "thumbs" / f"t{k}.jpg") for k in range(5)]
+
+    if rtl:
+        titles = ["ابعت الصورة", "اختار Template", "خد كل المقاسات"]
+        caps = [["ومعاها الكلمة الكبيرة، واسم الـ Product،", "وكلمة قصيرة."], ["الـ 5 جنب بعض، بألوان", "الـ Brand والـ Fonts بتاعتك."], ["Instagram · TikTok", "Facebook · YouTube"]]
+        bubble = ["الكلمة: GLACIER", "الـ Product: iPhone 18", "الكلمة القصيرة: لوني المفضل"]
+    else:
+        titles = ["Send a photo", "Pick a template", "Get every size"]
+        caps = [["Add a big word, the product name", "and a short keyword."], ["See all 5 side by side,", "in your colours and fonts."], ["Instagram · TikTok", "Facebook · YouTube"]]
+        bubble = ["Big word: GLACIER", "Product: iPhone 18", "Keyword: my favourite"]
+
+    def art1(x, y):
+        cx = x + CARD_W / 2
+        px, bx = (cx + 40, cx - 190) if rtl else (cx - 170, cx - 30)
+        s = [f'<clipPath id="p1"><rect x="{px}" y="{y + 44}" width="130" height="226" rx="12"/></clipPath>',
+             f'<image clip-path="url(#p1)" href="{before}" x="{px}" y="{y + 44}" width="130" height="226" preserveAspectRatio="xMidYMid slice"/>',
+             f'<g class="pop" style="{d(0.9)}"><rect x="{bx}" y="{y + 70}" width="220" height="150" rx="16" fill="{ICE}"/>']
+        for k, line in enumerate(bubble):
+            tx = bx + 220 - 18 if rtl else bx + 18
+            attrs = 'text-anchor="start" direction="rtl"' if rtl else 'text-anchor="start"'
+            s.append(f'<text class="fi" style="{d(1.2 + k * 0.35)}" x="{tx}" y="{y + 112 + k * 38}" {attrs} font-family="R" font-weight="500" font-size="15" fill="{DEEP}">{escape(line)}</text>')
+        s.append("</g>")
+        return "".join(s)
+
+    def art2(x, y):
+        cx = x + CARD_W / 2
+        tw, th, gap = 64, 114, 10
+        x0 = cx - (5 * tw + 4 * gap) / 2
+        s = []
+        for k in range(5):
+            tx = x0 + k * (tw + gap)
+            s.append(f'<clipPath id="tp{k}"><rect x="{tx}" y="{y + 96}" width="{tw}" height="{th}" rx="8"/></clipPath>'
+                     f'<image class="pop" style="{d(0.9 + k * 0.1)}" clip-path="url(#tp{k})" href="{thumbs[k]}" x="{tx}" y="{y + 96}" width="{tw}" height="{th}" preserveAspectRatio="xMidYMid slice"/>')
+        ring_x = x0 - 4 if not rtl else x0 - 4
+        s.append(f'<g class="pick"><rect x="{ring_x}" y="{y + 92}" width="{tw + 8}" height="{th + 8}" rx="11" fill="none" stroke="{BLUE}" stroke-width="3"/>'
+                 f'<circle cx="{ring_x + tw + 8}" cy="{y + 92}" r="11" fill="{BLUE}"/><path d="M{ring_x + tw + 3} {y + 92} l4 4 l7 -8" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g>')
+        return "".join(s)
+
+    def art3(x, y):
+        cx = x + CARD_W / 2
+        frames = [("9:16", 72, 128), ("4:5", 104, 130), ("16:9", 176, 99)]
+        total = sum(f[1] for f in frames) + 2 * 18
+        order = list(reversed(frames)) if rtl else frames
+        fx = cx - total / 2
+        base = y + 214
+        s = []
+        for k, (lab, fw, fh) in enumerate(order):
+            s.append(f'<clipPath id="f{k}"><rect x="{fx}" y="{base - fh}" width="{fw}" height="{fh}" rx="8"/></clipPath>'
+                     f'<g class="pop" style="{d(1.0 + k * 0.25)}"><image clip-path="url(#f{k})" href="{after}" x="{fx}" y="{base - fh}" width="{fw}" height="{fh}" preserveAspectRatio="xMidYMid slice"/>'
+                     f'<rect class="sz{k}" style="{d(2.0 + k * 1.2)}" x="{fx - 3}" y="{base - fh - 3}" width="{fw + 6}" height="{fh + 6}" rx="10" fill="none" stroke="{BLUE}" stroke-width="3" opacity="0"/>'
+                     f'<text x="{fx + fw / 2}" y="{base + 30}" text-anchor="middle" font-family="J" font-weight="500" font-size="15" fill="{SLATE}">{lab}</text></g>')
+            fx += fw + 18
+        return "".join(s)
+
+    arts = [art1, art2, art3]
+    parts = [f'<rect width="{W}" height="{H}" fill="{WARM}"/>']
+    for i in range(3):
+        parts.append(_card(i, rtl, titles[i], caps[i], arts[i], 0.1 + i * 0.25))
+    parts.append(_arrows(rtl, 0.7))
+    extra = STEP_CSS + _pick_css(5)
+    for k in range(3):
+        extra += _cycle_css(f"sz{k}", 3, 3.6).replace(f".sz{k}{{", f".sz{k}{{").replace("infinite both}", "infinite both}", 1)
+    # stagger the size rings so they light up one after another
+    text = "".join(titles) + "".join("".join(c) for c in caps) + "".join(bubble) + "0123456789:"
+    css = font_css(text, {"M", "R", "J"}) + BASE_CSS + extra
+    return svg(W, H, css, "".join(parts), "How it works" if not rtl else "بتشتغل إزاي")
+
+
+def install_steps(lang, skill="social-cover-studio"):
+    rtl = lang == "ar"
+    W, H = 1600, 520
+    if rtl:
+        titles = ["حمّل ملف الـ ZIP", "شغّل Code execution", "ارفع الـ Skill"]
+        caps = [["ملف واحد، ومن غير ما تفكه."], ["Settings → Capabilities"], ["Customize → Skills → +"]]
+        uploaded = "اترفعت"
+    else:
+        titles = ["Download the ZIP", "Turn on code execution", "Upload the skill"]
+        caps = [["One file. Don't unzip it."], ["Settings → Capabilities"], ["Customize → Skills → +"]]
+        uploaded = "Added"
+    fname = f"{skill}.zip"
+
+    def art1(x, y):
+        cx = x + CARD_W / 2
+        return (f'<g class="bob"><path d="M{cx} {y + 50} v34 m-14 -14 l14 14 l14 -14" fill="none" stroke="{BLUE}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></g>'
+                f'<g class="pop" style="{d(0.8)}"><rect x="{cx - 70}" y="{y + 104}" width="140" height="150" rx="16" fill="#FFFFFF" stroke="{SOFT}" stroke-width="2"/>'
+                f'<rect x="{cx - 70}" y="{y + 104}" width="140" height="40" rx="16" fill="{BLUE}"/><rect x="{cx - 70}" y="{y + 124}" width="140" height="20" fill="{BLUE}"/>'
+                + "".join(f'<rect x="{cx - 5}" y="{y + 150 + k * 12}" width="10" height="6" rx="2" fill="{SLATE}" opacity=".55"/>' for k in range(4))
+                + f'<text x="{cx}" y="{y + 130}" text-anchor="middle" font-family="M" font-weight="800" font-size="18" fill="#FFFFFF">ZIP</text>'
+                f'<text x="{cx}" y="{y + 278}" text-anchor="middle" font-family="J" font-weight="500" font-size="13" fill="{SLATE}">{fname}</text></g>')
+
+    def art2(x, y):
+        px, pw = x + 36, CARD_W - 72
+        label = "Code execution and file creation"
+        if rtl:
+            tgx, lx, la = px + 22, px + pw - 22, "end"
+        else:
+            tgx, lx, la = px + pw - 22 - 56, px + 22, "start"
+        return (f'<g class="pop" style="{d(0.8)}"><rect x="{px}" y="{y + 110}" width="{pw}" height="92" rx="14" fill="#FFFFFF" stroke="{SOFT}" stroke-width="2"/>'
+                f'<text x="{lx}" y="{y + 148}" text-anchor="{la}" font-family="R" font-weight="500" font-size="15" fill="{GRAPHITE}">{label}</text>'
+                f'<text x="{lx}" y="{y + 172}" text-anchor="{la}" font-family="R" font-weight="400" font-size="13" fill="{SLATE}">Settings → Capabilities</text>'
+                f'<rect class="track" x="{tgx}" y="{y + 141}" width="56" height="30" rx="15" fill="#C9CED6"/>'
+                f'<circle class="knob" cx="{tgx + 15}" cy="{y + 156}" r="11" fill="#FFFFFF"/></g>')
+
+    def art3(x, y):
+        px, pw = x + 36, CARD_W - 72
+        hx, ha = (px + pw - 20, "end") if rtl else (px + 20, "start")
+        plus_x = px + 30 if rtl else px + pw - 30
+        row_tx, row_a = (px + pw - 44, "end") if rtl else (px + 44, "start")
+        dot_x = px + pw - 26 if rtl else px + 26
+        return (f'<g class="pop" style="{d(0.8)}"><rect x="{px}" y="{y + 70}" width="{pw}" height="190" rx="14" fill="#FFFFFF" stroke="{SOFT}" stroke-width="2"/>'
+                f'<text x="{hx}" y="{y + 106}" text-anchor="{ha}" font-family="M" font-weight="700" font-size="18" fill="{GRAPHITE}">Skills</text>'
+                f'<circle cx="{plus_x}" cy="{y + 100}" r="15" fill="{BLUE}"/><path d="M{plus_x - 7} {y + 100} h14 M{plus_x} {y + 93} v14" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>'
+                f'<line x1="{px + 16}" y1="{y + 124}" x2="{px + pw - 16}" y2="{y + 124}" stroke="{SOFT}"/>'
+                f'<g class="drop"><rect x="{px + pw / 2 - 90}" y="{y + 146}" width="180" height="40" rx="10" fill="{ICE}"/>'
+                f'<text x="{px + pw / 2}" y="{y + 171}" text-anchor="middle" font-family="J" font-weight="500" font-size="13" fill="{DEEP}">{fname}</text></g>'
+                f'<g class="row"><circle cx="{dot_x}" cy="{y + 220}" r="6" fill="{MINT}"/>'
+                f'<text x="{row_tx}" y="{y + 225}" text-anchor="{row_a}" font-family="J" font-weight="500" font-size="14" fill="{GRAPHITE}">{skill}</text>'
+                f'<text x="{px + 20 if rtl else px + pw - 20}" y="{y + 225}" text-anchor="{"start" if rtl else "end"}" font-family="R" font-weight="600" font-size="14" fill="#12A37F">{uploaded} ✓</text></g></g>')
+
+    arts = [art1, art2, art3]
+    parts = [f'<rect width="{W}" height="{H}" fill="{WARM}"/>']
+    for i in range(3):
+        parts.append(_card(i, rtl, titles[i], caps[i], arts[i], 0.1 + i * 0.25))
+    parts.append(_arrows(rtl, 0.7))
+    text = "".join(titles) + "".join("".join(c) for c in caps) + fname + skill + uploaded + " ✓" + "Code execution and file creationSettings → CapabilitiesSkillsZIP0123456789"
+    css = font_css(text, {"M", "R", "J"}) + BASE_CSS + STEP_CSS
+    return svg(W, H, css, "".join(parts), "Install in three steps" if not rtl else "التسطيب في 3 خطوات")
+
+
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
     for name, content in (("banner-en.svg", banner("en")), ("banner-ar.svg", banner("ar")),
@@ -416,6 +634,12 @@ if __name__ == "__main__":
             name = f"lang-{lang}-{'on' if active else 'off'}.svg"
             (OUT / name).write_text(lang_button(lang, active), encoding="utf-8")
             print(f"built docs/assets/{name}")
+    for lang in ("en", "ar"):
+        for name, fn in (("how", how_it_works), ("install", install_steps)):
+            target = ROOT / "docs" / "social-cover-studio" / f"{name}-{lang}.svg"
+            content = fn(lang)
+            target.write_text(content, encoding="utf-8")
+            print(f"built docs/social-cover-studio/{name}-{lang}.svg ({len(content.encode()) // 1024} KB)")
     for lang in ("en", "ar"):
         target = ROOT / "docs" / "social-cover-studio" / f"hero-{lang}.svg"
         content = cover_hero(lang)

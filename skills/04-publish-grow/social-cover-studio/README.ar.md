@@ -26,9 +26,11 @@
 
 ## بتشتغل إزاي
 
-| **1 · ابعت الصورة** | **2 · اختار Template** | **3 · خد كل المقاسات** |
-|:--|:--|:--|
-| ابعت الصورة ومعاها الكلمة الكبيرة، واسم الـ Product، وكلمة قصيرة. | Claude بيوريك الـ 5 Templates جنب بعض، بألوانك والـ Fonts بتاعتك. | تختار واحد، وتاخد ملفات Instagram و TikTok و Facebook و YouTube، والـ Product بألوانه الحقيقية. |
+</div>
+
+<img src="../../../docs/social-cover-studio/how-ar.svg" alt="1 ابعت الصورة ومعاها الكلمة واسم الـ Product · 2 اختار واحد من الـ 5 Templates · 3 خد مقاسات Instagram و TikTok و Facebook و YouTube" width="100%">
+
+<div dir="rtl">
 
 ---
 
@@ -54,9 +56,13 @@
 
 ### 1 · التسطيب: مرة واحدة، 5 دقايق
 
-1. **[حمّل ملف الـ ZIP](https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip)**.
-2. في Claude روح لـ **Settings → Capabilities**، وشغّل **Code execution and file creation**.
-3. روح لـ **Customize → Skills**، ودوس **+**، وارفع ملف الـ ZIP زي ما هو، **من غير ما تفكه**.
+</div>
+
+<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip"><img src="../../../docs/social-cover-studio/install-ar.svg" alt="1 حمّل ملف الـ ZIP · 2 شغّل Code execution من Settings → Capabilities · 3 ارفع الـ Skill من Customize → Skills → +" width="100%"></a>
+
+<div dir="rtl">
+
+<sub>دوس على الصورة عشان تحمّل · Settings → Capabilities → **Code execution and file creation** · Customize → Skills → **+** → ارفع الـ ZIP زي ما هو.</sub>
 
 ### 2 · الـ Brand بتاعك: مرة واحدة
 

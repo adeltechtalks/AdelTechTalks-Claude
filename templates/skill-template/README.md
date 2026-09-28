@@ -29,9 +29,9 @@
 
 ## How it works
 
-| **1 · [Step]** | **2 · [Step]** | **3 · [Step]** |
-|:--|:--|:--|
-| [What the user does] | [What Claude does] | [What they get] |
+<img src="../../../docs/skill-name/how-en.svg" alt="[1 … · 2 … · 3 …]" width="100%">
+
+<!-- Step cards are built by scripts/build-art.py (how_it_works / install_steps). -->
 
 ---
 
