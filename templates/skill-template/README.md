@@ -1,42 +1,58 @@
-# Skill Name 🧩
+<!--
+  Skill page template (English).
+  Copy this folder to skills/<stage>/<skill-name>/ and replace every [placeholder] and every "skill-name".
+  Links below are written for that final location (three levels deep).
+-->
 
-[← كل السكيلز](../../../README.md) · [English](../../../README.en.md)
+# Skill Name [emoji]
 
-**جملة واحدة:** الـ Skill دي بتعمل إيه، ولمين.
+[← All skills](../../../README.md) · **English** · [العربية](README.ar.md)
 
-![Before / After](../../../docs/skill-name/before-after.png)
+[One-sentence value proposition: what the creator gets, in their words.]
 
----
+![Before / After](../../../docs/skill-name/hero.png)
 
-## بتعمل إيه؟
-
-1. ...
-2. ...
-3. ...
-
-## التسطيب
-
-**[⬇ skill-name.zip](https://github.com/adeltechtalks/claude-skills/raw/main/downloads/skill-name.zip)**
-
-1. في Claude روح لـ **Settings → Capabilities**، وشغّل **Code execution and file creation** (لو الـ Skill محتاجاه).
-2. روح لـ **Customize → Skills**، ودوس **+**، وارفع ملف الـ ZIP زي ما هو، **من غير ما تفكه**.
-
-## جرّبها
-
-```
-اكتب هنا الـ Prompt اللي الناس تنسخه وتجربه على طول
-```
-
-## نصايح
-
-- ...
-
-## لو حصلت مشكلة
-
-| المشكلة | الحل |
-|---|---|
-| Claude مش بيستخدم الـ Skill | اكتب صراحة: "استخدم skill-name" |
+<p align="center">
+  <a href="https://github.com/adeltechtalks/Claude-Skills/raw/main/downloads/skill-name.zip"><b>⬇ Download skill-name.zip</b></a>
+</p>
 
 ---
 
-Built by **[@AdelTechTalks](https://instagram.com/adeltechtalks)** · MIT License
+## What it does
+
+1. [Outcome 1]
+2. [Outcome 2]
+3. [Outcome 3]
+
+## Installation
+
+1. **[Download the ZIP](https://github.com/adeltechtalks/Claude-Skills/raw/main/downloads/skill-name.zip).**
+2. In Claude, open **Settings → Capabilities** and turn on **Code execution and file creation** *(only if the skill runs code)*.
+3. Go to **Customize → Skills**, click **+**, and upload the ZIP as it is — **don't unzip it**.
+
+## Quick start
+
+```
+[A prompt people can copy and try right away]
+```
+
+[What they get back — a screenshot or a short table of outputs.]
+
+## Tips
+
+- [Tip]
+- [Tip]
+
+## Troubleshooting
+
+| Problem | Fix |
+|:--|:--|
+| Claude doesn't use the skill | Say it explicitly: *"Use skill-name"* |
+
+---
+
+## Credits
+
+Built by **[@AdelTechTalks](https://instagram.com/adeltechtalks)** · [third-party credits]
+
+Released under the [MIT License](../../../LICENSE).

@@ -1,9 +1,9 @@
 # 🎬 Video Editing
 
-Skills للمونتاج والـ Subtitles والقص.
+Skills for editing, subtitles and repurposing.
 
-**قريباً:** مونتاج Reels، Subtitles عربي، قص Shorts من فيديو طويل.
+**Coming soon:** Reel editing · Subtitles · Shorts from long-form
 
-اعمل ⭐ **Star** و 👁 **Watch → Releases** للريبو عشان يوصلك إشعار أول ما تنزل Skills جديدة هنا.
+**Star** ⭐ and **Watch → Custom → Releases** to get notified when new skills land here.
 
-[← كل السكيلز](../../README.md)
+[← All skills](../../README.md) · [العربية](../../README.ar.md)

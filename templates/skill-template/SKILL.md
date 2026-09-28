@@ -1,46 +1,78 @@
 ---
 name: skill-name
-description: One paragraph that tells Claude WHAT this skill does and WHEN to use it. List the concrete triggers a creator would type, in English and Arabic (e.g. "write a hook", "اكتبلي Hook", "سكريبت ريل"), and say to use it even when the user doesn't name the skill. This field is how Claude decides to load the skill, so be specific.
+description: >-
+  [What it does, in one sentence.] Use this skill whenever the user [concrete
+  situations], or asks for [phrases a creator would actually type, e.g.
+  "write me a hook", "turn this video into shorts"], including requests in
+  other languages (e.g. Arabic: "اكتبلي Hook") — even if they don't name the
+  skill. Do not use it for [nearby tasks that belong to another skill].
 ---
 
 # Skill Name
 
-One line: what goes in → what comes out.
+> **Input:** [what the user provides] → **Output:** [what they get back]
 
-## Step 0 — Setup (first time only, optional)
+## When to use
 
-If the skill needs the creator's own settings (brand, tone of voice, audience, platforms), ask for them once in a single message, save them to a small file (e.g. `brand.json` / `voice.md`), and tell the user to keep it so results stay consistent.
+- [Situation 1]
+- [Situation 2]
 
-## Step 1 — Get the inputs
+Not for: [what this skill deliberately doesn't do].
 
-- List exactly what the skill needs from the user.
-- Ask only for what's missing. If the user is unsure, propose 3–4 options.
+## Workflow
 
-## Step 2 — Do the work
+### Step 0 — Profile setup (first run only · optional)
 
-Numbered, concrete steps. Put any code in `scripts/` and show the exact command:
+If results depend on the creator's own settings (brand, tone of voice, audience, platforms):
 
-```bash
-python scripts/your_script.py --input file --out out
-```
+1. Ask for everything in **one** message; offer sensible defaults.
+2. Save the answers from `assets/profile.template.json` into `profile.json`.
+3. Tell the user to keep the file (or add it to a Claude Project) so results stay consistent.
+
+Never reuse another creator's values as defaults.
+
+### Step 1 — Collect inputs
+
+| Input | Required | Default |
+|:--|:-:|:--|
+| [input] | ✅ | — |
+| [input] | — | [default] |
+
+Ask only for what's missing. When the user is unsure, propose 3–4 concrete options.
+
+### Step 2 — Produce
+
+1. [Concrete step.]
+2. [Concrete step.] Deterministic work lives in `scripts/`:
+
+   ```bash
+   pip install -r scripts/requirements.txt --break-system-packages
+   python scripts/main.py --input <file> --out out
+   ```
+
+3. When there are several good directions, show a short preview first and let the user choose before producing final files.
+
+### Step 3 — Review and deliver
+
+Run the quality checklist on **every** output before sending it, then offer one relevant next step (e.g. captions, other sizes, a variation).
 
 ## Quality checklist
 
-Check every output before sending it:
+- [ ] [Specific, checkable rule]
+- [ ] [Specific, checkable rule]
+- [ ] Output matches the user's language, and platform terms (`Reel`, `Hook`, `Caption`) stay in their original form.
+- [ ] Text in images or video is correctly shaped and directed (including right-to-left scripts).
 
-- [ ] ...
-- [ ] ...
+## Output
 
-## Writing Arabic for the user
+| File / section | Format | Notes |
+|:--|:--|:--|
+| `<name>_<variant>.<ext>` | [e.g. 1080×1920 JPG] | [where it's used] |
 
-- Write in the user's dialect when they write in it (Egyptian, Gulf, Levantine…); default to clear Modern Standard Arabic otherwise.
-- Keep English platform and tech terms in Latin letters (`Reel`, `Hook`, `Caption`, `Thumbnail`) — never transliterate them into Arabic script.
-- Arabic text in images or video must be shaped and right-to-left.
+## Language
 
-## Outputs
-
-Describe the files or text the user gets, with file names and sizes where relevant.
+Reply in the user's language and dialect. Keep English platform and product terms in Latin letters rather than transliterating them.
 
 ## Credits
 
-Libraries, fonts and assets used, with their licenses.
+[Libraries, fonts, models and assets used, with their licenses.]

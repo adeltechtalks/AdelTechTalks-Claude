@@ -1,78 +1,93 @@
 <div align="center">
 
-# Claude Skills للـ Content Creators 🎬✨
+<img src="docs/assets/banner.png" alt="Claude Skills for Content Creators" width="100%">
 
-**أول مكتبة Claude Skills للـ Content Creators العرب: من الفكرة لحد النشر.**
+<br>
 
-Skills مجانية بتخلّي Claude يشتغل معاك في كل مرحلة: الأفكار، والكتابة، والتصميم، والمونتاج، والنشر، والأرقام، وشغل الـ Brands.
-معمولة **Arabic-first**: بتفهم العربي والمصري، وبتكتب Captions عربي صح، وبتعرف مواسم المنطقة.
+**English** · [العربية](README.ar.md)
 
-[English](README.en.md) · [Instagram @AdelTechTalks](https://instagram.com/adeltechtalks) · [إضافة Skill](CONTRIBUTING.md)
-
-⭐ اعمل **Star**، و 👁 **Watch → Releases**، عشان يوصلك إشعار مع كل Skill جديدة.
+[![Stars](https://img.shields.io/github/stars/adeltechtalks/Claude-Skills?style=flat-square&color=D97757)](https://github.com/adeltechtalks/Claude-Skills/stargazers)
+[![Skills](https://img.shields.io/badge/skills-1-D97757?style=flat-square)](#skills)
+[![Works with Claude](https://img.shields.io/badge/works%20with-Claude.ai%20%7C%20Claude%20Code-1f1f1f?style=flat-square)](#installation)
+[![License: MIT](https://img.shields.io/badge/license-MIT-1f1f1f?style=flat-square)](LICENSE)
 
 </div>
 
-![Social Cover Studio — Before / After](docs/social-cover-studio/before-after.png)
+**Claude Skills for Content Creators** is a library of free, ready-to-use [Claude Skills](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview) for every stage of a creator's workflow — research, writing, design, editing, publishing, analytics and brand work. Download a skill, upload it to Claude, and it knows how to do the job.
+
+> [!TIP]
+> **Star** ⭐ and **Watch → Custom → Releases** to get notified whenever a new skill is released.
 
 ---
 
-## الـ Skills
+## Skills
 
-| المرحلة | الـ Skill | بتعمل إيه | تحميل |
-|---|---|---|---|
-| 🎨 Design | **[Social Cover Studio](skills/design/social-cover-studio/)** | Covers و Thumbnails بالـ Brand بتاعك من صورة واحدة، بـ 5 Templates وبكل المقاسات: Instagram و TikTok و Facebook و YouTube | [⬇ ZIP](https://github.com/adeltechtalks/claude-skills/raw/main/downloads/social-cover-studio.zip) |
+| Stage | Skill | Description | Download |
+|:--|:--|:--|:--:|
+| 🎨 Design | **[Social Cover Studio](skills/design/social-cover-studio/)** | Branded covers and thumbnails from a single photo. 5 templates, exported for Instagram, TikTok, Facebook and YouTube. | [**ZIP**](https://github.com/adeltechtalks/Claude-Skills/raw/main/downloads/social-cover-studio.zip) |
 
-## الـ Roadmap: جاي قريب
+<br>
 
-| المرحلة | Skills جاية |
-|---|---|
-| 💡 [Ideation & Research](skills/ideation-research/) | أفكار حلقات، تحليل الـ Trends، دراسة المنافسين |
-| ✍️ [Scripting & Writing](skills/writing/) | Hooks، سكريبت Reel، Captions عربي وإنجليزي، Threads |
-| 🎨 [Design](skills/design/) | Carousels، Brand kit |
-| 🎬 [Video Editing](skills/video-editing/) | مونتاج Reels، Subtitles عربي، قص Shorts من فيديو طويل |
-| 📤 [Publishing](skills/publishing/) | Content calendar، Hashtags، مواعيد النشر، خطة رمضان والمواسم |
-| 📊 [Analytics](skills/analytics/) | تحليل أداء البوستات، تقارير شهرية |
-| 🤝 [Business](skills/business/) | Media kit، الرد على الـ Brand deals، التسعير |
-| 🌐 [Web](skills/web/) | Landing page، Link-in-bio |
-
-> عندك فكرة Skill محتاجها في شغلك؟ اطلبها من **[Issues](https://github.com/adeltechtalks/claude-skills/issues)**.
+<img src="docs/social-cover-studio/before-after.png" alt="Social Cover Studio — before and after" width="100%">
 
 ---
 
-## التسطيب
+## Roadmap
 
-### على Claude.ai (Desktop أو Web أو Mobile)
-1. حمّل ملف الـ ZIP بتاع الـ Skill من الجدول فوق.
-2. في Claude روح لـ **Settings → Capabilities**، وشغّل **Code execution and file creation**.
-3. روح لـ **Customize → Skills**، ودوس **+**، وارفع ملف الـ ZIP زي ما هو، **من غير ما تفكه**.
+| Stage | In the works |
+|:--|:--|
+| 💡 [Ideation & Research](skills/ideation-research/) | Episode ideas · Trend analysis · Competitor research |
+| ✍️ [Scripting & Writing](skills/writing/) | Hooks · Reel scripts · Captions · Threads |
+| 🎨 [Design](skills/design/) | Carousels · Brand kit |
+| 🎬 [Video Editing](skills/video-editing/) | Reel editing · Subtitles · Shorts from long-form |
+| 📤 [Publishing](skills/publishing/) | Content calendar · Hashtags · Posting schedule · Seasonal campaigns |
+| 📊 [Analytics](skills/analytics/) | Post performance review · Monthly reports |
+| 🤝 [Business](skills/business/) | Media kit · Brand-deal replies · Pricing |
+| 🌐 [Web](skills/web/) | Landing page · Link-in-bio |
 
-> الـ Skills شغالة على كل خطط Claude. ولو إنت على Team أو Enterprise، الأدمن لازم يكون مفعّل Skills للمؤسسة.
+Have a skill you need in your workflow? [Request it](https://github.com/adeltechtalks/Claude-Skills/issues/new).
 
-### على Claude Code
-```
-/plugin marketplace add adeltechtalks/claude-skills
+---
+
+## Installation
+
+### Claude.ai — web, desktop and mobile
+
+1. Download the skill's **ZIP** from the table above.
+2. In Claude, open **Settings → Capabilities** and turn on **Code execution and file creation**.
+3. Go to **Customize → Skills**, click **+**, and upload the ZIP as it is — **don't unzip it**.
+
+Skills are available on all Claude plans. On Team and Enterprise, an admin must enable Skills for the organization.
+
+### Claude Code
+
+```bash
+/plugin marketplace add adeltechtalks/Claude-Skills
 /plugin install design-skills@adeltechtalks-skills
 ```
-أو انسخ فولدر الـ Skill نفسه (مثلاً `skills/design/social-cover-studio`) جوه `~/.claude/skills/`.
+
+Or copy a skill folder (for example `skills/design/social-cover-studio`) into `~/.claude/skills/`.
 
 ---
 
-## شكل الريبو
+## Repository structure
 
 ```
-skills/<المرحلة>/<اسم-الـ-skill>/   ← الـ Skill نفسها (SKILL.md و scripts و assets) + README بالشرح
-docs/<اسم-الـ-skill>/               ← الصور والدليل PDF
-downloads/<اسم-الـ-skill>.zip       ← ملف التحميل الجاهز
-templates/skill-template/           ← قالب أي Skill جديدة
-.claude-plugin/marketplace.json     ← للتسطيب من Claude Code
+skills/<stage>/<skill>/           The skill (SKILL.md, scripts, assets) and its README
+docs/<skill>/                     Screenshots and guides
+downloads/<skill>.zip             Ready-to-upload ZIP, built by scripts/build-zips.sh
+templates/skill-template/         Starting point for a new skill
+.claude-plugin/marketplace.json   Claude Code plugin marketplace
 ```
 
-عايز تضيف Skill؟ الخطوات كلها في **[CONTRIBUTING.md](CONTRIBUTING.md)**.
+## Contributing
 
----
+New skills follow the template in [`templates/skill-template`](templates/skill-template/). See [CONTRIBUTING.md](CONTRIBUTING.md) for the full checklist.
 
 ## License
 
-كل الـ Skills متاحة بـ **[MIT License](LICENSE)**. استخدمها وعدّل عليها وشاركها، بس سيب الـ Credit.
-Built by **[@AdelTechTalks](https://instagram.com/adeltechtalks)**.
+[MIT](LICENSE) — free to use, modify and share with attribution.
+
+<div align="center">
+<sub>Built by <a href="https://instagram.com/adeltechtalks"><b>@AdelTechTalks</b></a></sub>
+</div>

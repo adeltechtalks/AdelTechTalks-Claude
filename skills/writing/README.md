@@ -1,9 +1,9 @@
 # ✍️ Scripting & Writing
 
-Skills للكتابة: من أول Hook لحد الـ Caption.
+Skills for everything you write — from the first hook to the final caption.
 
-**قريباً:** Hooks، سكريبت Reel، Captions عربي وإنجليزي، Threads.
+**Coming soon:** Hooks · Reel scripts · Captions · Threads
 
-اعمل ⭐ **Star** و 👁 **Watch → Releases** للريبو عشان يوصلك إشعار أول ما تنزل Skills جديدة هنا.
+**Star** ⭐ and **Watch → Custom → Releases** to get notified when new skills land here.
 
-[← كل السكيلز](../../README.md)
+[← All skills](../../README.md) · [العربية](../../README.ar.md)

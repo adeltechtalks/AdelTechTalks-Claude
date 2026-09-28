@@ -1,9 +1,9 @@
 # 🤝 Business
 
-Skills لشغل الـ Brands والفلوس.
+Skills for brand deals and the business side of creating.
 
-**قريباً:** Media kit، الرد على الـ Brand deals، التسعير.
+**Coming soon:** Media kit · Brand-deal replies · Pricing
 
-اعمل ⭐ **Star** و 👁 **Watch → Releases** للريبو عشان يوصلك إشعار أول ما تنزل Skills جديدة هنا.
+**Star** ⭐ and **Watch → Custom → Releases** to get notified when new skills land here.
 
-[← كل السكيلز](../../README.md)
+[← All skills](../../README.md) · [العربية](../../README.ar.md)

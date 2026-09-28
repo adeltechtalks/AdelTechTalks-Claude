@@ -1,9 +1,9 @@
 # 📊 Analytics
 
-Skills لقراءة الأرقام وتحويلها لقرارات.
+Skills that turn your numbers into decisions.
 
-**قريباً:** تحليل أداء البوستات، تقارير شهرية.
+**Coming soon:** Post performance review · Monthly reports
 
-اعمل ⭐ **Star** و 👁 **Watch → Releases** للريبو عشان يوصلك إشعار أول ما تنزل Skills جديدة هنا.
+**Star** ⭐ and **Watch → Custom → Releases** to get notified when new skills land here.
 
-[← كل السكيلز](../../README.md)
+[← All skills](../../README.md) · [العربية](../../README.ar.md)

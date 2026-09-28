@@ -1,9 +1,9 @@
 # 💡 Ideation & Research
 
-Skills بتساعدك تلاقي أفكار وتفهم جمهورك قبل ما تصوّر.
+Skills that help you find ideas and understand your audience before you shoot.
 
-**قريباً:** أفكار حلقات، تحليل الـ Trends، دراسة المنافسين.
+**Coming soon:** Episode ideas · Trend analysis · Competitor research
 
-اعمل ⭐ **Star** و 👁 **Watch → Releases** للريبو عشان يوصلك إشعار أول ما تنزل Skills جديدة هنا.
+**Star** ⭐ and **Watch → Custom → Releases** to get notified when new skills land here.
 
-[← كل السكيلز](../../README.md)
+[← All skills](../../README.md) · [العربية](../../README.ar.md)

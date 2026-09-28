@@ -4,7 +4,7 @@
     "name": "AdelTechTalks"
   },
   "metadata": {
-    "description": "Arabic-first Claude Skills library for content creators by AdelTechTalks — from idea to publish.",
+    "description": "Claude Skills for content creators by AdelTechTalks — from the first idea to the published post.",
     "version": "1.0.0"
   },
   "plugins": [

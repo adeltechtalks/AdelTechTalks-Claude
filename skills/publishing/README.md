@@ -1,9 +1,9 @@
 # 📤 Publishing
 
-Skills للنشر والتنظيم.
+Skills for planning and shipping your content.
 
-**قريباً:** Content calendar، Hashtags، مواعيد النشر، خطة رمضان والمواسم.
+**Coming soon:** Content calendar · Hashtags · Posting schedule · Seasonal campaigns
 
-اعمل ⭐ **Star** و 👁 **Watch → Releases** للريبو عشان يوصلك إشعار أول ما تنزل Skills جديدة هنا.
+**Star** ⭐ and **Watch → Custom → Releases** to get notified when new skills land here.
 
-[← كل السكيلز](../../README.md)
+[← All skills](../../README.md) · [العربية](../../README.ar.md)

@@ -1,9 +1,9 @@
 # 🌐 Web
 
-Skills لبناء صفحاتك على الويب.
+Skills for building your home on the web.
 
-**قريباً:** Landing page، Link-in-bio.
+**Coming soon:** Landing page · Link-in-bio
 
-اعمل ⭐ **Star** و 👁 **Watch → Releases** للريبو عشان يوصلك إشعار أول ما تنزل Skills جديدة هنا.
+**Star** ⭐ and **Watch → Custom → Releases** to get notified when new skills land here.
 
-[← كل السكيلز](../../README.md)
+[← All skills](../../README.md) · [العربية](../../README.ar.md)

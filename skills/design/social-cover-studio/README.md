@@ -1,104 +1,99 @@
 # Social Cover Studio 🎨
 
-[← كل السكيلز](../../../README.md) · [English](../../../README.en.md#social-cover-studio)
+[← All skills](../../../README.md) · **English** · [العربية](README.ar.md)
 
-**Claude Skill** مجانية بتعملك Covers و Thumbnails بالـ Brand بتاعك، من صورة واحدة، وبكل المقاسات: Instagram و TikTok و Facebook و YouTube.
+A Claude Skill that turns a single photo into **branded covers and thumbnails** — in your colours and fonts, exported for every platform: Instagram, TikTok, Facebook and YouTube.
 
 ![Before / After](../../../docs/social-cover-studio/before-after.png)
 
+<p align="center">
+  <a href="https://github.com/adeltechtalks/Claude-Skills/raw/main/downloads/social-cover-studio.zip"><b>⬇ Download social-cover-studio.zip</b></a>
+  &nbsp;·&nbsp;
+  <a href="../../../docs/social-cover-studio/guide.pdf">📄 Full guide (PDF, Arabic)</a>
+</p>
+
 ---
 
-## إيه اللي بتعمله؟
+## What it does
 
-تبعت لـ Claude صورة الـ Product، أو صورتك وإنت ماسكه، وهو:
+Send Claude a photo of a product — or of yourself holding it — and it will:
 
-1. يوريك **5 Templates** جنب بعض، وتختار منهم
-2. يحط ألوانك والـ Fonts بتاعتك
-3. يطلعلك الـ Cover بكل المقاسات، والـ Product بألوانه الحقيقية
+1. Show you **5 templates** side by side so you can pick one.
+2. Apply your brand colours and fonts.
+3. Export the cover in every size, with the product in its true colours.
 
-| # | الـ Template | شكله |
-|---|---|---|
-| 0 | **Editorial** | الصورة بألوانها الطبيعية، والكلام فوقها على خلفية فاتحة |
-| 1 | **Depth** | كلمة كبيرة **ورا** الـ Product |
-| 2 | **Cinematic** | الصورة كاملة، وعنوان من سطرين تحت |
-| 3 | **Studio** | الـ Product مقصوص على خلفية بلون الـ Brand |
-| 4 | **Creator** | لصورتك إنت: الكلمة ورا راسك، و Stickers للـ Product |
+| # | Template | Look |
+|:-:|:--|:--|
+| 0 | **Editorial** | Natural photo with a clean light text panel |
+| 1 | **Depth** | A big word **behind** the product |
+| 2 | **Cinematic** | Full-bleed film-grade photo with a two-line headline |
+| 3 | **Studio** | Product cut out onto a glowing brand-colour backdrop |
+| 4 | **Creator** | For photos of you — word behind your head, product stickers |
 
 ![Templates](../../../docs/social-cover-studio/templates-beats-360.jpg)
 
 ---
 
-## التسطيب (5 دقايق، مرة واحدة)
+## Installation
 
-### 1. نزّل الـ Skill
-**[⬇ social-cover-studio.zip](https://github.com/adeltechtalks/claude-skills/raw/main/downloads/social-cover-studio.zip)** ← التحميل هيبدأ على طول.
-
-ولو عايز الدليل كامل بالصور: **[📄 الدليل PDF](../../../docs/social-cover-studio/guide.pdf)**
-
-### 2. فعّل Code execution
-في Claude روح لـ **Settings → Capabilities**، وشغّل **Code execution and file creation**.
-
-### 3. ارفع الـ Skill
-روح لـ **Customize → Skills**، ودوس **+**، وارفع ملف الـ ZIP زي ما هو، **من غير ما تفكه**.
-
-> الـ Skills شغالة على كل خطط Claude: Free و Pro و Max و Team و Enterprise. ولو إنت على Team أو Enterprise، الأدمن لازم يكون مفعّل Skills للمؤسسة.
+1. **[Download the ZIP](https://github.com/adeltechtalks/Claude-Skills/raw/main/downloads/social-cover-studio.zip).**
+2. In Claude, open **Settings → Capabilities** and turn on **Code execution and file creation**.
+3. Go to **Customize → Skills**, click **+**, and upload the ZIP as it is — **don't unzip it**.
 
 ---
 
-## أول مرة: الـ Brand بتاعك
+## First use: set up your brand
 
-افتح Chat جديد واكتب:
+Start a new chat and type:
 
 ```
-عايز أستخدم social-cover-studio. ظبطلي الـ Brand بتاعي الأول.
+Use social-cover-studio and set up my brand first.
 ```
 
-Claude هيسألك 3 أسئلة: اسم الـ Account، وألوانك (Hex أو لوجو أو بالكلام)، والـ Fonts من قايمة جاهزة. وفي الآخر هيديك ملف **`brand.json`**. **احفظه** وابعته في أول أي Chat، أو حطه في Project، عشان الشكل يفضل ثابت.
+Claude asks three questions — your handle, your colours (hex codes, a logo, or plain words), and your fonts from a built-in list — then gives you a **`brand.json`** file. Keep it and attach it to future chats (or add it to a Project) so every cover looks consistent.
+
+## Make your first cover
+
+Send the photo together with `brand.json`:
+
+```
+Make a cover for this photo:
+- Big word: GLACIER
+- Product: iPhone 18 Pro Max
+- Keyword: my favourite colour
+Show me the templates first.
+```
+
+Pick one — *"I like number 1, export all sizes"* — and you get:
+
+| File | Size | Use it for |
+|:--|:--|:--|
+| `instagram-tiktok` | 1080×1920 (9:16) | Reels, TikTok, Facebook Reels |
+| `facebook` | 1080×1350 (4:5) | Feed posts |
+| `youtube` | 1920×1080 (16:9) | Long-form video thumbnails |
 
 ---
 
-## اعمل أول Cover
+## Tips
 
-ابعت الصورة ومعاها `brand.json`، واكتب:
+- Leave some empty space above the product (or above your head for **Creator**).
+- Keep the big word between 4 and 9 letters — a colour, a model name, or one word that sums up the video.
+- Busy backgrounds work best with **Editorial** and **Depth**.
+- Dark emoji (🖤) disappear on dark backgrounds — use light ones (✨ 🤍).
 
-```
-اعملي Cover للصورة دي:
-- الكلمة الكبيرة: GLACIER
-- اسم الـ Product: iPhone 18 Pro Max
-- الكلمة القصيرة: لوني المفضل
-وريني الـ Templates الأول
-```
+## Troubleshooting
 
-اختار Template، وقوله: **"عجبني رقم 1، طلعلي كل المقاسات"**.
-
-| الملف | المقاس | لفين |
-|---|---|---|
-| `instagram-tiktok` | 1080×1920 (9:16) | Reels و TikTok و Facebook Reels |
-| `facebook` | 1080×1350 (4:5) | Post في الـ Feed |
-| `youtube` | 1920×1080 (16:9) | Thumbnail لفيديو عادي |
-
----
-
-## نصايح
-
-- سيب مساحة فاضية فوق الـ Product، أو فوق راسك في Creator.
-- الكلمة الكبيرة من 4 لـ 9 حروف: اسم اللون، أو الموديل، أو كلمة واحدة بتلخص الفيديو.
-- لو الخلفية فيها حاجات كتير، Editorial و Depth بيطلعوا أنضف من Studio و Creator.
-- الإيموجي الغامق (🖤) مش بيبان على الخلفيات الغامقة.
-
-## لو حصلت مشكلة
-
-| المشكلة | الحل |
-|---|---|
-| Claude مش بيستخدم الـ Skill | اكتب صراحة: "استخدم social-cover-studio" |
-| أول مرة في كل Chat بطيئة | طبيعي، بيحمّل أدوات قص الصورة، وبياخد دقيقة أو اتنين |
-| الملف مش راضي يترفع | اتأكد إنه `.zip` ومش مفكوك |
-| الكلام اتقص في الـ Grid | وإنت بترفع على Instagram استخدم **Edit profile grid** |
+| Problem | Fix |
+|:--|:--|
+| Claude doesn't use the skill | Say it explicitly: *"Use social-cover-studio"* |
+| The first run in a chat is slow | Expected — it downloads the cut-out models once (1–2 minutes) |
+| The upload fails | Make sure you're uploading the `.zip` file, not the unzipped folder |
+| Text gets cropped in the profile grid | Use **Edit profile grid** when posting on Instagram |
 
 ---
 
 ## Credits
 
-Built by **[@AdelTechTalks](https://instagram.com/adeltechtalks)** · rembg و pymatting (MIT) · Google Fonts (SIL OFL) · Emoji: Twemoji (CC-BY 4.0)
+Built by **[@AdelTechTalks](https://instagram.com/adeltechtalks)** · rembg & pymatting (MIT) · Google Fonts (SIL OFL) · Emoji: Twemoji (CC-BY 4.0)
 
-الكود متاح بـ **MIT License**. استخدمه وعدّل عليه وشاركه، بس سيب الـ Credit.
+Released under the [MIT License](../../../LICENSE).
