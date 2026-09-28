@@ -154,7 +154,10 @@ def stage_rows(ar=False):
             desc = s["desc_ar"] if ar else s["desc"]
             items.append(f"{mark} {name} <sub>· {step}{tier} · {state}</sub><br><sub>{desc}</sub>")
         card = f'<a href="{st["id"]}/{"README.ar.md" if ar else ""}"><img src="../docs/assets/stages/{st["id"]}-{lang}.svg" alt="{st["name"]}" width="100%"></a>'
-        rows.append(f'<tr>\n<td width="44%" valign="top">{card}</td>\n<td valign="top">\n\n' + "<br><br>\n".join(items) + "\n\n</td>\n</tr>")
+        body = "<br><br>\n".join(items)
+        if ar:
+            body = f'<div dir="rtl" align="right">\n{body}\n</div>'
+        rows.append(f'<tr>\n<td width="44%" valign="top">{card}</td>\n<td valign="top">\n\n' + body + "\n\n</td>\n</tr>")
     table = "<table>\n" + "\n".join(rows) + "\n</table>"
     return f'<div dir="rtl">\n\n{table}\n\n</div>\n' if ar else table + "\n"
 
