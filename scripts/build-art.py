@@ -778,14 +778,97 @@ def principles(lang):
     return svg(W, H, css, "".join(parts), "Principles" if not rtl else "المبادئ")
 
 
+def skill_card(stage, skill, lang):
+    """Compact card for 'Available now' on the main page (light, so it never competes with the hero)."""
+    rtl = lang == "ar"
+    W, H, pad = 560, 236, 22
+    thumb_path = ROOT / "docs" / skill["slug"] / "after.jpg"
+    tw, th = 112, H - 2 * pad
+    tx = W - pad - tw if rtl else pad
+    X = tx - 24 if rtl else tx + tw + 24
+    a = 'text-anchor="start" direction="rtl"' if rtl else ""
+    anchor_end = 'text-anchor="end"' if rtl else ""
+    parts = [f'<rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="18" fill="#FFFFFF" stroke="{BLUE}" stroke-width="2"/>']
+    if thumb_path.exists():
+        img = "data:image/jpeg;base64," + base64.b64encode(thumb_path.read_bytes()).decode()
+        parts.append(f'<clipPath id="th"><rect x="{tx}" y="{pad}" width="{tw}" height="{th}" rx="12"/></clipPath>'
+                     f'<image clip-path="url(#th)" href="{img}" x="{tx}" y="{pad}" width="{tw}" height="{th}" preserveAspectRatio="xMidYMid slice"/>'
+                     f'<g clip-path="url(#th)"><rect class="shine" x="{tx + tw / 2 - 20}" y="{pad - 30}" width="40" height="{th + 60}" fill="#FFFFFF" opacity=".22"/></g>')
+    step = f" · STEP {skill['step']}" if skill.get("step") else ""
+    eyebrow = f"{stage['id'][:2]} · {stage['name'].upper()}{step}"
+    parts.append(f'<text x="{X}" y="{pad + 24}" {anchor_end} font-family="J" font-weight="500" font-size="13" letter-spacing="1.4" fill="{BLUE}">{escape(eyebrow)}</text>')
+    parts.append(f'<text x="{X}" y="{pad + 62}" {anchor_end} font-family="M" font-weight="700" font-size="26" fill="{GRAPHITE}">{escape(skill["name"])}</text>')
+    desc = skill["desc_ar"] if rtl else skill["desc"]
+    avail = W - 2 * pad - tw - 24
+    lines = (_wrap_ar(desc, 16, avail) if rtl else _wrap(desc, "readex-pro-latin-400-normal.woff2", 16, avail))[:3]
+    for k, line in enumerate(lines):
+        parts.append(f'<text x="{X}" y="{pad + 96 + k * 23}" {a} font-family="R" font-weight="400" font-size="16" fill="{SLATE}">{escape(line)}</text>')
+    pills = [("Free" if skill["tier"] == "free" else "Pro", "#DCF8EF", "#0B5E49", True), ("Ready" if not rtl else "جاهزة", "#EEF1F5", SLATE, False)]
+    x = X
+    for label, bg, fg, live in pills:
+        f = "readex-pro-arabic-600-normal.woff2" if any("؀" <= c <= "ࣿ" for c in label) else "montserrat-latin-600-normal.woff2"
+        lw = (width_mixed(label, 14, 600) if f.startswith("readex") else width(f, label, 14)) + (16 if live else 0)
+        pw = lw + 26
+        x0 = x - pw if rtl else x
+        dot = ""
+        if live:
+            dx = x0 + pw - 16 if rtl else x0 + 15
+            dot = f'<circle class="pulse" cx="{dx}" cy="{H - pad - 15}" r="4.5" fill="#12A37F"/>'
+        tx2 = x0 + pw - 13 - (16 if live else 0) if rtl else x0 + 13 + (16 if live else 0)
+        ta = 'text-anchor="start" direction="rtl"' if rtl else ""
+        fam = "R" if f.startswith("readex") else "M"
+        parts.append(f'<rect x="{x0:.1f}" y="{H - pad - 30}" width="{pw:.1f}" height="30" rx="15" fill="{bg}"/>{dot}'
+                     f'<text x="{tx2:.1f}" y="{H - pad - 10}" {ta} font-family="{fam}" font-weight="600" font-size="14" fill="{fg}">{escape(label)}</text>')
+        x = x0 - 10 if rtl else x0 + pw + 10
+    text = eyebrow + skill["name"] + "".join(lines) + "".join(p[0] for p in pills)
+    css_extra = (".shine{animation:shine 4.5s ease-in-out infinite both;animation-delay:1s}"
+                 f"@keyframes shine{{0%{{transform:translateX(-{tw + 60}px) skewX(-18deg)}}35%,100%{{transform:translateX({tw + 60}px) skewX(-18deg)}}}}")
+    css = font_css(text, {"M", "R", "J"}) + BASE_CSS + css_extra
+    return svg(W, H, css, "".join(parts), f"{skill['name']} — {desc}")
+
+
+def coming_card(catalog, lang):
+    rtl = lang == "ar"
+    W, H, pad = 560, 236, 26
+    nxt = [s["name"] for st in catalog["stages"] for s in st["skills"] if s["status"] != "available" and s["tier"] == "free"][:3]
+    X = W - pad if rtl else pad
+    a = 'text-anchor="start" direction="rtl"' if rtl else ""
+    ae = 'text-anchor="end"' if rtl else ""
+    parts = [f'<rect x="1.5" y="1.5" width="{W - 3}" height="{H - 3}" rx="18" fill="#FAFAF8" stroke="#C9CED6" stroke-width="2" stroke-dasharray="7 7"/>']
+    eyebrow = "COMING NEXT"
+    title = "Next free skills" if not rtl else "الـ Skills المجانية الجاية"
+    sub = "Watch → Releases to get them first." if not rtl else "اعمل Watch ← Releases عشان توصلك أول ما تنزل."
+    parts.append(f'<text x="{X}" y="{pad + 22}" {ae} font-family="J" font-weight="500" font-size="13" letter-spacing="1.4" fill="{SLATE}">{eyebrow}</text>')
+    if rtl:
+        parts.append(f'<text x="{X}" y="{pad + 58}" {a} font-family="R" font-weight="600" font-size="24" fill="{GRAPHITE}">{escape(title)}</text>')
+    else:
+        parts.append(f'<text x="{X}" y="{pad + 58}" font-family="M" font-weight="700" font-size="24" fill="{GRAPHITE}">{escape(title)}</text>')
+    for k, name in enumerate(nxt):
+        cy = pad + 92 + k * 30
+        dx = X - 6 if rtl else X + 6
+        parts.append(f'<g class="fi" style="{d(0.3 + k * 0.25)}"><circle cx="{dx}" cy="{cy - 5}" r="5" fill="none" stroke="{BLUE}" stroke-width="2"/>'
+                     f'<text x="{X - 22 if rtl else X + 22}" y="{cy}" {ae} font-family="M" font-weight="600" font-size="17" fill="{GRAPHITE}">{escape(name)}</text></g>')
+    parts.append(f'<text x="{X}" y="{H - pad + 2}" {a} font-family="R" font-weight="400" font-size="15" fill="{SLATE}">{escape(sub)}</text>')
+    text = eyebrow + title + sub + "".join(nxt)
+    css = font_css(text, {"M", "R", "J"}) + BASE_CSS
+    return svg(W, H, css, "".join(parts), title)
+
+
 def build_main_page_art():
     import json
     catalog = json.loads((ROOT / "catalog.json").read_text(encoding="utf-8"))
     stages_dir = OUT / "stages"
     stages_dir.mkdir(parents=True, exist_ok=True)
+    skills_dir = OUT / "skills"
+    skills_dir.mkdir(parents=True, exist_ok=True)
     for st in catalog["stages"]:
         for lang in ("en", "ar"):
             (stages_dir / f"{st['id']}-{lang}.svg").write_text(stage_card(st, lang), encoding="utf-8")
+            for sk in st["skills"]:
+                if sk["status"] == "available":
+                    (skills_dir / f"{sk['slug']}-{lang}.svg").write_text(skill_card(st, sk, lang), encoding="utf-8")
+    for lang in ("en", "ar"):
+        (skills_dir / f"coming-{lang}.svg").write_text(coming_card(catalog, lang), encoding="utf-8")
     btns = {
         "en": [("download", "Download ZIP", "primary", "down"), ("more", "How it works", "ghost", None),
                ("browse", "Browse skills", "primary", "grid"), ("install", "Install", "ghost", "down"), ("star", "Star the repo", "ghost", "star")],

@@ -110,21 +110,21 @@ def catalog_block(ar=False, prefix="skills/"):
 
 def featured_block(ar=False):
     lang = "ar" if ar else "en"
-    out = []
+    cells = []
     for st in stages:
         for s in st["skills"]:
             if s["status"] != "available":
                 continue
             page = f"skills/{st['id']}/{s['slug']}/" + ("README.ar.md" if ar else "")
-            hero = ROOT / "docs" / s["slug"] / f"hero-{lang}.svg"
-            desc = s["desc_ar"] if ar else s["desc"]
-            if hero.exists():
-                out.append(f'<a href="{page}"><img src="docs/{s["slug"]}/hero-{lang}.svg" alt="{s["name"]} — {desc}" width="100%"></a>')
-                out.append("")
-            out.append(f'<p align="center"><a href="{DL}/{s["slug"]}.zip"><img src="docs/assets/btn-download-{lang}.svg" alt="Download" height="48"></a>&nbsp;&nbsp;'
-                       f'<a href="{page}"><img src="docs/assets/btn-more-{lang}.svg" alt="How it works" height="48"></a></p>')
-            out.append("")
-    return "\n".join(out)
+            dl, more = ("⬇ حمّل الـ ZIP", "اعرف أكتر ←") if ar else ("⬇ Download ZIP", "How it works →")
+            cells.append(f'<td width="50%" valign="top"><a href="{page}"><img src="docs/assets/skills/{s["slug"]}-{lang}.svg" alt="{s["name"]}" width="100%"></a>'
+                         f'<p align="center"><a href="{DL}/{s["slug"]}.zip"><b>{dl}</b></a> · <a href="{page}">{more}</a></p></td>')
+    if len(cells) % 2:
+        watch = "https://github.com/adeltechtalks/AdelTechTalks-Claude/subscription"
+        cells.append(f'<td width="50%" valign="top"><a href="{watch}"><img src="docs/assets/skills/coming-{lang}.svg" alt="Coming next" width="100%"></a></td>')
+    rows = "\n".join(f"<tr>\n{cells[i]}\n{cells[i + 1]}\n</tr>" for i in range(0, len(cells), 2))
+    table = f"<table>\n{rows}\n</table>"
+    return f'<div dir="rtl">\n\n{table}\n\n</div>\n' if ar else table + "\n"
 
 
 def stages_block(ar=False):

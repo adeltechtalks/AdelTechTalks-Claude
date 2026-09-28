@@ -31,9 +31,16 @@
 
 <!-- featured:start -->
 
-<a href="skills/04-publish-grow/social-cover-studio/README.ar.md"><img src="docs/social-cover-studio/hero-ar.svg" alt="Social Cover Studio — Covers و Thumbnails بالـ Brand بتاعك من صورة واحدة، بكل المقاسات." width="100%"></a>
+<div dir="rtl">
 
-<p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip"><img src="docs/assets/btn-download-ar.svg" alt="Download" height="48"></a>&nbsp;&nbsp;<a href="skills/04-publish-grow/social-cover-studio/README.ar.md"><img src="docs/assets/btn-more-ar.svg" alt="How it works" height="48"></a></p>
+<table>
+<tr>
+<td width="50%" valign="top"><a href="skills/04-publish-grow/social-cover-studio/README.ar.md"><img src="docs/assets/skills/social-cover-studio-ar.svg" alt="Social Cover Studio" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip"><b>⬇ حمّل الـ ZIP</b></a> · <a href="skills/04-publish-grow/social-cover-studio/README.ar.md">اعرف أكتر ←</a></p></td>
+<td width="50%" valign="top"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/subscription"><img src="docs/assets/skills/coming-ar.svg" alt="Coming next" width="100%"></a></td>
+</tr>
+</table>
+
+</div>
 
 <!-- featured:end -->
 

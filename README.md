@@ -27,9 +27,12 @@
 
 <!-- featured:start -->
 
-<a href="skills/04-publish-grow/social-cover-studio/"><img src="docs/social-cover-studio/hero-en.svg" alt="Social Cover Studio — Branded covers and thumbnails from a single photo, exported for every platform." width="100%"></a>
-
-<p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip"><img src="docs/assets/btn-download-en.svg" alt="Download" height="48"></a>&nbsp;&nbsp;<a href="skills/04-publish-grow/social-cover-studio/"><img src="docs/assets/btn-more-en.svg" alt="How it works" height="48"></a></p>
+<table>
+<tr>
+<td width="50%" valign="top"><a href="skills/04-publish-grow/social-cover-studio/"><img src="docs/assets/skills/social-cover-studio-en.svg" alt="Social Cover Studio" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip"><b>⬇ Download ZIP</b></a> · <a href="skills/04-publish-grow/social-cover-studio/">How it works →</a></p></td>
+<td width="50%" valign="top"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/subscription"><img src="docs/assets/skills/coming-en.svg" alt="Coming next" width="100%"></a></td>
+</tr>
+</table>
 
 <!-- featured:end -->
 
