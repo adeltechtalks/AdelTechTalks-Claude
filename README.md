@@ -28,7 +28,7 @@
 
 <br>
 
-<img src="docs/social-cover-studio/before-after.png" alt="Social Cover Studio — before and after" width="100%">
+<img src="docs/social-cover-studio/templates-iphone-glacier.jpg" alt="Social Cover Studio templates" width="100%">
 
 ---
 
