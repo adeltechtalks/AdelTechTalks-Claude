@@ -51,7 +51,7 @@ def stage_page(stage, ar=False):
         lines = [
             f"# {stage['icon']} {stage['name']} · {stage['name_ar']}",
             "",
-            "[← كل الـ Skills](../../README.ar.md)",
+            '<p dir="rtl"><a href="../../README.ar.md">→ كل الـ Skills</a></p>',
             "",
             '<div dir="rtl">',
             "",

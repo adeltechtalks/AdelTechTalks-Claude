@@ -2,7 +2,7 @@
 
 # 🧭 Foundations · التأسيس
 
-[← كل الـ Skills](../../README.ar.md)
+<p dir="rtl"><a href="../../README.ar.md">→ كل الـ Skills</a></p>
 
 <div dir="rtl">
 

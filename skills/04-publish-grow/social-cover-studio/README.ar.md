@@ -4,7 +4,7 @@
 
 <img src="../../../docs/social-cover-studio/hero-ar.svg" alt="Social Cover Studio — صورة واحدة تدخل، و Cover بالـ Brand بتاعك لكل منصة يطلع" width="100%">
 
-[← كل الـ Skills](../../../README.ar.md) · [Publish & Grow](../README.ar.md)
+<p dir="rtl"><a href="../../../README.ar.md">→ كل الـ Skills</a> · <a href="../README.ar.md">Publish & Grow</a></p>
 
 <br>
 

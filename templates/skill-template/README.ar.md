@@ -9,7 +9,7 @@
 
 <img src="../../../docs/skill-name/hero-ar.svg" alt="Skill Name — [الوعد في سطر]" width="100%">
 
-[← كل الـ Skills](../../../README.ar.md) · [Stage](../README.ar.md)
+<p dir="rtl"><a href="../../../README.ar.md">→ كل الـ Skills</a> · <a href="../README.ar.md">Stage</a></p>
 
 <br>
 
