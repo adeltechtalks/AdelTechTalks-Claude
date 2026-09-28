@@ -1,0 +1,21 @@
+{
+  "name": "adeltechtalks-skills",
+  "owner": {
+    "name": "AdelTechTalks"
+  },
+  "metadata": {
+    "description": "Free Claude Skills for creators by AdelTechTalks: design, video editing, writing and web building.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "design-skills",
+      "description": "Design skills: branded covers and thumbnails for Instagram, TikTok, Facebook and YouTube.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/design/social-cover-studio"
+      ]
+    }
+  ]
+}

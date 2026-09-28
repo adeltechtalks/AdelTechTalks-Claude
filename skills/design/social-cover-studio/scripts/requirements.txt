@@ -1,0 +1,6 @@
+rembg
+onnxruntime
+pymatting
+opencv-python-headless
+cairosvg
+pillow

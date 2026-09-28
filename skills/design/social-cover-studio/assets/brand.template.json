@@ -1,0 +1,15 @@
+{
+  "handle": "YourHandle",
+  "dark": "#111318",
+  "dark_2": "#1E1B2E",
+  "primary": "#FF6A3D",
+  "highlight": "#FFD23F",
+  "light": "#FFFFFF",
+  "soft": "#F1F1F1",
+  "font_latin": "Montserrat",
+  "font_arabic": "Cairo",
+  "background_darkness": 0.5,
+  "clean": true,
+  "bg_blur": 7,
+  "primary_deep": "#C2410C"
+}
