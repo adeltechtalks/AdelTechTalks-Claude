@@ -738,7 +738,8 @@ def button(label, kind, lang, icon=None):
         sx = 18 if not rtl else W - 30
         parts.append("".join(f'<rect x="{sx + (k % 2) * 7}" y="{17 + (k // 2) * 7}" width="5" height="5" rx="1" fill="{fg}"/>' for k in range(4)))
     fam = "R" if f.startswith("readex") else "M"
-    parts.append(f'<text x="{cx:.1f}" y="30" text-anchor="middle" font-family="{fam}" font-weight="{600 if fam == "R" else 700}" font-size="16" fill="{fg}">{escape(label)}</text>')
+    dirattr = ' direction="rtl"' if fam == "R" else ""
+    parts.append(f'<text x="{cx:.1f}" y="30" text-anchor="middle"{dirattr} font-family="{fam}" font-weight="{600 if fam == "R" else 700}" font-size="16" fill="{fg}">{escape(label)}</text>')
     css = font_css(label, {"M", "R"})
     return svg(W, H, css, "".join(parts), label)
 
