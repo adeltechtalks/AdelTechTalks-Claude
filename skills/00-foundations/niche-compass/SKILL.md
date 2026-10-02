@@ -17,7 +17,7 @@ description: >-
 
 # Niche Compass
 
-> **Input:** a conversation with you → **Output:** `one-pager.md`, the reference every future idea is checked against.
+> **Input:** a conversation with you → **Output:** a designed **One Pager** (`one-pager.html` + PDF) with a **Start tomorrow** kit: 10 filtered ideas and a first-week plan. People need something they can hold and act on, not just notes.
 
 ## When to use
 
@@ -71,23 +71,34 @@ Show only:
 
 Ask: "Does this feel like you?" Adjust until it does. Then write the One Pager.
 
-### Step 3 — Write the One Pager
+### Step 3 — Build the One Pager
 
-Fill `assets/one-pager.template.md`. Rules:
+Write `one-pager.json` following `assets/one-pager.example.json` (same keys), then render it:
 
-- **Who / what / why / audience:** two to four lines each. Plain words.
-- **Pillars:** exactly 3. Each has a name, the question it answers, and the content types that live under it. No fixed weekday schedule unless they ask for one.
-- **Idea filter:** three yes/no questions (Is something being built or done with the core skill? Can the target audience use or benefit from it? Does it fit a pillar?) plus a table of 6–8 real examples from *their* world: some ❌ and the ✅ reframe of the same topic. Include the topics they were tempted by.
-- **Commitment window:** 3–6 months with no new topics. After that, new topics may enter only through the same angle.
-- **Money ladder:** free → small product → course/workshop → service → deals/affiliate, with rough price ranges, and mark the **one** to focus on first. Add a disclosure note (`#ad`) for paid or affiliate content.
-- **Bios:** Instagram (≤150 characters, name field ≤30), TikTok (≤80), X (≤160), LinkedIn headline (≤220), YouTube About. Count characters with code before presenting. Keep handle and existing style when they already have a profile.
-- **Parked:** what was postponed and when to revisit it, so it doesn't sneak back in.
+```bash
+python scripts/render_one_pager.py one-pager.json --out out
+```
+
+It writes `out/one-pager.html` (responsive, prints cleanly) and `out/one-pager.pdf` when Chromium is available. Standard library only. Rules for the content:
+
+- **`line`, `who`, `what`, `why`, `audience`:** two to four lines each. Plain words, their dialect.
+- **`pillars`:** exactly 3. Each has a name, the question it answers, and the content types under it. No fixed weekday schedule unless they ask for one.
+- **`filter`:** three yes/no questions plus 6–8 examples from *their* world: the topics they were tempted by as ❌, and the ✅ reframe of the same topic. `commit_months` is 3–6; `off_limits` lists what's parked.
+- **`starter`:** the part that makes it useful tomorrow.
+  - `ideas`: 10 concrete video titles, each passing the filter and tagged with its pillar, spread across all 3 pillars. Use real things from the interview (gear they own, projects they're doing).
+  - `week`: the first 3 posts, in order, starting with the easiest to film.
+- **`money`:** free → small product → course/workshop → service → deals/affiliate, rough prices, and `"focus": true` on the **one** to start with. Mention `#ad` for paid or affiliate posts in your message.
+- **`kdp`:** keep / drop / postpone (with when to revisit), so parked ideas don't sneak back in.
+- **`bios`:** Instagram (≤150, name ≤30), TikTok (≤80), X (≤160), LinkedIn headline (≤220). The page shows each length; fix anything over the limit. Keep their handle and existing bio style.
+- **`brand`** (optional): their colours if known; otherwise leave it out.
+
+Before rendering, show a short preview of the starter ideas and ask if any feel wrong.
 
 ### Step 4 — Deliver
 
-1. Save `one-pager.md` and present it.
-2. Tell them to add it to their Claude Project knowledge (or keep it and send it next time): every other skill reads it, and any new idea gets checked against the filter.
-3. Offer one next step: run the filter on 5 ideas they already have, or write the first video under Pillar 1.
+1. Share the HTML/PDF and keep `one-pager.json`.
+2. Tell them to add the JSON (or the PDF) to their Claude Project knowledge: every other skill reads it, and any new idea gets checked against the filter.
+3. Offer one next step: write the script for idea #1, or run the filter on ideas they already have.
 
 ## Quality checklist
 
@@ -96,6 +107,7 @@ Fill `assets/one-pager.template.md`. Rules:
 - [ ] The person sounds as experienced as they really are.
 - [ ] No phrase can be misread as a promise they don't make (jobs, guaranteed income).
 - [ ] Exactly 3 pillars, and the filter examples use their own tempting topics.
+- [ ] 10 starter ideas, all passing the filter, covering all 3 pillars, built from real things in their life.
 - [ ] Bio lengths were counted with code and are under each platform's limit.
 - [ ] Output is in the user's language and dialect; platform terms (`Reel`, `Hook`, `Bio`) stay in Latin letters.
 
@@ -103,7 +115,9 @@ Fill `assets/one-pager.template.md`. Rules:
 
 | File | Format | Notes |
 |:--|:--|:--|
-| `one-pager.md` | Markdown | The single source of truth for the brand. Re-run this skill to update it. |
+| `one-pager.json` | JSON | The source of truth. Re-run the skill to update it. |
+| `one-pager.html` | HTML | Designed page with the Start tomorrow kit; mobile-friendly and printable. |
+| `one-pager.pdf` | PDF | Same page, when Chromium is available. |
 
 ## Language
 

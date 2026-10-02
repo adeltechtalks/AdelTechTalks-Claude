@@ -16,7 +16,7 @@
 
 | You give | You get | Rounds | Works in |
 |:--|:--|:-:|:--|
-| ~15 minutes of answers | A **One Pager**: positioning, 3 pillars, an idea filter, a money plan and bios for every platform | **6** | Claude.ai · Claude Code |
+| ~15 minutes of answers | A designed **One Pager** (HTML + PDF): positioning, 3 pillars, an idea filter, 10 starter ideas, a first-week plan, a money plan and bios | **6** | Claude.ai · Claude Code |
 
 ---
 
@@ -35,7 +35,8 @@
 | Idea filter | Three yes/no questions + real examples from your world |
 | Money | A ladder from free to service, and the one step to focus on first |
 | Keep · Drop · Postpone | What you gave up, and when to look at it again |
-| Bios | Instagram, TikTok, X, LinkedIn and YouTube, counted to each limit |
+| Start tomorrow | 10 ideas that already pass the filter, and your first 3 posts in order |
+| Bios | Instagram, TikTok, X and LinkedIn, counted to each limit |
 
 ---
 
@@ -56,7 +57,7 @@ Have a profile already? Add a screenshot of it, and the skill keeps your bio's s
 
 ### 3 · Use it every day
 
-Add `one-pager.md` to your Claude Project's knowledge. Then, for any new idea:
+Add `one-pager.json` (or the PDF) to your Claude Project's knowledge. Then, for any new idea:
 
 ```
 Check this idea against my One Pager: [idea]
