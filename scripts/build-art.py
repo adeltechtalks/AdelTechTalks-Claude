@@ -969,6 +969,128 @@ def motion_steps(lang):
     return svg(W, H, font_css(text, {"M", "R", "J"}) + BASE_CSS + extra, "".join(parts), "How it works" if not rtl else "بتشتغل إزاي")
 
 
+def niche_hero(lang):
+    """Hero for niche-compass: title + the One Pager it produces, with filter verdicts."""
+    rtl = lang == "ar"
+    W, H, L = 1600, 680, 88
+    R = W - L
+    page = _img(ROOT / "docs" / "niche-compass" / "page.jpg")
+    pw, ph = 330, 550
+    px = L + 40 if rtl else R - pw - 40
+    py = (H - ph) // 2
+    parts = [f'<rect width="{W}" height="{H}" fill="{GRAPHITE}"/>',
+             f'<clipPath id="pg"><rect x="{px}" y="{py}" width="{pw}" height="{ph}" rx="20"/></clipPath>',
+             f'<g class="pop" style="{d(0.4)}"><image clip-path="url(#pg)" href="{page}" x="{px}" y="{py}" width="{pw}" height="{ph}" preserveAspectRatio="xMidYMin slice"/>'
+             f'<rect class="ring0" style="{d(1.4)}" x="{px - 6}" y="{py - 6}" width="{pw + 12}" height="{ph + 12}" rx="24" fill="none" stroke="{BLUE}" stroke-width="3" opacity="0"/></g>']
+    verdicts = ([("✕", "مراجعة جهاز لوحدها", "#FF6B57"), ("✓", "يدخل Pillar 1", MINT)] if rtl
+                else [("✕", "Off-topic idea", "#FF6B57"), ("✓", "Fits pillar 1", MINT)])
+    for k, (mark, label, col) in enumerate(verdicts):
+        lw = width_mixed(label, 17, 600) if rtl else width("montserrat-latin-600-normal.woff2", label, 17)
+        bw = lw + 70
+        bx = px + pw - 40 if rtl else px - bw + 40
+        by = py + 120 + k * 230
+        if rtl:
+            bx = px + pw - 40
+        tx = bx + bw - 22 if rtl else bx + 50
+        mx = bx + bw - 30 if rtl else bx + 26
+        ta = 'text-anchor="start" direction="rtl"' if rtl else ""
+        parts.append(f'<g class="pop" style="{d(1.0 + k * 0.5)}"><rect x="{bx}" y="{by}" width="{bw}" height="50" rx="25" fill="#FFFFFF" filter="drop-shadow(0 8px 18px rgba(0,0,0,.35))"/>'
+                     f'<text x="{mx}" y="{by + 33}" text-anchor="middle" font-family="M" font-weight="800" font-size="20" fill="{col}">{mark}</text>'
+                     f'<text x="{tx - (24 if rtl else 0)}" y="{by + 32}" {ta} font-family="{"R" if rtl else "M"}" font-weight="600" font-size="17" fill="{GRAPHITE}">{escape(label)}</text></g>')
+    X = R if rtl else L
+    anc = "end" if rtl else "start"
+    eyebrow = "FOUNDATIONS · TESTING"
+    parts.append(f'<text class="fi" style="{d(0.1)}" x="{X}" y="168" text-anchor="{anc}" font-family="J" font-weight="500" font-size="16" letter-spacing="2.5" fill="{MINT}">{eyebrow}</text>')
+    parts.append(f'<text class="fu" style="{d(0.2)}" x="{X}" y="262" text-anchor="{anc}" font-family="M" font-weight="800" font-size="80" letter-spacing="-2.2" fill="{WARM}">Niche</text>')
+    parts.append(f'<text class="fu" style="{d(0.35)}" x="{X}" y="350" text-anchor="{anc}" font-family="M" font-weight="800" font-size="80" letter-spacing="-2.2" fill="{BLUE}">Compass</text>')
+    if rtl:
+        subs = ["من «أنا تايه» لـ One Pager متصمّم،", "وأول 10 أفكار تبدأ بيها بكرة."]
+        for k, t in enumerate(subs):
+            parts.append(f'<text class="fu" style="{d(0.5 + k * 0.08)}" x="{X}" y="{418 + k * 40}" text-anchor="start" direction="rtl" font-family="R" font-weight="400" font-size="26" fill="#C9CED6">{escape(t)}</text>')
+    else:
+        subs = ["From “I feel lost” to a designed One Pager,", "and 10 ideas you can film tomorrow."]
+        for k, t in enumerate(subs):
+            parts.append(f'<text class="fu" style="{d(0.5 + k * 0.08)}" x="{X}" y="{416 + k * 38}" font-family="R" font-weight="400" font-size="26" fill="#C9CED6">{escape(t)}</text>')
+    chips = [("6", "rounds"), ("3", "pillars"), ("10", "ideas")]
+    jf, mf = "jetbrains-mono-latin-500-normal.woff2", "montserrat-latin-600-normal.woff2"
+    x, cyp = X, 512
+    for i, (a, b) in enumerate(chips):
+        rw, lw = width(jf, a, 15), width(mf, b, 16)
+        cw = 18 + rw + 10 + lw + 18
+        xs = x - cw if rtl else x
+        parts.append(f'<g class="fu" style="{d(0.7 + i * 0.08)}"><rect x="{xs:.1f}" y="{cyp}" width="{cw:.1f}" height="44" rx="22" fill="#1E2229" stroke="#2C313A"/>'
+                     f'<text x="{xs + 18:.1f}" y="{cyp + 28}" font-family="J" font-weight="500" font-size="15" fill="{BLUE}">{a}</text>'
+                     f'<text x="{xs + 18 + rw + 10:.1f}" y="{cyp + 28}" font-family="M" font-weight="600" font-size="16" fill="{WARM}">{escape(b)}</text></g>')
+        x = xs - 12 if rtl else xs + cw + 12
+    css = BASE_CSS + STEP_CSS + _cycle_css("ring0", 1, 3.9)
+    text = eyebrow + "NicheCompass" + "".join(subs) + "".join(a + b for a, b in chips) + "".join(m + l for m, l, _ in verdicts)
+    return svg(W, H, font_css(text, {"M", "R", "J"}) + css, "".join(parts), "Niche Compass")
+
+
+def niche_steps(lang):
+    rtl = lang == "ar"
+    W, H = 1600, 520
+    page = _img(ROOT / "docs" / "niche-compass" / "page.jpg")
+    if rtl:
+        titles = ["جاوب 6 جولات", "اختار 3 Pillars", "خد الـ One Pager"]
+        caps = [["انت مين، وبتحب إيه، والفلوس فين،", "وهتسيب إيه."], ["والباقي يتأجّل أو يتشال،", "عشان تركّز."], ["HTML و PDF، وفيه 10 أفكار", "وأول أسبوع."]]
+        chat = [("Q", "لو نوع فيديو واحد لمدة سنة؟"), ("A", "أبني بالـ AI"), ("Q", "بعد 5 سنين: بتاع إيه؟"), ("A", "بتاع البيزنس")]
+        pills = ["ابنيها بالـ AI", "المنتج جوّه الـ System", "الـ Machine من جوّه"]
+    else:
+        titles = ["Answer 6 rounds", "Pick 3 pillars", "Get your One Pager"]
+        caps = [["Who you are, what you love,", "where the money is, what you'll drop."], ["Everything else is parked", "or dropped, so you can focus."], ["HTML + PDF, with 10 ideas", "and your first week."]]
+        chat = [("Q", "One video type for a year?"), ("A", "Build things with AI"), ("Q", "In 5 years you're the ___ person?"), ("A", "The business one")]
+        pills = ["Build it with AI", "Products in the system", "Inside the machine"]
+
+    def art1(x, y):
+        px, pw = x + 34, CARD_W - 68
+        s = []
+        for k, (who, line) in enumerate(chat):
+            yy = y + 52 + k * 54
+            q = who == "Q"
+            lw = (width_mixed(line, 14, 600) if rtl else width("readex-pro-latin-500-normal.woff2", line, 14)) + 32
+            lw = min(lw, pw)
+            left = (not q) if not rtl else q
+            bx = px if left else px + pw - lw
+            fill, fg = (ICE, DEEP) if q else (BLUE, "#FFFFFF")
+            ta = f'x="{bx + lw - 16}" text-anchor="start" direction="rtl"' if rtl else f'x="{bx + 16}"'
+            s.append(f'<g class="fi" style="{d(0.9 + k * 0.45)}"><rect x="{bx}" y="{yy}" width="{lw}" height="38" rx="19" fill="{fill}"/>'
+                     f'<text {ta} y="{yy + 25}" font-family="R" font-weight="500" font-size="14" fill="{fg}">{escape(line)}</text></g>')
+        return "".join(s)
+
+    def art2(x, y):
+        px, pw = x + 46, CARD_W - 92
+        s = []
+        for k, label in enumerate(pills):
+            yy = y + 66 + k * 64
+            nx = px + pw - 26 if rtl else px + 26
+            tx, ta = (px + pw - 54, 'text-anchor="start" direction="rtl"') if rtl else (px + 54, "")
+            s.append(f'<g class="pop" style="{d(0.9 + k * 0.2)}"><rect x="{px}" y="{yy}" width="{pw}" height="50" rx="14" fill="#FFFFFF" stroke="{SOFT}" stroke-width="2"/>'
+                     f'<circle cx="{nx}" cy="{yy + 25}" r="14" fill="{BLUE}"/><text x="{nx}" y="{yy + 30}" text-anchor="middle" font-family="M" font-weight="800" font-size="14" fill="#FFFFFF">{k + 1}</text>'
+                     f'<text x="{tx}" y="{yy + 31}" {ta} font-family="{"R" if rtl else "M"}" font-weight="600" font-size="16" fill="{GRAPHITE}">{escape(label)}</text>'
+                     f'<rect class="sz{k}" style="{d(1.8 + k * 1.2)}" x="{px - 4}" y="{yy - 4}" width="{pw + 8}" height="58" rx="17" fill="none" stroke="{BLUE}" stroke-width="3" opacity="0"/></g>')
+        return "".join(s)
+
+    def art3(x, y):
+        cx = x + CARD_W / 2
+        tw, th = 150, 250
+        tx = cx - tw / 2
+        return (f'<clipPath id="op"><rect x="{tx}" y="{y + 30}" width="{tw}" height="{th}" rx="12"/></clipPath>'
+                f'<g class="pop" style="{d(0.9)}"><image clip-path="url(#op)" href="{page}" x="{tx}" y="{y + 30}" width="{tw}" height="{th}" preserveAspectRatio="xMidYMin slice"/>'
+                f'<rect x="{tx}" y="{y + 30}" width="{tw}" height="{th}" rx="12" fill="none" stroke="{SOFT}" stroke-width="2"/></g>'
+                f'<g class="pop" style="{d(1.5)}"><circle cx="{tx + tw}" cy="{y + 40}" r="18" fill="{MINT}"/>'
+                f'<path d="M{tx + tw - 8} {y + 40} l6 6 l10 -12" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>')
+
+    arts = [art1, art2, art3]
+    parts = [f'<rect width="{W}" height="{H}" fill="{WARM}"/>']
+    for i in range(3):
+        parts.append(_card(i, rtl, titles[i], caps[i], arts[i], 0.1 + i * 0.25))
+    parts.append(_arrows(rtl, 0.7))
+    extra = STEP_CSS + "".join(_cycle_css(f"sz{k}", 3, 3.6) for k in range(3))
+    text = "".join(titles) + "".join("".join(c) for c in caps) + "".join(l for _, l in chat) + "".join(pills) + "0123456789"
+    return svg(W, H, font_css(text, {"M", "R", "J"}) + BASE_CSS + extra, "".join(parts), "How it works" if not rtl else "بتشتغل إزاي")
+
+
 def build_main_page_art():
     import json
     catalog = json.loads((ROOT / "catalog.json").read_text(encoding="utf-8"))
@@ -1024,6 +1146,13 @@ if __name__ == "__main__":
             (mt / f"how-{lang}.svg").write_text(motion_steps(lang), encoding="utf-8")
             (mt / f"install-{lang}.svg").write_text(install_steps(lang, "motion-templates"), encoding="utf-8")
         print("built docs/motion-templates/ hero, how and install cards")
+    nc = ROOT / "docs" / "niche-compass"
+    if (nc / "page.jpg").exists():
+        for lang in ("en", "ar"):
+            (nc / f"hero-{lang}.svg").write_text(niche_hero(lang), encoding="utf-8")
+            (nc / f"how-{lang}.svg").write_text(niche_steps(lang), encoding="utf-8")
+            (nc / f"install-{lang}.svg").write_text(install_steps(lang, "niche-compass"), encoding="utf-8")
+        print("built docs/niche-compass/ hero, how and install cards")
     for lang in ("en", "ar"):
         target = ROOT / "docs" / "social-cover-studio" / f"hero-{lang}.svg"
         content = cover_hero(lang)

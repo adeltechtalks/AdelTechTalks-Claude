@@ -50,6 +50,26 @@
     "idea": "3 Paris pastries you can sell at home",
     "ok": true,
     "note": "Pillar 2"
+   },
+   {
+    "idea": "Review of a new stand mixer",
+    "ok": false,
+    "note": "Gear review on its own"
+   },
+   {
+    "idea": "I baked 40 cupcakes in 2 hours with this mixer",
+    "ok": true,
+    "note": "Pillar 3"
+   },
+   {
+    "idea": "Celebrity cake drama",
+    "ok": false,
+    "note": "News, nothing to bake or sell"
+   },
+   {
+    "idea": "Copying a viral cake for $12 in costs",
+    "ok": true,
+    "note": "Pillar 1"
    }
   ],
   "commit_months": 6,
@@ -64,6 +84,38 @@
    {
     "title": "The 3 mistakes that make cakes sink",
     "pillar": 1
+   },
+   {
+    "title": "My order day, start to finish",
+    "pillar": 3
+   },
+   {
+    "title": "A $5 cake that sells for $40",
+    "pillar": 2
+   },
+   {
+    "title": "Smooth buttercream in 60 seconds",
+    "pillar": 1
+   },
+   {
+    "title": "My first bad review, and what I changed",
+    "pillar": 3
+   },
+   {
+    "title": "Where to find your first 10 customers",
+    "pillar": 2
+   },
+   {
+    "title": "Fix a cracked cheesecake",
+    "pillar": 1
+   },
+   {
+    "title": "What I earned in my first month",
+    "pillar": 3
+   },
+   {
+    "title": "Packaging that makes people pay more",
+    "pillar": 2
    }
   ],
   "week": [

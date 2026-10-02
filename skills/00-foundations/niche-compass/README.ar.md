@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="../../../docs/assets/skills/niche-compass-ar.svg" alt="Niche Compass — من تايه لـ Brand في صفحة واحدة" width="100%">
+<img src="../../../docs/niche-compass/hero-ar.svg" alt="Niche Compass — من «أنا تايه» لـ One Pager متصمّم، وأول 10 أفكار تبدأ بيها بكرة" width="100%">
 
 <p dir="rtl"><a href="../../../README.ar.md">→ كل الـ Skills</a> · <a href="../README.ar.md">التأسيس</a></p>
 
@@ -16,50 +16,70 @@
 
 <br>
 
+> [!NOTE]
+> 🧪 **تجريبية.** شغالة من أولها لآخرها، جرّبها وقولنا لو حاجة باظت.
+
 | بتدّيه | بتاخد | الجولات | شغالة على |
 |:--|:--|:-:|:--|
-| حوالي 15 دقيقة إجابات | **One Pager** متصمّم (HTML و PDF): الـ Positioning، و3 Pillars، وفلتر للأفكار، و10 أفكار تبدأ بيها، وخطة أول أسبوع، والفلوس، والـ Bios | **6** | Claude.ai و Claude Code |
+| حوالي 15 دقيقة إجابات | **One Pager** متصمّم (HTML و PDF): الـ Pillars، وفلتر للأفكار، و10 أفكار تبدأ بيها، وأول أسبوع | **6** | Claude.ai و Claude Code |
 
 ---
 
 ## بتشتغل إزاي
 
-1. **Interview:** 6 جولات قصيرة: انت مين، وبتعرف إيه، وبتحب إيه، والناس محتاجة إيه، والفلوس فين، والحسم: هتسيب إيه.
-2. **اقتراح:** جملة Positioning واحدة، و3 Pillars، وجدول "هتكمّل / هتسيب / هتأجّل". وتعدّل لحد ما تحس إنه انت.
-3. **One Pager:** صفحة واحدة تحطها في الـ Claude Project بتاعك. أي فكرة جديدة تتقارن بالفلتر: يا بتاعتك، يا لأ.
+</div>
 
-**الـ One Pager فيه إيه**
+<img src="../../../docs/niche-compass/how-ar.svg" alt="1 جاوب 6 جولات · 2 اختار 3 Pillars · 3 خد الـ One Pager ومعاه 10 أفكار وأول أسبوع" width="100%">
+
+<div dir="rtl">
+
+---
+
+## الـ One Pager بتاعك
+
+</div>
+
+<img src="../../../docs/niche-compass/showcase.jpg" alt="مثال One Pager لصاحبة مخبز من البيت: الـ Positioning، والـ Pillars، وفلتر الأفكار، و10 أفكار، وأول أسبوع، والفلوس، والـ Bios" width="100%">
+
+<div dir="rtl">
+
+<sub>مثال اتعمل بالـ Skill لصاحبة مخبز من البيت (شخصية خيالية)، بألوان البراند بتاعتها.</sub>
 
 | الجزء | بيجاوب على |
 |:--|:--|
 | مين · بيعمل إيه · ليه · بيكلّم مين | انت مين، وبتعمل إيه، وموجود ليه، وجمهورك مين |
 | 3 Pillars | المواضيع الوحيدة اللي بتنشر عنها، وأنواع المحتوى في كل واحد |
-| فلتر الأفكار | 3 أسئلة أيوه أو لأ، وأمثلة حقيقية من مجالك |
-| الفلوس | سلّم من ببلاش لحد الخدمة، والدرجة اللي تركّز عليها الأول |
+| فلتر الأفكار | 3 أسئلة أيوه أو لأ، وأمثلة من مجالك: ✕ مش بتاعنا، و✓ نفس الموضوع بزاوية صح |
+| **ابدأ بكرة** | 10 أفكار عدّت على الفلتر، وأول 3 بوستات بالترتيب |
+| الفلوس | سلّم من ببلاش لحد الخدمة، والدرجة اللي تبدأ بيها |
 | هتكمّل · هتسيب · هتأجّل | اللي ضحّيت بيه، وإمتى ترجع تبص عليه |
-| ابدأ بكرة | 10 أفكار عدّت على الفلتر، وأول 3 بوستات بالترتيب |
 | الـ Bios | Instagram وTikTok وX وLinkedIn، محسوبة على حد كل منصة |
 
 ---
 
 ## ابدأ
 
-### 1 · التثبيت (مرة واحدة)
+### 1 · Install: مرة واحدة، 5 دقايق
 
-1. **[حمّل الـ ZIP](https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/niche-compass.zip)**.
-2. في Claude افتح **Customize → Skills**، ودوس **+**، وارفع الـ ZIP زي ما هو من غير ما تفكّه.
+</div>
+
+<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/niche-compass.zip"><img src="../../../docs/niche-compass/install-ar.svg" alt="1 حمّل الـ ZIP · 2 Settings → Capabilities وشغّل Code execution and file creation · 3 Customize → Skills → + وارفع الـ ZIP" width="100%"></a>
+
+<div dir="rtl">
+
+<sub>دوس على الصورة عشان تحمّل · Settings → Capabilities → **Code execution and file creation** · Customize → Skills → **+** → ارفع الـ ZIP زي ما هو.</sub>
 
 ### 2 · ابدأ الـ Interview
 
 </div>
 
 ```
-أنا تايه ومش عارف أعمل محتوى عن إيه. اعملي Interview وطلّعلي الـ One Pager بتاعي.
+استخدم niche-compass. أنا تايه ومش عارف أعمل محتوى عن إيه. اعملي Interview وطلّعلي الـ One Pager بتاعي.
 ```
 
 <div dir="rtl">
 
-عندك بروفايل؟ ابعت Screenshot منه، والـ Skill هيحافظ على شكل الـ Bio بتاعك.
+عندك بروفايل؟ ابعت Screenshot منه، والـ Skill هيحافظ على شكل الـ Bio بتاعك ويستخدم أرقامك كدليل.
 
 ### 3 · استخدمه كل يوم
 
@@ -73,15 +93,40 @@
 
 <div dir="rtl">
 
+| الملف | النوع | بيتستخدم في |
+|:--|:--|:--|
+| `one-pager.html` | صفحة ويب | تفتحها على الموبايل، أو تشاركها، أو تطبعها |
+| `one-pager.pdf` | PDF | تحتفظ بيه، أو تطبعه، أو تحطه في Project |
+| `one-pager.json` | بيانات | المرجع اللي كل الـ Skills التانية بتقرا منه |
+
 ---
 
 <details>
 <summary><b>نصايح</b></summary>
+
+<br>
 
 - جاوب بصراحة في الجولة السادسة. هناك الـ Niche بيبان.
 - الحاجة اللي بتحبها مش لازم تبقى Pillar. ممكن تفضل هواية، أو حساب جانبي، أو بيزنس بعدين.
 - شغّل الـ Skill تاني بعد أي تغيير كبير (شغل جديد، أو بلد جديد، أو بيزنس جديد) عشان تحدّث الصفحة.
 
 </details>
+
+<details>
+<summary><b>لو حاجة مش شغّالة</b></summary>
+
+<br>
+
+| المشكلة | الحل |
+|:--|:--|
+| Claude مش بيستخدم الـ Skill | قولها صريحة: *"استخدم niche-compass"* |
+| مفيش PDF | الـ PDF محتاج Chromium. افتح الـ HTML واطبعه PDF من المتصفح |
+| الرفع بيفشل | ارفع ملف الـ `.zip` نفسه، مش الفولدر بعد ما تفكّه |
+
+</details>
+
+---
+
+<sub>اتعمل بواسطة <b><a href="https://instagram.com/adeltechtalks">@AdelTechTalks</a></b> · Google Fonts (SIL OFL) · مرخّص تحت <a href="../../../LICENSE">MIT License</a></sub>
 
 </div>

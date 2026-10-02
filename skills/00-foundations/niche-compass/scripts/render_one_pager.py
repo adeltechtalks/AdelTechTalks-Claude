@@ -45,9 +45,10 @@ def render(d):
     f = d.get("filter", {})
     s = d.get("starter", {})
 
+    lq, rq = ("«", "»") if lang == "ar" else ("“", "”")
     pillars = "".join(
         f'<div class="pillar"><div class="num">{i}</div><h3>{e(p["name"])}</h3>'
-        f'<p class="q">«{e(p.get("question"))}»</p><p class="types">{e(p.get("types"))}</p></div>'
+        f'<p class="q">{lq}{e(p.get("question"))}{rq}</p><p class="types">{e(p.get("types"))}</p></div>'
         for i, p in enumerate(d.get("pillars", []), 1))
     questions = "".join(f"<li>{e(q)}</li>" for q in f.get("questions", []))
     examples = "".join(

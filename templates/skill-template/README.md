@@ -47,9 +47,9 @@
 
 ### 1 · Install — once, 5 minutes
 
-1. **[Download the ZIP](https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/skill-name.zip)**.
-2. In Claude, open **Settings → Capabilities** and turn on **Code execution and file creation**.
-3. Go to **Customize → Skills**, click **+**, and upload the ZIP as it is — **don't unzip it**.
+<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/skill-name.zip"><img src="../../../docs/skill-name/install-en.svg" alt="1 Download the ZIP · 2 Settings → Capabilities → turn on Code execution and file creation · 3 Customize → Skills → + and upload the ZIP" width="100%"></a>
+
+<sub>Tap the image to download · Settings → Capabilities → **Code execution and file creation** · Customize → Skills → **+** → upload the ZIP as it is.</sub>
 
 ### 2 · [One-time setup, if any]
 
