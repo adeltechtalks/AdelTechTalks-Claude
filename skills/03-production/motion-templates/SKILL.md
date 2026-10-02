@@ -1,9 +1,9 @@
 ---
 name: motion-templates
-description: Render motion-graphics reels (9:16) entirely from code — no editing software — in the user's own brand (colours, fonts, logo, name). Use whenever someone wants a reel/short/explainer/promo built as motion graphics, a video in one of the locked styles (A Morphing UI, E Orange Balls, F Kinetic Type, or the extras Paper Collage, Liquid Glass, Isometric 3D, Shape Morph, Editorial Depth), a style comparison (the same story in A/E/F), or SFX/music for a motion video. Triggers include "make a motion reel", "same as style A", "compare the three styles", "add SFX and music", "اعملي ريل موشن", "نفس ستايل A", "قارنلي التلات ستايلات", "حط SFX ومزيكا".
+description: Render motion-graphics reels (9:16) entirely from code — no editing software — in the user's own brand (colours, fonts, logo, name). Use whenever someone wants a reel/short/explainer/promo built as motion graphics, a video in one of the locked styles (A Morphing UI, E Orange Balls, F Kinetic Type, or the extras Paper Collage, Liquid Glass, Isometric 3D, Shape Morph, Editorial Depth), a style comparison (the same story in A/E/F), SFX/music for a motion video, finding free licence-safe images when the user has none, or learning a new motion from a reference clip. Triggers include "make a motion reel", "same as style A", "compare the three styles", "add SFX and music", "اعملي ريل موشن", "نفس ستايل A", "قارنلي التلات ستايلات", "حط SFX ومزيكا".
 ---
 
-# Motion Templates (v1.2)
+# Motion Templates (v1.3)
 
 Every video is a Python script that draws each frame with Pillow and pipes raw frames to ffmpeg. Sound (SFX + music) is synthesized in code, so everything is original and copyright-free. The look comes from the user's **brand file** — the templates were designed with the AdelTechTalks brand, which ships only as an example in `examples/adeltechtalks/`.
 
@@ -59,8 +59,19 @@ Paths live in `engine/config.py`: fonts in `engine/fonts/`, per-video inputs in 
    Target ≈ -16 LUFS, true peak ≤ -1 dBTP.
 6. Deliver a light 1080p file for phones (4K masters only when asked: render at K=2, downscale with lanczos, CRF 17).
 
+## No images? Find them
+When the user gives only a story (or is missing a visual), source the images yourself — don't stop to ask:
+
+1. Per scene, pick a concrete English search phrase for an **object or place** that carries the idea (helmet, brain model, laptop, city at night). Prefer objects over people.
+2. `python engine/assets.py search "<phrase>" [--portrait] [--source nasa]` → look at `work/assets/<phrase>/sheet.jpg` and choose the strongest, cleanest image.
+3. `python engine/assets.py get <n> --as <file> [--cutout] [--bw]` → saves into `input/` (cut-out = transparent PNG for the poster look; `--bw` for black & white) and logs the credit in `input/credits.json`.
+4. Use it in the template; deliver `python engine/assets.py credits` lines with the video (CC BY needs the credit in the caption).
+
+Sources: Openverse (CC0 / CC BY / CC BY-SA, commercial OK), Wikimedia Commons, NASA (public domain) — no key needed; Pexels / Pixabay / Unsplash when `PEXELS_API_KEY` / `PIXABAY_API_KEY` / `UNSPLASH_ACCESS_KEY` is set. In Claude.ai, an Unsplash or image-generation connector can supply images too — save them into `input/` the same way and note the source.
+**Never** use film or TV stills, celebrities or identifiable private people, brand logos, or anything copied from the reference video — only licence-safe results, with credits kept.
+
 ## Motion library
-Reusable moves live in `engine/moves.py` (catalogue: `references/motion-library.md`). Prefer an existing move before writing new animation code, and preview with `templates/lab/moves_demo.py`.
+Reusable moves live in `engine/moves.py`; `templates/lab/poster_demo.py` shows a full reel built from found images (Editorial Poster look) (catalogue: `references/motion-library.md`). Prefer an existing move before writing new animation code, and preview with `templates/lab/moves_demo.py`.
 
 ## Inputs the user supplies per video
 Story/script, plus optional files in `input/`: `photo.jpg` (portrait), `result/*.png` (result clip frames), `cutout.png`, `partner_1.png` / `partner_2.png`, `flag_1.jpg` / `flag_2.png`, plus `brand.json` and `logo.png` from Step 0. Anything missing is drawn as a labelled placeholder and listed in the console. `input/` is git-ignored — never commit partner logos or personal photos.

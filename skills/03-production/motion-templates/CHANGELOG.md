@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.3 — Finds its own images
+- `engine/assets.py`: search free, licence-safe images (Openverse, Wikimedia Commons, NASA; Pexels / Pixabay / Unsplash with a key), pick from a numbered sheet, save into `input/` with optional cut-out (`rembg`) and black & white, credits logged in `input/credits.json`.
+- New moves learned from a user reference (editorial poster reel): `ghost_words`, `marquee_word`, `push_in`, `split_reveal`.
+- `templates/lab/poster_demo.py`: a full reel made only from found images.
+
 ## v1.2 — Motion library
 - Renamed the skill to `motion-templates` (env vars are now `MT_*`).
 - `engine/moves.py`: reusable moves with one signature (`pop_in`, `slide_in`, `slide_out`, `spring_drop`, `slap_in`, `fold_open`).

@@ -108,6 +108,21 @@ Saw a motion you love? Send it to Claude — a video, GIF, screenshots or just a
 
 <sub>Only the motion is learned — never the reference's brand, footage, logos or music. What changed: [CHANGELOG.md](CHANGELOG.md).</sub>
 
+## No images? It finds them
+
+Give it just the story. For each scene Claude searches free, licence-safe libraries, picks the best image, cuts out the subject, makes it black & white if the look needs it — and keeps the credits for your caption.
+
+<img src="../../../docs/motion-templates/poster-demo.jpg" alt="A reel made only from images the skill found: helmet cut-out on a brand disc, earth from space, name to logo ending" width="100%">
+
+<sub>Helmet: “Astronaut Helmet” by Sam Howzit, CC BY 2.0 · Earth: NASA, public domain — found and credited by the skill.</sub>
+
+| Where it looks | Key needed? |
+|:--|:--|
+| Openverse (CC0 / CC BY / CC BY-SA) · Wikimedia Commons · NASA | No |
+| Pexels · Pixabay · Unsplash | A free API key |
+
+<sub>Never film stills, celebrities, brand logos or anything copied from a reference — only images it's allowed to use. Try it: `python engine/assets.py search "astronaut helmet"`.</sub>
+
 ---
 
 <details>

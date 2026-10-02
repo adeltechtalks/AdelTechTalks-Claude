@@ -149,6 +149,31 @@ python render.py --style a --out output/
 
 ---
 
+</div>
+
+<div dir="rtl">
+
+## مفيش صور؟ هي بتدوّر
+
+ادّيها القصة بس. لكل مشهد Claude بيدوّر في مكتبات صور مجانية ومسموح استخدامها، ويختار أحسن صورة، ويقص الـ Subject، ويخليها أبيض وأسود لو الستايل محتاج كده، ويحفظلك الـ Credits عشان الـ Caption.
+
+</div>
+
+<img src="../../../docs/motion-templates/poster-demo.jpg" alt="ريل معمول بصور الـ Skill لقتها بنفسها: خوذة مقصوصة على دايرة بلون الـ Brand، والأرض من الفضاء، وختام الاسم واللوجو" width="100%">
+
+<div dir="rtl">
+
+<sub>الخوذة: “Astronaut Helmet” لـ Sam Howzit، CC BY 2.0 · الأرض: NASA، Public domain. الـ Skill هي اللي لقتهم وسجّلت الـ Credits.</sub>
+
+| بتدوّر فين | محتاجة Key؟ |
+|:--|:--|
+| Openverse (CC0 / CC BY / CC BY-SA) · Wikimedia Commons · NASA | لأ |
+| Pexels · Pixabay · Unsplash | API key مجاني |
+
+<sub>عمرها ما بتستخدم لقطات أفلام أو مشاهير أو لوجوهات Brands أو أي حاجة من فيديو المرجع، بس الصور المسموح بيها. جرّب: `python engine/assets.py search "astronaut helmet"`.</sub>
+
+---
+
 <details>
 <summary><b>القواعد اللي الـ Templates ماشية عليها</b></summary>
 

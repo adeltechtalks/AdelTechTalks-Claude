@@ -14,6 +14,10 @@ Preview any of them with `python templates/lab/moves_demo.py render <name>`.
 | `spring_drop` | Falls in and settles with a small bounce | balls, stickers, badges | 0.90 s | v1.2 | Style E ball drop |
 | `slap_in` | Lands big and rotated, snaps flat | paper stickers, labels | 0.32 s | v1.2 | Paper Collage |
 | `fold_open` | Unfolds like a paper card | cards, photos, notes | 0.67 s | v1.2 | Paper Collage |
+| `ghost_words` | Words land one by one: big blurred ghost → sharp, small set-up line over a big punch line | hooks, quotes, punch lines | 0.26 s / word | v1.3 | Editorial poster reel (user reference) |
+| `marquee_word` | Giant word repeated edge to edge, rows sliding in opposite directions | behind a cut-out subject | continuous | v1.3 | Editorial poster reel (user reference) |
+| `push_in` | Slow camera push with a small drift; stack layers with different amounts for parallax | every poster scene | scene length | v1.3 | Editorial poster reel (user reference) |
+| `split_reveal` | The name parts in the middle and fades back; the logo pops into the gap | endings, brand reveal | 0.7 s | v1.3 | Editorial poster reel (user reference) |
 
 ## Signature moves inside the templates
 
@@ -28,6 +32,7 @@ Not extracted yet — reuse them by copying from the template, or extract one in
 | Glass panel (`glass()`) | Liquid Glass | Frosted, blurred rounded panel over a moving background |
 | Extruded objects (`extrude()`) | Isometric 3D | Flat sprites become 3D phones, laptops and tiles; one scene per bar |
 | One-shape morph | Shape Morph | One white shape morphs into icon after icon |
+| Poster scene | Lab: `poster_demo.py` | Colour disc + B&W cut-out + giant word behind + poster furniture (rules, dotted orbit, barcode), hard cuts on the bar |
 | Cut-out in front of words | Editorial Depth | Person cut-out in front of giant words, step cards, counters |
 
 ## Motion DNA template

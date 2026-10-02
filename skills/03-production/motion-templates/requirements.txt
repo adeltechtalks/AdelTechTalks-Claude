@@ -1,3 +1,6 @@
 numpy
 scipy
 pillow  # needs libraqm for Arabic shaping
+requests
+# optional: cut-outs for engine/assets.py --cutout
+# rembg[cpu]

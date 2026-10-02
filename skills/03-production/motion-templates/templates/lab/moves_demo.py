@@ -30,6 +30,14 @@ CARDS = {n: card(n) for n in NAMES}
 LABELS = {n: txt(MOVES[n][1], MONO(30), GRAPH) for n in NAMES}
 
 
+# moves that need more than a card: where to anchor them and what to draw
+DEMO = {
+    "ghost_words":  dict(at=(150, 820), lines=(("the thing you", 64), ("absorb", 150)), col=GRAPH),
+    "marquee_word": dict(at=(540, 960), word="IDEAS", col=SIG, alpha=0.5),
+    "split_reveal": dict(text=config.brand()["name"], size=64, col=GRAPH),
+}
+
+
 def render(t):
     f = Image.new("RGBA", (W, H), BG + (255,))
     i = min(int(t // SLOT), len(NAMES) - 1)
@@ -38,7 +46,9 @@ def render(t):
     t0 = i * SLOT + 0.25
     lab = LABELS[name]
     f.alpha_composite(lab, ((W - lab.width) // 2, 420))
-    fn(f, t, CARDS[name], W // 2, H // 2, t0)
+    opts = dict(DEMO.get(name, {}))
+    cx, cy = opts.pop("at", (W // 2, H // 2))
+    fn(f, t, CARDS[name], cx, cy, t0, **opts)
     return f.convert("RGB")
 
 
