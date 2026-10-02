@@ -276,6 +276,176 @@ def roll_in(f, t, spr, cx, cy, t0, dur=0.7, dist=520, side="left", turns=1.0):
     put(f, spr, x, cy, 1, min(1, p * 4), rot=sgn * 360 * turns * (1 - e))
 
 
+def word_turn(f, t, spr, cx, cy, t0, words=("ONE", "TWO"), size=150, col=(160, 220, 40), gap=0.45, rtl=False, font=None):
+    """Each new word slams in big at the centre; the previous one turns 90° and parks against its side."""
+    k = int((t - t0) // gap) if t >= t0 else -1
+    if k < 0:
+        return
+    k = min(k, len(words) - 1)
+    cur = _word(words[k], size, col, rtl, font)
+    p = prog(t, t0 + k * gap, 0.22)
+    e = ENTER(p)
+    im = cur if p >= 1 else motion_blur(cur, 1 + 10 * (1 - e), "x")
+    put(f, im, cx, cy, 1.35 - 0.35 * e, min(1, p * 4))
+    if k > 0:
+        prev = _word(words[k - 1], int(size * 0.55), col, rtl, font).rotate(90, expand=True)
+        side = 1 if rtl else -1
+        x = cx + side * (cur.width / 2 + prev.width / 2 + 6)
+        put(f, prev, x, cy - (prev.height - cur.height) / 2 * 0.0, 1, 1)
+
+
+def torn_mask(w, h, depth=26, seed=3):
+    """Alpha mask with ragged, torn-paper edges (white paper rim included by torn_photo)."""
+    import random
+    rnd = random.Random(seed)
+    pts = []
+    for side in range(4):
+        n = 26
+        for i in range(n):
+            a = i / n
+            jitter = rnd.uniform(0, depth)
+            if side == 0: pts.append((a * w, jitter))
+            elif side == 1: pts.append((w - jitter, a * h))
+            elif side == 2: pts.append((w - a * w, h - jitter))
+            else: pts.append((jitter, h - a * h))
+    m = Image.new("L", (w, h), 0)
+    ImageDraw.Draw(m).polygon(pts, fill=255)
+    return m
+
+
+def torn_photo(photo, w, h, rim=10, seed=3):
+    """A photo inside a torn paper hole: ragged edge + thin white paper rim + inner shadow."""
+    from PIL import ImageOps
+    ph = ImageOps.fit(photo.convert("RGB"), (w, h)).convert("RGBA")
+    outer = torn_mask(w, h, 30, seed)
+    inner = torn_mask(w, h, 30, seed).filter(ImageFilter.MinFilter(rim * 2 + 1))
+    paper = Image.new("RGBA", (w, h), (238, 236, 230, 255)); paper.putalpha(outer)
+    ph.putalpha(inner)
+    shade = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    shade.paste((0, 0, 0, 120), (0, 0), inner.filter(ImageFilter.GaussianBlur(14)).point(lambda v: 255 - v))
+    shade.putalpha(Image.composite(shade.split()[3], Image.new("L", (w, h), 0), inner))
+    paper.alpha_composite(ph); paper.alpha_composite(shade)
+    return paper
+
+
+def scribble_strike(f, t, spr, cx, cy, t0, width=700, col=(220, 30, 40), dur=0.45, dash=26, amp=14, thick=8, seed=5):
+    """A hand-drawn dashed line strikes through a word from left to right."""
+    import random
+    p = prog(t, t0, dur)
+    if p <= 0:
+        return
+    rnd = random.Random(seed)
+    d = ImageDraw.Draw(f, "RGBA")
+    x0 = cx - width / 2; n = int(width // dash)
+    ys = [cy + rnd.uniform(-amp, amp) - (i / n - 0.5) * amp * 2 for i in range(n + 1)]
+    for i in range(int(n * ENTER(p))):
+        if i % 2 == 0:
+            d.line((x0 + i * dash, ys[i], x0 + (i + 1) * dash, ys[i + 1]), fill=col + (255,), width=thick)
+
+
+def echo_rows(f, t, spr, cx, cy, t0, word="NOBODY", size=150, col=(255, 255, 255), rows=3, alpha=0.22, speed=90,
+              rtl=False, font=None):
+    """Rows of a repeated word, each fainter and offset, drifting sideways (a visual echo)."""
+    p = prog(t, t0, 0.3)
+    if p <= 0:
+        return
+    w = _word(word + " ", size, col, rtl, font)
+    W = f.width
+    for r in range(rows):
+        a = alpha * (1 - r * 0.25) * p
+        off = ((t - t0) * speed * (1 if r % 2 else -1) + r * w.width / 3) % w.width
+        x = off - w.width
+        im = w.filter(ImageFilter.GaussianBlur(r * 1.5)) if r else w
+        while x < W:
+            put(f, im, x + w.width / 2, cy + r * int(size * 0.95), 1, a)
+            x += w.width
+
+
+def glow_underline(f, t, spr, cx, cy, t0, width=420, col=(160, 230, 40), dur=0.4, thick=7):
+    """A hand-drawn underline that draws on with a soft glow."""
+    p = prog(t, t0, dur)
+    if p <= 0:
+        return
+    e = ENTER(p)
+    lay = Image.new("RGBA", f.size, (0, 0, 0, 0)); d = ImageDraw.Draw(lay)
+    pts = [(cx - width / 2 + width * i / 40, cy + 6 * math.sin(i / 40 * math.pi) - 4 * i / 40) for i in range(int(40 * e) + 1)]
+    if len(pts) > 1:
+        d.line(pts, fill=col + (255,), width=thick, joint="curve")
+        glow = lay.filter(ImageFilter.GaussianBlur(10))
+        f.alpha_composite(glow); f.alpha_composite(glow); f.alpha_composite(lay)
+
+
+def sunburst(f, t, spr, cx, cy, t0, rays=7, col=(240, 205, 20), r0=260, spin=0.35, width=0.32, grow=0.45):
+    """Thick rays rotating behind a disc (spr drawn in the centre if given)."""
+    p = prog(t, t0, grow)
+    if p <= 0:
+        return
+    e = ENTER(p)
+    R = 2600 * e
+    d = ImageDraw.Draw(f)
+    a0 = spin * (t - t0)
+    for k in range(rays):
+        a = a0 + k * 2 * math.pi / rays
+        d.polygon([(cx, cy), (cx + R * math.cos(a - width / 2), cy + R * math.sin(a - width / 2)),
+                   (cx + R * math.cos(a + width / 2), cy + R * math.sin(a + width / 2))], fill=col + (255,))
+    rr = r0 * e
+    d.ellipse((cx - rr, cy - rr, cx + rr, cy + rr), fill=col + (255,))
+    if spr is not None:
+        put(f, spr, cx, cy, e, min(1, p * 2))
+
+
+def clock_face(f, t, spr, cx, cy, t0, r=250, col=(240, 205, 20), ink=(60, 50, 10), speed=6.0, dur=0.4):
+    """A clock grows in and its hands race (time passing)."""
+    p = prog(t, t0, dur)
+    if p <= 0:
+        return
+    rr = r * ENTER(p)
+    d = ImageDraw.Draw(f)
+    d.ellipse((cx - rr, cy - rr, cx + rr, cy + rr), fill=col + (255,), outline=ink + (255,), width=6)
+    for k in range(12):
+        a = k * math.pi / 6
+        d.line((cx + rr * 0.82 * math.cos(a), cy + rr * 0.82 * math.sin(a), cx + rr * 0.92 * math.cos(a), cy + rr * 0.92 * math.sin(a)),
+               fill=ink + (255,), width=5)
+    am = (t - t0) * speed - math.pi / 2; ah = am / 12 - math.pi / 3
+    d.line((cx, cy, cx + rr * 0.75 * math.cos(am), cy + rr * 0.75 * math.sin(am)), fill=ink + (255,), width=8)
+    d.line((cx, cy, cx + rr * 0.5 * math.cos(ah), cy + rr * 0.5 * math.sin(ah)), fill=ink + (255,), width=12)
+    d.ellipse((cx - 12, cy - 12, cx + 12, cy + 12), fill=ink + (255,))
+
+
+def count_up(f, t, spr, cx, cy, t0, start=0, end=100, dur=0.8, size=220, col=(255, 255, 255), fmt="{}", font=None):
+    """A number rolls up to its value and lands with a tiny pop."""
+    p = prog(t, t0, dur)
+    if p <= 0:
+        return
+    v = int(start + (end - start) * ENTER(p))
+    im = _word(fmt.format(v), size, col, False, font)
+    s = 1.0 + 0.06 * math.sin(math.pi * min(1, max(0, (t - t0 - dur) / 0.2))) if t > t0 + dur else 1.0
+    put(f, im, cx, cy, s, min(1, p * 4))
+
+
+def fan_out(f, t, spr, cx, cy, t0, n=7, spread=70, dur=0.5, pivot=0.9):
+    """Copies of a sprite fan open around a pivot near their bottom (cards, notes, tickets)."""
+    p = prog(t, t0, dur)
+    if p <= 0:
+        return
+    e = ENTER(p)
+    for k in range(n):
+        a = (k - (n - 1) / 2) / max(1, (n - 1) / 2) * spread / 2 * e
+        im = spr.rotate(-a, Image.BICUBIC, expand=True)
+        # rotate around a point near the bottom of the sprite
+        dy = spr.height * (pivot - 0.5)
+        ox = dy * math.sin(math.radians(a)); oy = dy * (1 - math.cos(math.radians(a)))
+        put(f, im, cx + ox, cy + oy, 1, min(1, p * 3))
+
+
+def desaturate(im, amount):
+    """Fade an RGBA frame toward black & white (0 = colour, 1 = grey)."""
+    if amount <= 0:
+        return im
+    g = im.convert("L").convert("RGBA")
+    return Image.blend(im, g, min(1, amount))
+
+
 # name → (function, what it looks like, best for, length in seconds)
 MOVES = {
     "pop_in":      (pop_in,      "Scales 0.96 → 1.03 → 1.0 while fading in",     "headlines, CTA",               0.42),
@@ -293,4 +463,15 @@ MOVES = {
     "orbit_dots":  (orbit_dots,  "Orbit rings grow in, dots travel around",       "a central object or icon",     0.50),
     "roll_in":     (roll_in,     "Rolls in and stops, spin matches the distance", "balls, eyes, coins, wheels",   0.70),
 }
+MOVES.update({
+    "word_turn":   (word_turn,   "New word slams in; the previous one turns 90° and parks beside it", "numbers, two-word hooks", 0.45),
+    "scribble_strike": (scribble_strike, "Hand-drawn dashed line strikes through a word", "corrections, 'not this'", 0.45),
+    "echo_rows":   (echo_rows,   "Rows of a repeated word fading and drifting, like an echo", "dark backgrounds, emphasis", 0.30),
+    "glow_underline": (glow_underline, "Hand-drawn underline draws on with a glow", "the key phrase of a line", 0.40),
+    "sunburst":    (sunburst,    "Thick rays spin behind a disc", "a big idea, a reveal", 0.45),
+    "clock_face":  (clock_face,  "A clock grows in, hands race", "time passing, deadlines", 0.40),
+    "count_up":    (count_up,    "A number rolls up and lands with a pop", "years, prices, stats", 0.80),
+    "fan_out":     (fan_out,     "Copies fan open around a pivot", "cards, notes, tickets, cash", 0.50),
+})
+# helpers: torn_photo(photo, w, h) for a torn-paper hole · desaturate(frame, amount) · motion_blur(img, amount, axis)
 # transitions work on two whole frames: whip(f_out, f_in, p, direction) — see templates/core/style_h_studio_stage.py

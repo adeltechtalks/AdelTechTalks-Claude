@@ -22,6 +22,15 @@ Preview any of them with `python templates/lab/moves_demo.py render <name>`.
 | `orbit_dots` | Orbit rings grow in around a centre, dots travel on them (bigger on the near side) | a central object or icon | 0.5 s + loop | v1.5 | Studio stage reel (user reference) |
 | `roll_in` | Rolls in and stops; the spin matches the distance | balls, eyes, coins, bulbs | 0.7 s | v1.5 | Studio stage reel (user reference) |
 | `whip` *(transition)* | Both frames slide with a strong directional smear peaking mid-way | every cut in Style H | 0.26 s | v1.5 | Studio stage reel (user reference) |
+| `word_turn` | New word slams in; the previous one turns 90° and parks beside it | numbers, two-word hooks | 0.45 s / word | v1.6 | Doc collage reel (user reference) |
+| `scribble_strike` | Hand-drawn dashed line strikes through a word | corrections, "not this" | 0.45 s | v1.6 | Doc collage reel (user reference) |
+| `echo_rows` | Rows of a repeated word, fainter and drifting, like an echo | dark backgrounds, emphasis | continuous | v1.6 | Doc collage reel (user reference) |
+| `glow_underline` | Hand-drawn underline draws on with a glow | the key phrase | 0.4 s | v1.6 | Doc collage reel (user reference) |
+| `sunburst` | Thick rays spin behind a disc | a big idea, a reveal | 0.45 s + loop | v1.6 | Doc collage reel (user reference) |
+| `clock_face` | A clock grows in, hands race | time passing | 0.4 s + loop | v1.6 | Doc collage reel (user reference) |
+| `count_up` | A number rolls up and lands with a pop | years, prices, stats | 0.8 s | v1.6 | Doc collage reel (user reference) |
+| `fan_out` | Copies fan open around a pivot | cards, tickets, notes | 0.5 s | v1.6 | Doc collage reel (user reference) |
+| `torn_photo` *(helper)* | A photo in a torn-paper hole with a paper rim | collage on wood/paper | — | v1.6 | Doc collage reel (user reference) |
 | `split_reveal` | The name parts in the middle and fades back; the logo pops into the gap | endings, brand reveal | 0.7 s | v1.3 | Editorial poster reel (user reference) |
 
 ## Signature moves inside the templates

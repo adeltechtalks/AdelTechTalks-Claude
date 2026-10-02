@@ -46,11 +46,11 @@
 
 ---
 
-## الخمس ستايلات
+## السبع ستايلات
 
 </div>
 
-<img src="../../../docs/motion-templates/showcase.jpg" alt="لقطات من ستايلات A و E و F و G و H" width="100%">
+<img src="../../../docs/motion-templates/showcase.jpg" alt="لقطات من ستايلات A و E و F و G و H و I و J" width="100%">
 
 <div dir="rtl">
 
@@ -61,8 +61,10 @@
 | **F** | **Kinetic Type**: جملة على كل نص Bar بـ 128 BPM، بأشكال مختلفة | الأخبار اليومية والـ Hooks |
 | **G** | **Editorial Poster**: صور مقصوصة أبيض وأسود على دايرة بلون الـ Brand، وكلمة ضخمة بتعدّي من وراها، والكلام بيدخل كلمة كلمة، و Cuts على الـ Bar. مش محتاجة صور، هي بتجيبها | الأفكار والآراء والـ Quotes |
 | **H** | **Studio Stage**: أوبجكتس حقيقية على ستوديو أرضيته بلون الـ Brand، و Whip transitions، ومدارات، وكروت 3D بضل طويل. مش محتاجة صور، هي بتجيبها | الشرح وقصص «ليه الحاجة دي بتنجح» |
+| **I** | **Doc Collage**: مونتاج وثائقي، كلام بيخبط ويلف، والدنيا بتبقى أبيض وأسود، وسنة بتعدّ، وصورة مقطوعة على خشب، وكلام بيتردد، وشمس بتتحول ساعة. وفوقها Film grain | قصص البيزنس و«اليوم اللي قالوا فيه لأ» |
+| **J** | **Edit Compare**: الفيديو بتاعك وإنت بتتكلم في كارتين جنب بعض: «$5 Edit» خام، و«$100 Edit» فيه Punch-ins و B-roll بعناوين و Captions كلمة كلمة. وصوتك هو اللي بيقود الصوت | تعرض شغلك في المونتاج، قبل وبعد |
 
-<sub>صور ستايل G الـ Skill لقتها بنفسها: الخوذة “Astronaut Helmet” لـ Sam Howzit (CC BY 2.0)، ومجسّم المخ من rawpixel (CC0). ستايل H: التلفزيون لـ France1978 (CC BY-SA 2.0)، والخاتم لـ Gnilenkov Aleksey (CC BY 2.0)، واللمبة من rawpixel (CC0)، وقطعة الشطرنج لـ poppet with a camera (CC BY 2.0).</sub>
+<sub>صور ستايل G الـ Skill لقتها بنفسها: الخوذة “Astronaut Helmet” لـ Sam Howzit (CC BY 2.0)، ومجسّم المخ من rawpixel (CC0). ستايل H: التلفزيون لـ France1978 (CC BY-SA 2.0)، والخاتم لـ Gnilenkov Aleksey (CC BY 2.0)، واللمبة من rawpixel (CC0)، وقطعة الشطرنج لـ poppet with a camera (CC BY 2.0). ستايل I و J: التلال لـ • Sawtooth • (CC BY-SA 2.0)، والكرسي لـ John Beans (CC BY 2.0)، والمدينة لـ Maëlick (CC BY-SA 2.0)، والخشب لـ texturepalace (CC BY-SA 2.0)، والمايك من rawpixel (CC0).</sub>
 
 ستايلات إضافية جاهزة: Paper Collage و Liquid Glass و Isometric 3D و Shape Morph و Editorial Depth (`templates/extras/`).
 

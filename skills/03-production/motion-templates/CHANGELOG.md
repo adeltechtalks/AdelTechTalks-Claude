@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.6 — Styles I · Doc Collage and J · Edit Compare
+- `templates/core/style_i_doc_collage.py` + `sfx/sfx_style_i.py`: seven documentary scenes, camera punch on cuts, film grain.
+- `templates/core/style_j_edit_compare.py` + `sfx/sfx_style_j.py`: "$5 vs $100 edit" from `input/talk.mp4`; length follows the clip and `render.py` mixes its voice on top (music ducked under it).
+- New moves from two more user references: `word_turn`, `scribble_strike`, `echo_rows`, `glow_underline`, `sunburst`, `clock_face`, `count_up`, `fan_out`; helpers `torn_photo`, `desaturate`.
+- `endings.name_logo_follow(bg=None)` darkens the current frame instead of a flat background.
+
 ## v1.5 — Style H · Studio Stage
 - `templates/core/style_h_studio_stage.py`: eight scene looks (orbit, tiles, rise, tv, slab, card, pillar, drop) with whip-pan transitions; `sfx/sfx_style_h.py`; `render.py --style h`.
 - New moves learned from a second user reference: `focus_in`, `blur_rise`, `orbit_dots`, `roll_in`, plus the `whip` transition and `motion_blur`; `ghost_words(shadow=True)`.

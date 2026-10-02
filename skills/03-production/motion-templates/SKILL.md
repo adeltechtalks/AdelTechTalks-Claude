@@ -1,9 +1,9 @@
 ---
 name: motion-templates
-description: Render motion-graphics reels (9:16) entirely from code — no editing software — in the user's own brand (colours, fonts, logo, name). Use whenever someone wants a reel/short/explainer/promo built as motion graphics, a video in one of the locked styles (A Morphing UI, E Orange Balls, F Kinetic Type, G Editorial Poster, H Studio Stage, or the extras Paper Collage, Liquid Glass, Isometric 3D, Shape Morph, Editorial Depth), a style comparison (the same story in A/E/F), SFX/music for a motion video, finding free licence-safe images when the user has none, or learning a new motion from a reference clip. Triggers include "make a motion reel", "same as style A", "compare the three styles", "add SFX and music", "اعملي ريل موشن", "نفس ستايل A", "قارنلي التلات ستايلات", "حط SFX ومزيكا".
+description: Render motion-graphics reels (9:16) entirely from code — no editing software — in the user's own brand (colours, fonts, logo, name). Use whenever someone wants a reel/short/explainer/promo built as motion graphics, a video in one of the locked styles (A Morphing UI, E Orange Balls, F Kinetic Type, G Editorial Poster, H Studio Stage, I Doc Collage, J Edit Compare, or the extras Paper Collage, Liquid Glass, Isometric 3D, Shape Morph, Editorial Depth), a style comparison (the same story in A/E/F), SFX/music for a motion video, finding free licence-safe images when the user has none, or learning a new motion from a reference clip. Triggers include "make a motion reel", "same as style A", "compare the three styles", "add SFX and music", "اعملي ريل موشن", "نفس ستايل A", "قارنلي التلات ستايلات", "حط SFX ومزيكا".
 ---
 
-# Motion Templates (v1.5)
+# Motion Templates (v1.6)
 
 Every video is a Python script that draws each frame with Pillow and pipes raw frames to ffmpeg. Sound (SFX + music) is synthesized in code, so everything is original and copyright-free. The look comes from the user's **brand file** — the templates were designed with the AdelTechTalks brand, which ships only as an example in `examples/adeltechtalks/`.
 
@@ -28,6 +28,8 @@ Write `input/brand.json` from `brand.template.json`, show it back briefly, and t
 | **F** | Kinetic Type — one phrase per half-bar @128 BPM, varied layouts (big, box, strike, outline, counter) | `templates/core/style_f_kinetic_type.py` | daily news / hooks (easiest to automate) |
 | **G** | Editorial Poster — Swiss-poster scenes: B&W cut-out on a brand disc, giant word sliding behind, `ghost_words` landing one by one, hard cuts on the bar, name → logo ending. Images come from `engine/assets.py` when the user has none | `templates/core/style_g_editorial_poster.py` | ideas, opinions, quotes |
 | **H** | Studio Stage — real objects on a light studio set with a brand-coloured floor; `whip` transitions with motion smear, `orbit_dots`, `blur_rise`, `roll_in`, extruded 3D cards with long shadows, display words with soft shadows; shared name → logo → Follow ending | `templates/core/style_h_studio_stage.py` | explainers, "why it works" stories |
+| **I** | Doc Collage — documentary edit with camera punches on every cut and film grain: `word_turn`, an object dropped on a stool while the frame `desaturate`s, offer wall + `count_up`, `torn_photo` on wood + `scribble_strike`, `echo_rows` + `glow_underline`, `sunburst` → `clock_face`, `fan_out` | `templates/core/style_i_doc_collage.py` | business stories, turning points |
+| **J** | Edit Compare — the user's `input/talk.mp4` in two cards: raw "$5 Edit" vs "$100 Edit" with punch-ins, b-roll (`BROLL`) with glowing titles and word-by-word `CAPTIONS` (one big highlighted word). Length follows the clip; its voice leads the mix (music ducked) | `templates/core/style_j_edit_compare.py` | showing an edit, before/after |
 
 Extras (proven, not in the default set): `templates/extras/` — paper_collage_4k, liquid_glass, isometric_3d, shape_morph, editorial_depth.
 
@@ -50,7 +52,7 @@ Paths live in `engine/config.py`: fonts in `engine/fonts/`, per-video inputs in 
 3. Test frames: `python templates/core/style_a_morphing_ui.py test 3.6 12.6 29.5` → PNGs + contact sheet in `work/`. Check them before rendering.
 4. Whole reel in one command (test → render → SFX → music → mix → final 1080p mp4 in `output/`):
    ```
-   python render.py --style a --out output/      # a · e · f · g · h
+   python render.py --style a --out output/      # a · e · f · g · h · i · j
    ```
    Music timing defaults per style (drop = result reveal, end = ending section) can be overridden with `--drop` / `--end`.
 5. Step by step, if needed: `python <template> render` (silent mp4 in `work/`) · `python sfx/sfx_style_<x>.py` · `python engine/music_fast.py <dur> <drop_t> <end_t>`, then mix and mux:
@@ -76,7 +78,7 @@ Sources: Openverse (CC0 / CC BY / CC BY-SA, commercial OK), Wikimedia Commons, N
 Reusable moves live in `engine/moves.py`; `templates/lab/poster_demo.py` shows a full reel built from found images (Editorial Poster look) (catalogue: `references/motion-library.md`). Prefer an existing move before writing new animation code, and preview with `templates/lab/moves_demo.py`.
 
 ## Inputs the user supplies per video
-Story/script, plus optional files in `input/`: `photo.jpg` (portrait), `result/*.png` (result clip frames), `cutout.png`, `partner_1.png` / `partner_2.png`, `flag_1.jpg` / `flag_2.png`, plus `brand.json` and `logo.png` from Step 0. Anything missing is drawn as a labelled placeholder and listed in the console. `input/` is git-ignored — never commit partner logos or personal photos.
+Story/script, plus optional files in `input/`: `talk.mp4` (talking-head clip for style J — write `CAPTIONS` to match what is said), `photo.jpg` (portrait), `result/*.png` (result clip frames), `cutout.png`, `partner_1.png` / `partner_2.png`, `flag_1.jpg` / `flag_2.png`, plus `brand.json` and `logo.png` from Step 0. Anything missing is drawn as a labelled placeholder and listed in the console. `input/` is git-ignored — never commit partner logos or personal photos.
 
 ## Learn a new motion
 

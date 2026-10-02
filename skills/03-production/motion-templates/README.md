@@ -37,9 +37,9 @@ The templates were designed with the AdelTechTalks brand, which ships only as an
 
 ---
 
-## The 5 styles
+## The 7 styles
 
-<img src="../../../docs/motion-templates/showcase.jpg" alt="Frames from styles A, E, F, G and H" width="100%">
+<img src="../../../docs/motion-templates/showcase.jpg" alt="Frames from styles A, E, F, G, H, I and J" width="100%">
 
 | Code | Style | Best for |
 |:-:|:--|:--|
@@ -48,8 +48,10 @@ The templates were designed with the AdelTechTalks brand, which ships only as an
 | **F** | **Kinetic Type** — one phrase per half-bar at 128 BPM, varied layouts | Daily news and hooks |
 | **G** | **Editorial Poster** — B&W cut-outs on a brand disc, giant words sliding behind, words landing one by one, hard cuts on the bar. Needs no photos: it finds them | Ideas, opinions, quotes |
 | **H** | **Studio Stage** — real objects on a studio set with a brand-coloured floor, whip-pan transitions, orbit rings, 3D cards with long shadows. Needs no photos: it finds them | Explainers, "why it works" stories |
+| **I** | **Doc Collage** — documentary edit: words that slam and turn, the world fading to black & white, a rolling year, a torn photo on wood, echo words, a sunburst that becomes a clock. Film grain | Business stories, "the day they said no" |
+| **J** | **Edit Compare** — your talking-head clip side by side: a raw "$5 Edit" card and a "$100 Edit" card with punch-ins, b-roll titles and word-by-word captions. Your voice leads the mix | Showing your editing, before/after |
 
-<sub>Style G images found by the skill: helmet “Astronaut Helmet” by Sam Howzit (CC BY 2.0), brain model via rawpixel (CC0). Style H: TV by France1978 (CC BY-SA 2.0), ring by Gnilenkov Aleksey (CC BY 2.0), bulb via rawpixel (CC0), chess piece by poppet with a camera (CC BY 2.0).</sub>
+<sub>Style G images found by the skill: helmet “Astronaut Helmet” by Sam Howzit (CC BY 2.0), brain model via rawpixel (CC0). Style H: TV by France1978 (CC BY-SA 2.0), ring by Gnilenkov Aleksey (CC BY 2.0), bulb via rawpixel (CC0), chess piece by poppet with a camera (CC BY 2.0). Style I/J: hills by • Sawtooth • (CC BY-SA 2.0), stool by John Beans (CC BY 2.0), city by Maëlick (CC BY-SA 2.0), wood by texturepalace (CC BY-SA 2.0), microphone via rawpixel (CC0).</sub>
 
 Extras, ready to use: Paper Collage, Liquid Glass, Isometric 3D, Shape Morph, Editorial Depth (`templates/extras/`).
 

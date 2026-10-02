@@ -1,7 +1,7 @@
 """Shared endings. name_logo_follow: the name parts, the logo pops into the gap, a Follow button
 in the brand CTA colour is tapped → "Following", then the comment line lands word by word.
 
-    name_logo_follow(f, t, start, bg=(8, 8, 10), ink=(255, 255, 255))
+    name_logo_follow(f, t, start, bg=(8, 8, 10), ink=(255, 255, 255))   # bg=None darkens the frame already in f
     TIMES = offsets (from start) of the split, follow and tap — use them for SFX.
 """
 from PIL import Image
@@ -35,7 +35,11 @@ def _pill(label, fill, col, rtl):
 def name_logo_follow(f, t, start, bg=(8, 8, 10), ink=(255, 255, 255), muted=(200, 200, 204), cy=820):
     b = config.brand(); e = b["ending"]; rtl = b["language"].startswith("ar")
     W, H = f.size
-    f.paste(bg + (255,), (0, 0, W, H))
+    if bg is None:   # keep what's on screen, darkened (draw the last scene into f first)
+        f.alpha_composite(Image.new("RGBA", (W, H), (0, 0, 0, int(200 * min(1, (t - start) / 0.4)))))
+        bg = (30, 30, 32)
+    else:
+        f.paste(bg + (255,), (0, 0, W, H))
     split_reveal(f, t, _logo(ink), W // 2, cy, start + TIMES["split"], text=b["name"], size=84, col=ink)
     fa, ta = start + TIMES["follow"], start + TIMES["tap"]
     if t >= fa:
