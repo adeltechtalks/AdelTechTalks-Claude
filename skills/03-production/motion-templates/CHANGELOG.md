@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.7 — Smoother, faster words, sound variety
+- 60 fps for styles G–J (`MT_FPS`, `render.py --fps`); sub-pixel `plib.put` for scaled sprites; `plib.zoom_frame` (OpenCV when installed) for camera moves; a slow camera drift in H so no frame stands still; eased punches in I and punch-ins / b-roll cross-fades in J.
+- Words start on the cut and land every ~0.13 s (was up to 0.3 s late and 0.26 s apart).
+- `engine/sfx_library.py`: harvest SFX from reference videos (percussive split + hits on visual events + whooshes into cuts), Openverse CC0/CC BY downloads, import your own pack, audition sheet, reclassify.
+- `sfxlib.S` / `use_library`: each video draws a different SFX palette from the library + the CC0 starter pack (`sfx/starter/`, 17 sounds). `render.py --audio-only` swaps the sound without re-rendering.
+
 ## v1.6 — Styles I · Doc Collage and J · Edit Compare
 - `templates/core/style_i_doc_collage.py` + `sfx/sfx_style_i.py`: seven documentary scenes, camera punch on cuts, film grain.
 - `templates/core/style_j_edit_compare.py` + `sfx/sfx_style_j.py`: "$5 vs $100 edit" from `input/talk.mp4`; length follows the clip and `render.py` mixes its voice on top (music ducked under it).

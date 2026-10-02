@@ -159,6 +159,26 @@ python render.py --style a --out output/
 
 <div dir="rtl">
 
+## أصوات بتتغير في كل فيديو
+
+كل ريل بياخد مجموعة SFX خاصة بيه، عشان فيديوهاتك متبقاش كلها نفس الـ Clicks ونفس الـ Whooshes. الـ Skill جاية ومعاها 17 صوت CC0، وبتتعلم أصوات جديدة:
+
+| تكبّر المكتبة | الأمر |
+|:--|:--|
+| من ريل عاجبك: بتطلّع الـ Clicks والـ Hits والـ Whooshes اللي على الـ Cuts (مش المزيكا) | `python engine/sfx_library.py harvest reel.mp4` |
+| أصوات CC0 و CC BY مجانية، والـ Credits محفوظة | `python engine/sfx_library.py download "whoosh"` |
+| الـ SFX Pack بتاعك | `python engine/sfx_library.py import ~/my-sfx/` |
+| تسمع وتنضّف | `sheet` ← `audition.wav` · `remove <id>` |
+| نفس الصورة بأصوات جديدة | `python render.py --style h --audio-only` |
+
+<sub>الأصوات اللي بتطلع من ريلز ناس تانية بتفضل في المكتبة اللي على جهازك، لاستخدامك إنت بس، وعمرها ما بتترفع أو تتشحن مع الـ Skill.</sub>
+
+---
+
+</div>
+
+<div dir="rtl">
+
 ## مفيش صور؟ هي بتدوّر
 
 ادّيها القصة بس. لكل مشهد Claude بيدوّر في مكتبات صور مجانية ومسموح استخدامها، ويختار أحسن صورة، ويقص الـ Subject، ويخليها أبيض وأسود لو الستايل محتاج كده، ويحفظلك الـ Credits عشان الـ Caption.

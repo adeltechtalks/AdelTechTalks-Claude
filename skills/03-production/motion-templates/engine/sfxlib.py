@@ -95,3 +95,70 @@ def riser(sec=2.3):
         y = bp(seg, c * 0.6, min(SR / 2 - 100, c * 1.4)); out[s:s + blk] = y[-len(out[s:s + blk]):]
     return norm(out * t ** 2.2, 0.28)
 
+
+
+# ---------- library sounds (engine/sfx_library.py) ----------
+# MT_SFX = mix (default: library sound when it has that kind, else synth) · synth · library
+# MT_SFX_SEED picks the palette: every video gets a different set unless you repeat the seed.
+import json as _json, os as _os, random as _random
+from pathlib import Path as _Path
+
+MODE = _os.environ.get("MT_SFX", "mix")
+SEED = int(_os.environ.get("MT_SFX_SEED") or _random.randrange(10 ** 6))
+_LIB = _Path(_os.environ.get("MT_SFX_LIB", _Path(__file__).resolve().parents[1] / "sfx" / "library"))
+_STARTER = _Path(__file__).resolve().parents[1] / "sfx" / "starter"      # CC0 pack that ships with the skill
+_PAL, _TURN, _CACHE = None, {}, {}
+
+
+def _palette(per_kind=3):
+    """Up to `per_kind` library sounds per kind, chosen by SEED."""
+    global _PAL
+    if _PAL is None:
+        _PAL = {}
+        by = {}
+        if MODE != "synth":
+            for root in (_LIB, _STARTER):
+                ix = root / "index.json"
+                if ix.exists():
+                    for e in _json.loads(ix.read_text()):
+                        by.setdefault(e["kind"], []).append(dict(e, path=str(root / e["file"])))
+        if by:
+            r = _random.Random(SEED)
+            for k, es in by.items():
+                r.shuffle(es); _PAL[k] = es[:per_kind]
+            if _PAL:
+                print(f"[sfx] library palette seed {SEED} (MT_SFX_SEED={SEED} repeats it): "
+                      + ", ".join(f"{k} {len(v)}" for k, v in sorted(_PAL.items())))
+    return _PAL
+
+
+def _read(path):
+    if path not in _CACHE:
+        with wave.open(str(path)) as w:
+            x = np.frombuffer(w.readframes(w.getnframes()), np.int16).astype(np.float32) / 32768
+            if w.getframerate() != SR:
+                x = np.interp(np.arange(0, len(x), w.getframerate() / SR), np.arange(len(x)), x).astype(np.float32)
+        _CACHE[path] = x
+    return _CACHE[path]
+
+
+def S(kind, synth=None):
+    """A `kind` sound for this video: the next one from the library palette (round-robin, so repeats vary),
+    matched to the synthesized sound's level — or the synthesized sound when the library has none."""
+    pal = _palette().get(kind)
+    ref = synth() if synth else None
+    if not pal or MODE == "synth":
+        return ref
+    i = _TURN.get(kind, 0); _TURN[kind] = i + 1
+    x = _read(pal[i % len(pal)]["path"])
+    peak = float(np.abs(ref).max()) if ref is not None and len(ref) else 0.6
+    return x * (peak / (float(np.abs(x).max()) + 1e-9))
+
+
+def use_library(ns):
+    """Make a SFX script library-aware: rebinds whoosh/thud/tick/pop/riser (and ting if defined) in its globals."""
+    kinds = {"whoosh": "whoosh", "thud": "hit", "tick": "click", "pop": "pop", "riser": "riser", "ting": "ding"}
+    for name, kind in kinds.items():
+        fn = ns.get(name)
+        if callable(fn):
+            ns[name] = (lambda f, k: (lambda *a, **kw: S(k, lambda: f(*a, **kw))))(fn, kind)

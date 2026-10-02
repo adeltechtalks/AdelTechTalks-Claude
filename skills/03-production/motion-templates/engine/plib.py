@@ -148,16 +148,41 @@ def boil(key, amp=1.4):
     return r.uniform(-amp, amp), r.uniform(-amp, amp), r.uniform(-0.35, 0.35)
 
 def put(f, spr, cx, cy, scale=1, alpha=1, rot=0, key=None):
+    """Draw spr centred at (cx, cy). Scaled sprites are placed with sub-pixel precision in one
+    affine pass, so slow zooms and drifts glide instead of stepping a pixel at a time."""
     if alpha <= 0.01 or scale <= 0.01: return
     if key is not None:
         dx, dy, dr = boil(key); cx += dx; cy += dy; rot += dr
     im = spr
-    if abs(scale - 1) > 0.003:
-        im = im.resize((max(1, int(im.width * scale)), max(1, int(im.height * scale))), Image.BICUBIC)
     if abs(rot) > 0.05: im = im.rotate(rot, Image.BICUBIC, expand=True)
+    if abs(scale - 1) > 0.003 and scale > 0.6:
+        w2, h2 = im.width * scale, im.height * scale
+        x0, y0 = cx - w2 / 2, cy - h2 / 2
+        ix, iy = math.floor(x0), math.floor(y0)
+        fx, fy = x0 - ix, y0 - iy
+        im = im.transform((int(math.ceil(w2 + fx)) + 1, int(math.ceil(h2 + fy)) + 1), Image.AFFINE,
+                          (1 / scale, 0, -fx / scale, 0, 1 / scale, -fy / scale), Image.BICUBIC)
+    else:
+        if abs(scale - 1) > 0.003:
+            im = im.resize((max(1, int(im.width * scale)), max(1, int(im.height * scale))), Image.LANCZOS)
+        ix, iy = int(round(cx - im.width / 2)), int(round(cy - im.height / 2))
     if alpha < 0.999:
         im = im.copy(); im.putalpha(im.split()[3].point(lambda v: int(v * alpha)))
-    f.alpha_composite(im, (int(cx - im.width / 2), int(cy - im.height / 2)))
+    f.alpha_composite(im, (ix, iy))
+
+def zoom_frame(f, k, cx=None, cy=None):
+    """Whole-frame camera zoom by k around (cx, cy) with sub-pixel precision. Uses OpenCV when it is
+    installed (about 15x faster), else Pillow."""
+    if abs(k - 1) < 1e-4:
+        return f
+    w, h = f.size
+    cx = w / 2 if cx is None else cx; cy = h / 2 if cy is None else cy
+    try:
+        import cv2
+        m = np.float32([[k, 0, cx * (1 - k)], [0, k, cy * (1 - k)]])
+        return Image.fromarray(cv2.warpAffine(np.asarray(f), m, (w, h), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE))
+    except ImportError:
+        return f.transform((w, h), Image.AFFINE, (1 / k, 0, cx * (1 - 1 / k), 0, 1 / k, cy * (1 - 1 / k)), Image.BILINEAR)
 
 def slap(f, t, spr, cx, cy, t0, rot=0, key=None, t_peel=None):
     p = prog(t, t0, 0.32)

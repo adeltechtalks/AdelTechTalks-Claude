@@ -4,3 +4,5 @@ pillow  # needs libraqm for Arabic shaping
 requests
 # optional: cut-outs for engine/assets.py --cutout
 # rembg[cpu]
+# optional: ~15x faster camera moves (falls back to Pillow)
+# opencv-python-headless

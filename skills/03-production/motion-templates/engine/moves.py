@@ -108,8 +108,8 @@ def _word(w, size, col, rtl, font, shadow=False):
     return _CACHE[k]
 
 
-def ghost_words(f, t, spr, cx, cy, t0, lines=(("one idea", 64), ("at a time", 120)), gap=0.26,
-                col=(255, 255, 255), rtl=False, align="left", font=None, lead=0.78, shadow=False):
+def ghost_words(f, t, spr, cx, cy, t0, lines=(("one idea", 64), ("at a time", 120)), gap=0.14,
+                col=(255, 255, 255), rtl=False, align="left", font=None, lead=0.78, shadow=False, dur=0.24):
     """Words land one by one: each appears as a big blurred ghost, then sharpens into place.
 
     lines   [(text, size), …] — a small set-up line over a big punch line works best
@@ -133,13 +133,13 @@ def ghost_words(f, t, spr, cx, cy, t0, lines=(("one idea", 64), ("at a time", 12
         if rtl:
             xs = list(reversed(xs))
         for w, wx in zip(words, xs):
-            p = prog(t, t0 + k * gap, 0.34)
+            p = prog(t, t0 + k * gap, dur)
             k += 1
             if p <= 0:
                 continue
             e = ENTER(p)
-            im = w if p >= 1 else w.filter(ImageFilter.GaussianBlur(7 * (1 - e)))
-            put(f, im, wx + w.width / 2, y + w.height / 2, 1.12 - 0.12 * e, 0.25 + 0.75 * e)
+            im = w if p >= 1 else w.filter(ImageFilter.GaussianBlur(5 * (1 - e)))
+            put(f, im, wx + w.width / 2, y + w.height / 2, 1.08 - 0.08 * e, 0.35 + 0.65 * e)
         y += int(max(w.height for w in words) * lead)
 
 

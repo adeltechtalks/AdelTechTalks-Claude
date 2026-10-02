@@ -3,7 +3,7 @@ name: motion-templates
 description: Render motion-graphics reels (9:16) entirely from code — no editing software — in the user's own brand (colours, fonts, logo, name). Use whenever someone wants a reel/short/explainer/promo built as motion graphics, a video in one of the locked styles (A Morphing UI, E Orange Balls, F Kinetic Type, G Editorial Poster, H Studio Stage, I Doc Collage, J Edit Compare, or the extras Paper Collage, Liquid Glass, Isometric 3D, Shape Morph, Editorial Depth), a style comparison (the same story in A/E/F), SFX/music for a motion video, finding free licence-safe images when the user has none, or learning a new motion from a reference clip. Triggers include "make a motion reel", "same as style A", "compare the three styles", "add SFX and music", "اعملي ريل موشن", "نفس ستايل A", "قارنلي التلات ستايلات", "حط SFX ومزيكا".
 ---
 
-# Motion Templates (v1.6)
+# Motion Templates (v1.7)
 
 Every video is a Python script that draws each frame with Pillow and pipes raw frames to ffmpeg. Sound (SFX + music) is synthesized in code, so everything is original and copyright-free. The look comes from the user's **brand file** — the templates were designed with the AdelTechTalks brand, which ships only as an example in `examples/adeltechtalks/`.
 
@@ -79,6 +79,18 @@ Reusable moves live in `engine/moves.py`; `templates/lab/poster_demo.py` shows a
 
 ## Inputs the user supplies per video
 Story/script, plus optional files in `input/`: `talk.mp4` (talking-head clip for style J — write `CAPTIONS` to match what is said), `photo.jpg` (portrait), `result/*.png` (result clip frames), `cutout.png`, `partner_1.png` / `partner_2.png`, `flag_1.jpg` / `flag_2.png`, plus `brand.json` and `logo.png` from Step 0. Anything missing is drawn as a labelled placeholder and listed in the console. `input/` is git-ignored — never commit partner logos or personal photos.
+
+## Smooth, never waiting
+- Styles G–J render at **60 fps** (`MT_FPS` / `render.py --fps`); `plib.put` places scaled sprites with sub-pixel precision and `plib.zoom_frame` does whole-frame camera moves (OpenCV if installed, ~15× faster). No frame should stand still: give static scenes a slow drift.
+- Words start **on the cut** (≤ 0.08 s after it) and land one every ~0.13 s (`ghost_words` default 0.14 s, 0.24 s each). Never leave the viewer waiting for the text.
+- Punches, punch-ins and b-roll changes are eased (0.2–0.3 s), not jumps.
+
+## Sound variety — the SFX library
+Every video should not sound the same. `engine/sfx_library.py` keeps a local library (`sfx/library/`, git-ignored) next to the CC0 starter pack (`sfx/starter/`):
+- When the user shares a reference video, also run `python engine/sfx_library.py harvest <video>`: it splits the percussive sounds from the music, keeps the hits that land on a cut or a big move (the music's own beats are dropped), grabs the whoosh leading into each cut, trims and sorts them (click · pop · hit · whoosh · riser · ding · other). Then `sheet` → `sfx/library/audition.wav` + `sheet.png`; `remove` the bad ones.
+- `download "<words>" [--kind …]` adds CC0 / CC BY sounds from Openverse with their credits; `import <folder>` adds the user's own pack.
+- The style SFX scripts call `L.use_library(globals())`: each video draws a fresh palette (`MT_SFX_SEED` to repeat one, `MT_SFX=synth` for the built-in sounds only). `python render.py --style <x> --audio-only` re-does just the sound with a new palette.
+- Harvested sounds come from other people's videos: they stay in the user's local library for their own use — never commit or ship them.
 
 ## Learn a new motion
 

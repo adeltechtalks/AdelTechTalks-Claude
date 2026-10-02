@@ -39,6 +39,7 @@ EXAMPLE_BRAND_DIR = ROOT / "examples" / "adeltechtalks"
 INPUT_DIR = Path(os.environ.get("MT_INPUT_DIR", "input")).resolve()
 WORK_DIR = Path(os.environ.get("MT_WORK_DIR", "work")).resolve()
 OUT_DIR = Path(os.environ.get("MT_OUT_DIR", "output")).resolve()
+FPS = int(os.environ.get("MT_FPS", "60"))   # frame rate for styles G–J (A–F and the extras keep their own 30)
 
 for _d in (WORK_DIR, OUT_DIR):
     _d.mkdir(parents=True, exist_ok=True)

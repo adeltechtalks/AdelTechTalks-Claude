@@ -25,7 +25,8 @@ from engine.plib import CAIRO, MONT, READ, ENTER, MOVE, prog, put, txt
 from engine.moves import ghost_words, _word
 from engine.endings import TIMES as END_T, name_logo_follow
 
-W, H, FPS = 1080, 1920, 30
+W, H = 1080, 1920
+FPS = config.FPS          # 60 by default (MT_FPS), for smooth motion
 BPM = 128; BAR = 4 * 60 / BPM
 RTL = _BRAND["language"].startswith("ar")
 
@@ -39,6 +40,8 @@ else:
                 (9.0, 12.0, "and the story", "you tell"), (12.0, 15.0, "that's what", "matters")]
 BROLL = [(3.0, 6.0, "city.jpg", "Reels"), (9.0, 12.0, "hills.jpg", "Story")]   # (start, end, image, title)
 END_BARS = 2.0
+GAP = 0.1             # caption words: one every 0.1 s
+ZOOM_T = 0.28         # punch-in glides over this long instead of jumping
 
 TALK = config.INPUT_DIR / "talk.mp4"
 BIG = dict(cx=650, cy=980, w=640, h=1000, r=44)
@@ -64,7 +67,7 @@ def events():
     ev = [(b[0], "broll") for b in BROLL] + [(b[1], "broll_out") for b in BROLL]
     for s, e, small, big in CAPTIONS:
         n = len(small.split())
-        ev += [(s + k * 0.16, "word") for k in range(n)] + [(s + n * 0.16 + 0.05, "word_big")]
+        ev += [(s + k * GAP, "word") for k in range(n)] + [(s + n * GAP + 0.03, "word_big")]
     ev += [(END, "cut")] + [(END + END_T[k], k) for k in ("split", "follow", "tap")]
     return sorted(ev)
 
@@ -147,35 +150,54 @@ def title_glow(word):
     return L(("tg", word), make)
 
 
-def pro_content(t):
-    """The $100 side: punch-ins, b-roll with titles, captions."""
+XFADE = 0.16          # b-roll fades in/out over this long
+
+
+def broll_frame(t, br):
     w, h = BIG["w"], BIG["h"]
-    br = next((b for b in BROLL if b[0] <= t < b[1]), None)
-    if br:
-        src = L(("br", br[2]), lambda: config.input_image(br[2], (900, 1400), "a b-roll image (engine/assets.py get …)").convert("RGB"))
-        k = 1.08 + 0.10 * (t - br[0]) / (br[1] - br[0])
-        c = ImageOps.fit(src, (int(w * k), int(h * k))).crop(((int(w * k) - w) // 2, (int(h * k) - h) // 2,
-                                                              (int(w * k) - w) // 2 + w, (int(h * k) - h) // 2 + h)).convert("RGBA")
-        c.alpha_composite(Image.new("RGBA", (w, h), (0, 0, 0, 70)))
-        p = prog(t, br[0] + 0.1, 0.4)
-        if p > 0:
-            put(c, title_glow(br[3]), w // 2, 190 + 40 * (1 - ENTER(p)), 1.1 - 0.1 * ENTER(p), min(1, p * 2))
+    src = L(("br", br[2]), lambda: config.input_image(br[2], (900, 1400), "a b-roll image (engine/assets.py get …)").convert("RGB"))
+    k = 1.08 + 0.10 * (t - br[0]) / (br[1] - br[0])
+    c = ImageOps.fit(src, (int(w * k), int(h * k))).crop(((int(w * k) - w) // 2, (int(h * k) - h) // 2,
+                                                          (int(w * k) - w) // 2 + w, (int(h * k) - h) // 2 + h)).convert("RGBA")
+    c.alpha_composite(Image.new("RGBA", (w, h), (0, 0, 0, 70)))
+    p = prog(t, br[0] + 0.05, 0.35)
+    if p > 0:
+        put(c, title_glow(br[3]), w // 2, 190 + 40 * (1 - ENTER(p)), 1.1 - 0.1 * ENTER(p), min(1, p * 2))
+    return c
+
+
+def talk_frame(t):
+    w, h = BIG["w"], BIG["h"]
+    i = next((k for k, cp in enumerate(CAPTIONS) if cp[0] <= t < cp[1]), 0)
+    za, zb = (1.14, 1.0) if i % 2 == 0 else (1.0, 1.14)  # punch in/out on every caption, eased
+    q = MOVE(prog(t, CAPTIONS[i][0], ZOOM_T)) if i > 0 else 1
+    z = za + (zb - za) * q
+    src = talk(t)
+    sw, shh = src.size
+    c = src.crop((int(sw * (1 - 1 / z) / 2), int(shh * (1 - 1 / z) / 3), int(sw * (1 - 1 / z) / 2 + sw / z),
+                  int(shh * (1 - 1 / z) / 3 + shh / z)))
+    return ImageOps.fit(c, (w, h)).convert("RGBA")
+
+
+def pro_content(t):
+    """The $100 side: eased punch-ins, b-roll with titles (cross-faded), captions."""
+    w, h = BIG["w"], BIG["h"]
+    br = next((b for b in BROLL if b[0] - XFADE <= t < b[1] + XFADE), None)
+    if br is None:
+        c = talk_frame(t)
     else:
-        i = next((k for k, cp in enumerate(CAPTIONS) if cp[0] <= t < cp[1]), 0)
-        z = 1.0 if i % 2 == 0 else 1.14                      # jump-cut punch-in on every other caption
-        src = talk(t)
-        sw, shh = src.size
-        c = src.crop((int(sw * (1 - 1 / z) / 2), int(shh * (1 - 1 / z) / 3), int(sw * (1 - 1 / z) / 2 + sw / z),
-                      int(shh * (1 - 1 / z) / 3 + shh / z)))
-        c = ImageOps.fit(c, (w, h)).convert("RGBA")
+        mix = min(prog(t, br[0] - XFADE, XFADE), 1 - prog(t, br[1], XFADE))
+        c = broll_frame(min(max(t, br[0]), br[1] - 1e-3), br)
+        if mix < 1:
+            c = Image.blend(talk_frame(t), c, MOVE(max(0, mix)))
     cap = next((cp for cp in CAPTIONS if cp[0] <= t < cp[1]), None)
     if cap:
         s, e, small, big = cap
         n = len(small.split())
-        ghost_words(c, t, None, w // 2, h - 330, s, lines=((small, 50),), col=WHITE, rtl=RTL, align="center", gap=0.16,
+        ghost_words(c, t, None, w // 2, h - 330, s, lines=((small, 50),), col=WHITE, rtl=RTL, align="center", gap=GAP,
                     shadow=True)
-        ghost_words(c, t, None, w // 2, h - 260, s + n * 0.16 + 0.05, lines=((big, 104),), col=ACC, rtl=RTL,
-                    align="center", gap=0.16, shadow=True)
+        ghost_words(c, t, None, w // 2, h - 260, s + n * GAP + 0.03, lines=((big, 104),), col=ACC, rtl=RTL,
+                    align="center", gap=GAP, shadow=True)
     return c
 
 

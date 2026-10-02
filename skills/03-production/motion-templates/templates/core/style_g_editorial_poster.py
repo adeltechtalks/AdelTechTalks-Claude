@@ -25,7 +25,8 @@ from engine.plib import MONO, fit, put, txt
 from engine.moves import ghost_words, marquee_word, push_in
 from engine.endings import TIMES as END_T, name_logo_follow
 
-W, H, FPS = 1080, 1920, 30
+W, H = 1080, 1920
+FPS = config.FPS          # 60 by default (MT_FPS), for smooth motion
 BPM = 128; BAR = 4 * 60 / BPM
 RTL = _BRAND["language"].startswith("ar")
 
@@ -57,8 +58,8 @@ for sc in SCENES:
     STARTS.append(_t); _t += sc[0] * BAR
 END = _t
 DUR = round(END + END_BARS * BAR, 3)
-WORD_GAP = 0.26        # ghost_words: one word every 0.26 s
-WORDS_AT = 0.3         # words start this long after each cut
+WORD_GAP = 0.13        # ghost_words: one word every 0.13 s
+WORDS_AT = 0.06        # words start right on the cut
 
 
 def events():

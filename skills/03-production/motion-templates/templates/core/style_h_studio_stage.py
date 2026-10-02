@@ -20,11 +20,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # skill root, so t
 from engine import config
 _BRAND = config.brand()
 from PIL import Image, ImageDraw, ImageFilter, ImageOps
-from engine.plib import MOVE, _FONTS, fit, font, prog, put
+from engine.plib import MOVE, _FONTS, fit, font, prog, put, zoom_frame
 from engine.moves import _spring, blur_rise, focus_in, ghost_words, orbit_dots, roll_in, whip
 from engine.endings import TIMES as END_T, name_logo_follow
 
-W, H, FPS = 1080, 1920, 30
+W, H = 1080, 1920
+FPS = config.FPS          # 60 by default (MT_FPS), for smooth motion
 BPM = 128; BAR = 4 * 60 / BPM
 RTL = _BRAND["language"].startswith("ar")
 
@@ -58,8 +59,10 @@ TILES = ["tv.png", "gem.png", "bulb.png", "knight.png"]
 DUOTONE = ((70, 22, 30), (255, 208, 200))   # warm tint for black & white cut-outs …
 DUOTONE_FOR = {"brain.png"}                 # … listed here (others keep their own tones)
 TV_SCREEN = (0.33, 0.61)                    # screen centre inside tv.png (fractions) — adjust for another TV
+DRIFT = 0.03                                # camera creeps in 3% over each scene
 WHIP = 0.13                                 # half-length of a whip transition (s)
-WORDS_AT = 0.25
+WORDS_AT = 0.05
+WORD_GAP = 0.13
 
 STARTS = []
 _t = 0.0
@@ -80,7 +83,7 @@ def events():
         k = 0
         for text, size, _c in words:
             for _ in text.split():
-                ev.append((s + WORDS_AT + 0.25 + k * 0.22, "word_big" if size >= 110 else "word")); k += 1
+                ev.append((s + WORDS_AT + k * WORD_GAP, "word_big" if size >= 110 else "word")); k += 1
     ev += [(END + END_T[k], k) for k in ("split", "follow", "tap")]
     return sorted(ev)
 
@@ -164,10 +167,10 @@ def tile(size, fill, depth=22, r=34):
     return L(("tile", size, fill, depth), make)
 
 
-def say(f, t, s, words, top, x=None, align=None, gap=0.22, shadow=True, lead=0.8):
+def say(f, t, s, words, top, x=None, align=None, gap=WORD_GAP, shadow=True, lead=0.8):
     """Each (text, size, colour) line lands word by word; lines follow one another."""
     x = x if x is not None else ((W - 90) if RTL else 90)
-    t0 = s + WORDS_AT + 0.25; y = top
+    t0 = s + WORDS_AT; y = top
     for text, size, ck in words:
         ghost_words(f, t, None, x, y, t0, lines=((text, size),), col=C[ck], rtl=RTL, align=align or "left",
                     gap=gap, shadow=shadow and size >= 100)
@@ -252,18 +255,18 @@ def card(f, t, s, d, words):
     f.alpha_composite(studio())
     tl = tile(520, SIG, depth=26)
     focus_in(f, t, tl, W // 2 + 110, 930, s, dur=0.35, scale=1.08, blur=6)
-    ghost_words(f, t, None, W // 2 + 170, 790, s + 0.5, lines=((words[0][0], words[0][1]), (words[1][0], words[1][1])),
-                col=C[words[0][2]], rtl=RTL, align="center", gap=0.2, lead=1.1)
+    ghost_words(f, t, None, W // 2 + 170, 790, s + 0.2, lines=((words[0][0], words[0][1]), (words[1][0], words[1][1])),
+                col=C[words[0][2]], rtl=RTL, align="center", gap=WORD_GAP, lead=1.1)
     roll_in(f, t, drop_shadow(obj(OBJECTS["card"], h=270), 14, (10, 18), 80), W // 2 - 180, 900, s + 0.3, dist=600, turns=0.6)
-    say(f, t, s, words[2:], 1300, x=W // 2, align="center")
+    say(f, t, s + 0.35, words[2:], 1300, x=W // 2, align="center")
 
 
 def pillar(f, t, s, d, words):
     f.alpha_composite(studio(floor=True))
     big = words[-1]
-    ghost_words(f, t, None, W // 2, 760, s + 0.5, lines=((big[0], big[1]),), col=C[big[2]], rtl=RTL, align="center",
+    ghost_words(f, t, None, W // 2, 760, s + 0.22, lines=((big[0], big[1]),), col=C[big[2]], rtl=RTL, align="center",
                 shadow=True)
-    ghost_words(f, t, None, W // 2, 660, s + 0.3, lines=((words[0][0], words[0][1]),), col=C[words[0][2]], rtl=RTL, align="center")
+    ghost_words(f, t, None, W // 2, 660, s + 0.06, lines=((words[0][0], words[0][1]),), col=C[words[0][2]], rtl=RTL, align="center")
     col = column()
     p = prog(t, s + 0.1, 0.5)
     lift = 700 * (1 - _spring(p, 9, 7)) if p > 0 else 900
@@ -287,7 +290,8 @@ def scene(i, t):
     f = Image.new("RGBA", (W, H), PAPER + (255,))
     bars, look, words, _d = SCENES[i]
     LOOKS[look](f, t, STARTS[i], bars * BAR, words)
-    return f
+    k = 1 + DRIFT * MOVE(prog(t, STARTS[i], bars * BAR))     # slow camera drift: no frame stands still
+    return zoom_frame(f, k, W / 2, H * 0.45)
 
 
 def render(t):

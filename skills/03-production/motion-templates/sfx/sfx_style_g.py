@@ -25,6 +25,7 @@ def snap():  # hard cut: short bright noise burst over a low thump
     body = thud(70, 0.16)[:n]
     return norm(burst, 0.5) + norm(np.pad(body, (0, n - len(body))), 0.5)
 
+L.use_library(globals())   # library sounds where we have them (engine/sfx_library.py), synth otherwise
 add2(0.0, whoosh(0.35, 500, 5000), 0.5)
 for t, kind in G.events():
     if kind == "cut": add2(t - 0.12, whoosh(0.14, 1500, 9000), 0.35); add2(t, snap(), 0.9)

@@ -21,12 +21,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # skill root, so t
 from engine import config
 _BRAND = config.brand()
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageOps
-from engine.plib import CAIRO, ENTER, MONO, fit, grain_layer, prog, put, rrect, txt
+from engine.plib import CAIRO, ENTER, MONO, fit, grain_layer, prog, put, rrect, txt, zoom_frame
 from engine.moves import (blur_rise, clock_face, count_up, desaturate, echo_rows, fan_out, focus_in, ghost_words,
                           glow_underline, marquee_word, push_in, scribble_strike, sunburst, torn_photo, word_turn)
 from engine.endings import TIMES as END_T, name_logo_follow
 
-W, H, FPS = 1080, 1920, 30
+W, H = 1080, 1920
+FPS = config.FPS          # 60 by default (MT_FPS), for smooth motion
 BPM = 128; BAR = 4 * 60 / BPM
 RTL = _BRAND["language"].startswith("ar")
 
@@ -51,7 +52,7 @@ else:
              ticket="NO")
 SCENES = [(1.5, "turn"), (2.0, "stool"), (1.5, "offer"), (2.0, "torn"), (1.5, "echo"), (2.0, "sun"), (1.5, "fan")]
 END_BARS = 2.0
-PUNCH = 0.16          # camera punch on every cut (s)
+PUNCH = 0.22          # eased camera punch on every cut (s)
 
 STARTS = []
 _t = 0.0
@@ -66,12 +67,12 @@ def events():
     ev = [(s, "cut") for s in STARTS[1:]] + [(END, "cut")]
     st = dict(zip([l for _b, l in SCENES], STARTS))
     ev += [(st["turn"] + k * TURN_GAP, "slam") for k in range(3)]
-    ev += [(st["stool"] + 0.2, "drop"), (st["stool"] + BAR, "word_big"), (st["stool"] + BAR + 0.3, "slam")]
-    ev += [(st["offer"] + 0.2, "whoosh"), (st["offer"] + 1.4, "pop")]
-    ev += [(st["torn"] + 0.1, "rip"), (st["torn"] + 1.2, "slam"), (st["torn"] + 1.7, "scribble")]
-    ev += [(st["echo"] + 0.3, "word"), (st["echo"] + 1.0, "glow")]
-    ev += [(st["sun"] + 0.05, "whoosh"), (st["sun"] + 0.6, "word"), (st["sun"] + 2.5, "tick")]
-    ev += [(st["fan"] + 0.7, "fan")]
+    ev += [(st["stool"] + 0.2, "drop"), (st["stool"] + BAR - 0.15, "word_big"), (st["stool"] + BAR + 0.05, "slam")]
+    ev += [(st["offer"] + 0.15, "whoosh"), (st["offer"] + 1.0, "pop")]
+    ev += [(st["torn"] + 0.05, "rip"), (st["torn"] + 0.4, "slam"), (st["torn"] + 0.85, "scribble")]
+    ev += [(st["echo"] + 0.08, "word"), (st["echo"] + 0.55, "glow")]
+    ev += [(st["sun"] + 0.05, "whoosh"), (st["sun"] + 0.25, "word"), (st["sun"] + 2.4, "tick")]
+    ev += [(st["fan"] + 0.4, "fan")]
     ev += [(END + END_T[k], k) for k in ("split", "follow", "tap")]
     return sorted(ev)
 
@@ -128,7 +129,7 @@ def vignette(col):
     return L(("vig", col), make)
 
 
-def say(f, t, t0, lines, col, top, x=None, align="center", gap=0.2, shadow=False):
+def say(f, t, t0, lines, col, top, x=None, align="center", gap=0.13, shadow=False):
     ghost_words(f, t, None, W // 2 if x is None else x, top, t0, lines=lines, col=col, rtl=RTL, align=align, gap=gap,
                 shadow=shadow)
 
@@ -154,7 +155,7 @@ def stool(f, t, s, d):
     gray = prog(t, s + BAR - 0.2, 0.35)
     if gray > 0:
         f.paste(desaturate(f, gray), (0, 0))
-    say(f, t, s + BAR, S["said"], CTA, 300, shadow=True, gap=0.3)
+    say(f, t, s + BAR - 0.15, S["said"], CTA, 300, shadow=True, gap=0.2)
 
 
 def offer(f, t, s, d):
@@ -165,7 +166,7 @@ def offer(f, t, s, d):
     if p > 0:
         e = ENTER(p)
         put(f, gem.rotate(-25 + 25 * e, Image.BICUBIC, expand=True), -200 + (W // 2 + 200) * e, 1000 - 200 * math.sin(math.pi * e) * 0.4, 1, min(1, p * 3))
-    count_up(f, t, None, W // 2, 520, s + 0.4, start=S["year"] - 40, end=S["year"], dur=0.9, size=230, col=WHITE)
+    count_up(f, t, None, W // 2, 520, s + 0.1, start=S["year"] - 40, end=S["year"], dur=0.9, size=230, col=WHITE)
 
 
 def torn(f, t, s, d):
@@ -173,25 +174,25 @@ def torn(f, t, s, d):
     hole = L("hole", lambda: torn_photo(img("city.jpg", "a city or subject photo"), 720, 900))
     p = prog(t, s, 0.35)
     push_in(f, t, hole, W // 2 + 60, 1180, s, dur=d, amount=0.12, drift=-20)
-    say(f, t, s + 0.6, S["torn"][:1], WHITE, 560, x=(W - 90) if RTL else 90, align="left")
-    say(f, t, s + 1.2, S["torn"][1:2], WHITE, 640, shadow=True)
-    scribble_strike(f, t, None, W // 2, 770, s + 1.7, width=760, col=CTA, thick=13)
-    say(f, t, s + 2.1, S["torn"][2:], HL, 860, x=(W - 90) if RTL else 90, align="left")
+    say(f, t, s + 0.12, S["torn"][:1], WHITE, 560, x=(W - 90) if RTL else 90, align="left")
+    say(f, t, s + 0.4, S["torn"][1:2], WHITE, 640, shadow=True)
+    scribble_strike(f, t, None, W // 2, 770, s + 0.85, width=760, col=CTA, thick=13)
+    say(f, t, s + 1.1, S["torn"][2:], HL, 860, x=(W - 90) if RTL else 90, align="left")
 
 
 def echo(f, t, s, d):
     f.paste(BLACK + (255,), (0, 0, W, H))
     echo_rows(f, t, None, 0, 260, s, word=S["echo_word"], size=170, col=WHITE, rows=3, alpha=0.2, rtl=RTL)
     echo_rows(f, t, None, 0, 1180, s + 0.1, word=S["echo_word"], size=170, col=WHITE, rows=3, alpha=0.2, rtl=RTL, speed=-90)
-    say(f, t, s + 0.3, ((S["echo_line"], 80),), WHITE, 870, gap=0.12)
-    glow_underline(f, t, None, W // 2, 1000, s + 1.0, width=520, col=ACC)
+    say(f, t, s + 0.08, ((S["echo_line"], 80),), WHITE, 870, gap=0.1)
+    glow_underline(f, t, None, W // 2, 1000, s + 0.55, width=520, col=ACC)
 
 
 def sun(f, t, s, d):
     f.paste(BLACK + (255,), (0, 0, W, H))
     sunburst(f, t, None, W // 2, 960, s, col=HL, r0=290)
     if t < s + 2.4:
-        say(f, t, s + 0.6, S["sun"], SIG, 860, gap=0.22)
+        say(f, t, s + 0.25, S["sun"], SIG, 860)
     else:
         clock_face(f, t, None, W // 2, 960, s + 2.4, r=300, col=HL, ink=INK)
 
@@ -204,8 +205,8 @@ def fan(f, t, s, d):
         w_ = txt(S["ticket"], (CAIRO if RTL else MONO)(150), INK, rtl=RTL); tk.alpha_composite(w_, ((330 - w_.width) // 2, 200 - w_.height // 2 + 40))
         tk.alpha_composite(txt(_BRAND["name"].upper()[:14], MONO(22), INK), (40, 450))
         return tk
-    say(f, t, s + 0.2, S["ask"], WHITE, 380, gap=0.2)
-    fan_out(f, t, shadowed(L("ticket", ticket), 16, (8, 16), 120), W // 2, 1300, s + 0.7, n=7, spread=90)
+    say(f, t, s + 0.05, S["ask"], WHITE, 380)
+    fan_out(f, t, shadowed(L("ticket", ticket), 16, (8, 16), 120), W // 2, 1300, s + 0.4, n=7, spread=90)
 
 
 LOOKS = {"turn": turn, "stool": stool, "offer": offer, "torn": torn, "echo": echo, "sun": sun, "fan": fan}
@@ -220,9 +221,7 @@ def render(t):
         i = max(k for k, s in enumerate(STARTS) if s <= t)
         LOOKS[SCENES[i][1]](f, t, STARTS[i], SCENES[i][0] * BAR)
         if i > 0 and t - STARTS[i] < PUNCH:                      # camera punch on the cut
-            k = 1 + 0.07 * (1 - (t - STARTS[i]) / PUNCH)
-            big = f.resize((int(W * k), int(H * k)), Image.BILINEAR)
-            f = big.crop(((big.width - W) // 2, (big.height - H) // 2, (big.width - W) // 2 + W, (big.height - H) // 2 + H))
+            f = zoom_frame(f, 1 + 0.05 * (1 - ENTER((t - STARTS[i]) / PUNCH)))
     f.alpha_composite(GRAIN[int(t * 12) % 3])
     return f.convert("RGB")
 

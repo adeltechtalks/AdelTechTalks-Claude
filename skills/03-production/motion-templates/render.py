@@ -63,6 +63,9 @@ def main():
     ap.add_argument("--drop", type=float, default=None, help="override the music drop time (seconds)")
     ap.add_argument("--end", type=float, default=None, help="override the music ending time (seconds)")
     ap.add_argument("--skip-test", action="store_true", help="skip the test frames")
+    ap.add_argument("--audio-only", action="store_true",
+                    help="keep the rendered picture, redo SFX + music + mix (e.g. a new SFX palette: MT_SFX_SEED=…)")
+    ap.add_argument("--fps", type=int, default=None, help="frame rate for styles G–J (default 60)")
     args = ap.parse_args()
 
     ffmpeg = os.environ.get("FFMPEG") or shutil.which("ffmpeg")
@@ -77,6 +80,9 @@ def main():
         env["MT_INPUT_DIR"] = str(Path(args.input).resolve())
     if args.brand:
         env["MT_BRAND"] = str(Path(args.brand).resolve())
+    if args.fps:
+        env["MT_FPS"] = str(args.fps)
+    env.setdefault("MT_SFX_SEED", str(__import__("random").randrange(10 ** 6)))   # same palette for every SFX step
     env["PATH"] = str(Path(ffmpeg).parent) + os.pathsep + env.get("PATH", "")
     os.environ.update(env)
 
@@ -95,10 +101,13 @@ def main():
     print(f"Brand: {config.brand()['name']}")
     print(f"Style {s['name']} · {s['dur']}s · music drop {drop}s, ending {end}s\nwork → {work}\nout  → {out}")
 
-    if not args.skip_test:
+    if args.audio_only and not (work / s["video"]).exists():
+        sys.exit(f"--audio-only needs a rendered {work / s['video']} — run without it first")
+    if not args.skip_test and not args.audio_only:
         run("Test frames", [py, ROOT / s["template"], "test", *s["test_t"]], env)
         print(f"  contact sheet: {work / s['test']}")
-    run("Render video (silent)", [py, ROOT / s["template"], "render"], env)
+    if not args.audio_only:
+        run("Render video (silent)", [py, ROOT / s["template"], "render"], env)
     run("SFX", [py, ROOT / s["sfx"]], env)
     run("Music", [py, ROOT / "engine/music_fast.py", s["dur"], drop, end], env)
 
@@ -113,7 +122,7 @@ def main():
     final = out / f"style_{args.style}_final.mp4"
     run("Mux → final 1080p mp4", [ffmpeg, "-y", "-loglevel", "error", "-i", work / s["video"], "-i", mix, "-map", "0:v", "-map", "1:a",
                                   "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", final], env)
-    print(f"\n✅ Done: {final}")
+    print(f"\n✅ Done: {final}\n   SFX palette seed {env['MT_SFX_SEED']} — another palette: python render.py --style {args.style} --audio-only")
 
 
 if __name__ == "__main__":

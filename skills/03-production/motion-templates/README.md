@@ -114,6 +114,22 @@ Saw a motion you love? Send it to Claude — a video, GIF, screenshots or just a
 
 <sub>Only the motion is learned — never the reference's brand, footage, logos or music. What changed: [CHANGELOG.md](CHANGELOG.md).</sub>
 
+## Sounds that change every video
+
+Every reel draws its own SFX palette, so your videos don't all click and whoosh the same way. The skill ships with 17 CC0 sounds and learns more:
+
+| Grow the library | Command |
+|:--|:--|
+| From a reel you like: pulls out the clicks, hits and whooshes on its cuts (not the music) | `python engine/sfx_library.py harvest reel.mp4` |
+| Free CC0 / CC BY sounds, credits kept | `python engine/sfx_library.py download "whoosh"` |
+| Your own SFX pack | `python engine/sfx_library.py import ~/my-sfx/` |
+| Listen and clean up | `sheet` → `audition.wav` · `remove <id>` |
+| Same picture, new sounds | `python render.py --style h --audio-only` |
+
+<sub>Sounds pulled from other people's reels stay in your local library for your own use — they're never uploaded or shipped.</sub>
+
+---
+
 ## No images? It finds them
 
 Give it just the story. For each scene Claude searches free, licence-safe libraries, picks the best image, cuts out the subject, makes it black & white if the look needs it — and keeps the credits for your caption.
