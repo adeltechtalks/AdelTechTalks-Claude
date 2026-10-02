@@ -20,7 +20,7 @@
 
 <table>
 <tr>
-<td width="50%" valign="top"><a href="03-production/adeltechtalks-motion-templates/README.ar.md"><img src="../docs/assets/skills/adeltechtalks-motion-templates-ar.svg" alt="Motion Templates" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/adeltechtalks-motion-templates.zip"><img src="../docs/assets/btn-download-ar.svg" alt="Download ZIP" height="40"></a>&nbsp;<a href="03-production/adeltechtalks-motion-templates/README.ar.md"><img src="../docs/assets/btn-more-ar.svg" alt="How it works" height="40"></a></p></td>
+<td width="50%" valign="top"><a href="03-production/motion-templates/README.ar.md"><img src="../docs/assets/skills/motion-templates-ar.svg" alt="Motion Templates" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/motion-templates.zip"><img src="../docs/assets/btn-download-ar.svg" alt="Download ZIP" height="40"></a>&nbsp;<a href="03-production/motion-templates/README.ar.md"><img src="../docs/assets/btn-more-ar.svg" alt="How it works" height="40"></a></p></td>
 <td width="50%" valign="top"><a href="04-publish-grow/social-cover-studio/README.ar.md"><img src="../docs/assets/skills/social-cover-studio-ar.svg" alt="Social Cover Studio" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip"><img src="../docs/assets/btn-download-ar.svg" alt="Download ZIP" height="40"></a>&nbsp;<a href="04-publish-grow/social-cover-studio/README.ar.md"><img src="../docs/assets/btn-more-ar.svg" alt="How it works" height="40"></a></p></td>
 </tr>
 </table>
@@ -84,7 +84,7 @@
 <td valign="top">
 
 <div dir="rtl" align="right">
-🧪 <a href="03-production/adeltechtalks-motion-templates/README.ar.md"><b>Motion Templates</b></a> <sub>· Step 09 · Free · تجريبية</sub><br><sub>ريلز Motion graphics (9:16) معمولة بالكود بالـ Brand بتاعك: 3 ستايلات، و SFX ومزيكا أصلية، وأمر واحد يطلّعلك mp4 جاهز.</sub><br><br>
+🧪 <a href="03-production/motion-templates/README.ar.md"><b>Motion Templates</b></a> <sub>· Step 09 · Free · تجريبية</sub><br><sub>ريلز Motion graphics (9:16) معمولة بالكود بالـ Brand بتاعك: 3 ستايلات، و SFX ومزيكا أصلية، وأمر واحد يطلّعلك mp4 جاهز.</sub><br><br>
 🔒 <b>Footage Ingest</b> <sub>· Step 08 · Pro · قريباً</sub><br><sub>Project folder وتسمية الملفات والـ Backup من كل الأجهزة.</sub><br><br>
 🔒 <b>Edit Plan</b> <sub>· Step 09 · Pro · قريباً</sub><br><sub>Editor brief لقطة بلقطة: القص، والكلام على الشاشة، والـ Motion، والـ SFX، والـ B-roll.</sub><br><br>
 ⏳ <b>Captions</b> <sub>· Step 09 · Free · قريباً</sub><br><sub>Captions و Subtitles مظبوطة بأي لغة.</sub>

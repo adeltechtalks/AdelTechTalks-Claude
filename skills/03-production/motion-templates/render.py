@@ -56,13 +56,13 @@ def main():
         sys.exit("ffmpeg not found — install it or set FFMPEG=/path/to/ffmpeg")
 
     env = dict(os.environ)
-    env["ATC_OUT_DIR"] = str(Path(args.out).resolve())
+    env["MT_OUT_DIR"] = str(Path(args.out).resolve())
     if args.work:
-        env["ATC_WORK_DIR"] = str(Path(args.work).resolve())
+        env["MT_WORK_DIR"] = str(Path(args.work).resolve())
     if args.input:
-        env["ATC_INPUT_DIR"] = str(Path(args.input).resolve())
+        env["MT_INPUT_DIR"] = str(Path(args.input).resolve())
     if args.brand:
-        env["ATC_BRAND"] = str(Path(args.brand).resolve())
+        env["MT_BRAND"] = str(Path(args.brand).resolve())
     env["PATH"] = str(Path(ffmpeg).parent) + os.pathsep + env.get("PATH", "")
     os.environ.update(env)
 

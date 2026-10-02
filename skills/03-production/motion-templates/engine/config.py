@@ -3,11 +3,11 @@
 Every script imports its paths from here — nothing is hardcoded to a machine.
 Folders can be moved with environment variables:
 
-    ATC_FONTS_DIR   fonts downloaded by engine/fetch_fonts.sh   (default: engine/fonts)
-    ATC_INPUT_DIR   per-video inputs: photos, result frames, logos (default: ./input)
-    ATC_WORK_DIR    test frames, silent renders, sfx and music   (default: ./work)
-    ATC_OUT_DIR     final videos                                  (default: ./output)
-    ATC_BRAND       brand file                                    (default: input/brand.json)
+    MT_FONTS_DIR   fonts downloaded by engine/fetch_fonts.sh   (default: engine/fonts)
+    MT_INPUT_DIR   per-video inputs: photos, result frames, logos (default: ./input)
+    MT_WORK_DIR    test frames, silent renders, sfx and music   (default: ./work)
+    MT_OUT_DIR     final videos                                  (default: ./output)
+    MT_BRAND       brand file                                    (default: input/brand.json)
 
 Brand: colours, fonts, logo, name and the ending text come from input/brand.json
 (+ input/<logo>). Without one, the example brand in examples/adeltechtalks/ is used
@@ -33,12 +33,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 ENGINE_DIR = ROOT / "engine"
-FONTS_DIR = Path(os.environ.get("ATC_FONTS_DIR", ENGINE_DIR / "fonts")).resolve()
+FONTS_DIR = Path(os.environ.get("MT_FONTS_DIR", ENGINE_DIR / "fonts")).resolve()
 ASSETS_DIR = ROOT / "assets"
 EXAMPLE_BRAND_DIR = ROOT / "examples" / "adeltechtalks"
-INPUT_DIR = Path(os.environ.get("ATC_INPUT_DIR", "input")).resolve()
-WORK_DIR = Path(os.environ.get("ATC_WORK_DIR", "work")).resolve()
-OUT_DIR = Path(os.environ.get("ATC_OUT_DIR", "output")).resolve()
+INPUT_DIR = Path(os.environ.get("MT_INPUT_DIR", "input")).resolve()
+WORK_DIR = Path(os.environ.get("MT_WORK_DIR", "work")).resolve()
+OUT_DIR = Path(os.environ.get("MT_OUT_DIR", "output")).resolve()
 
 for _d in (WORK_DIR, OUT_DIR):
     _d.mkdir(parents=True, exist_ok=True)
@@ -106,11 +106,11 @@ def _rgb(h):
 
 
 def brand():
-    """Brand settings: input/brand.json (or $ATC_BRAND), else the example brand."""
+    """Brand settings: input/brand.json (or $MT_BRAND), else the example brand."""
     global _BRAND
     if _BRAND is None:
         import json
-        p = Path(os.environ.get("ATC_BRAND", INPUT_DIR / "brand.json")).resolve()
+        p = Path(os.environ.get("MT_BRAND", INPUT_DIR / "brand.json")).resolve()
         if not p.exists():
             print(f"[brand] {p} not found — using the example brand (examples/adeltechtalks). "
                   "Set up your own brand first (see SKILL.md, Step 0).")

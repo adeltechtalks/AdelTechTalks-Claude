@@ -2,13 +2,13 @@
 
 <div align="center">
 
-<img src="../../../docs/adeltechtalks-motion-templates/hero-ar.svg" alt="Motion Templates — ريلز Motion graphics معمولة بالكود، والصوت معاها" width="100%">
+<img src="../../../docs/motion-templates/hero-ar.svg" alt="Motion Templates — ريلز Motion graphics معمولة بالكود، والصوت معاها" width="100%">
 
 <p dir="rtl"><a href="../../../README.ar.md">→ كل الـ Skills</a> · <a href="../README.ar.md">Production</a></p>
 
 <br>
 
-<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/adeltechtalks-motion-templates.zip"><img src="../../../docs/assets/btn-download-ar.svg" alt="Download ZIP" height="44"></a>
+<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/motion-templates.zip"><img src="../../../docs/assets/btn-download-ar.svg" alt="Download ZIP" height="44"></a>
 
 </div>
 
@@ -28,7 +28,7 @@
 
 </div>
 
-<img src="../../../docs/adeltechtalks-motion-templates/how-ar.svg" alt="1 اختار ستايل (A أو E أو F) · 2 عدّل الكلام اللي في أول الـ Template · 3 شغّل python render.py وخد الـ mp4" width="100%">
+<img src="../../../docs/motion-templates/how-ar.svg" alt="1 اختار ستايل (A أو E أو F) · 2 عدّل الكلام اللي في أول الـ Template · 3 شغّل python render.py وخد الـ mp4" width="100%">
 
 <div dir="rtl">
 
@@ -40,7 +40,7 @@
 
 </div>
 
-<img src="../../../docs/adeltechtalks-motion-templates/brand-swap.jpg" alt="نفس الـ Frames بالـ Brand المثال وبـ Brand تاني" width="100%">
+<img src="../../../docs/motion-templates/brand-swap.jpg" alt="نفس الـ Frames بالـ Brand المثال وبـ Brand تاني" width="100%">
 
 <div dir="rtl">
 
@@ -50,7 +50,7 @@
 
 </div>
 
-<img src="../../../docs/adeltechtalks-motion-templates/showcase.jpg" alt="لقطات من ستايلات A و E و F" width="100%">
+<img src="../../../docs/motion-templates/showcase.jpg" alt="لقطات من ستايلات A و E و F" width="100%">
 
 <div dir="rtl">
 
@@ -70,7 +70,7 @@
 
 </div>
 
-<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/adeltechtalks-motion-templates.zip"><img src="../../../docs/adeltechtalks-motion-templates/install-ar.svg" alt="1 حمّل ملف الـ ZIP · 2 شغّل Code execution من Settings → Capabilities · 3 ارفع الـ Skill من Customize → Skills → +" width="100%"></a>
+<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/motion-templates.zip"><img src="../../../docs/motion-templates/install-ar.svg" alt="1 حمّل ملف الـ ZIP · 2 شغّل Code execution من Settings → Capabilities · 3 ارفع الـ Skill من Customize → Skills → +" width="100%"></a>
 
 <div dir="rtl">
 
@@ -81,7 +81,7 @@
 </div>
 
 ```
-استخدم adeltechtalks-motion-templates. ظبطلي الـ Brand بتاعي الأول.
+استخدم motion-templates. ظبطلي الـ Brand بتاعي الأول.
 ```
 
 <div dir="rtl">
@@ -93,7 +93,7 @@ Claude هيسألك عن الاسم والـ Tagline، والألوان، وال
 </div>
 
 ```
-استخدم adeltechtalks-motion-templates.
+استخدم motion-templates.
 اعملي ريل بستايل A عن: [القصة في 3 لـ 5 سطور].
 وريني Test frames الأول.
 ```
@@ -124,6 +124,28 @@ python render.py --style a --out output/
 | `work/` · `output/` | الـ Test frames والملفات المؤقتة · الفيديوهات الجاهزة |
 
 أي حاجة ناقصة في `input/` بيترسم مكانها Placeholder مكتوب عليه اسمها، والـ Console بيقولك تضيف إيه. و `input/` و `work/` و `output/` والفونتات مش بيترفعوا على GitHub.
+
+---
+
+</div>
+
+<div dir="rtl">
+
+## علّمها Motion جديد
+
+شفت Motion عاجبك؟ ابعته لـ Claude (Video أو GIF أو Screenshots أو حتى وصف) وقوله الجزء اللي عاجبك. الـ Skill بتتعلمه كـ Move تقدر تستخدمه تاني، بالـ Brand بتاعك.
+
+</div>
+
+<img src="../../../docs/motion-templates/moves.jpg" alt="الـ Moves اللي الـ Skill عارفاها: pop_in و slide_in و slide_out و spring_drop و slap_in و fold_open" width="100%">
+
+<div dir="rtl">
+
+| 1 · ابعت | 2 · تحليل | 3 · بناء | 4 · موافقة | 5 · حفظ |
+|:--|:--|:--|:--|:--|
+| الـ Clip + «عاجبني دخول العنوان في ثانية 3» | `engine/study.py` بيقسمه Frames و Motion graph | Claude بيكتب الـ Motion DNA و Move جديد في `engine/moves.py` | Preview من `templates/lab/moves_demo.py`، ونعدّل لحد ما يظبط | بيتسجل في [`references/motion-library.md`](references/motion-library.md) وجاهز لأي Template |
+
+<sub>بنتعلم الحركة بس، مش الـ Brand ولا الفيديو ولا اللوجوهات ولا المزيكا بتاعة المصدر. اللي اتغير: [CHANGELOG.md](CHANGELOG.md).</sub>
 
 ---
 

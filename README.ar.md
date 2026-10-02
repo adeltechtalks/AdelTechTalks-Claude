@@ -35,7 +35,7 @@
 
 <table>
 <tr>
-<td width="50%" valign="top"><a href="skills/03-production/adeltechtalks-motion-templates/README.ar.md"><img src="docs/assets/skills/adeltechtalks-motion-templates-ar.svg" alt="Motion Templates" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/adeltechtalks-motion-templates.zip"><img src="docs/assets/btn-download-ar.svg" alt="Download ZIP" height="40"></a>&nbsp;<a href="skills/03-production/adeltechtalks-motion-templates/README.ar.md"><img src="docs/assets/btn-more-ar.svg" alt="How it works" height="40"></a></p></td>
+<td width="50%" valign="top"><a href="skills/03-production/motion-templates/README.ar.md"><img src="docs/assets/skills/motion-templates-ar.svg" alt="Motion Templates" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/motion-templates.zip"><img src="docs/assets/btn-download-ar.svg" alt="Download ZIP" height="40"></a>&nbsp;<a href="skills/03-production/motion-templates/README.ar.md"><img src="docs/assets/btn-more-ar.svg" alt="How it works" height="40"></a></p></td>
 <td width="50%" valign="top"><a href="skills/04-publish-grow/social-cover-studio/README.ar.md"><img src="docs/assets/skills/social-cover-studio-ar.svg" alt="Social Cover Studio" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip"><img src="docs/assets/btn-download-ar.svg" alt="Download ZIP" height="40"></a>&nbsp;<a href="skills/04-publish-grow/social-cover-studio/README.ar.md"><img src="docs/assets/btn-more-ar.svg" alt="How it works" height="40"></a></p></td>
 </tr>
 </table>

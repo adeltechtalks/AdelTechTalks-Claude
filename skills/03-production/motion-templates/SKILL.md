@@ -1,9 +1,9 @@
 ---
-name: adeltechtalks-motion-templates
+name: motion-templates
 description: Render motion-graphics reels (9:16) entirely from code — no editing software — in the user's own brand (colours, fonts, logo, name). Use whenever someone wants a reel/short/explainer/promo built as motion graphics, a video in one of the locked styles (A Morphing UI, E Orange Balls, F Kinetic Type, or the extras Paper Collage, Liquid Glass, Isometric 3D, Shape Morph, Editorial Depth), a style comparison (the same story in A/E/F), or SFX/music for a motion video. Triggers include "make a motion reel", "same as style A", "compare the three styles", "add SFX and music", "اعملي ريل موشن", "نفس ستايل A", "قارنلي التلات ستايلات", "حط SFX ومزيكا".
 ---
 
-# Motion Templates (v1.1)
+# Motion Templates (v1.2)
 
 Every video is a Python script that draws each frame with Pillow and pipes raw frames to ffmpeg. Sound (SFX + music) is synthesized in code, so everything is original and copyright-free. The look comes from the user's **brand file** — the templates were designed with the AdelTechTalks brand, which ships only as an example in `examples/adeltechtalks/`.
 
@@ -41,7 +41,7 @@ Extras (proven, not in the default set): `templates/extras/` — paper_collage_4
 9. **Claims/numbers** on screen must come from the user or a verified source.
 
 ## Workflow
-Paths live in `engine/config.py`: fonts in `engine/fonts/`, per-video inputs in `./input/`, intermediate files in `./work/`, finished videos in `./output/` (override with `ATC_INPUT_DIR`, `ATC_WORK_DIR`, `ATC_OUT_DIR`). Needs `pip install -r requirements.txt` and ffmpeg.
+Paths live in `engine/config.py`: fonts in `engine/fonts/`, per-video inputs in `./input/`, intermediate files in `./work/`, finished videos in `./output/` (override with `MT_INPUT_DIR`, `MT_WORK_DIR`, `MT_OUT_DIR`). Needs `pip install -r requirements.txt` and ffmpeg.
 
 1. Brand (Step 0) and fonts: `bash engine/fetch_fonts.sh` (once).
 2. Edit the story/text constants at the top of the chosen template (headlines, chips, codes, timings).
@@ -59,5 +59,20 @@ Paths live in `engine/config.py`: fonts in `engine/fonts/`, per-video inputs in 
    Target ≈ -16 LUFS, true peak ≤ -1 dBTP.
 6. Deliver a light 1080p file for phones (4K masters only when asked: render at K=2, downscale with lanczos, CRF 17).
 
+## Motion library
+Reusable moves live in `engine/moves.py` (catalogue: `references/motion-library.md`). Prefer an existing move before writing new animation code, and preview with `templates/lab/moves_demo.py`.
+
 ## Inputs the user supplies per video
 Story/script, plus optional files in `input/`: `photo.jpg` (portrait), `result/*.png` (result clip frames), `cutout.png`, `partner_1.png` / `partner_2.png`, `flag_1.jpg` / `flag_2.png`, plus `brand.json` and `logo.png` from Step 0. Anything missing is drawn as a labelled placeholder and listed in the console. `input/` is git-ignored — never commit partner logos or personal photos.
+
+## Learn a new motion
+
+When the user shares a motion they like (video, GIF, screenshots, link or a description), teach it to the skill as a reusable move — don't just copy it into one video.
+
+1. **Pin the moment.** Ask which part they like (seconds, or "the way the title lands") if it isn't clear.
+2. **Study it:** `python engine/study.py reference.mp4 --start 3 --end 6 --fps 15` → `work/study/<clip>/sheet.png` (frames with timestamps), `motion.png` (motion energy — peaks are hits, slopes are eases) and `timing.csv`. Look at the sheet and the graph; for screenshots or a description, work from those.
+3. **Write the Motion DNA** with the template in `references/motion-library.md` (what moves, from → to, duration, curve, beat, extras) and show it to the user in a few lines.
+4. **Build it** as a function in `engine/moves.py` with the shared signature `move(f, t, spr, cx, cy, t0, **options)`; draw nothing before `t0`, hold the final pose after. Use the brand curves (`ENTER`, `EXIT`, `MOVE`) or a spring; colours and fonts only from the brand. Register it in `MOVES`.
+5. **Preview it:** `python templates/lab/moves_demo.py test 0.4 0.8` (stills) and `python templates/lab/moves_demo.py render <name>` → `work/moves_demo.mp4`. Send it, compare with the reference, tweak until the user approves.
+6. **Log it:** add a row to `references/motion-library.md` (name, looks like, best for, length, version, learned from) and to `CHANGELOG.md`; bump the version in this file's title.
+7. **Use it:** call it from a template (or a new template) when the user asks. Never copy the reference's brand, footage, logos or music — only the motion.

@@ -859,11 +859,11 @@ def coming_card(catalog, lang):
 
 
 def motion_hero(lang):
-    """Hero for adeltechtalks-motion-templates: title + three phones (A · E · F)."""
+    """Hero for motion-templates: title + three phones (A · E · F)."""
     rtl = lang == "ar"
     W, H, L = 1600, 680, 88
     R = W - L
-    root = ROOT / "docs" / "adeltechtalks-motion-templates"
+    root = ROOT / "docs" / "motion-templates"
     imgs = [_img(root / f"style_{k}.jpg") for k in "aef"]
     fw, fh, gap = 210, 373, 26
     total = 3 * fw + 2 * gap
@@ -913,7 +913,7 @@ def motion_hero(lang):
 def motion_steps(lang):
     rtl = lang == "ar"
     W, H = 1600, 520
-    root = ROOT / "docs" / "adeltechtalks-motion-templates"
+    root = ROOT / "docs" / "motion-templates"
     imgs = [_img(root / f"style_{k}.jpg") for k in "aef"]
     if rtl:
         titles = ["اختار ستايل", "اكتب القصة", "شغّل أمر واحد"]
@@ -1017,13 +1017,13 @@ if __name__ == "__main__":
             content = fn(lang)
             target.write_text(content, encoding="utf-8")
             print(f"built docs/social-cover-studio/{name}-{lang}.svg ({len(content.encode()) // 1024} KB)")
-    mt = ROOT / "docs" / "adeltechtalks-motion-templates"
+    mt = ROOT / "docs" / "motion-templates"
     if (mt / "style_a.jpg").exists():
         for lang in ("en", "ar"):
             (mt / f"hero-{lang}.svg").write_text(motion_hero(lang), encoding="utf-8")
             (mt / f"how-{lang}.svg").write_text(motion_steps(lang), encoding="utf-8")
-            (mt / f"install-{lang}.svg").write_text(install_steps(lang, "adeltechtalks-motion-templates"), encoding="utf-8")
-        print("built docs/adeltechtalks-motion-templates/ hero, how and install cards")
+            (mt / f"install-{lang}.svg").write_text(install_steps(lang, "motion-templates"), encoding="utf-8")
+        print("built docs/motion-templates/ hero, how and install cards")
     for lang in ("en", "ar"):
         target = ROOT / "docs" / "social-cover-studio" / f"hero-{lang}.svg"
         content = cover_hero(lang)

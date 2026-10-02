@@ -2,13 +2,13 @@
 
 <div align="center">
 
-<img src="../../../docs/adeltechtalks-motion-templates/hero-en.svg" alt="Motion Templates — motion-graphics reels built from code, sound included" width="100%">
+<img src="../../../docs/motion-templates/hero-en.svg" alt="Motion Templates — motion-graphics reels built from code, sound included" width="100%">
 
 [← All skills](../../../README.md) · [Production](../)
 
 <br>
 
-<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/adeltechtalks-motion-templates.zip"><img src="../../../docs/assets/btn-download-en.svg" alt="Download ZIP" height="44"></a>
+<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/motion-templates.zip"><img src="../../../docs/assets/btn-download-en.svg" alt="Download ZIP" height="44"></a>
 
 </div>
 
@@ -25,7 +25,7 @@
 
 ## How it works
 
-<img src="../../../docs/adeltechtalks-motion-templates/how-en.svg" alt="1 Pick a style (A, E or F) · 2 Edit the text at the top of the template · 3 Run python render.py to get the final mp4" width="100%">
+<img src="../../../docs/motion-templates/how-en.svg" alt="1 Pick a style (A, E or F) · 2 Edit the text at the top of the template · 3 Run python render.py to get the final mp4" width="100%">
 
 ---
 
@@ -33,13 +33,13 @@
 
 The templates were designed with the AdelTechTalks brand, which ships only as an example. The first time you use the Skill, Claude asks for **your** name, colours, fonts, logo and ending text, saves them as `brand.json`, and every video comes out in your style.
 
-<img src="../../../docs/adeltechtalks-motion-templates/brand-swap.jpg" alt="The same frames in the example brand and in a custom brand" width="100%">
+<img src="../../../docs/motion-templates/brand-swap.jpg" alt="The same frames in the example brand and in a custom brand" width="100%">
 
 ---
 
 ## The 3 styles
 
-<img src="../../../docs/adeltechtalks-motion-templates/showcase.jpg" alt="Frames from styles A, E and F" width="100%">
+<img src="../../../docs/motion-templates/showcase.jpg" alt="Frames from styles A, E and F" width="100%">
 
 | Code | Style | Best for |
 |:-:|:--|:--|
@@ -55,14 +55,14 @@ Extras, ready to use: Paper Collage, Liquid Glass, Isometric 3D, Shape Morph, Ed
 
 ### 1 · Install — once, 5 minutes
 
-<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/adeltechtalks-motion-templates.zip"><img src="../../../docs/adeltechtalks-motion-templates/install-en.svg" alt="1 Download the ZIP · 2 Settings → Capabilities → turn on Code execution and file creation · 3 Customize → Skills → + and upload the ZIP" width="100%"></a>
+<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/motion-templates.zip"><img src="../../../docs/motion-templates/install-en.svg" alt="1 Download the ZIP · 2 Settings → Capabilities → turn on Code execution and file creation · 3 Customize → Skills → + and upload the ZIP" width="100%"></a>
 
 <sub>Tap the image to download · Settings → Capabilities → **Code execution and file creation** · Customize → Skills → **+** → upload the ZIP as it is.</sub>
 
 ### 2 · Set up your brand — once
 
 ```
-Use adeltechtalks-motion-templates. Set up my brand first.
+Use motion-templates. Set up my brand first.
 ```
 
 Claude asks for your name and tagline, colours, fonts, logo (transparent PNG) and the ending text, then saves `input/brand.json` + `input/logo.png`. Keep both — send them again next time or add them to a Project.
@@ -70,7 +70,7 @@ Claude asks for your name and tagline, colours, fonts, logo (transparent PNG) an
 ### 3 · Ask for a reel
 
 ```
-Use adeltechtalks-motion-templates.
+Use motion-templates.
 Make a reel in style A about: [your story in 3–5 lines].
 Show me test frames first.
 ```
@@ -95,6 +95,18 @@ python render.py --style a --out output/
 | `work/` · `output/` | Test frames and intermediate files · finished videos |
 
 Anything missing in `input/` is drawn as a labelled placeholder, and the console tells you what to add. `input/`, `work/`, `output/` and the fonts are git-ignored.
+
+## Teach it a new motion
+
+Saw a motion you love? Send it to Claude — a video, GIF, screenshots or just a description — and say which part you like. The skill learns it as a reusable move, in your brand.
+
+<img src="../../../docs/motion-templates/moves.jpg" alt="The moves the skill already knows: pop_in, slide_in, slide_out, spring_drop, slap_in, fold_open" width="100%">
+
+| 1 · Send | 2 · Study | 3 · Build | 4 · Approve | 5 · Keep |
+|:--|:--|:--|:--|:--|
+| The clip + "I like how the title lands at 0:03" | `engine/study.py` splits it into frames + a motion graph | Claude writes the Motion DNA and a new move in `engine/moves.py` | A preview from `templates/lab/moves_demo.py` — tweak until it's right | Logged in [`references/motion-library.md`](references/motion-library.md), ready for any template |
+
+<sub>Only the motion is learned — never the reference's brand, footage, logos or music. What changed: [CHANGELOG.md](CHANGELOG.md).</sub>
 
 ---
 

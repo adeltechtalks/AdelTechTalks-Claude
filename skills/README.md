@@ -14,7 +14,7 @@ Every skill, grouped by stage of the Content Creation OS.
 
 <table>
 <tr>
-<td width="50%" valign="top"><a href="03-production/adeltechtalks-motion-templates/"><img src="../docs/assets/skills/adeltechtalks-motion-templates-en.svg" alt="Motion Templates" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/adeltechtalks-motion-templates.zip"><img src="../docs/assets/btn-download-en.svg" alt="Download ZIP" height="40"></a>&nbsp;<a href="03-production/adeltechtalks-motion-templates/"><img src="../docs/assets/btn-more-en.svg" alt="How it works" height="40"></a></p></td>
+<td width="50%" valign="top"><a href="03-production/motion-templates/"><img src="../docs/assets/skills/motion-templates-en.svg" alt="Motion Templates" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/motion-templates.zip"><img src="../docs/assets/btn-download-en.svg" alt="Download ZIP" height="40"></a>&nbsp;<a href="03-production/motion-templates/"><img src="../docs/assets/btn-more-en.svg" alt="How it works" height="40"></a></p></td>
 <td width="50%" valign="top"><a href="04-publish-grow/social-cover-studio/"><img src="../docs/assets/skills/social-cover-studio-en.svg" alt="Social Cover Studio" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip"><img src="../docs/assets/btn-download-en.svg" alt="Download ZIP" height="40"></a>&nbsp;<a href="04-publish-grow/social-cover-studio/"><img src="../docs/assets/btn-more-en.svg" alt="How it works" height="40"></a></p></td>
 </tr>
 </table>
@@ -63,7 +63,7 @@ Tap a stage card to open its page.
 <td width="44%" valign="top"><a href="03-production/"><img src="../docs/assets/stages/03-production-en.svg" alt="Production" width="100%"></a></td>
 <td valign="top">
 
-🧪 <a href="03-production/adeltechtalks-motion-templates/"><b>Motion Templates</b></a> <sub>· Step 09 · Free · Testing</sub><br><sub>Motion-graphics reels (9:16) rendered from code in your own brand — 3 locked styles, original SFX and music, one command to a finished mp4.</sub><br><br>
+🧪 <a href="03-production/motion-templates/"><b>Motion Templates</b></a> <sub>· Step 09 · Free · Testing</sub><br><sub>Motion-graphics reels (9:16) rendered from code in your own brand — 3 locked styles, original SFX and music, one command to a finished mp4.</sub><br><br>
 🔒 <b>Footage Ingest</b> <sub>· Step 08 · Pro · Soon</sub><br><sub>Project folder, file naming and backup checklist from every device.</sub><br><br>
 🔒 <b>Edit Plan</b> <sub>· Step 09 · Pro · Soon</sub><br><sub>A beat-by-beat editor brief: cuts, on-screen text, motion, SFX and B-roll.</sub><br><br>
 ⏳ <b>Captions</b> <sub>· Step 09 · Free · Soon</sub><br><sub>Clean, correctly shaped captions and subtitles in any language.</sub>
