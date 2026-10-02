@@ -3,11 +3,12 @@ import sys, math, subprocess, time, glob
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # skill root, so the engine package is importable
 from engine import config
+_BRAND = config.brand(); _END = _BRAND['ending']  # name, tagline and ending text from brand.json
 from PIL import Image, ImageDraw, ImageFilter
 from engine.plib import UP, txt, CAIRO, MONT, READ, MONO, WHITE, CORAL, GRAPH
 
 W, H, FPS, DUR = 1080, 1920, 30, 30.0
-BG = (243, 238, 228); SIG = (37, 99, 235); SLATE = (102, 112, 133); CX = 540
+BG = (243, 238, 228); SIG = config.color('primary'); SLATE = config.color('muted'); CX = 540
 def clamp(v, a, b): return max(a, min(b, v))
 def prog(t, s, d): return clamp((t - s) / d, 0, 1)
 def ease(p): return 1 - (1 - p) ** 3
@@ -54,8 +55,8 @@ def round_mask(im, r):
     ImageDraw.Draw(m).rounded_rectangle((0, 0, im.width * s - 1, im.height * s - 1), r * s, fill=255)
     im = im.copy(); im.putalpha(m.resize(im.size, Image.LANCZOS)); return im
 RES = [round_mask(r, 26) for r in RES]
-CTA_T = txt('تابع AdelTechTalks', CAIRO(54), WHITE, rtl=True)
-MARK = Image.open(config.asset('atc-mark-white-1024.png')).convert('RGBA'); MARK = MARK.resize((52, int(52 * MARK.height / MARK.width)), Image.LANCZOS)
+CTA_T = txt(_END['follow'], CAIRO(54), WHITE, rtl=True)
+MARK = config.logo().convert('RGBA'); MARK = MARK.resize((52, int(52 * MARK.height / MARK.width)), Image.LANCZOS)
 CTA = card(CTA_T.width + 150, 116, 58, CORAL + (255,)); CTA.alpha_composite(CTA_T, (100, (116 - CTA_T.height) // 2)); CTA.alpha_composite(MARK, (36, (116 - MARK.height) // 2))
 CTA = shadowed(CTA)
 

@@ -45,6 +45,7 @@ def main():
     ap.add_argument("--out", default="output", help="folder for the final mp4 (default: output/)")
     ap.add_argument("--work", default=None, help="folder for intermediate files (default: ./work)")
     ap.add_argument("--input", default=None, help="folder with per-video inputs (default: ./input)")
+    ap.add_argument("--brand", default=None, help="brand file (default: <input>/brand.json, else the example brand)")
     ap.add_argument("--drop", type=float, default=None, help="override the music drop time (seconds)")
     ap.add_argument("--end", type=float, default=None, help="override the music ending time (seconds)")
     ap.add_argument("--skip-test", action="store_true", help="skip the test frames")
@@ -60,6 +61,8 @@ def main():
         env["ATC_WORK_DIR"] = str(Path(args.work).resolve())
     if args.input:
         env["ATC_INPUT_DIR"] = str(Path(args.input).resolve())
+    if args.brand:
+        env["ATC_BRAND"] = str(Path(args.brand).resolve())
     env["PATH"] = str(Path(ffmpeg).parent) + os.pathsep + env.get("PATH", "")
     os.environ.update(env)
 
@@ -70,6 +73,7 @@ def main():
     py = sys.executable
     drop = s["drop"] if args.drop is None else args.drop
     end = s["end"] if args.end is None else args.end
+    print(f"Brand: {config.brand()['name']}")
     print(f"Style {s['name']} · {s['dur']}s · music drop {drop}s, ending {end}s\nwork → {work}\nout  → {out}")
 
     if not args.skip_test:

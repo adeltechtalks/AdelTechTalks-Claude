@@ -15,7 +15,7 @@
 <br>
 
 > [!NOTE]
-> 🧪 **Testing.** Works end to end — try it and tell us what breaks. It uses the AdelTechTalks brand ([`references/brand-tokens.md`](references/brand-tokens.md)); swap the tokens and the logo in `assets/` to make it yours.
+> 🧪 **Testing.** Works end to end — try it and tell us what breaks.
 
 | You give | You get | Styles | Works in |
 |:--|:--|:-:|:--|
@@ -26,6 +26,14 @@
 ## How it works
 
 <img src="../../../docs/adeltechtalks-motion-templates/how-en.svg" alt="1 Pick a style (A, E or F) · 2 Edit the text at the top of the template · 3 Run python render.py to get the final mp4" width="100%">
+
+---
+
+## Your brand, not ours
+
+The templates were designed with the AdelTechTalks brand, which ships only as an example. The first time you use the Skill, Claude asks for **your** name, colours, fonts, logo and ending text, saves them as `brand.json`, and every video comes out in your style.
+
+<img src="../../../docs/adeltechtalks-motion-templates/brand-swap.jpg" alt="The same frames in the example brand and in a custom brand" width="100%">
 
 ---
 
@@ -51,7 +59,15 @@ Extras, ready to use: Paper Collage, Liquid Glass, Isometric 3D, Shape Morph, Ed
 
 <sub>Tap the image to download · Settings → Capabilities → **Code execution and file creation** · Customize → Skills → **+** → upload the ZIP as it is.</sub>
 
-### 2 · Ask for a reel
+### 2 · Set up your brand — once
+
+```
+Use adeltechtalks-motion-templates. Set up my brand first.
+```
+
+Claude asks for your name and tagline, colours, fonts, logo (transparent PNG) and the ending text, then saves `input/brand.json` + `input/logo.png`. Keep both — send them again next time or add them to a Project.
+
+### 3 · Ask for a reel
 
 ```
 Use adeltechtalks-motion-templates.
@@ -61,16 +77,18 @@ Show me test frames first.
 
 Claude edits the template text, shows you test frames, then renders the reel with SFX and music.
 
-### 3 · Or run it yourself (Claude Code / terminal)
+### 4 · Or run it yourself (Claude Code / terminal)
 
 ```bash
 pip install -r requirements.txt     # plus ffmpeg
 bash engine/fetch_fonts.sh          # once
+cp brand.template.json input/brand.json   # fill in your brand, add input/logo.png
 python render.py --style a --out output/
 ```
 
 | Folder | What goes there |
 |:--|:--|
+| `input/brand.json` · `input/logo.png` | Your brand (from step 2 or `brand.template.json`) |
 | `input/photo.jpg` | Portrait for the avatar / collage |
 | `input/result/*.png` | Frames of the result clip shown in the phone |
 | `input/partner_1.png` · `partner_2.png` · `flag_1.jpg` · `flag_2.png` | Partner logos and badges (extras only) |
@@ -88,7 +106,7 @@ Anything missing in `input/` is drawn as a labelled placeholder, and the console
 - On-screen text in Egyptian Arabic; English tech terms stay English.
 - Everything readable sits in the centre 4:5 crop (y 285–1635 on 1080×1920), so it works on every platform.
 - No empty frames, fast pacing on the beat, one build bar before the result reveal.
-- Spark Coral appears once — on the CTA.
+- Your CTA colour appears once — on the follow button.
 - Numbers and claims on screen come from you or a verified source.
 
 </details>
@@ -103,10 +121,11 @@ Anything missing in `input/` is drawn as a labelled placeholder, and the console
 | `ffmpeg not found` | Install ffmpeg, or run with `FFMPEG=/path/to/ffmpeg` |
 | Arabic letters come out disconnected | Pillow needs libraqm (`pip install pillow` on a system with libraqm) |
 | A box says `photo.jpg` or `result 1/24` | That input is missing — add it to `input/` |
+| The video shows AdelTechTalks | No `input/brand.json` yet — set up your brand (step 2) |
 | Music hits too early or late | `python render.py --style a --drop 19.3 --end 27` |
 
 </details>
 
 ---
 
-<sub>Built by <b><a href="https://instagram.com/adeltechtalks">@AdelTechTalks</a></b> · Fonts: Cairo, Readex Pro, Montserrat, JetBrains Mono (SIL OFL, downloaded at setup) · All SFX and music are synthesized in code · Released under the <a href="../../../LICENSE">MIT License</a></sub>
+<sub>Built by <b><a href="https://instagram.com/adeltechtalks">@AdelTechTalks</a></b> · Example brand in <code>examples/adeltechtalks/</code> · Fonts: Cairo, Readex Pro, Montserrat, JetBrains Mono (SIL OFL, downloaded at setup) · All SFX and music are synthesized in code · Released under the <a href="../../../LICENSE">MIT License</a></sub>

@@ -3,13 +3,14 @@ import sys, math, subprocess, time, glob
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # skill root, so the engine package is importable
 from engine import config
+_BRAND = config.brand(); _END = _BRAND['ending']  # name, tagline and ending text from brand.json
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 from engine.plib import UP, txt, CAIRO, MONT, READ, MONO, WHITE, GRAPH
 
 W, H, FPS = 1080, 1920, 30
 BAR = 1.875; DUR = 22.5
-BG = (248, 247, 245); OR = (255, 106, 28); SLATE = (110, 116, 130); SIG = (37, 99, 235)
+BG = config.color('background'); OR = config.color('ball'); SLATE = config.color('muted'); SIG = config.color('primary')
 CX, CY = 540, 1020
 def clamp(v, a, b): return max(a, min(b, v))
 def prog(t, s, d): return clamp((t - s) / d, 0, 1)
@@ -46,8 +47,8 @@ def floor_shadow(f, x, y, d, a=1.0):
 def T(s, size, col=GRAPH, w=900): return txt(s, CAIRO(size) if w == 900 else READ(size, w), col, rtl=True)
 def label(s, size=52, col=WHITE): return txt(s, CAIRO(size), col, rtl=True)
 RES = [fr for fr in config.input_frames('result')]
-MARK = Image.open(config.asset('atc-mark-white-1024.png')).convert('RGBA'); MARK = MARK.resize((52, int(52 * MARK.height / MARK.width)), Image.LANCZOS)
-CTA_T = txt('تابع AdelTechTalks', CAIRO(54), WHITE, rtl=True); FOLLOWING = txt('Following', MONT(42), WHITE)
+MARK = config.logo().convert('RGBA'); MARK = MARK.resize((52, int(52 * MARK.height / MARK.width)), Image.LANCZOS)
+CTA_T = txt(_END['follow'], CAIRO(54), WHITE, rtl=True); FOLLOWING = txt(_END['following'], MONT(42), WHITE)
 
 HEADS = [  # (bar, text, size, color, small?)
     (0, 'الفيديو ده؟', 96, GRAPH), (1, 'اتعمل في دقايق', 88, GRAPH), (2, 'إزاي؟', 110, OR),

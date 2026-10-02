@@ -3,12 +3,13 @@ import sys, math, subprocess, time, glob
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # skill root, so the engine package is importable
 from engine import config
+_BRAND = config.brand(); _END = _BRAND['ending']  # name, tagline and ending text from brand.json
 from PIL import Image, ImageDraw, ImageFilter
 from engine.plib import UP, txt, CAIRO, MONT, READ, MONO, GRAPH, WHITE, CORAL
 
 W, H, FPS, DUR = 1080, 1920, 30, 32.0
-BG = (246, 246, 244); SIG = (37, 99, 235); BLUE4 = (91, 142, 244); MINT = (45, 212, 168)
-SLATE = (102, 112, 133); LIGHTB = (232, 234, 238); CX, CY = 540, 960
+BG = config.color('background'); SIG = config.color('primary'); BLUE4 = config.color('primary_light'); MINT = config.color('accent')
+SLATE = config.color('muted'); LIGHTB = config.color('hairline'); CX, CY = 540, 960
 
 def clamp(v, a, b): return max(a, min(b, v))
 def prog(t, s, d): return clamp((t - s) / d, 0, 1)
@@ -49,8 +50,8 @@ def vis(t, t_in, t_out, delay=0.2, dur=0.3):
     a = ease(prog(t, t_in + delay, dur)) * (1 - prog(t, t_out - 0.18, 0.18)); return a, 24 * (1 - ease(prog(t, t_in + delay, dur)))
 
 # ---------- assets ----------
-MARK = recolor(fit(Image.open(config.asset('atc-mark-white-1024.png')).convert('RGBA'), w=64), GRAPH)
-MARK_W = fit(Image.open(config.asset('atc-mark-white-1024.png')).convert('RGBA'), w=54)
+MARK = recolor(fit(config.logo().convert('RGBA'), w=64), GRAPH)
+MARK_W = fit(config.logo().convert('RGBA'), w=54)
 RES = [fr for fr in config.input_frames('result')]
 
 def words(line, size, col=GRAPH, hi=(), hi_col=SIG, font=CAIRO):
@@ -101,19 +102,19 @@ HEAD6 = txt('والنتيجة', CAIRO(76), GRAPH, rtl=True)
 HEAD7 = txt('بالحركة والـ SFX كمان', READ(56, 700), GRAPH, rtl=True)
 TRACKS = [('Motion', SIG), ('SFX', MINT), ('Music', (255, 176, 66))]
 TRK_L = [txt(n, MONO(30), SLATE) for n, _ in TRACKS]
-HEAD8 = txt('عايز نفس السكيل؟', CAIRO(80), GRAPH, rtl=True)
+HEAD8 = txt(_END['headline'], CAIRO(80), GRAPH, rtl=True)
 H4W = [txt(w_, CAIRO(66), SIG if w_ == 'Claude' else GRAPH, rtl=True) for w_ in 'Claude بيكتب الكود ويرندر'.split(' ')]
-H8W = [txt(w_, CAIRO(80), GRAPH, rtl=True) for w_ in 'عايز نفس السكيل؟'.split(' ')]
-CTA_T = txt('تابع AdelTechTalks', CAIRO(54), WHITE, rtl=True)
+H8W = [txt(w_, CAIRO(80), GRAPH, rtl=True) for w_ in _END['headline'].split(' ')]
+CTA_T = txt(_END['follow'], CAIRO(54), WHITE, rtl=True)
 from PIL import ImageOps
 _src = ImageOps.exif_transpose(config.input_image('photo.jpg', (2000, 2100), 'the portrait photo')).convert('RGB').crop((610, 310, 1510, 1210)).resize((176, 176), Image.LANCZOS)
 _m = Image.new('L', (528, 528), 0); ImageDraw.Draw(_m).ellipse((0, 0, 527, 527), fill=255)
 AVATAR = _src.convert('RGBA'); AVATAR.putalpha(_m.resize((176, 176), Image.LANCZOS))
-NAME = txt('AdelTechTalks', MONT(52), GRAPH)
+NAME = txt(_BRAND['name'], MONT(52), GRAPH)
 # comment card: [اكتب] [SKILL box] [في الكومنتات] + small promise line
-_c1 = txt('اكتب', CAIRO(52), GRAPH, rtl=True); _c2 = txt('في الكومنتات', CAIRO(52), GRAPH, rtl=True)
-_c3 = txt('وهبعتلك السكيل كاملة بالشرح', READ(32, 500), SLATE, rtl=True)
-_kw_w = int(MONT(54).getlength('SKILL')) + 60
+_c1 = txt(_END['comment_before'], CAIRO(52), GRAPH, rtl=True); _c2 = txt(_END['comment_after'], CAIRO(52), GRAPH, rtl=True)
+_c3 = txt(_END['comment_promise'], READ(32, 500), SLATE, rtl=True)
+_kw_w = int(MONT(54).getlength(_END['comment_keyword'])) + 60
 _cw = _c1.width + _kw_w + _c2.width + 140; CMT_CARD = Image.new('RGBA', (_cw * 2, 400), (0, 0, 0, 0))
 ImageDraw.Draw(CMT_CARD).rounded_rectangle((0, 0, _cw * 2 - 1, 399), 60, fill=(255, 255, 255, 255))
 CMT_CARD = CMT_CARD.resize((_cw, 200), Image.LANCZOS)
@@ -125,10 +126,10 @@ CMT_CARD.alpha_composite(_c3, ((_cw - _c3.width) // 2, 128))
 KW_X = (_bx0 + _bx1) / 2 - _cw / 2
 _sh = Image.new('RGBA', (CMT_CARD.width + 60, CMT_CARD.height + 70), (0, 0, 0, 0)); _m = CMT_CARD.split()[3].point(lambda v: v * 60 // 255)
 _k = Image.new('RGBA', CMT_CARD.size, (20, 26, 40, 255)); _k.putalpha(_m); _sh.alpha_composite(_k, (30, 44)); _sh = _sh.filter(ImageFilter.GaussianBlur(14)); _sh.alpha_composite(CMT_CARD, (30, 30)); CMT_CARD = _sh
-LOGO_END = recolor(fit(Image.open(config.asset('atc-mark-white-1024.png')).convert('RGBA'), w=150), SIG)
-SUB = txt('Tech Explorer', READ(32, 500), SLATE)
+LOGO_END = recolor(fit(config.logo().convert('RGBA'), w=150), SIG)
+SUB = txt(_BRAND['tagline'], READ(32, 500), SLATE)
 FOLLOW = txt('+ Follow', MONT(40), WHITE)
-FOLLOWING = txt('Following', MONT(38), WHITE)
+FOLLOWING = txt(_END['following'], MONT(38), WHITE)
 
 def cursor():
     s = 3; im = Image.new('RGBA', (40 * s, 52 * s), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
@@ -391,7 +392,7 @@ def render(t):
             if pc > 0:
                 e = ease(pc); y0 = cy + 375 + 200 * (1 - e)
                 put(f, CMT_CARD, cx, y0, min(1, pc * 2.5))
-                n = int(clamp((t - 29.1) / 0.12, 0, 5)); kw = 'SKILL'[:n]
+                n = int(clamp((t - 29.1) / 0.12, 0, len(_END['comment_keyword']))); kw = _END['comment_keyword'][:n]
                 if n > 0: put(f, txt(kw, MONT(54), WHITE), cx + KW_X, y0 - 39, min(1, pc * 2.5))
             cp = prog(t, 27.35, 0.6)
             if 0 < cp and t < 28.6:

@@ -3,12 +3,13 @@ import sys, math, subprocess, time
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # skill root, so the engine package is importable
 from engine import config
+_BRAND = config.brand(); _END = _BRAND['ending']  # name, tagline and ending text from brand.json
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 from engine.plib import UP, txt, CAIRO, MONT, READ, MONO, WHITE, CORAL
 
 W, H, FPS, DUR = 1080, 1920, 30, 30.0
-BG = (14, 16, 20); INK = (23, 26, 31); CX, CY = 540, 1030; N = 360
+BG = (14, 16, 20); INK = config.color('ink'); CX, CY = 540, 1030; N = 360
 TH = np.linspace(0, 2 * np.pi, N, endpoint=False)
 
 def clamp(v, a, b): return max(a, min(b, v))
@@ -88,8 +89,8 @@ LINES = [  # (in, out, text)
     (26.4, 99, T('عايز تتعلمها؟')),
 ]
 SUB = txt('بدون أي برنامج مونتاج', READ(40, 400), (150, 156, 168), rtl=True)
-CTA = T('تابع AdelTechTalks', 52)
-MARK = Image.open(config.asset('atc-mark-white-1024.png')).convert('RGBA'); MARK = MARK.resize((90, int(90 * MARK.height / MARK.width)), Image.LANCZOS)
+CTA = T(_END['follow'], 52)
+MARK = config.logo().convert('RGBA'); MARK = MARK.resize((90, int(90 * MARK.height / MARK.width)), Image.LANCZOS)
 SMALL_MARK = MARK.resize((50, int(50 * MARK.height / MARK.width)), Image.LANCZOS)
 CODE = txt('</>', MONO(110), INK)
 

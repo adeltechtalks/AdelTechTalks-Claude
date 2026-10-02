@@ -7,12 +7,19 @@ Folders can be moved with environment variables:
     ATC_INPUT_DIR   per-video inputs: photos, result frames, logos (default: ./input)
     ATC_WORK_DIR    test frames, silent renders, sfx and music   (default: ./work)
     ATC_OUT_DIR     final videos                                  (default: ./output)
+    ATC_BRAND       brand file                                    (default: input/brand.json)
+
+Brand: colours, fonts, logo, name and the ending text come from input/brand.json
+(+ input/<logo>). Without one, the example brand in examples/adeltechtalks/ is used
+and a notice is printed — run the brand setup in SKILL.md to make it yours.
 
 INPUT/WORK/OUT are relative to the folder you run from.
 
 Per-video inputs (all optional — a placeholder is drawn and the missing file is
 reported when one isn't there):
 
+    input/brand.json           your brand (colours, fonts, logo, name, ending text) — see brand.template.json
+    input/logo.png             your logo, transparent PNG
     input/photo.jpg            portrait used for the avatar / collage photo
     input/result/*.png         frames of the result clip (shown inside the phone)
     input/cutout.png           subject cut-out for editorial_depth
@@ -28,6 +35,7 @@ ROOT = Path(__file__).resolve().parent.parent
 ENGINE_DIR = ROOT / "engine"
 FONTS_DIR = Path(os.environ.get("ATC_FONTS_DIR", ENGINE_DIR / "fonts")).resolve()
 ASSETS_DIR = ROOT / "assets"
+EXAMPLE_BRAND_DIR = ROOT / "examples" / "adeltechtalks"
 INPUT_DIR = Path(os.environ.get("ATC_INPUT_DIR", "input")).resolve()
 WORK_DIR = Path(os.environ.get("ATC_WORK_DIR", "work")).resolve()
 OUT_DIR = Path(os.environ.get("ATC_OUT_DIR", "output")).resolve()
@@ -86,3 +94,55 @@ def input_frames(folder="result", size=(540, 960), count=24, what="result clip f
         return [Image.open(p).convert("RGBA") for p in files]
     _note(folder + "/*.png", what)
     return [_placeholder(size, f"{folder} {i + 1}/{count}", rgba=True) for i in range(count)]
+
+
+# ---------- brand ----------
+_BRAND = None
+
+
+def _rgb(h):
+    h = h.lstrip("#")
+    return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
+
+
+def brand():
+    """Brand settings: input/brand.json (or $ATC_BRAND), else the example brand."""
+    global _BRAND
+    if _BRAND is None:
+        import json
+        p = Path(os.environ.get("ATC_BRAND", INPUT_DIR / "brand.json")).resolve()
+        if not p.exists():
+            print(f"[brand] {p} not found — using the example brand (examples/adeltechtalks). "
+                  "Set up your own brand first (see SKILL.md, Step 0).")
+            p = EXAMPLE_BRAND_DIR / "brand.json"
+        with open(p, encoding="utf-8") as f:
+            b = json.load(f)
+        example = json.loads((EXAMPLE_BRAND_DIR / "brand.json").read_text(encoding="utf-8"))
+        for key in ("colors", "fonts", "ending"):           # fill any missing keys from the example
+            b[key] = {**example[key], **b.get(key, {})}
+        for key in ("name", "tagline", "language", "logo"):
+            b.setdefault(key, example[key])
+        b["_dir"] = p.parent
+        b["rgb"] = {k: _rgb(v) for k, v in b["colors"].items()}
+        b["ending"] = {k: v.replace("{name}", b["name"]) for k, v in b["ending"].items()}
+        _BRAND = b
+    return _BRAND
+
+
+def color(name):
+    return brand()["rgb"][name]
+
+
+def logo():
+    """The brand logo as RGBA (a transparent PNG works best), or a lettered placeholder."""
+    from PIL import Image, ImageDraw
+    b = brand()
+    p = Path(b["_dir"]) / b["logo"]
+    if p.exists():
+        return Image.open(p).convert("RGBA")
+    _note(b["logo"], "the brand logo")
+    im = Image.new("RGBA", (1024, 1024), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.ellipse((112, 112, 912, 912), fill=(255, 255, 255, 255))
+    d.ellipse((232, 232, 792, 792), fill=(0, 0, 0, 0))
+    return im

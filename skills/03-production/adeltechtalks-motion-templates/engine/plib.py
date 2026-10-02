@@ -10,18 +10,24 @@ PHOTO = os.environ.get('PHOTO', '')  # high-res photo path; falls back to story 
 OUT = config.work('pframes'); os.makedirs(OUT, exist_ok=True)
 CX = 540
 
-# Light Knowledge tokens
-PAPER = (250, 250, 248); WHITE = (255, 255, 255); GRAPH = (23, 26, 31); SLATE = (102, 112, 133)
-SIG = (37, 99, 235); ICE = (220, 235, 255); MINT = (45, 212, 168); HAIR = (230, 232, 236)
-CORAL = (255, 107, 87); NOONY = (253, 236, 0)
+# Brand tokens (from brand.json — see engine/config.py)
+_C = config.color
+PAPER = _C("paper"); WHITE = _C("surface"); GRAPH = _C("ink"); SLATE = _C("muted")
+SIG = _C("primary"); ICE = _C("primary_soft"); MINT = _C("accent"); HAIR = _C("hairline")
+CORAL = _C("cta"); NOONY = _C("highlight")
 
 def font(name, size, w):
     ft = ImageFont.truetype(F + name + '.ttf', size, layout_engine=ImageFont.Layout.RAQM)
-    ax = ft.get_variation_axes(); ft.set_variation_by_axes([w] + [a['default'] for a in ax[1:]]); return ft
-CAIRO = lambda s: font('Cairo', s, 900)
-MONT = lambda s: font('Montserrat', s, 800)
-READ = lambda s, w=600: font('ReadexPro', s, w)
-MONO = lambda s: font('JetBrainsMono', s, 800)
+    try:  # variable fonts: pick the weight; static fonts keep their own weight
+        ax = ft.get_variation_axes(); ft.set_variation_by_axes([w] + [a['default'] for a in ax[1:]])
+    except Exception:
+        pass
+    return ft
+_FONTS = config.brand()["fonts"]
+CAIRO = lambda s: font(_FONTS["display"], s, 900)
+MONT = lambda s: font(_FONTS["latin"], s, 800)
+READ = lambda s, w=600: font(_FONTS["body"], s, w)
+MONO = lambda s: font(_FONTS["mono"], s, 800)
 
 def txt(t, ft, fill, rtl=False, spacing=0):
     d = ImageDraw.Draw(Image.new('RGBA', (1, 1)))

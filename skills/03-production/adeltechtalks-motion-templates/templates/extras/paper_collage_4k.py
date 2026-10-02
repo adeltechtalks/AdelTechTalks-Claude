@@ -2,6 +2,7 @@ import sys, math, random, subprocess, os, time
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # skill root, so the engine package is importable
 from engine import config
+_BRAND = config.brand(); _END = _BRAND['ending']  # name, tagline and ending text from brand.json
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageChops, ImageOps, ImageEnhance
 from engine import plib
@@ -11,7 +12,7 @@ K = 2                       # 2 = 2160x3840 (4K vertical)
 W, H, FPS, DUR = 1080 * K, 1920 * K, 30, 17.0
 CX = 540                    # layout coordinates stay in 1080-space; put() scales them
 PARCH = (255, 255, 252); BGC = (247, 246, 242); INK = GRAPH
-SIG = (37, 99, 235); ICE = (220, 235, 255); MINT = (45, 212, 168); SLATE = (102, 112, 133); HAIR = (210, 216, 226)
+SIG = config.color('primary'); ICE = config.color('primary_soft'); MINT = config.color('accent'); SLATE = config.color('muted'); HAIR = (210, 216, 226)
 plib.BACK = (226, 230, 238)
 TEX = 0.45                  # paper texture strength (lower = cleaner, sharper look)
 
@@ -80,7 +81,7 @@ def ink_on(card, im, xy):
     card.paste(ImageChops.multiply(region, rgb), xy, im.split()[3])
 
 # ---------- assets ----------
-logo_w = Image.open(config.asset('atc-mark-white-1024.png')).convert('RGBA')
+logo_w = config.logo().convert('RGBA')
 def recolor(im, col):
     o = Image.new('RGBA', im.size, col + (255,)); o.putalpha(im.split()[3]); return o
 def bw_logo(path, crop):
@@ -156,8 +157,8 @@ CTA = strip('استخدم الكود دلوقتي', 76, 71, color=WHITE, col=COR
 END = paper(W + k(700), H + k(300), 77, col=(252, 252, 249), burn=0.0, depth=26)
 END_SH = shadow(END, 24, -14, 120)
 MARK = recolor(fit(logo_w, w=k(300)), SIG)
-F1 = txt('تابع', CAIRO(k(120)), INK, rtl=True)
-F2 = txt('AdelTechTalks', MONT(k(100)), SIG)
+F1 = txt(_END['follow'].replace(_BRAND['name'], '').strip(), CAIRO(k(120)), INK, rtl=True)
+F2 = txt(_BRAND['name'], MONT(k(100)), SIG)
 fb_t = txt('+ Follow', MONT(k(62)), WHITE)
 FB = rrect(fb_t.width + k(110), fb_t.height + k(56), k(60), SIG); FB.alpha_composite(fb_t, (k(55), k(28))); FB = shadow(FB, 14, 10, 110)
 RC = txt('noon ATT001  ·  Namshi ATT002', MONO(k(40)), GRAPH)

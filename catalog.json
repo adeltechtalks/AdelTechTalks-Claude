@@ -153,8 +153,8 @@
           "status": "testing",
           "source": "Built by us",
           "share_plan": "Share as template (strip brand tokens)",
-          "desc": "Motion-graphics reels (9:16) rendered from code — 3 locked styles, original SFX and 128 BPM music, one command to a finished mp4.",
-          "desc_ar": "ريلز Motion graphics (9:16) معمولة بالكود: 3 ستايلات ثابتة، و SFX ومزيكا 128 BPM أصلية، وأمر واحد يطلّعلك mp4 جاهز."
+          "desc": "Motion-graphics reels (9:16) rendered from code in your own brand — 3 locked styles, original SFX and music, one command to a finished mp4.",
+          "desc_ar": "ريلز Motion graphics (9:16) معمولة بالكود بالـ Brand بتاعك: 3 ستايلات، و SFX ومزيكا أصلية، وأمر واحد يطلّعلك mp4 جاهز."
         },
         {
           "slug": "footage-ingest",

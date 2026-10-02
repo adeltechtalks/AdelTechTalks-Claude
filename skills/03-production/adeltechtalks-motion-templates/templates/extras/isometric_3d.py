@@ -3,13 +3,14 @@ import sys, math, subprocess, time, glob
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # skill root, so the engine package is importable
 from engine import config
+_BRAND = config.brand(); _END = _BRAND['ending']  # name, tagline and ending text from brand.json
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 from engine.plib import UP, txt, CAIRO, MONT, READ, MONO, WHITE, CORAL, GRAPH
 
 W, H, FPS = 1080, 1920, 30
 BPM = 128; BAR = 4 * 60 / BPM; NSC = 12; DUR = round(BAR * NSC + 1.6, 2)   # 12 scenes + CTA hold
-ORANGE = (255, 138, 61); OR_D = (226, 104, 30); SIG = (37, 99, 235); SLATE = (102, 112, 133)
+ORANGE = config.color('ball'); OR_D = tuple(int(v * 0.86) for v in ORANGE); SIG = config.color('primary'); SLATE = config.color('muted')
 CX = 540
 def clamp(v, a, b): return max(a, min(b, v))
 def prog(t, s, d): return clamp((t - s) / d, 0, 1)
@@ -143,7 +144,7 @@ def gear_sprite(rot):
     d.polygon(pts, fill=SIG + (255,)); d.ellipse(((300 - 86) * s, (300 - 86) * s, (300 + 86) * s, (300 + 86) * s), fill=(0, 0, 0, 0))
     return extrude(im.resize((600, 600), Image.LANCZOS), 40, side=(20, 60, 160))
 
-MARK = Image.open(config.asset('atc-mark-white-1024.png')).convert('RGBA'); MARK = MARK.resize((520, int(520 * MARK.height / MARK.width)), Image.LANCZOS)
+MARK = config.logo().convert('RGBA'); MARK = MARK.resize((520, int(520 * MARK.height / MARK.width)), Image.LANCZOS)
 MARK_F = Image.new('RGBA', MARK.size, SIG + (255,)); MARK_F.putalpha(MARK.split()[3]); MARK3D = extrude(MARK_F, 44, side=(20, 60, 160))
 SMALL_MARK = MARK.resize((52, int(52 * MARK.height / MARK.width)), Image.LANCZOS)
 
@@ -165,8 +166,8 @@ SCENES = [  # (headline, accent-sub or None, object key)
 ]
 HEADS = [line(h_) if h_ != 'Claude' else txt('Claude', MONT(150), SIG) for h_, _, _ in SCENES]
 NUMS = {i: txt(n, MONO(64), ORANGE) for i, (_, n, _) in enumerate(SCENES) if n}
-CTA_T = txt('تابع AdelTechTalks', CAIRO(54), WHITE, rtl=True)
-FOLLOWING = txt('Following', MONT(42), WHITE)
+CTA_T = txt(_END['follow'], CAIRO(54), WHITE, rtl=True)
+FOLLOWING = txt(_END['following'], MONT(42), WHITE)
 
 # ---------- background ----------
 grad = Image.new('RGB', (1, H))

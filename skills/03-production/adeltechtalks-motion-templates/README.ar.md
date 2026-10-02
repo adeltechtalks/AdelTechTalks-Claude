@@ -16,7 +16,7 @@
 
 <br>
 
-> 🧪 **تجريبية.** شغالة من أولها لآخرها، جرّبها وقولنا لو حاجة باظت. معمولة بالـ Brand بتاع AdelTechTalks ([`references/brand-tokens.md`](references/brand-tokens.md))، ولو عايزها بتاعتك غيّر الألوان واللوجو اللي في `assets/`.
+> 🧪 **تجريبية.** شغالة من أولها لآخرها، جرّبها وقولنا لو حاجة باظت.
 
 | بتدّيه | بتاخد | الستايلات | شغالة على |
 |:--|:--|:-:|:--|
@@ -29,6 +29,18 @@
 </div>
 
 <img src="../../../docs/adeltechtalks-motion-templates/how-ar.svg" alt="1 اختار ستايل (A أو E أو F) · 2 عدّل الكلام اللي في أول الـ Template · 3 شغّل python render.py وخد الـ mp4" width="100%">
+
+<div dir="rtl">
+
+---
+
+## بالـ Brand بتاعك، مش بتاعنا
+
+الـ Templates اتصممت بالـ Brand بتاع AdelTechTalks، وده موجود كمثال بس. أول مرة تستخدم الـ Skill، Claude هيسألك عن **اسمك وألوانك والفونتات واللوجو والكلام اللي في آخر الفيديو**، ويحفظهم في `brand.json`، وكل فيديو يطلع بالستايل بتاعك.
+
+</div>
+
+<img src="../../../docs/adeltechtalks-motion-templates/brand-swap.jpg" alt="نفس الـ Frames بالـ Brand المثال وبـ Brand تاني" width="100%">
 
 <div dir="rtl">
 
@@ -64,7 +76,19 @@
 
 <sub>دوس على الصورة عشان تحمّل · Settings → Capabilities → **Code execution and file creation** · Customize → Skills → **+** → ارفع الـ ZIP زي ما هو.</sub>
 
-### 2 · اطلب الريل
+### 2 · الـ Brand بتاعك: مرة واحدة
+
+</div>
+
+```
+استخدم adeltechtalks-motion-templates. ظبطلي الـ Brand بتاعي الأول.
+```
+
+<div dir="rtl">
+
+Claude هيسألك عن الاسم والـ Tagline، والألوان، والفونتات، واللوجو (PNG خلفيته شفافة)، والكلام اللي في آخر الفيديو، وبعدين يحفظ `input/brand.json` و `input/logo.png`. احتفظ بيهم، وابعتهم تاني المرة الجاية أو حطهم في Project.
+
+### 3 · اطلب الريل
 
 </div>
 
@@ -78,13 +102,14 @@
 
 Claude بيعدّل الكلام في الـ Template، ويوريك Test frames، وبعدين يعمل الريل بالـ SFX والمزيكا.
 
-### 3 · أو شغّلها بنفسك (Claude Code أو الـ Terminal)
+### 4 · أو شغّلها بنفسك (Claude Code أو الـ Terminal)
 
 </div>
 
 ```bash
 pip install -r requirements.txt     # و ffmpeg
 bash engine/fetch_fonts.sh          # مرة واحدة
+cp brand.template.json input/brand.json   # املاه بالـ Brand بتاعك، وحط input/logo.png
 python render.py --style a --out output/
 ```
 
@@ -92,6 +117,7 @@ python render.py --style a --out output/
 
 | الـ Folder | بيتحط فيه إيه |
 |:--|:--|
+| `input/brand.json` · `input/logo.png` | الـ Brand بتاعك (من الخطوة 2 أو من `brand.template.json`) |
 | `input/photo.jpg` | صورة شخصية للـ Avatar أو الـ Collage |
 | `input/result/*.png` | Frames الـ Result clip اللي بيظهر جوه الموبايل |
 | `input/partner_1.png` · `partner_2.png` · `flag_1.jpg` · `flag_2.png` | لوجوهات الـ Partners والـ Badges (للإضافية بس) |
@@ -109,7 +135,7 @@ python render.py --style a --out output/
 - الكلام على الشاشة بالمصري، والكلمات التقنية الإنجليزي تفضل إنجليزي.
 - كل حاجة بتتقري جوه الـ 4:5 اللي في النص (y من 285 لـ 1635 على 1080×1920)، فبتنفع على كل المنصات.
 - مفيش Frame فاضي، والإيقاع سريع على الـ Beat، و Bar تحضير قبل ما النتيجة تظهر.
-- الـ Spark Coral بيظهر مرة واحدة بس، على الـ CTA.
+- لون الـ CTA بتاعك بيظهر مرة واحدة بس، على زرار الـ Follow.
 - أي رقم أو Claim على الشاشة لازم يكون منك أو من مصدر موثوق.
 
 </details>
@@ -124,12 +150,13 @@ python render.py --style a --out output/
 | `ffmpeg not found` | سطّب ffmpeg، أو شغّل بـ `FFMPEG=/path/to/ffmpeg` |
 | الحروف العربي طالعة مفكّكة | Pillow محتاج libraqm |
 | فيه مربع مكتوب عليه `photo.jpg` أو `result 1/24` | الملف ده ناقص، ضيفه في `input/` |
+| الفيديو طالع باسم AdelTechTalks | لسه مفيش `input/brand.json`، ظبط الـ Brand بتاعك (الخطوة 2) |
 | المزيكا بتضرب بدري أو متأخر | `python render.py --style a --drop 19.3 --end 27` |
 
 </details>
 
 ---
 
-<sub>Built by <b><a href="https://instagram.com/adeltechtalks">@AdelTechTalks</a></b> · الفونتات: Cairo و Readex Pro و Montserrat و JetBrains Mono (SIL OFL، بتتحمّل وقت الـ Setup) · كل الـ SFX والمزيكا معمولين بالكود · <a href="../../../LICENSE">MIT License</a></sub>
+<sub>Built by <b><a href="https://instagram.com/adeltechtalks">@AdelTechTalks</a></b> · الـ Brand المثال في <code>examples/adeltechtalks/</code> · الفونتات: Cairo و Readex Pro و Montserrat و JetBrains Mono (SIL OFL، بتتحمّل وقت الـ Setup) · كل الـ SFX والمزيكا معمولين بالكود · <a href="../../../LICENSE">MIT License</a></sub>
 
 </div>

@@ -1,0 +1,37 @@
+{
+  "_note": "Copy to input/brand.json and fill in. Colours are hex. Fonts are file names in engine/fonts/ (variable or static .ttf).",
+  "name": "YourBrand",
+  "tagline": "What you do in 2-3 words",
+  "language": "ar",
+  "logo": "logo.png",
+  "colors": {
+    "background": "#F6F6F4",
+    "paper": "#FAFAF8",
+    "surface": "#FFFFFF",
+    "ink": "#171A1F",
+    "muted": "#667085",
+    "hairline": "#E6E8EC",
+    "primary": "#2563EB",
+    "primary_light": "#5B8EF4",
+    "primary_soft": "#DCEBFF",
+    "accent": "#2DD4A8",
+    "cta": "#FF6B57",
+    "highlight": "#FDEC00",
+    "ball": "#FF6A1C"
+  },
+  "fonts": {
+    "display": "Cairo",
+    "body": "ReadexPro",
+    "latin": "Montserrat",
+    "mono": "JetBrainsMono"
+  },
+  "ending": {
+    "headline": "عايز نفس الفكرة؟",
+    "follow": "تابع {name}",
+    "following": "Following",
+    "comment_before": "اكتب",
+    "comment_keyword": "INFO",
+    "comment_after": "في الكومنتات",
+    "comment_promise": "وهبعتلك التفاصيل"
+  }
+}

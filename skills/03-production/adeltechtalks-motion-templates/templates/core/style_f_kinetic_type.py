@@ -3,12 +3,13 @@ import sys, math, subprocess, time
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # skill root, so the engine package is importable
 from engine import config
+_BRAND = config.brand(); _END = _BRAND['ending']  # name, tagline and ending text from brand.json
 from PIL import Image, ImageDraw, ImageFilter
 from engine.plib import UP, txt, CAIRO, MONT, READ, MONO, WHITE, GRAPH, CORAL
 
 W, H, FPS = 1080, 1920, 30
 HB = 1.875 / 2; DUR = 22.5
-BG = (247, 247, 245); SIG = (37, 99, 235); MINT = (45, 212, 168); SLATE = (120, 126, 140); CX, CY = 540, 960
+BG = config.color('background'); SIG = config.color('primary'); MINT = config.color('accent'); SLATE = config.color('muted'); CX, CY = 540, 960
 def clamp(v, a, b): return max(a, min(b, v))
 def prog(t, s, d): return clamp((t - s) / d, 0, 1)
 def ease(p): return 1 - (1 - p) ** 3
@@ -47,8 +48,8 @@ P = [
     ('small', A('عايز', 100, SLATE)), ('big', A('تتعلمها؟', 170)), ('cta', None),
 ]
 PREV_SMALL = {}  # phrase shown small above the next one (stacking effect)
-CTA_T = txt('تابع AdelTechTalks', CAIRO(54), WHITE, rtl=True); FOLLOWING = txt('Following', MONT(42), WHITE)
-MARK = Image.open(config.asset('atc-mark-white-1024.png')).convert('RGBA'); MARK = MARK.resize((52, int(52 * MARK.height / MARK.width)), Image.LANCZOS)
+CTA_T = txt(_END['follow'], CAIRO(54), WHITE, rtl=True); FOLLOWING = txt(_END['following'], MONT(42), WHITE)
+MARK = config.logo().convert('RGBA'); MARK = MARK.resize((52, int(52 * MARK.height / MARK.width)), Image.LANCZOS)
 
 def blob(d, col, a):
     b = Image.new('RGBA', (d, d), (0, 0, 0, 0)); ImageDraw.Draw(b).ellipse((d // 4, d // 4, d * 3 // 4, d * 3 // 4), fill=col + (a,))

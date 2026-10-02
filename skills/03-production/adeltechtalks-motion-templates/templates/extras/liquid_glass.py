@@ -3,12 +3,13 @@ import sys, math, os, subprocess, time
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # skill root, so the engine package is importable
 from engine import config
+_BRAND = config.brand(); _END = _BRAND['ending']  # name, tagline and ending text from brand.json
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageChops, ImageOps, ImageEnhance
 from engine.plib import UP, txt, CAIRO, MONT, READ, MONO, GRAPH, WHITE, CORAL, NOONY
 
 W, H, FPS, DUR = 1080, 1920, 30, 17.0
-SIG = (37, 99, 235); BLUE4 = (91, 142, 244); MINT = (45, 212, 168)
+SIG = config.color('primary'); BLUE4 = config.color('primary_light'); MINT = config.color('accent')
 
 # ---------- helpers ----------
 def fit(im, w=None, h=None):
@@ -135,11 +136,11 @@ CTA_T = T('استخدم الكود دلوقتي', CAIRO(56), rtl=True)
 AV = circ(src.crop((610, 310, 1510, 1210)), 132)
 ring = Image.new('RGBA', (148, 148), (0, 0, 0, 0)); ImageDraw.Draw(ring).ellipse((0, 0, 147, 147), fill=(255, 255, 255, 230))
 ring.alpha_composite(AV, (8, 8)); AV = soft_shadow(ring, 8, 120)
-NAME = T('AdelTechTalks', MONT(46))
-SUB = T('Tech Explorer · 9to5 × 5to9', READ(28, 400), (225, 232, 245))
-FOL = T('+ Follow', MONT(36)); FOLD = T('Following', MONT(34))
+NAME = T(_BRAND['name'], MONT(46))
+SUB = T(_BRAND['tagline'], READ(28, 400), (225, 232, 245))
+FOL = T('+ Follow', MONT(36)); FOLD = T(_END['following'], MONT(34))
 CHIP = T('noon ATT001  ·  Namshi ATT002', MONO(34))
-MARK = soft_shadow(fit(Image.open(config.asset('atc-mark-white-1024.png')).convert('RGBA'), w=70), 6, 100)
+MARK = soft_shadow(fit(config.logo().convert('RGBA'), w=70), 6, 100)
 
 # ---------- main glass card: states it morphs between ----------
 STATES = [  # (start, cx, cy, w, h, r)
