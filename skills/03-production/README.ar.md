@@ -12,6 +12,7 @@
 
 | الخطوة | الـ Skill | بتعمل إيه | الـ Tier | تحميل |
 |:-:|:--|:--|:-:|:-:|
+| 09 | **[Motion Templates](adeltechtalks-motion-templates/README.ar.md)** | ريلز Motion graphics (9:16) معمولة بالكود: 3 ستايلات ثابتة، و SFX ومزيكا 128 BPM أصلية، وأمر واحد يطلّعلك mp4 جاهز. | Free | [**⬇ ZIP**](https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/adeltechtalks-motion-templates.zip) · 🧪 |
 | 08 | **Footage Ingest** | Project folder وتسمية الملفات والـ Backup من كل الأجهزة. | 🔒 Pro | قريباً |
 | 09 | **Edit Plan** | Editor brief لقطة بلقطة: القص، والكلام على الشاشة، والـ Motion، والـ SFX، والـ B-roll. | 🔒 Pro | قريباً |
 | 09 | **Captions** | Captions و Subtitles مظبوطة بأي لغة. | Free | قريباً |

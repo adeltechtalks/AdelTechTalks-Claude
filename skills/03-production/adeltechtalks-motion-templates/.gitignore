@@ -1,0 +1,7 @@
+# Generated locally — never commit
+engine/fonts/
+work/
+output/
+input/
+__pycache__/
+*.pyc

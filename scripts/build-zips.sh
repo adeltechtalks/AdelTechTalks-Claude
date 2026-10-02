@@ -11,6 +11,6 @@ for skill_md in skills/*/*/SKILL.md; do
   name=$(basename "$dir")
   out="$PWD/downloads/$name.zip"
   rm -f "$out"
-  (cd "$(dirname "$dir")" && zip -qrX "$out" "$name" -x "$name/README.md" "$name/README.*.md" "*/.DS_Store" "*/__pycache__/*")
+  (cd "$(dirname "$dir")" && zip -qrX "$out" "$name" -x "$name/README.md" "$name/README.*.md" "*/.DS_Store" "*/__pycache__/*" "$name/engine/fonts/*" "$name/work/*" "$name/output/*" "$name/input/*")
   echo "built downloads/$name.zip"
 done

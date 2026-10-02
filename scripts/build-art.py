@@ -59,7 +59,7 @@ def font_css(text, families):
     for fam, weight, file, urange in FACES:
         if fam not in families:
             continue
-        f = TTFont(FONTS / file)
+        f = TTFont(FONTS / file, recalcTimestamp=False)  # stable bytes between builds
         chars = {c for c in text if ord(c) in f.getBestCmap()}
         if not chars:
             continue
@@ -665,7 +665,8 @@ def stage_card(stage, lang):
     W, H = 560, 236
     skills = stage["skills"]
     ready = sum(1 for s in skills if s["status"] == "available")
-    soon = len(skills) - ready
+    testing = sum(1 for s in skills if s["status"] == "testing")
+    soon = len(skills) - ready - testing
     pad = 30
     X = W - pad if rtl else pad
     num = stage["id"][:2]
@@ -673,7 +674,7 @@ def stage_card(stage, lang):
     summary = stage["summary_ar"] if rtl else stage["summary"]
     lines = (_wrap_ar(summary, 16, W - 2 * pad) if rtl else _wrap(summary, "readex-pro-latin-400-normal.woff2", 16, W - 2 * pad))[:2]
     parts = [f'<rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="18" fill="#FFFFFF" stroke="{SOFT}" stroke-width="2"/>']
-    if ready:
+    if ready or testing:
         parts.append(f'<rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="18" fill="none" stroke="{BLUE}" stroke-width="2"/>')
     nx = X
     parts.append(f'<text x="{nx}" y="{pad + 22}" text-anchor="{"end" if rtl else "start"}" font-family="J" font-weight="500" font-size="18" fill="{BLUE}">{num}</text>')
@@ -689,6 +690,8 @@ def stage_card(stage, lang):
     pills = []
     if ready:
         pills.append((f"{ready} ready" if not rtl else f"{ready} جاهزة", MINT, "#0B5E49", True))
+    if testing:
+        pills.append((f"{testing} testing" if not rtl else f"{testing} تجريبية", ICE, DEEP, False))
     pills.append((f"{soon} coming" if not rtl else f"{soon} قريباً", "#EEF1F5", SLATE, False))
     x = X
     for label, bg, fg, live in pills:
@@ -804,7 +807,7 @@ def skill_card(stage, skill, lang):
     lines = (_wrap_ar(desc, 16, avail) if rtl else _wrap(desc, "readex-pro-latin-400-normal.woff2", 16, avail))[:3]
     for k, line in enumerate(lines):
         parts.append(f'<text x="{X}" y="{pad + 96 + k * 23}" {a} font-family="R" font-weight="400" font-size="16" fill="{SLATE}">{escape(line)}</text>')
-    pills = [("Free" if skill["tier"] == "free" else "Pro", "#DCF8EF", "#0B5E49", True), ("Ready" if not rtl else "جاهزة", "#EEF1F5", SLATE, False)]
+    pills = [("Free" if skill["tier"] == "free" else "Pro", "#DCF8EF", "#0B5E49", True), (("Testing" if not rtl else "تجريبية") if skill["status"] == "testing" else ("Ready" if not rtl else "جاهزة"), ICE if skill["status"] == "testing" else "#EEF1F5", DEEP if skill["status"] == "testing" else SLATE, False)]
     x = X
     for label, bg, fg, live in pills:
         f = "readex-pro-arabic-600-normal.woff2" if any("؀" <= c <= "ࣿ" for c in label) else "montserrat-latin-600-normal.woff2"
@@ -831,7 +834,7 @@ def skill_card(stage, skill, lang):
 def coming_card(catalog, lang):
     rtl = lang == "ar"
     W, H, pad = 560, 236, 26
-    nxt = [s["name"] for st in catalog["stages"] for s in st["skills"] if s["status"] != "available" and s["tier"] == "free"][:3]
+    nxt = [s["name"] for st in catalog["stages"] for s in st["skills"] if s["status"] not in ("available", "testing") and s["tier"] == "free"][:3]
     X = W - pad if rtl else pad
     a = 'text-anchor="start" direction="rtl"' if rtl else ""
     ae = 'text-anchor="end"' if rtl else ""
@@ -855,6 +858,117 @@ def coming_card(catalog, lang):
     return svg(W, H, css, "".join(parts), title)
 
 
+def motion_hero(lang):
+    """Hero for adeltechtalks-motion-templates: title + three phones (A · E · F)."""
+    rtl = lang == "ar"
+    W, H, L = 1600, 680, 88
+    R = W - L
+    root = ROOT / "docs" / "adeltechtalks-motion-templates"
+    imgs = [_img(root / f"style_{k}.jpg") for k in "aef"]
+    fw, fh, gap = 210, 373, 26
+    total = 3 * fw + 2 * gap
+    x0 = L if rtl else R - total
+    y0 = (H - fh) // 2 - 10
+    parts = [f'<rect width="{W}" height="{H}" fill="{GRAPHITE}"/>']
+    order = list(range(3))
+    labels = ["A", "E", "F"]
+    for k in order:
+        c = 2 - k if rtl else k
+        x = x0 + c * (fw + gap)
+        y = y0 + (0 if k == 1 else 22)
+        parts.append(f'<clipPath id="m{k}"><rect x="{x}" y="{y}" width="{fw}" height="{fh}" rx="22"/></clipPath>'
+                     f'<g class="pop" style="{d(0.4 + k * 0.25)}"><image clip-path="url(#m{k})" href="{imgs[k]}" x="{x}" y="{y}" width="{fw}" height="{fh}" preserveAspectRatio="xMidYMid slice"/>'
+                     f'<rect class="ring{k}" style="{d(1.6 + k * 1.3)}" x="{x - 5}" y="{y - 5}" width="{fw + 10}" height="{fh + 10}" rx="26" fill="none" stroke="{BLUE}" stroke-width="3" opacity="0"/>'
+                     f'<text x="{x + fw / 2}" y="{y + fh + 40}" text-anchor="middle" font-family="J" font-weight="500" font-size="16" letter-spacing="2" fill="#98A2B3">STYLE {labels[k]}</text></g>')
+    X = R if rtl else L
+    anc = "end" if rtl else "start"
+    eyebrow = "PRODUCTION · STEP 09 · TESTING"
+    parts.append(f'<text class="fi" style="{d(0.1)}" x="{X}" y="168" text-anchor="{anc}" font-family="J" font-weight="500" font-size="16" letter-spacing="2.5" fill="{MINT}">{eyebrow}</text>')
+    parts.append(f'<text class="fu" style="{d(0.2)}" x="{X}" y="262" text-anchor="{anc}" font-family="M" font-weight="800" font-size="80" letter-spacing="-2.2" fill="{WARM}">Motion</text>')
+    parts.append(f'<text class="fu" style="{d(0.35)}" x="{X}" y="350" text-anchor="{anc}" font-family="M" font-weight="800" font-size="80" letter-spacing="-2.2" fill="{BLUE}">Templates</text>')
+    if rtl:
+        subs = ["ريلز Motion graphics معمولة بالكود،", "من غير برنامج مونتاج، والصوت معاها."]
+        for k, s in enumerate(subs):
+            parts.append(f'<text class="fu" style="{d(0.5 + k * 0.08)}" x="{X}" y="{418 + k * 40}" text-anchor="start" direction="rtl" font-family="R" font-weight="400" font-size="26" fill="#C9CED6">{escape(s)}</text>')
+    else:
+        subs = ["Motion-graphics reels built from code.", "No editing app. Sound included."]
+        for k, s in enumerate(subs):
+            parts.append(f'<text class="fu" style="{d(0.5 + k * 0.08)}" x="{X}" y="{416 + k * 38}" font-family="R" font-weight="400" font-size="26" fill="#C9CED6">{escape(s)}</text>')
+    chips = [("9:16", "Reels"), ("128", "BPM"), ("3", "styles")]
+    jf, mf = "jetbrains-mono-latin-500-normal.woff2", "montserrat-latin-600-normal.woff2"
+    x, cyp = X, 512
+    for i, (a, b) in enumerate(chips):
+        rw, lw = width(jf, a, 15), width(mf, b, 16)
+        pw = 18 + rw + 10 + lw + 18
+        xs = x - pw if rtl else x
+        parts.append(f'<g class="fu" style="{d(0.7 + i * 0.08)}"><rect x="{xs:.1f}" y="{cyp}" width="{pw:.1f}" height="44" rx="22" fill="#1E2229" stroke="#2C313A"/>'
+                     f'<text x="{xs + 18:.1f}" y="{cyp + 28}" font-family="J" font-weight="500" font-size="15" fill="{BLUE}">{a}</text>'
+                     f'<text x="{xs + 18 + rw + 10:.1f}" y="{cyp + 28}" font-family="M" font-weight="600" font-size="16" fill="{WARM}">{escape(b)}</text></g>')
+        x = xs - 12 if rtl else xs + pw + 12
+    css = BASE_CSS + STEP_CSS + "".join(_cycle_css(f"ring{k}", 3, 3.9) for k in range(3))
+    text = eyebrow + "MotionTemplates" + "".join(subs) + "".join(a + b for a, b in chips) + "STYLE AEF"
+    return svg(W, H, font_css(text, {"M", "R", "J"}) + css, "".join(parts), "Motion Templates")
+
+
+def motion_steps(lang):
+    rtl = lang == "ar"
+    W, H = 1600, 520
+    root = ROOT / "docs" / "adeltechtalks-motion-templates"
+    imgs = [_img(root / f"style_{k}.jpg") for k in "aef"]
+    if rtl:
+        titles = ["اختار ستايل", "اكتب القصة", "شغّل أمر واحد"]
+        caps = [["A و E و F: نفس القصة", "بتلات أشكال."], ["عدّل الكلام اللي في أول", "الـ Template."], ["الفيديو والـ SFX والمزيكا", "في mp4 واحد."]]
+    else:
+        titles = ["Pick a style", "Write the story", "Run one command"]
+        caps = [["A · E · F — the same story,", "three different looks."], ["Edit the text at the top", "of the template."], ["Video, SFX and music,", "mixed into one mp4."]]
+
+    def art1(x, y):
+        cx = x + CARD_W / 2
+        fw, fh, g = 92, 164, 16
+        x0 = cx - (3 * fw + 2 * g) / 2
+        s = []
+        for k in range(3):
+            c = 2 - k if rtl else k
+            fx = x0 + c * (fw + g)
+            s.append(f'<clipPath id="sp{k}"><rect x="{fx}" y="{y + 64}" width="{fw}" height="{fh}" rx="10"/></clipPath>'
+                     f'<image class="pop" style="{d(0.9 + k * 0.15)}" clip-path="url(#sp{k})" href="{imgs[k]}" x="{fx}" y="{y + 64}" width="{fw}" height="{fh}" preserveAspectRatio="xMidYMid slice"/>'
+                     f'<rect class="sz{k}" style="{d(1.8 + k * 1.2)}" x="{fx - 4}" y="{y + 60}" width="{fw + 8}" height="{fh + 8}" rx="13" fill="none" stroke="{BLUE}" stroke-width="3" opacity="0"/>'
+                     f'<text x="{fx + fw / 2}" y="{y + 254}" text-anchor="middle" font-family="J" font-weight="500" font-size="15" fill="{SLATE}">{"AEF"[k]}</text>')
+        return "".join(s)
+
+    def art2(x, y):
+        px, pw = x + 40, CARD_W - 80
+        lines = [("HEAD1", '"ينفع تعمل موشن جرافيك"'), ("HEAD2", '"من غير برنامج مونتاج؟"'), ("CHIPS", '["Reels", "TikTok", "Shorts"]')]
+        s = [f'<g class="pop" style="{d(0.8)}"><rect x="{px}" y="{y + 52}" width="{pw}" height="200" rx="14" fill="{GRAPHITE}"/>'
+             + "".join(f'<circle cx="{px + 22 + k * 16}" cy="{y + 72}" r="5" fill="{c}"/>' for k, c in enumerate(("#FF6B57", "#F5B301", MINT))) + "</g>"]
+        for k, (var, val) in enumerate(lines):
+            yy = y + 118 + k * 44
+            s.append(f'<g class="fi" style="{d(1.2 + k * 0.4)}"><text x="{px + 22}" y="{yy}" font-family="J" font-weight="500" font-size="14" fill="#8FB4FF">{var}</text>'
+                     f'<text x="{px + 22 + 60}" y="{yy}" font-family="J" font-weight="500" font-size="14" fill="#C9CED6">=</text>'
+                     f'<text x="{px + pw - 18}" y="{yy}" text-anchor="end" font-family="R" font-weight="500" font-size="14" fill="{MINT}">{escape(val)}</text></g>')
+        return "".join(s)
+
+    def art3(x, y):
+        px, pw = x + 36, CARD_W - 72
+        steps = ["Test frames", "Render", "SFX", "Music", "Mix"]
+        s = [f'<g class="pop" style="{d(0.8)}"><rect x="{px}" y="{y + 44}" width="{pw}" height="218" rx="14" fill="{GRAPHITE}"/>'
+             f'<text x="{px + 18}" y="{y + 78}" font-family="J" font-weight="500" font-size="13.5" fill="#FAFAF8">$ python render.py --style a</text></g>']
+        for k, st in enumerate(steps):
+            yy = y + 108 + k * 25
+            s.append(f'<text class="fi" style="{d(1.3 + k * 0.35)}" x="{px + 18}" y="{yy}" font-family="J" font-weight="500" font-size="13.5" fill="#98A2B3"><tspan fill="{MINT}">✓</tspan> {st}</text>')
+        s.append(f'<text class="fi" style="{d(1.3 + 5 * 0.35)}" x="{px + 18}" y="{y + 248}" font-family="J" font-weight="500" font-size="13.5" fill="{MINT}">→ output/style_a_final.mp4</text>')
+        return "".join(s)
+
+    arts = [art1, art2, art3]
+    parts = [f'<rect width="{W}" height="{H}" fill="{WARM}"/>']
+    for i in range(3):
+        parts.append(_card(i, rtl, titles[i], caps[i], arts[i], 0.1 + i * 0.25))
+    parts.append(_arrows(rtl, 0.7))
+    extra = STEP_CSS + "".join(_cycle_css(f"sz{k}", 3, 3.6) for k in range(3))
+    text = "".join(titles) + "".join("".join(c) for c in caps) + "AEFHEAD1HEAD2CHIPS=\"ينفع تعمل موشن جرافيك\"\"من غير برنامج مونتاج؟\"[\"Reels\", \"TikTok\", \"Shorts\"]$ python render.py --style a✓ Test framesRenderSFXMusicMix→ output/style_a_final.mp4"
+    return svg(W, H, font_css(text, {"M", "R", "J"}) + BASE_CSS + extra, "".join(parts), "How it works" if not rtl else "بتشتغل إزاي")
+
+
 def build_main_page_art():
     import json
     catalog = json.loads((ROOT / "catalog.json").read_text(encoding="utf-8"))
@@ -866,7 +980,7 @@ def build_main_page_art():
         for lang in ("en", "ar"):
             (stages_dir / f"{st['id']}-{lang}.svg").write_text(stage_card(st, lang), encoding="utf-8")
             for sk in st["skills"]:
-                if sk["status"] == "available":
+                if sk["status"] in ("available", "testing"):
                     (skills_dir / f"{sk['slug']}-{lang}.svg").write_text(skill_card(st, sk, lang), encoding="utf-8")
     for lang in ("en", "ar"):
         (skills_dir / f"coming-{lang}.svg").write_text(coming_card(catalog, lang), encoding="utf-8")
@@ -903,6 +1017,13 @@ if __name__ == "__main__":
             content = fn(lang)
             target.write_text(content, encoding="utf-8")
             print(f"built docs/social-cover-studio/{name}-{lang}.svg ({len(content.encode()) // 1024} KB)")
+    mt = ROOT / "docs" / "adeltechtalks-motion-templates"
+    if (mt / "style_a.jpg").exists():
+        for lang in ("en", "ar"):
+            (mt / f"hero-{lang}.svg").write_text(motion_hero(lang), encoding="utf-8")
+            (mt / f"how-{lang}.svg").write_text(motion_steps(lang), encoding="utf-8")
+            (mt / f"install-{lang}.svg").write_text(install_steps(lang, "adeltechtalks-motion-templates"), encoding="utf-8")
+        print("built docs/adeltechtalks-motion-templates/ hero, how and install cards")
     for lang in ("en", "ar"):
         target = ROOT / "docs" / "social-cover-studio" / f"hero-{lang}.svg"
         content = cover_hero(lang)

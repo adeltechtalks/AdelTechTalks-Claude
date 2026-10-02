@@ -17,6 +17,11 @@ catalog = json.loads((ROOT / "catalog.json").read_text(encoding="utf-8"))
 stages = catalog["stages"]
 
 
+def is_out(s):
+    """Downloadable: released or still in testing."""
+    return s["status"] in ("available", "testing")
+
+
 def tier(s, ar=False):
     return "Free" if s["tier"] == "free" else "🔒 Pro"
 
@@ -38,10 +43,10 @@ def table_header(ar=False):
 def stage_page(stage, ar=False):
     rows = []
     for s in stage["skills"]:
-        if s["status"] == "available":
+        if is_out(s):
             page = f"{s['slug']}/" + ("README.ar.md" if ar else "")
             name = f"**[{s['name']}]({page})**"
-            action = f"[**⬇ ZIP**]({DL}/{s['slug']}.zip)"
+            action = f"[**⬇ ZIP**]({DL}/{s['slug']}.zip)" + (" · 🧪" if s["status"] == "testing" else "")
         else:
             name = f"**{s['name']}**"
             action = "قريباً" if ar else "Soon"
@@ -94,10 +99,10 @@ def catalog_block(ar=False, prefix="skills/"):
             title += f" · {st['name_ar']}"
         out += [title, "", st["summary_ar"] if ar else st["summary"], "", *table_header(ar)]
         for s in st["skills"]:
-            if s["status"] == "available":
+            if is_out(s):
                 page = f"{prefix}{st['id']}/{s['slug']}/" + ("README.ar.md" if ar else "")
                 name = f"**[{s['name']}]({page})**"
-                action = f"[**⬇ ZIP**]({DL}/{s['slug']}.zip)"
+                action = f"[**⬇ ZIP**]({DL}/{s['slug']}.zip)" + (" · 🧪" if s["status"] == "testing" else "")
             else:
                 name = f"**{s['name']}**"
                 action = "قريباً" if ar else "Soon"
@@ -113,7 +118,7 @@ def featured_block(ar=False, up="", pages="skills/"):
     cells = []
     for st in stages:
         for s in st["skills"]:
-            if s["status"] != "available":
+            if not is_out(s):
                 continue
             page = f"{pages}{st['id']}/{s['slug']}/" + ("README.ar.md" if ar else "")
             cells.append(f'<td width="50%" valign="top"><a href="{page}"><img src="{up}docs/assets/skills/{s["slug"]}-{lang}.svg" alt="{s["name"]}" width="100%"></a>'
@@ -145,12 +150,13 @@ def stage_rows(ar=False):
     for st in stages:
         items = []
         for s in st["skills"]:
-            ready = s["status"] == "available"
-            mark = "✅" if ready else ("🔒" if s["tier"] == "pro" else "⏳")
+            ready = is_out(s)
+            testing = s["status"] == "testing"
+            mark = "🧪" if testing else "✅" if ready else ("🔒" if s["tier"] == "pro" else "⏳")
             name = f'<a href="{st["id"]}/{s["slug"]}/{"README.ar.md" if ar else ""}"><b>{s["name"]}</b></a>' if ready else f"<b>{s['name']}</b>"
             step = f"Step {s['step']} · " if s.get("step") else ""
             tier = "Free" if s["tier"] == "free" else "Pro"
-            state = ("جاهزة" if ar else "Ready") if ready else ("قريباً" if ar else "Soon")
+            state = ("تجريبية" if ar else "Testing") if testing else ("جاهزة" if ar else "Ready") if ready else ("قريباً" if ar else "Soon")
             desc = s["desc_ar"] if ar else s["desc"]
             items.append(f"{mark} {name} <sub>· {step}{tier} · {state}</sub><br><sub>{desc}</sub>")
         card = f'<a href="{st["id"]}/{"README.ar.md" if ar else ""}"><img src="../docs/assets/stages/{st["id"]}-{lang}.svg" alt="{st["name"]}" width="100%"></a>'
@@ -168,11 +174,11 @@ def all_skills_page(ar=False):
     if ar:
         return (toggle + '<p dir="rtl"><a href="../README.ar.md">→ الصفحة الرئيسية</a></p>\n\n'
                 '<div dir="rtl">\n\n# كل الـ Skills\n\nكل الـ Skills مترتبة بمراحل الـ Content Creation OS.\n\n'
-                '✅ جاهزة للتحميل · ⏳ Free وجاية قريب · 🔒 Pro، جزء من [Content Creation OS Pro](../course/README.ar.md)\n\n---\n\n## متاحة دلوقتي\n\n</div>\n\n'
+                '✅ جاهزة للتحميل · 🧪 تجريبية، حمّلها وقولنا رأيك · ⏳ Free وجاية قريب · 🔒 Pro، جزء من [Content Creation OS Pro](../course/README.ar.md)\n\n---\n\n## متاحة دلوقتي\n\n</div>\n\n'
                 + featured_block(True, up="../", pages="") +
                 '\n---\n\n<div dir="rtl">\n\n## حسب المرحلة\n\nدوس على كارت المرحلة عشان تفتح صفحتها.\n\n</div>\n\n' + stage_rows(True))
     return (toggle + "[← Home](../README.md)\n\n# All skills\n\nEvery skill, grouped by stage of the Content Creation OS.\n\n"
-            "✅ Ready to download · ⏳ Free, coming soon · 🔒 Pro, part of [Content Creation OS Pro](../course/)\n\n---\n\n## Available now\n\n"
+            "✅ Ready to download · 🧪 Testing, download and send feedback · ⏳ Free, coming soon · 🔒 Pro, part of [Content Creation OS Pro](../course/)\n\n---\n\n## Available now\n\n"
             + featured_block(False, up="../", pages="") +
             "\n---\n\n## By stage\n\nTap a stage card to open its page.\n\n" + stage_rows(False))
 
@@ -186,7 +192,7 @@ for st in stages:
 (ROOT / "skills" / "README.md").write_text(all_skills_page(), encoding="utf-8")
 (ROOT / "skills" / "README.ar.md").write_text(all_skills_page(True), encoding="utf-8")
 
-available = sum(1 for st in stages for s in st["skills"] if s["status"] == "available")
+available = sum(1 for st in stages for s in st["skills"] if is_out(s))
 blocks = {"featured": featured_block, "stages": stages_block, "catalog": catalog_block}
 for name, ar in (("README.md", False), ("README.ar.md", True)):
     p = ROOT / name

@@ -9,6 +9,15 @@
   },
   "plugins": [
     {
+      "name": "production-skills",
+      "description": "Production: motion-graphics reels rendered from code, with original SFX and music.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/03-production/adeltechtalks-motion-templates"
+      ]
+    },
+    {
       "name": "publish-grow-skills",
       "description": "Publish & Grow: branded covers and thumbnails for Instagram, TikTok, Facebook and YouTube.",
       "source": "./",

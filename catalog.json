@@ -9,11 +9,46 @@
       "summary": "One-time setup: your niche, your brand, your studio and tools, and the time you actually have.",
       "summary_ar": "حاجات بتتعمل مرة واحدة: الـ Niche، والـ Brand، والـ Studio والـ Tools، والوقت اللي عندك فعلاً.",
       "skills": [
-        {"slug": "niche-compass", "name": "Niche Compass", "tier": "free", "status": "planned", "desc": "Find your sweet spot and turn it into content pillars and a one-line positioning.", "desc_ar": "تلاقي الـ Sweet Spot بتاعك وتطلع منه الـ Pillars والـ Positioning."},
-        {"slug": "brand-foundations", "name": "Brand Foundations", "tier": "free", "status": "planned", "desc": "Brand type, name check, promise, voice and a starter visual identity.", "desc_ar": "نوع الـ Brand، والاسم، والوعد، والـ Voice، وبداية الـ Visual Identity."},
-        {"slug": "account-security-audit", "name": "Account Security Audit", "tier": "free", "status": "planned", "desc": "Step-by-step security check for your email, domain and every platform.", "desc_ar": "مراجعة أمان خطوة بخطوة للـ Email والـ Domain وكل المنصات."},
-        {"slug": "studio-profile", "name": "Studio Profile", "tier": "free", "status": "planned", "desc": "Capture your gear, locations, apps, platforms and weekly hours — the profile every other skill reads.", "desc_ar": "بتسجل معداتك وأماكن التصوير والـ Apps والمنصات وساعاتك، وكل الـ Skills التانية بتقرا منه."},
-        {"slug": "asset-library-setup", "name": "Asset Library & License Gate", "tier": "pro", "status": "planned", "desc": "Folder tree, naming rules, asset sources and a license log so nothing gets muted or claimed.", "desc_ar": "شكل الـ Folders، وقواعد التسمية، ومصادر الـ Assets، وسجل الـ Licenses."}
+        {
+          "slug": "niche-compass",
+          "name": "Niche Compass",
+          "tier": "free",
+          "status": "planned",
+          "desc": "Find your sweet spot and turn it into content pillars and a one-line positioning.",
+          "desc_ar": "تلاقي الـ Sweet Spot بتاعك وتطلع منه الـ Pillars والـ Positioning."
+        },
+        {
+          "slug": "brand-foundations",
+          "name": "Brand Foundations",
+          "tier": "free",
+          "status": "planned",
+          "desc": "Brand type, name check, promise, voice and a starter visual identity.",
+          "desc_ar": "نوع الـ Brand، والاسم، والوعد، والـ Voice، وبداية الـ Visual Identity."
+        },
+        {
+          "slug": "account-security-audit",
+          "name": "Account Security Audit",
+          "tier": "free",
+          "status": "planned",
+          "desc": "Step-by-step security check for your email, domain and every platform.",
+          "desc_ar": "مراجعة أمان خطوة بخطوة للـ Email والـ Domain وكل المنصات."
+        },
+        {
+          "slug": "studio-profile",
+          "name": "Studio Profile",
+          "tier": "free",
+          "status": "planned",
+          "desc": "Capture your gear, locations, apps, platforms and weekly hours — the profile every other skill reads.",
+          "desc_ar": "بتسجل معداتك وأماكن التصوير والـ Apps والمنصات وساعاتك، وكل الـ Skills التانية بتقرا منه."
+        },
+        {
+          "slug": "asset-library-setup",
+          "name": "Asset Library & License Gate",
+          "tier": "pro",
+          "status": "planned",
+          "desc": "Folder tree, naming rules, asset sources and a license log so nothing gets muted or claimed.",
+          "desc_ar": "شكل الـ Folders، وقواعد التسمية، ومصادر الـ Assets، وسجل الـ Licenses."
+        }
       ]
     },
     {
@@ -25,10 +60,42 @@
       "summary": "From a raw thought to a ready brief: capture, filter, research, plan.",
       "summary_ar": "من الفكرة الخام لـ Brief جاهز: تلتقط، وتفلتر، وتدوّر، وتخطط.",
       "skills": [
-        {"slug": "idea-capture", "name": "Idea Capture", "step": "00", "tier": "free", "status": "planned", "desc": "Turn a voice note, screenshot or link into a clean idea card.", "desc_ar": "تحوّل Voice note أو Screenshot أو Link لـ Idea card واضح."},
-        {"slug": "idea-gate", "name": "Idea Gate", "step": "01", "tier": "free", "status": "planned", "desc": "Four questions — niche, need, payoff, timing — and a Go / Park / Kill decision with your angle.", "desc_ar": "أربع أسئلة وقرار Go أو Park أو Kill، ومعاه الـ Angle بتاعك."},
-        {"slug": "research-reference", "name": "Research & Reference", "step": "02", "tier": "pro", "status": "planned", "desc": "Find who already made it, what worked, what's missing — and how yours will be better.", "desc_ar": "مين عمل نفس الفكرة، إيه اللي نجح وإيه الناقص، وإزاي تعملها أحسن."},
-        {"slug": "brief-builder", "name": "Brief Builder", "step": "03", "tier": "pro", "status": "planned", "desc": "One-page brief: pillar, content type, goal, AI angle and channel plan.", "desc_ar": "Brief في صفحة: الـ Pillar، ونوع المحتوى، والهدف، والـ AI Angle، وخطة المنصات."}
+        {
+          "slug": "idea-capture",
+          "name": "Idea Capture",
+          "step": "00",
+          "tier": "free",
+          "status": "planned",
+          "desc": "Turn a voice note, screenshot or link into a clean idea card.",
+          "desc_ar": "تحوّل Voice note أو Screenshot أو Link لـ Idea card واضح."
+        },
+        {
+          "slug": "idea-gate",
+          "name": "Idea Gate",
+          "step": "01",
+          "tier": "free",
+          "status": "planned",
+          "desc": "Four questions — niche, need, payoff, timing — and a Go / Park / Kill decision with your angle.",
+          "desc_ar": "أربع أسئلة وقرار Go أو Park أو Kill، ومعاه الـ Angle بتاعك."
+        },
+        {
+          "slug": "research-reference",
+          "name": "Research & Reference",
+          "step": "02",
+          "tier": "pro",
+          "status": "planned",
+          "desc": "Find who already made it, what worked, what's missing — and how yours will be better.",
+          "desc_ar": "مين عمل نفس الفكرة، إيه اللي نجح وإيه الناقص، وإزاي تعملها أحسن."
+        },
+        {
+          "slug": "brief-builder",
+          "name": "Brief Builder",
+          "step": "03",
+          "tier": "pro",
+          "status": "planned",
+          "desc": "One-page brief: pillar, content type, goal, AI angle and channel plan.",
+          "desc_ar": "Brief في صفحة: الـ Pillar، ونوع المحتوى، والهدف، والـ AI Angle، وخطة المنصات."
+        }
       ]
     },
     {
@@ -40,9 +107,33 @@
       "summary": "Everything ready before you hit record: hooks, script, shots and setup.",
       "summary_ar": "كل حاجة جاهزة قبل ما تدوس Record: الـ Hooks، والـ Script، واللقطات، والـ Setup.",
       "skills": [
-        {"slug": "hook-script-writer", "name": "Hook & Script Writer", "step": "04", "tier": "free", "status": "planned", "desc": "Three hooks, a script structure and a CTA — in your own voice and dialect.", "desc_ar": "3 Hooks، وهيكل Script، و CTA، بصوتك وبلهجتك."},
-        {"slug": "shot-list-builder", "name": "Shot List Builder", "step": "05", "tier": "pro", "status": "planned", "desc": "A-roll, B-roll and hero shots generated from the content type.", "desc_ar": "Shot List كاملة (A-roll و B-roll و Hero shots) على حسب نوع المحتوى."},
-        {"slug": "setup-recipe", "name": "Setup Recipe", "step": "06", "tier": "pro", "status": "planned", "desc": "Camera, mic, lighting and location picked from your Studio Profile.", "desc_ar": "الكاميرا والمايك والإضاءة والمكان، من الـ Studio Profile بتاعك."}
+        {
+          "slug": "hook-script-writer",
+          "name": "Hook & Script Writer",
+          "step": "04",
+          "tier": "free",
+          "status": "planned",
+          "desc": "Three hooks, a script structure and a CTA — in your own voice and dialect.",
+          "desc_ar": "3 Hooks، وهيكل Script، و CTA، بصوتك وبلهجتك."
+        },
+        {
+          "slug": "shot-list-builder",
+          "name": "Shot List Builder",
+          "step": "05",
+          "tier": "pro",
+          "status": "planned",
+          "desc": "A-roll, B-roll and hero shots generated from the content type.",
+          "desc_ar": "Shot List كاملة (A-roll و B-roll و Hero shots) على حسب نوع المحتوى."
+        },
+        {
+          "slug": "setup-recipe",
+          "name": "Setup Recipe",
+          "step": "06",
+          "tier": "pro",
+          "status": "planned",
+          "desc": "Camera, mic, lighting and location picked from your Studio Profile.",
+          "desc_ar": "الكاميرا والمايك والإضاءة والمكان، من الـ Studio Profile بتاعك."
+        }
       ]
     },
     {
@@ -54,9 +145,44 @@
       "summary": "Shoot, ingest and edit with the same standard every time.",
       "summary_ar": "تصوّر وتلم الملفات وتعمل Edit بنفس الـ Standard كل مرة.",
       "skills": [
-        {"slug": "footage-ingest", "name": "Footage Ingest", "step": "08", "tier": "pro", "status": "planned", "desc": "Project folder, file naming and backup checklist from every device.", "desc_ar": "Project folder وتسمية الملفات والـ Backup من كل الأجهزة."},
-        {"slug": "edit-plan", "name": "Edit Plan", "step": "09", "tier": "pro", "status": "planned", "desc": "A beat-by-beat editor brief: cuts, on-screen text, motion, SFX and B-roll.", "desc_ar": "Editor brief لقطة بلقطة: القص، والكلام على الشاشة، والـ Motion، والـ SFX، والـ B-roll."},
-        {"slug": "captions", "name": "Captions", "step": "09", "tier": "free", "status": "planned", "desc": "Clean, correctly shaped captions and subtitles in any language.", "desc_ar": "Captions و Subtitles مظبوطة بأي لغة."}
+        {
+          "slug": "adeltechtalks-motion-templates",
+          "name": "Motion Templates",
+          "step": "09",
+          "tier": "free",
+          "status": "testing",
+          "source": "Built by us",
+          "share_plan": "Share as template (strip brand tokens)",
+          "desc": "Motion-graphics reels (9:16) rendered from code — 3 locked styles, original SFX and 128 BPM music, one command to a finished mp4.",
+          "desc_ar": "ريلز Motion graphics (9:16) معمولة بالكود: 3 ستايلات ثابتة، و SFX ومزيكا 128 BPM أصلية، وأمر واحد يطلّعلك mp4 جاهز."
+        },
+        {
+          "slug": "footage-ingest",
+          "name": "Footage Ingest",
+          "step": "08",
+          "tier": "pro",
+          "status": "planned",
+          "desc": "Project folder, file naming and backup checklist from every device.",
+          "desc_ar": "Project folder وتسمية الملفات والـ Backup من كل الأجهزة."
+        },
+        {
+          "slug": "edit-plan",
+          "name": "Edit Plan",
+          "step": "09",
+          "tier": "pro",
+          "status": "planned",
+          "desc": "A beat-by-beat editor brief: cuts, on-screen text, motion, SFX and B-roll.",
+          "desc_ar": "Editor brief لقطة بلقطة: القص، والكلام على الشاشة، والـ Motion، والـ SFX، والـ B-roll."
+        },
+        {
+          "slug": "captions",
+          "name": "Captions",
+          "step": "09",
+          "tier": "free",
+          "status": "planned",
+          "desc": "Clean, correctly shaped captions and subtitles in any language.",
+          "desc_ar": "Captions و Subtitles مظبوطة بأي لغة."
+        }
       ]
     },
     {
@@ -68,11 +194,51 @@
       "summary": "From final cut to the next lesson: review, package, publish, engage, analyze.",
       "summary_ar": "من الـ Final cut للدرس الجاي: مراجعة، وتجهيز، ونشر، وتفاعل، وتحليل.",
       "skills": [
-        {"slug": "publish-gate", "name": "Publish Gate", "step": "10", "tier": "free", "status": "planned", "desc": "Pre-publish check: links, disclosure, safe zones and licenses.", "desc_ar": "مراجعة قبل النشر: الـ Links، والـ Disclosure، والـ Safe zone، والـ Licenses."},
-        {"slug": "social-cover-studio", "name": "Social Cover Studio", "step": "11", "tier": "free", "status": "available", "desc": "Branded covers and thumbnails from a single photo, exported for every platform.", "desc_ar": "Covers و Thumbnails بالـ Brand بتاعك من صورة واحدة، بكل المقاسات."},
-        {"slug": "package-publish", "name": "Package & Publish", "step": "11", "tier": "pro", "status": "planned", "desc": "Captions, hashtags and schedule for each platform from one brief.", "desc_ar": "Caption و Hashtags ومواعيد لكل منصة من نفس الـ Brief."},
-        {"slug": "engage-inbox", "name": "Engage Inbox", "step": "12", "tier": "pro", "status": "planned", "desc": "Group repeated questions from comments and DMs into new ideas.", "desc_ar": "يلم الأسئلة المتكررة من الكومنتات والـ DMs ويحوّلها أفكار."},
-        {"slug": "analyze-review", "name": "Analyze & Monthly Review", "step": "13", "tier": "pro", "status": "planned", "desc": "Day 1 · 7 · 30 numbers, one lesson per post and a monthly review.", "desc_ar": "أرقام يوم 1 و 7 و 30، ودرس واحد لكل Post، ومراجعة شهرية."}
+        {
+          "slug": "publish-gate",
+          "name": "Publish Gate",
+          "step": "10",
+          "tier": "free",
+          "status": "planned",
+          "desc": "Pre-publish check: links, disclosure, safe zones and licenses.",
+          "desc_ar": "مراجعة قبل النشر: الـ Links، والـ Disclosure، والـ Safe zone، والـ Licenses."
+        },
+        {
+          "slug": "social-cover-studio",
+          "name": "Social Cover Studio",
+          "step": "11",
+          "tier": "free",
+          "status": "available",
+          "desc": "Branded covers and thumbnails from a single photo, exported for every platform.",
+          "desc_ar": "Covers و Thumbnails بالـ Brand بتاعك من صورة واحدة، بكل المقاسات."
+        },
+        {
+          "slug": "package-publish",
+          "name": "Package & Publish",
+          "step": "11",
+          "tier": "pro",
+          "status": "planned",
+          "desc": "Captions, hashtags and schedule for each platform from one brief.",
+          "desc_ar": "Caption و Hashtags ومواعيد لكل منصة من نفس الـ Brief."
+        },
+        {
+          "slug": "engage-inbox",
+          "name": "Engage Inbox",
+          "step": "12",
+          "tier": "pro",
+          "status": "planned",
+          "desc": "Group repeated questions from comments and DMs into new ideas.",
+          "desc_ar": "يلم الأسئلة المتكررة من الكومنتات والـ DMs ويحوّلها أفكار."
+        },
+        {
+          "slug": "analyze-review",
+          "name": "Analyze & Monthly Review",
+          "step": "13",
+          "tier": "pro",
+          "status": "planned",
+          "desc": "Day 1 · 7 · 30 numbers, one lesson per post and a monthly review.",
+          "desc_ar": "أرقام يوم 1 و 7 و 30، ودرس واحد لكل Post، ومراجعة شهرية."
+        }
       ]
     },
     {
@@ -84,9 +250,30 @@
       "summary": "Publish more with less effort: fast news, AI-assisted posts, lives and events.",
       "summary_ar": "تنشر أكتر بمجهود أقل: الأخبار المستعجلة، وPosts الـ AI Lane، والـ Live، والمؤتمرات.",
       "skills": [
-        {"slug": "fast-track", "name": "Fast Track", "tier": "free", "status": "planned", "desc": "Breaking news or a launch live within 48 hours — without breaking your week.", "desc_ar": "خبر أو Launch يتنشر خلال 48 ساعة من غير ما يبوّظ أسبوعك."},
-        {"slug": "ai-lane", "name": "AI Lane", "tier": "pro", "status": "planned", "desc": "AI researches, writes and designs; you review and approve.", "desc_ar": "الـ AI بيدوّر ويكتب ويصمم، وإنت تراجع وتوافق."},
-        {"slug": "event-lane", "name": "Event Lane", "tier": "pro", "status": "planned", "desc": "Conference and launch-event coverage in minutes.", "desc_ar": "تغطية المؤتمرات والـ Events في دقايق."}
+        {
+          "slug": "fast-track",
+          "name": "Fast Track",
+          "tier": "free",
+          "status": "planned",
+          "desc": "Breaking news or a launch live within 48 hours — without breaking your week.",
+          "desc_ar": "خبر أو Launch يتنشر خلال 48 ساعة من غير ما يبوّظ أسبوعك."
+        },
+        {
+          "slug": "ai-lane",
+          "name": "AI Lane",
+          "tier": "pro",
+          "status": "planned",
+          "desc": "AI researches, writes and designs; you review and approve.",
+          "desc_ar": "الـ AI بيدوّر ويكتب ويصمم، وإنت تراجع وتوافق."
+        },
+        {
+          "slug": "event-lane",
+          "name": "Event Lane",
+          "tier": "pro",
+          "status": "planned",
+          "desc": "Conference and launch-event coverage in minutes.",
+          "desc_ar": "تغطية المؤتمرات والـ Events في دقايق."
+        }
       ]
     },
     {
@@ -98,9 +285,30 @@
       "summary": "Where every piece of content makes money: affiliates, brand deals and your media kit.",
       "summary_ar": "كل محتوى بيجيب فلوس منين: الـ Affiliate، والـ Brand deals، والـ Media kit.",
       "skills": [
-        {"slug": "affiliate-tracker", "name": "Affiliate Tracker", "tier": "free", "status": "planned", "desc": "Track links, clicks and earnings per product and post.", "desc_ar": "تتابع الـ Links والكليكات والأرباح لكل منتج وPost."},
-        {"slug": "media-kit", "name": "Media Kit", "tier": "pro", "status": "planned", "desc": "A professional media kit built from your real numbers.", "desc_ar": "Media kit احترافي من أرقامك الحقيقية."},
-        {"slug": "brand-deal-desk", "name": "Brand Deal Desk", "tier": "pro", "status": "planned", "desc": "Qualify, price and reply to brand deals — and spot scams.", "desc_ar": "تقيّم الـ Brand deals وتسعّرها وترد عليها، وتكشف الـ Scams."}
+        {
+          "slug": "affiliate-tracker",
+          "name": "Affiliate Tracker",
+          "tier": "free",
+          "status": "planned",
+          "desc": "Track links, clicks and earnings per product and post.",
+          "desc_ar": "تتابع الـ Links والكليكات والأرباح لكل منتج وPost."
+        },
+        {
+          "slug": "media-kit",
+          "name": "Media Kit",
+          "tier": "pro",
+          "status": "planned",
+          "desc": "A professional media kit built from your real numbers.",
+          "desc_ar": "Media kit احترافي من أرقامك الحقيقية."
+        },
+        {
+          "slug": "brand-deal-desk",
+          "name": "Brand Deal Desk",
+          "tier": "pro",
+          "status": "planned",
+          "desc": "Qualify, price and reply to brand deals — and spot scams.",
+          "desc_ar": "تقيّم الـ Brand deals وتسعّرها وترد عليها، وتكشف الـ Scams."
+        }
       ]
     }
   ]
