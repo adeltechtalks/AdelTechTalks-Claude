@@ -17,6 +17,39 @@
   "Stay-at-home parents",
   "Side-hustle seekers"
  ],
+ "vision": {
+  "year1": "30 regular customers, a $79 course with 100 students, 10K followers.",
+  "year5": "A small bakery shop of her own and a baking school known across the city."
+ },
+ "identity": {
+  "type": "Personal brand",
+  "name": "Sara Ahmed",
+  "handle": "@sara.bakes",
+  "why": "People buy from a baker they trust, not a logo.",
+  "tagline_options": [
+   "Bake it. Price it. Sell it.",
+   "From home kitchen to small business",
+   "Your first cake sale starts here"
+  ],
+  "tagline": "Bake it. Price it. Sell it.",
+  "channels": [
+   {
+    "name": "@sara.bakes",
+    "role": "Main: baking and selling"
+   },
+   {
+    "name": "Family recipes",
+    "role": "Parked: maybe a side account later"
+   }
+  ],
+  "platforms": [
+   "Instagram",
+   "TikTok",
+   "YouTube Shorts"
+  ],
+  "language": "English",
+  "market": "Home bakers in the US and Canada"
+ },
  "pillars": [
   {
    "name": "Bake it right",
@@ -132,6 +165,11 @@
     "post": "My order day, start to finish"
    }
   ]
+ },
+ "rhythm": {
+  "hours": "6 h/week",
+  "cadence": "3 posts/week",
+  "workflow": "Film all 3 on Sunday while baking orders, edit on Monday, schedule for Tue, Thu and Sat."
  },
  "money": [
   {

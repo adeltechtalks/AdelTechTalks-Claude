@@ -34,7 +34,7 @@ Tap a stage card to open its page.
 <td width="44%" valign="top"><a href="00-foundations/"><img src="../docs/assets/stages/00-foundations-en.svg" alt="Foundations" width="100%"></a></td>
 <td valign="top">
 
-🧪 <a href="00-foundations/niche-compass/"><b>Niche Compass</b></a> <sub>· Free · Testing</sub><br><sub>A 6-round interview that turns “I feel lost” into a One Pager: positioning, 3 pillars, an idea filter, a money plan and bios.</sub><br><br>
+🧪 <a href="00-foundations/niche-compass/"><b>Niche Compass</b></a> <sub>· Free · Testing</sub><br><sub>An 8-round interview that turns “I feel lost” into your foundations: vision, brand and tagline, 3 pillars, an idea filter, weekly rhythm, money and bios.</sub><br><br>
 ⏳ <b>Brand Foundations</b> <sub>· Free · Soon</sub><br><sub>Brand type, name check, promise, voice and a starter visual identity.</sub><br><br>
 ⏳ <b>Account Security Audit</b> <sub>· Free · Soon</sub><br><sub>Step-by-step security check for your email, domain and every platform.</sub><br><br>
 ⏳ <b>Studio Profile</b> <sub>· Free · Soon</sub><br><sub>Capture your gear, locations, apps, platforms and weekly hours — the profile every other skill reads.</sub><br><br>

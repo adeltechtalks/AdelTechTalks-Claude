@@ -49,7 +49,7 @@
 <td valign="top">
 
 <div dir="rtl" align="right">
-🧪 <a href="00-foundations/niche-compass/README.ar.md"><b>Niche Compass</b></a> <sub>· Free · تجريبية</sub><br><sub>Interview من 6 جولات بيحوّل «أنا تايه» لـ One Pager: الـ Positioning، و3 Pillars، وفلتر للأفكار، وخطة الفلوس، والـ Bios.</sub><br><br>
+🧪 <a href="00-foundations/niche-compass/README.ar.md"><b>Niche Compass</b></a> <sub>· Free · تجريبية</sub><br><sub>Interview من 8 جولات بيحوّل «أنا تايه» للـ Foundations: الرؤية، والبراند والـ Tagline، و3 Pillars، وفلتر للأفكار، ووقتك، والفلوس، والـ Bios.</sub><br><br>
 ⏳ <b>Brand Foundations</b> <sub>· Free · قريباً</sub><br><sub>نوع الـ Brand، والاسم، والوعد، والـ Voice، وبداية الـ Visual Identity.</sub><br><br>
 ⏳ <b>Account Security Audit</b> <sub>· Free · قريباً</sub><br><sub>مراجعة أمان خطوة بخطوة للـ Email والـ Domain وكل المنصات.</sub><br><br>
 ⏳ <b>Studio Profile</b> <sub>· Free · قريباً</sub><br><sub>بتسجل معداتك وأماكن التصوير والـ Apps والمنصات وساعاتك، وكل الـ Skills التانية بتقرا منه.</sub><br><br>

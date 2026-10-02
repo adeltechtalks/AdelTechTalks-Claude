@@ -1004,14 +1004,14 @@ def niche_hero(lang):
     parts.append(f'<text class="fu" style="{d(0.2)}" x="{X}" y="262" text-anchor="{anc}" font-family="M" font-weight="800" font-size="80" letter-spacing="-2.2" fill="{WARM}">Niche</text>')
     parts.append(f'<text class="fu" style="{d(0.35)}" x="{X}" y="350" text-anchor="{anc}" font-family="M" font-weight="800" font-size="80" letter-spacing="-2.2" fill="{BLUE}">Compass</text>')
     if rtl:
-        subs = ["من «أنا تايه» لـ One Pager متصمّم،", "وأول 10 أفكار تبدأ بيها بكرة."]
+        subs = ["من «أنا تايه» للـ Foundations كاملة:", "الرؤية، والبراند، والـ Pillars، و10 أفكار."]
         for k, t in enumerate(subs):
             parts.append(f'<text class="fu" style="{d(0.5 + k * 0.08)}" x="{X}" y="{418 + k * 40}" text-anchor="start" direction="rtl" font-family="R" font-weight="400" font-size="26" fill="#C9CED6">{escape(t)}</text>')
     else:
-        subs = ["From “I feel lost” to a designed One Pager,", "and 10 ideas you can film tomorrow."]
+        subs = ["From “I feel lost” to your foundations:", "vision, brand, pillars and 10 ideas."]
         for k, t in enumerate(subs):
             parts.append(f'<text class="fu" style="{d(0.5 + k * 0.08)}" x="{X}" y="{416 + k * 38}" font-family="R" font-weight="400" font-size="26" fill="#C9CED6">{escape(t)}</text>')
-    chips = [("6", "rounds"), ("3", "pillars"), ("10", "ideas")]
+    chips = [("8", "rounds"), ("3", "pillars"), ("10", "ideas")]
     jf, mf = "jetbrains-mono-latin-500-normal.woff2", "montserrat-latin-600-normal.woff2"
     x, cyp = X, 512
     for i, (a, b) in enumerate(chips):
@@ -1032,13 +1032,13 @@ def niche_steps(lang):
     W, H = 1600, 520
     page = _img(ROOT / "docs" / "niche-compass" / "page.jpg")
     if rtl:
-        titles = ["جاوب 6 جولات", "اختار 3 Pillars", "خد الـ One Pager"]
-        caps = [["انت مين، وبتحب إيه، والفلوس فين،", "وهتسيب إيه."], ["والباقي يتأجّل أو يتشال،", "عشان تركّز."], ["HTML و PDF، وفيه 10 أفكار", "وأول أسبوع."]]
+        titles = ["جاوب 8 جولات", "اختار 3 Pillars", "خد الـ One Pager"]
+        caps = [["انت مين، ورايح فين، والفلوس فين،", "واسمك ووقتك."], ["والباقي يتأجّل أو يتشال،", "عشان تركّز."], ["HTML و PDF، وفيه 10 أفكار", "وأول أسبوع."]]
         chat = [("Q", "لو نوع فيديو واحد لمدة سنة؟"), ("A", "أبني بالـ AI"), ("Q", "بعد 5 سنين: بتاع إيه؟"), ("A", "بتاع البيزنس")]
         pills = ["ابنيها بالـ AI", "المنتج جوّه الـ System", "الـ Machine من جوّه"]
     else:
-        titles = ["Answer 6 rounds", "Pick 3 pillars", "Get your One Pager"]
-        caps = [["Who you are, what you love,", "where the money is, what you'll drop."], ["Everything else is parked", "or dropped, so you can focus."], ["HTML + PDF, with 10 ideas", "and your first week."]]
+        titles = ["Answer 8 rounds", "Pick 3 pillars", "Get your One Pager"]
+        caps = [["Who you are, where you're going,", "your brand, money and time."], ["Everything else is parked", "or dropped, so you can focus."], ["HTML + PDF, with 10 ideas", "and your first week."]]
         chat = [("Q", "One video type for a year?"), ("A", "Build things with AI"), ("Q", "In 5 years you're the ___ person?"), ("A", "The business one")]
         pills = ["Build it with AI", "Products in the system", "Inside the machine"]
 

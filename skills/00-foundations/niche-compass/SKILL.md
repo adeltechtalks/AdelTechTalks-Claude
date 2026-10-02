@@ -2,13 +2,15 @@
 name: niche-compass
 description: >-
   Interviews a creator or founder who feels lost about what to make, and turns
-  their answers into a one-page Brand One Pager: who they are, what they do, why
-  they're here, who they talk to, three fixed content pillars, an idea filter
-  that says yes or no to any future idea, how they'll make money, the
-  sacrifices they're making, and ready bios for every platform. Use this
+  their answers into a designed Brand One Pager: who they are, their vision,
+  personal name or brand, tagline, positioning, channels and platforms, three
+  fixed content pillars, an idea filter that says yes or no to any future idea,
+  how they'll work each week, how they'll make money, what they're giving up,
+  10 ideas to start with, and ready bios for every platform. Use this
   whenever someone says they don't know their niche, can't decide between
   topics or channels, keeps changing direction, wants to "find my niche",
-  "define my brand", "write my bio", "what should my content be about", or
+  "define my brand", "write my bio", "tagline", "personal brand or brand
+  name", "what should my content be about", or
   writes it in Arabic ("مش عارف أعمل محتوى عن إيه", "تايه", "عايز ألاقي
   النيش بتاعي", "اكتبلي البايو") — even if they don't name the skill. Not for
   writing a single script, caption or post idea (use the idea and script
@@ -17,7 +19,7 @@ description: >-
 
 # Niche Compass
 
-> **Input:** a conversation with you → **Output:** a designed **One Pager** (`one-pager.html` + PDF) with a **Start tomorrow** kit: 10 filtered ideas and a first-week plan. People need something they can hold and act on, not just notes.
+> **Input:** a conversation with you → **Output:** the creator's **foundations** in a designed **One Pager** (`one-pager.html` + PDF) with a **Start tomorrow** kit: 10 filtered ideas and a first-week plan. People need something they can hold and act on, not just notes.
 
 ## When to use
 
@@ -30,7 +32,7 @@ Not for: one-off post ideas, scripts, captions, or logo/colour work.
 
 ## Principles (learned the hard way)
 
-1. **Ask, don't pitch.** A lost person doesn't need a new direction every message. When they say they're lost, switch to questions. Propose a positioning only after Round 6.
+1. **Ask, don't pitch.** A lost person doesn't need a new direction every message. When they say they're lost, switch to questions. Propose a positioning only after Round 8.
 2. **One decision per message.** Short messages, tappable options when the interface supports it (always allow a free answer).
 3. **Reflect back before moving on.** One line: "So what I'm hearing is …". It catches misunderstandings early.
 4. **Never shrink the person.** If they're an expert, the *audience* is the one who doesn't need expertise. Don't write "I'm not a specialist" for someone with years of experience.
@@ -43,9 +45,9 @@ Not for: one-off post ideas, scripts, captions, or logo/colour work.
 
 ### Step 0 — Set the frame (one message)
 
-Explain in two lines: about 6 short rounds, ~15 minutes, and at the end they get a one-page document that answers "is this idea mine or not?" forever. Ask which language and dialect they want the One Pager in.
+Explain in two lines: 8 short rounds, ~20 minutes, and at the end they get their foundations on one designed page: who they are, where they're going, their brand, what they post, how they work and how they earn. Ask which language and dialect they want it in, and ask for a screenshot of any profile they already have.
 
-### Step 1 — The interview (6 rounds)
+### Step 1 — The interview (8 rounds)
 
 Ask 1–4 questions per round. Use options from their own earlier answers whenever possible.
 
@@ -55,21 +57,24 @@ Ask 1–4 questions per round. Use options from their own earlier answers whenev
 | **2 · I know** | Skills, now and next | What can you do better than most people around you? What are you ready to learn in the next 6 months? |
 | **3 · I love** | Real passion | What do you do even when nobody pays or watches? What could you talk about for an hour without notes? |
 | **4 · People need** | Audience and market | Who exactly do you want to help, and what keeps them stuck? Where is the market going? *(If web search is available, check 2–3 trends and cite them.)* |
-| **5 · Money** | Believable income | Which income source do you actually believe you can get within 12 months: courses, affiliate, brand deals, services/systems, product? How many hours a week can you give this? |
-| **6 · The cut** | Force the decision | If you could make only **one** type of video for a year, which? In 5 years, when people see you, they say "That's the ___ person." What are you willing to drop or postpone? |
+| **5 · Money** | Believable income | Which income source do you actually believe you can get within 12 months: courses, affiliate, brand deals, services/systems, product? Any deals or affiliate codes already running? |
+| **6 · Vision** | Where this goes | Where do you want to be in 1 year? In 5 years: where do you live, what do people call you, what do you own? |
+| **7 · The cut** | Force the decision | If you could make only **one** type of video for a year, which? In 5 years people say "That's the ___ person." What are you willing to drop or postpone? |
+| **8 · Brand & rhythm** | Make it real | Personal name, a brand name, or both (name + brand handle)? Do you already own a handle, domain or company? One account or a side account for the topics you love but parked? Which platforms, language and market? How many hours a week can you really give, and how many posts can you keep up? |
 
-**Round 6 is where the answer is.** Their choices usually reveal the niche plainly (e.g. "one type = build with AI", "money = sell the system", "5 years = the business guy").
+**Rounds 6 and 7 are where the answer is.** Their choices usually reveal the niche plainly (e.g. "one type = build with AI", "money = sell the system", "5 years = the business person").
 
 If an answer contradicts an earlier one, say so gently and ask which one wins.
 
 ### Step 2 — Propose (one message, short)
 
 Show only:
-1. The one-line positioning.
-2. The three pillars.
-3. What they're giving up (a small "keep / drop / postpone" table).
+1. The one-line positioning and the vision in one sentence.
+2. Personal or brand, with the handle, and 2–3 tagline options (recommend one).
+3. The three pillars.
+4. What they're giving up (a small "keep / drop / postpone" table), including where parked passions go (a side account, later, or a hobby).
 
-Ask: "Does this feel like you?" Adjust until it does. Then write the One Pager.
+Ask: "Does this feel like you?" Adjust until it does. Then build the One Pager.
 
 ### Step 3 — Build the One Pager
 
@@ -82,6 +87,9 @@ python scripts/render_one_pager.py one-pager.json --out out
 It writes `out/one-pager.html` (responsive, prints cleanly) and `out/one-pager.pdf` when Chromium is available. Standard library only. Rules for the content:
 
 - **`line`, `who`, `what`, `why`, `audience`:** two to four lines each. Plain words, their dialect.
+- **`vision`:** `year1` (concrete: clients, followers, income) and `year5` (where they live, what people call them, what they own).
+- **`identity`:** `type` (personal / brand / personal name on a brand handle), `name`, `handle`, `why` (one line on the choice), `tagline_options` (2–3) and `tagline` (leave it out if they haven't chosen: the page shows "still to decide"), `channels` (main account + any side account with its role), `platforms`, `language`, `market`. Keep handles and companies they already own; don't put a company in the bio if the audience doesn't need it.
+- **`rhythm`:** `hours` per week, `cadence` (posts per week they can sustain, not hope for) and `workflow` (how a post gets made: batching, tools, agents, who approves).
 - **`pillars`:** exactly 3. Each has a name, the question it answers, and the content types under it. No fixed weekday schedule unless they ask for one.
 - **`filter`:** three yes/no questions plus 6–8 examples from *their* world: the topics they were tempted by as ❌, and the ✅ reframe of the same topic. `commit_months` is 3–6; `off_limits` lists what's parked.
 - **`starter`:** the part that makes it useful tomorrow.
@@ -105,6 +113,7 @@ Before rendering, show a short preview of the starter ideas and ask if any feel 
 - [ ] Every section of the template is filled; nothing generic like "provide value".
 - [ ] The positioning line fits in one breath and names the audience.
 - [ ] The person sounds as experienced as they really are.
+- [ ] Vision, brand type, tagline status, channels and weekly rhythm are filled from their answers, not guessed. Ask if hours per week is missing.
 - [ ] No phrase can be misread as a promise they don't make (jobs, guaranteed income).
 - [ ] Exactly 3 pillars, and the filter examples use their own tempting topics.
 - [ ] 10 starter ideas, all passing the filter, covering all 3 pillars, built from real things in their life.

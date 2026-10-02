@@ -19,13 +19,19 @@ L = {
            "off": "ممنوع دلوقتي", "commit": "الالتزام", "months": "شهور من غير مواضيع جديدة", "money": "الفلوس",
            "focus": "ابدأ هنا", "kdp": "هتكمّل · هتسيب · هتأجّل", "keep": "هتكمّل", "drop": "هتسيب", "post": "هتأجّل",
            "starter": "ابدأ بكرة", "ideas": "أول 10 أفكار (عدّوا على الفلتر)", "week": "أول أسبوع", "bios": "الـ Bios",
-           "chars": "حرف", "ref": "ده المرجع: أي فكرة جديدة تتقارن بالصفحة دي قبل ما تتعمل."},
+           "chars": "حرف", "ref": "ده المرجع: أي فكرة جديدة تتقارن بالصفحة دي قبل ما تتعمل.",
+           "vision": "الرؤية: رايح فين", "y1": "بعد سنة", "y5": "بعد 5 سنين", "brand": "البراند", "btype": "النوع",
+           "tagline": "الـ Tagline", "pending": "لسه محتاجة قرار", "channels": "القنوات", "platforms": "المنصات",
+           "langmkt": "اللغة والسوق", "rhythm": "هتشتغل إزاي", "hours": "الوقت في الأسبوع", "cadence": "النشر", "workflow": "الطريقة"},
     "en": {"who": "Who", "what": "What", "why": "Why here", "aud": "Who we talk to", "pillars": "Pillars",
            "q": "Answers", "types": "Content types", "filter": "Idea filter", "filter_hint": "An idea must pass all 3",
            "off": "Off-limits for now", "commit": "Commitment", "months": "months with no new topics", "money": "Money",
            "focus": "Start here", "kdp": "Keep · Drop · Postpone", "keep": "Keep", "drop": "Drop", "post": "Postpone",
            "starter": "Start tomorrow", "ideas": "First 10 ideas (all pass the filter)", "week": "First week", "bios": "Bios",
-           "chars": "chars", "ref": "This is the reference: every new idea is checked against this page before it gets made."},
+           "chars": "chars", "ref": "This is the reference: every new idea is checked against this page before it gets made.",
+           "vision": "Vision: where this goes", "y1": "In 1 year", "y5": "In 5 years", "brand": "Brand", "btype": "Type",
+           "tagline": "Tagline", "pending": "Still to decide", "channels": "Channels", "platforms": "Platforms",
+           "langmkt": "Language & market", "rhythm": "How you'll work", "hours": "Time per week", "cadence": "Posting", "workflow": "Workflow"},
 }
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
@@ -69,6 +75,28 @@ def render(d):
         f'<div class="bio"><div class="bh"><b>{e(k)}</b><span>{len(v.encode("utf-16-le")) // 2} {t["chars"]}</span></div><pre dir="auto">{e(v)}</pre></div>'
         for k, v in d.get("bios", {}).items())
     aud = "".join(f"<li>{e(a)}</li>" for a in d.get("audience", []))
+    v = d.get("vision", {})
+    vision = (f'<section class="vision"><h2>{t["vision"]}</h2><div class="vgrid"><div class="vbox"><b>{t["y1"]}</b><p>{e(v.get("year1"))}</p></div>'
+              f'<div class="vbox far"><b>{t["y5"]}</b><p>{e(v.get("year5"))}</p></div></div></section>') if v else ""
+    idn = d.get("identity", {})
+    if idn:
+        tl = idn.get("tagline")
+        opts = "".join(f'<span class="opt{" on" if o == tl else ""}" dir="auto">{e(o)}</span>' for o in idn.get("tagline_options", []))
+        tag_html = f'<div class="tl" dir="auto">{e(tl)}</div>' if tl else f'<div class="tlp">{t["pending"]}</div>'
+        chans = "".join(f'<li><b>{e(c["name"])}</b> · {e(c.get("role"))}</li>' for c in idn.get("channels", []))
+        plats = "".join(f'<span class="chip">{e(x)}</span>' for x in idn.get("platforms", []))
+        identity = (f'<section><h2>{t["brand"]}</h2><div class="grid4">'
+                    f'<div class="box"><h3>{t["btype"]}</h3><p><b>{e(idn.get("type"))}</b></p><p class="sub">{e(idn.get("name"))} · <span dir="ltr">{e(idn.get("handle"))}</span></p><p class="sub">{e(idn.get("why"))}</p></div>'
+                    f'<div class="box"><h3>{t["tagline"]}</h3>{tag_html}<div class="opts">{opts}</div></div>'
+                    f'<div class="box"><h3>{t["channels"]}</h3><ul>{chans}</ul></div>'
+                    f'<div class="box"><h3>{t["langmkt"]}</h3><p>{e(idn.get("language"))}</p><p class="sub">{e(idn.get("market"))}</p><div class="meta">{plats}</div></div>'
+                    f'</div></section>')
+    else:
+        identity = ""
+    r = d.get("rhythm", {})
+    rhythm = (f'<section><h2>{t["rhythm"]}</h2><div class="rgrid"><div class="box"><h3>{t["hours"]}</h3><p class="big">{e(r.get("hours"))}</p></div>'
+              f'<div class="box"><h3>{t["cadence"]}</h3><p class="big">{e(r.get("cadence"))}</p></div>'
+              f'<div class="box"><h3>{t["workflow"]}</h3><p>{e(r.get("workflow"))}</p></div></div></section>') if r else ""
     commit = f.get("commit_months")
 
     css = f"""
@@ -99,26 +127,31 @@ table{{width:100%;border-collapse:collapse;font-size:14px}}td{{padding:7px 6px;b
 .week{{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}}.day{{background:#fff;border-radius:12px;padding:12px 14px;border:1px solid var(--line)}}.day b{{display:block;color:var(--p);font-size:13px}}.day span{{font-size:14px}}
 .bios{{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}}.bio{{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}}
 .bh{{display:flex;justify-content:space-between;font-size:13px}}.bh span{{color:var(--m)}}pre{{white-space:pre-wrap;margin:8px 0 0;font:400 14px/1.6 'Readex Pro',sans-serif}}
+.vision{{background:var(--k);color:#fff}}.vision h2{{color:var(--a)}}.vgrid{{display:grid;grid-template-columns:1fr 1fr;gap:14px}}
+.vbox{{background:rgba(255,255,255,.07);border-radius:14px;padding:14px 16px}}.vbox b{{color:var(--a);font-size:13px}}.vbox p{{margin:4px 0 0;font-size:16px}}.vbox.far{{border:1px solid var(--a)}}
+.sub{{color:var(--m);font-size:13px;margin-top:4px!important}}.tl{{font:800 20px/1.3 Montserrat,'Readex Pro',sans-serif;color:var(--p)}}.tlp{{color:#B45309;font-weight:700}}
+.opts{{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}}.opt{{border:1px dashed var(--line);border-radius:999px;padding:3px 10px;font-size:12px;color:var(--m)}}.opt.on{{border:1px solid var(--p);color:var(--p)}}
+.rgrid{{display:grid;grid-template-columns:1fr 1fr 2fr;gap:14px}}.big{{font:800 22px Montserrat,'Readex Pro',sans-serif;margin:0}}
 footer{{padding:16px 40px 26px;color:var(--m);font-size:13px;border-top:1px solid var(--line)}}
-@media (max-width:700px){{header,section,footer{{padding-inline:18px}}.grid4,.pillars,.filter,.kdp,.week,.bios{{grid-template-columns:1fr}}.ideas{{columns:1}}h1{{font-size:26px}}}}
+@media (max-width:700px){{header,section,footer{{padding-inline:18px}}.grid4,.pillars,.filter,.kdp,.week,.bios,.vgrid,.rgrid{{grid-template-columns:1fr}}.ideas{{columns:1}}h1{{font-size:26px}}}}
 @media print{{body{{background:#fff}}.page{{margin:0;box-shadow:none;border-radius:0;max-width:none}}section{{break-inside:avoid}}}}
 """
     return f"""<!doctype html><html lang="{e(lang)}" dir="{'rtl' if rtl else 'ltr'}"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>{e(d.get('name'))} · One Pager</title>{FONTS}<style>{css}</style></head>
 <body><div class="page">
-<header><div class="eyebrow">One Pager</div><h1>{e(d.get('name'))}</h1><div class="handle">{e(d.get('handle'))}</div>
+<header><div class="eyebrow">One Pager</div><h1>{e(d.get('name'))}</h1><div class="handle"><bdi>{e(d.get('handle'))}</bdi></div>
 <div class="line">{e(d.get('line'))}</div></header>
 <section><div class="grid4"><div class="box"><h3>{t['who']}</h3><p>{e(d.get('who'))}</p></div>
 <div class="box"><h3>{t['what']}</h3><p>{e(d.get('what'))}</p></div>
 <div class="box"><h3>{t['why']}</h3><p>{e(d.get('why'))}</p></div>
 <div class="box"><h3>{t['aud']}</h3><ul>{aud}</ul></div></div></section>
-<section><h2>{t['pillars']}</h2><div class="pillars">{pillars}</div></section>
+{vision}{identity}<section><h2>{t['pillars']}</h2><div class="pillars">{pillars}</div></section>
 <section><h2>{t['filter']}</h2><div class="filter"><div class="qs"><b>{t['filter_hint']}</b><ol>{questions}</ol></div>
 <table>{examples}</table></div><div class="meta">{f'<span class="chip">⏳ {t["commit"]}: {e(commit)} {t["months"]}</span>' if commit else ''}
 {f'<span class="chip">🚫 {t["off"]}: {e(f.get("off_limits"))}</span>' if f.get("off_limits") else ''}</div></section>
 <section class="starter"><h2>{t['starter']}</h2><b>{t['ideas']}</b><ol class="ideas" style="margin-top:10px">{ideas}</ol>
 <div class="week">{week}</div></section>
-<section><h2>{t['money']}</h2>{money}</section>
+{rhythm}<section><h2>{t['money']}</h2>{money}</section>
 <section><h2>{t['kdp']}</h2><div class="kdp"><div class="box k1"><h3>{t['keep']}</h3><ul>{col(kdp.get('keep', []))}</ul></div>
 <div class="box k2"><h3>{t['drop']}</h3><ul>{col(kdp.get('drop', []))}</ul></div><div class="box k3"><h3>{t['post']}</h3><ul>{postpone}</ul></div></div></section>
 <section><h2>{t['bios']}</h2><div class="bios">{bios}</div></section>

@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="../../../docs/niche-compass/hero-en.svg" alt="Niche Compass — from “I feel lost” to a designed One Pager and 10 ideas you can film tomorrow" width="100%">
+<img src="../../../docs/niche-compass/hero-en.svg" alt="Niche Compass — from “I feel lost” to your foundations: vision, brand, pillars and 10 ideas" width="100%">
 
 [← All skills](../../../README.md) · [Foundations](../)
 
@@ -19,13 +19,13 @@
 
 | You give | You get | Rounds | Works in |
 |:--|:--|:-:|:--|
-| ~15 minutes of answers | A designed **One Pager** (HTML + PDF) with your pillars, an idea filter, 10 starter ideas and your first week | **6** | Claude.ai · Claude Code |
+| ~20 minutes of answers | Your **foundations** on one designed page (HTML + PDF): vision, brand and tagline, pillars, idea filter, weekly rhythm, 10 starter ideas | **8** | Claude.ai · Claude Code |
 
 ---
 
 ## How it works
 
-<img src="../../../docs/niche-compass/how-en.svg" alt="1 Answer 6 rounds · 2 Pick 3 pillars · 3 Get your One Pager with 10 ideas and your first week" width="100%">
+<img src="../../../docs/niche-compass/how-en.svg" alt="1 Answer 8 rounds · 2 Pick 3 pillars · 3 Get your One Pager with 10 ideas and your first week" width="100%">
 
 ---
 
@@ -38,9 +38,12 @@
 | Section | Answers |
 |:--|:--|
 | Who · What · Why · Audience | Who you are, what you do, why you're here, who you talk to |
+| Vision | Where you want to be in 1 year and in 5 years |
+| Brand | Personal name or brand, handle, tagline options, channels, platforms, language and market |
 | 3 Pillars | The only topics you post about, and the content types under each |
 | Idea filter | Three yes/no questions + real examples from your world: ✕ off-topic, ✓ the same topic reframed |
 | **Start tomorrow** | 10 ideas that already pass the filter, and your first 3 posts in order |
+| How you'll work | Hours per week, posts per week you can keep up, and how each post gets made |
 | Money | A ladder from free to service, with the one step to start with |
 | Keep · Drop · Postpone | What you gave up, and when to look at it again |
 | Bios | Instagram, TikTok, X and LinkedIn, counted to each limit |
@@ -84,7 +87,7 @@ Check this idea against my One Pager: [idea]
 
 <br>
 
-- Answer honestly in Round 6 — that's where the niche shows up.
+- Answer honestly in Rounds 6 and 7 (vision and the cut) — that's where the niche shows up.
 - Something you love doesn't have to be a pillar. It can stay a hobby, a side account, or a later business.
 - Re-run the skill after a big change (new job, new country, new business) to update the page.
 
