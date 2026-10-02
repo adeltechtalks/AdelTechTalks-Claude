@@ -37,15 +37,18 @@ The templates were designed with the AdelTechTalks brand, which ships only as an
 
 ---
 
-## The 3 styles
+## The 4 styles
 
-<img src="../../../docs/motion-templates/showcase.jpg" alt="Frames from styles A, E and F" width="100%">
+<img src="../../../docs/motion-templates/showcase.jpg" alt="Frames from styles A, E, F and G" width="100%">
 
 | Code | Style | Best for |
 |:-:|:--|:--|
 | **A** ⭐ | **Morphing UI** — one shape morphs chat → files → code → phone, with ambient chips so no frame is empty | Tool and feature explainers |
 | **E** | **Orange Balls** — a glossy ball drops, splits, carries labels and becomes a phone | Stories with numbers, reviews |
 | **F** | **Kinetic Type** — one phrase per half-bar at 128 BPM, varied layouts | Daily news and hooks |
+| **G** | **Editorial Poster** — B&W cut-outs on a brand disc, giant words sliding behind, words landing one by one, hard cuts on the bar. Needs no photos: it finds them | Ideas, opinions, quotes |
+
+<sub>Style G images found by the skill: helmet “Astronaut Helmet” by Sam Howzit (CC BY 2.0), brain model via rawpixel (CC0).</sub>
 
 Extras, ready to use: Paper Collage, Liquid Glass, Isometric 3D, Shape Morph, Editorial Depth (`templates/extras/`).
 

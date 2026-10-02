@@ -63,7 +63,7 @@ Tap a stage card to open its page.
 <td width="44%" valign="top"><a href="03-production/"><img src="../docs/assets/stages/03-production-en.svg" alt="Production" width="100%"></a></td>
 <td valign="top">
 
-🧪 <a href="03-production/motion-templates/"><b>Motion Templates</b></a> <sub>· Step 09 · Free · Testing</sub><br><sub>Motion-graphics reels (9:16) rendered from code in your own brand — 3 locked styles, original SFX and music, one command to a finished mp4.</sub><br><br>
+🧪 <a href="03-production/motion-templates/"><b>Motion Templates</b></a> <sub>· Step 09 · Free · Testing</sub><br><sub>Motion-graphics reels (9:16) rendered from code in your own brand — 4 locked styles, original SFX and music, one command to a finished mp4.</sub><br><br>
 🔒 <b>Footage Ingest</b> <sub>· Step 08 · Pro · Soon</sub><br><sub>Project folder, file naming and backup checklist from every device.</sub><br><br>
 🔒 <b>Edit Plan</b> <sub>· Step 09 · Pro · Soon</sub><br><sub>A beat-by-beat editor brief: cuts, on-screen text, motion, SFX and B-roll.</sub><br><br>
 ⏳ <b>Captions</b> <sub>· Step 09 · Free · Soon</sub><br><sub>Clean, correctly shaped captions and subtitles in any language.</sub>

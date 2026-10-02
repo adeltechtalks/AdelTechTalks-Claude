@@ -25,6 +25,8 @@ STYLES = {
               sfx="sfx/sfx_style_e.py", sfx_wav="sfx_bl.wav", dur=22.5, drop=16.875, end=20.625, test_t=(1.0, 10.0, 18.0, 21.0)),
     "f": dict(name="F · Kinetic Type", template="templates/core/style_f_kinetic_type.py", video="kt_v.mp4", test="ktsheet.png",
               sfx="sfx/sfx_style_f.py", sfx_wav="sfx_kt.wav", dur=22.5, drop=4.6875, end=20.625, test_t=(1.0, 10.0, 20.0)),
+    "g": dict(name="G · Editorial Poster", template="templates/core/style_g_editorial_poster.py", video="ep_v.mp4", test="epsheet.png",
+              sfx="sfx/sfx_style_g.py", sfx_wav="sfx_ep.wav", dur=22.5, drop=3.75, end=16.875, test_t=(2.5, 8.5, 14.5, 20.5)),
 }
 
 MIX_FILTER = ("[0:a]volume=0.5[m];[1:a]asplit=2[s1][s2];"
@@ -40,8 +42,8 @@ def run(step, cmd, env):
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Render an AdelTechTalks motion reel end to end.")
-    ap.add_argument("--style", required=True, choices=sorted(STYLES), help="a (Morphing UI), e (Orange Balls) or f (Kinetic Type)")
+    ap = argparse.ArgumentParser(description="Render a motion reel end to end.")
+    ap.add_argument("--style", required=True, choices=sorted(STYLES), help="a (Morphing UI), e (Orange Balls), f (Kinetic Type) or g (Editorial Poster)")
     ap.add_argument("--out", default="output", help="folder for the final mp4 (default: output/)")
     ap.add_argument("--work", default=None, help="folder for intermediate files (default: ./work)")
     ap.add_argument("--input", default=None, help="folder with per-video inputs (default: ./input)")

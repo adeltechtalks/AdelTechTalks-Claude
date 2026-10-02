@@ -1,7 +1,7 @@
 """Find free, licence-safe images for a video when the user has none.
 
     python engine/assets.py search "astronaut helmet" [--source all] [--n 12] [--portrait]
-    python engine/assets.py get 3 --as photo.jpg [--cutout] [--bw]
+    python engine/assets.py get 3 --as photo.jpg [--cutout [--one]] [--bw]
     python engine/assets.py credits
 
 search   looks in Openverse (CC0 / CC BY / CC BY-SA, commercial use allowed),
@@ -10,7 +10,8 @@ search   looks in Openverse (CC0 / CC BY / CC BY-SA, commercial use allowed),
          (UNSPLASH_ACCESS_KEY). Writes work/assets/<query>/sheet.jpg (numbered
          thumbnails to pick from) and results.json.
 get      downloads result N of the last search into input/<name>, optionally cuts
-         out the subject (--cutout → transparent PNG, needs `pip install rembg[cpu]`)
+         out the subject (--cutout → transparent PNG, needs `pip install rembg[cpu]`;
+         --one keeps only the biggest subject)
          and/or makes it black & white (--bw). Logs source + licence + author in
          input/credits.json.
 credits  prints the credit lines to paste into the caption.
@@ -176,6 +177,14 @@ def get(a):
             sys.exit("--cutout needs: pip install 'rembg[cpu]'")
         # isnet-general-use: ~170 MB, downloaded once to ~/.rembg; MT_CUTOUT_MODEL=u2netp for a 5 MB quick one
         im = remove(im, session=new_session(os.environ.get("MT_CUTOUT_MODEL", "isnet-general-use")))
+        if a.one:  # keep only the biggest subject
+            import numpy as np
+            from scipy import ndimage
+            al = np.asarray(im.split()[3]) > 40
+            lab, n = ndimage.label(al)
+            if n > 1:
+                keep = lab == (np.argmax(ndimage.sum(al, lab, range(1, n + 1))) + 1)
+                im.putalpha(Image.fromarray((np.asarray(im.split()[3]) * keep).astype("uint8")))
         im = im.crop(im.getbbox())
         dest = dest.with_suffix(".png")
     im.save(dest)
@@ -198,7 +207,7 @@ def main():
     s = sub.add_parser("search"); s.add_argument("query"); s.add_argument("--source", default="all")
     s.add_argument("--n", type=int, default=12); s.add_argument("--portrait", action="store_true")
     g = sub.add_parser("get"); g.add_argument("index", type=int); g.add_argument("--as", dest="as_", required=True)
-    g.add_argument("--cutout", action="store_true"); g.add_argument("--bw", action="store_true")
+    g.add_argument("--cutout", action="store_true"); g.add_argument("--one", action="store_true"); g.add_argument("--bw", action="store_true")
     sub.add_parser("credits")
     a = ap.parse_args()
     {"search": search, "get": get, "credits": credits}[a.cmd](a)
