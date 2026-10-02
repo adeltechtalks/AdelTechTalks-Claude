@@ -10,7 +10,7 @@ One-time setup: your niche, your brand, your studio and tools, and the time you 
 
 | Step | Skill | What it does | Tier | Get it |
 |:-:|:--|:--|:-:|:-:|
-| — | **Niche Compass** | Find your sweet spot and turn it into content pillars and a one-line positioning. | Free | Soon |
+| — | **[Niche Compass](niche-compass/)** | A 6-round interview that turns “I feel lost” into a One Pager: positioning, 3 pillars, an idea filter, a money plan and bios. | Free | [**⬇ ZIP**](https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/niche-compass.zip) · 🧪 |
 | — | **Brand Foundations** | Brand type, name check, promise, voice and a starter visual identity. | Free | Soon |
 | — | **Account Security Audit** | Step-by-step security check for your email, domain and every platform. | Free | Soon |
 | — | **Studio Profile** | Capture your gear, locations, apps, platforms and weekly hours — the profile every other skill reads. | Free | Soon |

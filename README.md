@@ -15,7 +15,7 @@
 <br>
 
 [![Stars](https://img.shields.io/github/stars/adeltechtalks/AdelTechTalks-Claude?style=flat-square&color=2563EB&labelColor=171A1F)](https://github.com/adeltechtalks/AdelTechTalks-Claude/stargazers)
-[![Skills](https://img.shields.io/badge/skills-2-2563EB?style=flat-square&labelColor=171A1F)](skills/)
+[![Skills](https://img.shields.io/badge/skills-3-2563EB?style=flat-square&labelColor=171A1F)](skills/)
 [![Works with Claude](https://img.shields.io/badge/works%20with-Claude.ai%20%7C%20Claude%20Code-2DD4A8?style=flat-square&labelColor=171A1F)](#install)
 [![License: MIT](https://img.shields.io/badge/license-MIT-667085?style=flat-square&labelColor=171A1F)](LICENSE)
 
@@ -29,8 +29,12 @@
 
 <table>
 <tr>
+<td width="50%" valign="top"><a href="skills/00-foundations/niche-compass/"><img src="docs/assets/skills/niche-compass-en.svg" alt="Niche Compass" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/niche-compass.zip"><img src="docs/assets/btn-download-en.svg" alt="Download ZIP" height="40"></a>&nbsp;<a href="skills/00-foundations/niche-compass/"><img src="docs/assets/btn-more-en.svg" alt="How it works" height="40"></a></p></td>
 <td width="50%" valign="top"><a href="skills/03-production/motion-templates/"><img src="docs/assets/skills/motion-templates-en.svg" alt="Motion Templates" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/motion-templates.zip"><img src="docs/assets/btn-download-en.svg" alt="Download ZIP" height="40"></a>&nbsp;<a href="skills/03-production/motion-templates/"><img src="docs/assets/btn-more-en.svg" alt="How it works" height="40"></a></p></td>
+</tr>
+<tr>
 <td width="50%" valign="top"><a href="skills/04-publish-grow/social-cover-studio/"><img src="docs/assets/skills/social-cover-studio-en.svg" alt="Social Cover Studio" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip"><img src="docs/assets/btn-download-en.svg" alt="Download ZIP" height="40"></a>&nbsp;<a href="skills/04-publish-grow/social-cover-studio/"><img src="docs/assets/btn-more-en.svg" alt="How it works" height="40"></a></p></td>
+<td width="50%" valign="top"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/subscription"><img src="docs/assets/skills/coming-en.svg" alt="Coming next" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/subscription"><img src="docs/assets/btn-watch-en.svg" alt="Get notified" height="40"></a></p></td>
 </tr>
 </table>
 

@@ -14,8 +14,12 @@ Every skill, grouped by stage of the Content Creation OS.
 
 <table>
 <tr>
+<td width="50%" valign="top"><a href="00-foundations/niche-compass/"><img src="../docs/assets/skills/niche-compass-en.svg" alt="Niche Compass" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/niche-compass.zip"><img src="../docs/assets/btn-download-en.svg" alt="Download ZIP" height="40"></a>&nbsp;<a href="00-foundations/niche-compass/"><img src="../docs/assets/btn-more-en.svg" alt="How it works" height="40"></a></p></td>
 <td width="50%" valign="top"><a href="03-production/motion-templates/"><img src="../docs/assets/skills/motion-templates-en.svg" alt="Motion Templates" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/motion-templates.zip"><img src="../docs/assets/btn-download-en.svg" alt="Download ZIP" height="40"></a>&nbsp;<a href="03-production/motion-templates/"><img src="../docs/assets/btn-more-en.svg" alt="How it works" height="40"></a></p></td>
+</tr>
+<tr>
 <td width="50%" valign="top"><a href="04-publish-grow/social-cover-studio/"><img src="../docs/assets/skills/social-cover-studio-en.svg" alt="Social Cover Studio" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip"><img src="../docs/assets/btn-download-en.svg" alt="Download ZIP" height="40"></a>&nbsp;<a href="04-publish-grow/social-cover-studio/"><img src="../docs/assets/btn-more-en.svg" alt="How it works" height="40"></a></p></td>
+<td width="50%" valign="top"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/subscription"><img src="../docs/assets/skills/coming-en.svg" alt="Coming next" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/subscription"><img src="../docs/assets/btn-watch-en.svg" alt="Get notified" height="40"></a></p></td>
 </tr>
 </table>
 
@@ -30,7 +34,7 @@ Tap a stage card to open its page.
 <td width="44%" valign="top"><a href="00-foundations/"><img src="../docs/assets/stages/00-foundations-en.svg" alt="Foundations" width="100%"></a></td>
 <td valign="top">
 
-⏳ <b>Niche Compass</b> <sub>· Free · Soon</sub><br><sub>Find your sweet spot and turn it into content pillars and a one-line positioning.</sub><br><br>
+🧪 <a href="00-foundations/niche-compass/"><b>Niche Compass</b></a> <sub>· Free · Testing</sub><br><sub>A 6-round interview that turns “I feel lost” into a One Pager: positioning, 3 pillars, an idea filter, a money plan and bios.</sub><br><br>
 ⏳ <b>Brand Foundations</b> <sub>· Free · Soon</sub><br><sub>Brand type, name check, promise, voice and a starter visual identity.</sub><br><br>
 ⏳ <b>Account Security Audit</b> <sub>· Free · Soon</sub><br><sub>Step-by-step security check for your email, domain and every platform.</sub><br><br>
 ⏳ <b>Studio Profile</b> <sub>· Free · Soon</sub><br><sub>Capture your gear, locations, apps, platforms and weekly hours — the profile every other skill reads.</sub><br><br>

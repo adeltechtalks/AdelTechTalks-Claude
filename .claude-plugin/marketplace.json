@@ -9,6 +9,15 @@
   },
   "plugins": [
     {
+      "name": "foundations-skills",
+      "description": "Foundations: find your niche and turn it into a One Pager every other skill reads.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/00-foundations/niche-compass"
+      ]
+    },
+    {
       "name": "production-skills",
       "description": "Production: motion-graphics reels rendered from code, with original SFX and music.",
       "source": "./",

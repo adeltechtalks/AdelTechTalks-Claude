@@ -20,8 +20,12 @@
 
 <table>
 <tr>
+<td width="50%" valign="top"><a href="00-foundations/niche-compass/README.ar.md"><img src="../docs/assets/skills/niche-compass-ar.svg" alt="Niche Compass" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/niche-compass.zip"><img src="../docs/assets/btn-download-ar.svg" alt="Download ZIP" height="40"></a>&nbsp;<a href="00-foundations/niche-compass/README.ar.md"><img src="../docs/assets/btn-more-ar.svg" alt="How it works" height="40"></a></p></td>
 <td width="50%" valign="top"><a href="03-production/motion-templates/README.ar.md"><img src="../docs/assets/skills/motion-templates-ar.svg" alt="Motion Templates" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/motion-templates.zip"><img src="../docs/assets/btn-download-ar.svg" alt="Download ZIP" height="40"></a>&nbsp;<a href="03-production/motion-templates/README.ar.md"><img src="../docs/assets/btn-more-ar.svg" alt="How it works" height="40"></a></p></td>
+</tr>
+<tr>
 <td width="50%" valign="top"><a href="04-publish-grow/social-cover-studio/README.ar.md"><img src="../docs/assets/skills/social-cover-studio-ar.svg" alt="Social Cover Studio" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/social-cover-studio.zip"><img src="../docs/assets/btn-download-ar.svg" alt="Download ZIP" height="40"></a>&nbsp;<a href="04-publish-grow/social-cover-studio/README.ar.md"><img src="../docs/assets/btn-more-ar.svg" alt="How it works" height="40"></a></p></td>
+<td width="50%" valign="top"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/subscription"><img src="../docs/assets/skills/coming-ar.svg" alt="Coming next" width="100%"></a><p align="center"><a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/subscription"><img src="../docs/assets/btn-watch-ar.svg" alt="Get notified" height="40"></a></p></td>
 </tr>
 </table>
 
@@ -45,7 +49,7 @@
 <td valign="top">
 
 <div dir="rtl" align="right">
-⏳ <b>Niche Compass</b> <sub>· Free · قريباً</sub><br><sub>تلاقي الـ Sweet Spot بتاعك وتطلع منه الـ Pillars والـ Positioning.</sub><br><br>
+🧪 <a href="00-foundations/niche-compass/README.ar.md"><b>Niche Compass</b></a> <sub>· Free · تجريبية</sub><br><sub>Interview من 6 جولات بيحوّل «أنا تايه» لـ One Pager: الـ Positioning، و3 Pillars، وفلتر للأفكار، وخطة الفلوس، والـ Bios.</sub><br><br>
 ⏳ <b>Brand Foundations</b> <sub>· Free · قريباً</sub><br><sub>نوع الـ Brand، والاسم، والوعد، والـ Voice، وبداية الـ Visual Identity.</sub><br><br>
 ⏳ <b>Account Security Audit</b> <sub>· Free · قريباً</sub><br><sub>مراجعة أمان خطوة بخطوة للـ Email والـ Domain وكل المنصات.</sub><br><br>
 ⏳ <b>Studio Profile</b> <sub>· Free · قريباً</sub><br><sub>بتسجل معداتك وأماكن التصوير والـ Apps والمنصات وساعاتك، وكل الـ Skills التانية بتقرا منه.</sub><br><br>
