@@ -46,11 +46,11 @@
 
 ---
 
-## الأربع ستايلات
+## الخمس ستايلات
 
 </div>
 
-<img src="../../../docs/motion-templates/showcase.jpg" alt="لقطات من ستايلات A و E و F و G" width="100%">
+<img src="../../../docs/motion-templates/showcase.jpg" alt="لقطات من ستايلات A و E و F و G و H" width="100%">
 
 <div dir="rtl">
 
@@ -60,8 +60,9 @@
 | **E** | **Orange Balls**: كورة بتنزل وتتقسم وتشيل كلام، وفي الآخر تبقى موبايل | قصص فيها أرقام، والـ Reviews |
 | **F** | **Kinetic Type**: جملة على كل نص Bar بـ 128 BPM، بأشكال مختلفة | الأخبار اليومية والـ Hooks |
 | **G** | **Editorial Poster**: صور مقصوصة أبيض وأسود على دايرة بلون الـ Brand، وكلمة ضخمة بتعدّي من وراها، والكلام بيدخل كلمة كلمة، و Cuts على الـ Bar. مش محتاجة صور، هي بتجيبها | الأفكار والآراء والـ Quotes |
+| **H** | **Studio Stage**: أوبجكتس حقيقية على ستوديو أرضيته بلون الـ Brand، و Whip transitions، ومدارات، وكروت 3D بضل طويل. مش محتاجة صور، هي بتجيبها | الشرح وقصص «ليه الحاجة دي بتنجح» |
 
-<sub>صور ستايل G الـ Skill لقتها بنفسها: الخوذة “Astronaut Helmet” لـ Sam Howzit (CC BY 2.0)، ومجسّم المخ من rawpixel (CC0).</sub>
+<sub>صور ستايل G الـ Skill لقتها بنفسها: الخوذة “Astronaut Helmet” لـ Sam Howzit (CC BY 2.0)، ومجسّم المخ من rawpixel (CC0). ستايل H: التلفزيون لـ France1978 (CC BY-SA 2.0)، والخاتم لـ Gnilenkov Aleksey (CC BY 2.0)، واللمبة من rawpixel (CC0)، وقطعة الشطرنج لـ poppet with a camera (CC BY 2.0).</sub>
 
 ستايلات إضافية جاهزة: Paper Collage و Liquid Glass و Isometric 3D و Shape Morph و Editorial Depth (`templates/extras/`).
 

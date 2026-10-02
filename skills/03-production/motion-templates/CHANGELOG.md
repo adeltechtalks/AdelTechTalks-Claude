@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.5 — Style H · Studio Stage
+- `templates/core/style_h_studio_stage.py`: eight scene looks (orbit, tiles, rise, tv, slab, card, pillar, drop) with whip-pan transitions; `sfx/sfx_style_h.py`; `render.py --style h`.
+- New moves learned from a second user reference: `focus_in`, `blur_rise`, `orbit_dots`, `roll_in`, plus the `whip` transition and `motion_blur`; `ghost_words(shadow=True)`.
+- `engine/endings.py`: the name → logo → Follow → comment ending, shared by G and H.
+
 ## v1.4 — Style G · Editorial Poster
 - `templates/core/style_g_editorial_poster.py`: 12 bars (22.5 s), six scene looks (poster, dark, frame, pedestal, giant, type) + name → logo → Follow → comment ending; story in one table at the top.
 - `sfx/sfx_style_g.py` reads the template's timeline, so sounds follow any story edit. `render.py --style g`.

@@ -86,8 +86,8 @@ def fold_open(f, t, spr, cx, cy, t0, axis="v", moving="top"):
 _CACHE = {}
 
 
-def _word(w, size, col, rtl, font):
-    k = (w, size, col, rtl, font)
+def _word(w, size, col, rtl, font, shadow=False):
+    k = (w, size, col, rtl, font, shadow)
     if k not in _CACHE:
         # fixed-height box drawn on the baseline, so words of one line always line up
         ft = (font or (CAIRO if rtl else MONT))(size)
@@ -96,12 +96,20 @@ def _word(w, size, col, rtl, font):
         x0, _, x1, _ = d.textbbox((0, 0), w, font=ft, anchor="ls", **kw)
         im = Image.new("RGBA", (int(x1 - x0) + 16, int(size * 1.5)), (0, 0, 0, 0))
         ImageDraw.Draw(im).text((8 - x0, int(size * 1.08)), w, font=ft, fill=col, anchor="ls", **kw)
+        if shadow:  # soft drop shadow under big display words
+            pad = int(size * 0.16)  # shadow falls right/down, so only those sides grow
+            sh = Image.new("RGBA", (im.width + pad, im.height + pad), (0, 0, 0, 0))
+            a = im.split()[3].point(lambda v: int(v * 0.35))
+            sh.paste((0, 0, 0, 255), (int(size * 0.04), int(size * 0.07)), a)
+            sh = sh.filter(ImageFilter.GaussianBlur(size * 0.05))
+            sh.alpha_composite(im, (0, 0))
+            im = sh
         _CACHE[k] = im
     return _CACHE[k]
 
 
 def ghost_words(f, t, spr, cx, cy, t0, lines=(("one idea", 64), ("at a time", 120)), gap=0.26,
-                col=(255, 255, 255), rtl=False, align="left", font=None, lead=0.78):
+                col=(255, 255, 255), rtl=False, align="left", font=None, lead=0.78, shadow=False):
     """Words land one by one: each appears as a big blurred ghost, then sharpens into place.
 
     lines   [(text, size), …] — a small set-up line over a big punch line works best
@@ -111,7 +119,7 @@ def ghost_words(f, t, spr, cx, cy, t0, lines=(("one idea", 64), ("at a time", 12
     k = 0
     y = cy
     for text, size in lines:
-        words = [_word(w, size, col, rtl, font) for w in text.split()]
+        words = [_word(w, size, col, rtl, font, shadow) for w in text.split()]
         sp = int(size * 0.28)
         total = sum(w.width for w in words) + sp * (len(words) - 1)
         if align == "center":
@@ -181,6 +189,93 @@ def split_reveal(f, t, spr, cx, cy, t0, text="your name", size=96, col=(255, 255
         put(f, spr, cx, cy, s, min(1, q * 3))
 
 
+def motion_blur(im, amount, axis="y"):
+    """Directional blur by squashing then stretching along one axis (fast, looks like a camera smear)."""
+    k = max(1, int(amount))
+    if k <= 1:
+        return im
+    w, h = im.size
+    small = im.resize((w, max(1, h // k)) if axis == "y" else (max(1, w // k), h), Image.BILINEAR)
+    return small.resize((w, h), Image.BILINEAR)
+
+
+def whip(f_out, f_in, p, direction="up", blur=26):
+    """Whip-pan transition between two full frames (p 0→1). Both frames slide with a strong
+    motion smear peaking mid-way. Returns the mixed frame."""
+    W, H = f_out.size
+    e = MOVE(p)
+    axis = "y" if direction in ("up", "down") else "x"
+    span = H if axis == "y" else W
+    sgn = -1 if direction in ("up", "left") else 1
+    amt = 1 + blur * math.sin(math.pi * p)
+    out = Image.new("RGBA", (W, H), (0, 0, 0, 255))
+    a = motion_blur(f_out, amt, axis); b = motion_blur(f_in, amt, axis)
+    d_out = int(sgn * span * e); d_in = int(sgn * span * (e - 1))
+    if axis == "y":
+        out.paste(a, (0, d_out)); out.paste(b, (0, d_in))
+    else:
+        out.paste(a, (d_out, 0)); out.paste(b, (d_in, 0))
+    return out
+
+
+def focus_in(f, t, spr, cx, cy, t0, dur=0.5, scale=1.18, blur=14):
+    """Focus pull: starts big, soft and faint, settles sharp (titles, objects)."""
+    p = prog(t, t0, dur)
+    if p <= 0:
+        return
+    e = ENTER(p)
+    im = spr if p >= 1 else spr.filter(ImageFilter.GaussianBlur(blur * (1 - e)))
+    put(f, im, cx, cy, scale - (scale - 1) * e, min(1, 0.15 + p * 1.6))
+
+
+def blur_rise(f, t, spr, cx, cy, t0, dur=0.55, dist=900, side="down"):
+    """Flies in from off-screen with a motion smear and a small overshoot (from below, or 'up' = from above)."""
+    p = prog(t, t0, dur)
+    if p <= 0:
+        return
+    e = _spring(p, freq=9, damp=7)
+    sgn = 1 if side == "down" else -1
+    y = cy + sgn * dist * (1 - e)
+    sm = 1 + 22 * max(0, 1 - p * 1.8)
+    im = spr if sm < 1.5 else motion_blur(spr, sm, "y")
+    put(f, im, cx, y, 1, min(1, p * 4))
+
+
+def orbit_dots(f, t, spr, cx, cy, t0, rings=((300, 4, 0.9), (420, 3, -0.6)), tilt=0.96, col=(23, 26, 31),
+               dot=13, line=2):
+    """Thin orbit rings around a centre with dots travelling on them; rings grow in, dots get bigger
+    on the near side. rings = (radius, dots, speed rad/s). spr is drawn in the centre if given."""
+    p = prog(t, t0, 0.5)
+    if p <= 0:
+        return
+    e = ENTER(p)
+    d = ImageDraw.Draw(f, "RGBA")
+    for r, n, sp in rings:
+        rr = r * (0.6 + 0.4 * e)
+        a = int(110 * e)
+        d.ellipse((cx - rr, cy - rr * tilt, cx + rr, cy + rr * tilt), outline=col + (a,), width=line)
+    if spr is not None:
+        put(f, spr, cx, cy, 0.85 + 0.15 * e, min(1, p * 3))
+    for r, n, sp in rings:
+        rr = r * (0.6 + 0.4 * e)
+        for k in range(n):
+            ang = sp * (t - t0) + k * 2 * math.pi / n + r
+            x, y = cx + rr * math.cos(ang), cy + rr * tilt * math.sin(ang)
+            s = dot * (0.75 + 0.35 * (math.sin(ang) + 1) / 2) * e
+            d.ellipse((x - s, y - s, x + s, y + s), fill=col + (255,))
+
+
+def roll_in(f, t, spr, cx, cy, t0, dur=0.7, dist=520, side="left", turns=1.0):
+    """A round object rolls in and stops (rotation matches the distance travelled)."""
+    p = prog(t, t0, dur)
+    if p <= 0:
+        return
+    e = ENTER(p)
+    sgn = -1 if side == "left" else 1
+    x = cx + sgn * dist * (1 - e)
+    put(f, spr, x, cy, 1, min(1, p * 4), rot=sgn * 360 * turns * (1 - e))
+
+
 # name → (function, what it looks like, best for, length in seconds)
 MOVES = {
     "pop_in":      (pop_in,      "Scales 0.96 → 1.03 → 1.0 while fading in",     "headlines, CTA",               0.42),
@@ -193,4 +288,9 @@ MOVES = {
     "marquee_word": (marquee_word, "Giant word slides edge to edge behind",      "backgrounds behind a cut-out", 0.30),
     "push_in":     (push_in,     "Slow camera push with a small drift",           "every poster scene, parallax", 3.00),
     "split_reveal": (split_reveal, "Name splits open, logo pops into the gap",    "endings, brand reveal",        0.70),
+    "focus_in":    (focus_in,    "Focus pull: big, soft and faint → sharp",       "titles, objects",              0.50),
+    "blur_rise":   (blur_rise,   "Flies in from off-screen with a motion smear",  "objects entering a stage",     0.55),
+    "orbit_dots":  (orbit_dots,  "Orbit rings grow in, dots travel around",       "a central object or icon",     0.50),
+    "roll_in":     (roll_in,     "Rolls in and stops, spin matches the distance", "balls, eyes, coins, wheels",   0.70),
 }
+# transitions work on two whole frames: whip(f_out, f_in, p, direction) — see templates/core/style_h_studio_stage.py

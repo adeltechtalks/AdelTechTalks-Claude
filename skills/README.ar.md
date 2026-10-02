@@ -84,7 +84,7 @@
 <td valign="top">
 
 <div dir="rtl" align="right">
-🧪 <a href="03-production/motion-templates/README.ar.md"><b>Motion Templates</b></a> <sub>· Step 09 · Free · تجريبية</sub><br><sub>ريلز Motion graphics (9:16) معمولة بالكود بالـ Brand بتاعك: 4 ستايلات، و SFX ومزيكا أصلية، وأمر واحد يطلّعلك mp4 جاهز.</sub><br><br>
+🧪 <a href="03-production/motion-templates/README.ar.md"><b>Motion Templates</b></a> <sub>· Step 09 · Free · تجريبية</sub><br><sub>ريلز Motion graphics (9:16) معمولة بالكود بالـ Brand بتاعك: 5 ستايلات، و SFX ومزيكا أصلية، وأمر واحد يطلّعلك mp4 جاهز.</sub><br><br>
 🔒 <b>Footage Ingest</b> <sub>· Step 08 · Pro · قريباً</sub><br><sub>Project folder وتسمية الملفات والـ Backup من كل الأجهزة.</sub><br><br>
 🔒 <b>Edit Plan</b> <sub>· Step 09 · Pro · قريباً</sub><br><sub>Editor brief لقطة بلقطة: القص، والكلام على الشاشة، والـ Motion، والـ SFX، والـ B-roll.</sub><br><br>
 ⏳ <b>Captions</b> <sub>· Step 09 · Free · قريباً</sub><br><sub>Captions و Subtitles مظبوطة بأي لغة.</sub>

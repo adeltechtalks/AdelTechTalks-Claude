@@ -21,8 +21,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # skill root, so t
 from engine import config
 _BRAND = config.brand(); _END = _BRAND['ending']  # name, tagline and ending text from brand.json
 from PIL import Image, ImageDraw, ImageFilter, ImageOps
-from engine.plib import MONO, READ, fit, put, rrect, txt
-from engine.moves import ghost_words, marquee_word, push_in, split_reveal, pop_in, _word
+from engine.plib import MONO, fit, put, txt
+from engine.moves import ghost_words, marquee_word, push_in
+from engine.endings import TIMES as END_T, name_logo_follow
 
 W, H, FPS = 1080, 1920, 30
 BPM = 128; BAR = 4 * 60 / BPM
@@ -58,7 +59,6 @@ END = _t
 DUR = round(END + END_BARS * BAR, 3)
 WORD_GAP = 0.26        # ghost_words: one word every 0.26 s
 WORDS_AT = 0.3         # words start this long after each cut
-FOLLOW_AT = END + 1.7  # follow button pops; tapped 0.8 s later
 
 
 def events():
@@ -69,7 +69,7 @@ def events():
         for text, size in _r[2]:
             for _ in text.split():
                 ev.append((s + WORDS_AT + k * WORD_GAP, "word_big" if size >= 140 else "word")); k += 1
-    ev += [(END + 0.5, "split"), (FOLLOW_AT, "follow"), (FOLLOW_AT + 0.8, "tap")]
+    ev += [(END + END_T[k], k) for k in ("split", "follow", "tap")]
     return sorted(ev)
 
 
@@ -220,37 +220,10 @@ def type_only(f, t, s, d, img, big, lines, n):
 LOOKS = {"poster": poster, "dark": dark, "frame": frame, "pedestal": pedestal, "giant": giant, "type": type_only}
 
 
-def logo_white():
-    lg = fit(config.logo(), h=150)
-    im = Image.new("RGBA", lg.size, WHITE + (255,)); im.putalpha(lg.split()[3])
-    return im
-
-
-def follow_pill(label, fill, col):
-    t_ = txt(label, (READ if not RTL else READ)(44, 700), col, rtl=RTL)
-    p = rrect(t_.width + 110, t_.height + 54, (t_.height + 54) // 2, fill + (255,))
-    p.alpha_composite(t_, (55, 27))
-    return p
-
-
-def ending(f, t):
-    f.paste(BLACK + (255,), (0, 0, W, H))
-    split_reveal(f, t, L("logo", logo_white), W // 2, 820, END + 0.5, text=_BRAND["name"], size=84, col=WHITE)
-    if t >= FOLLOW_AT:
-        tapped = t >= FOLLOW_AT + 0.8
-        pill = L(("pill", tapped), lambda: follow_pill(_END["following"], (40, 40, 44), WHITE) if tapped
-                 else follow_pill(_END["follow"], CTA, WHITE))
-        press = 0.94 if FOLLOW_AT + 0.8 <= t < FOLLOW_AT + 0.92 else 1
-        pop_in(f, t, pill, W // 2, 1040, FOLLOW_AT) if t < FOLLOW_AT + 0.42 else put(f, pill, W // 2, 1040, press)
-    if t >= FOLLOW_AT + 1.2:
-        lines = ((f"{_END['comment_before']} {_END['comment_keyword']} {_END['comment_after']}", 50), (_END["comment_promise"], 38))
-        ghost_words(f, t, None, W // 2, 1200, FOLLOW_AT + 1.2, lines=lines, col=(200, 200, 204), rtl=RTL, align="center", gap=0.12, lead=1.0)
-
-
 def render(t):
     f = Image.new("RGBA", (W, H), PAPER + (255,))
     if t >= END:
-        ending(f, t)
+        name_logo_follow(f, t, END, bg=BLACK, ink=WHITE)
     else:
         i = max(k for k, s in enumerate(STARTS) if s <= t)
         bars, look, img, big, lines = SCENES[i]

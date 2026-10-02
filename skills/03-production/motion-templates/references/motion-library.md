@@ -17,6 +17,11 @@ Preview any of them with `python templates/lab/moves_demo.py render <name>`.
 | `ghost_words` | Words land one by one: big blurred ghost → sharp, small set-up line over a big punch line | hooks, quotes, punch lines | 0.26 s / word | v1.3 | Editorial poster reel (user reference) |
 | `marquee_word` | Giant word repeated edge to edge, rows sliding in opposite directions | behind a cut-out subject | continuous | v1.3 | Editorial poster reel (user reference) |
 | `push_in` | Slow camera push with a small drift; stack layers with different amounts for parallax | every poster scene | scene length | v1.3 | Editorial poster reel (user reference) |
+| `focus_in` | Focus pull: starts big, soft and faint, settles sharp | titles, objects | 0.5 s | v1.5 | Studio stage reel (user reference) |
+| `blur_rise` | Flies in from off-screen with a motion smear and a small overshoot | objects entering a stage | 0.55 s | v1.5 | Studio stage reel (user reference) |
+| `orbit_dots` | Orbit rings grow in around a centre, dots travel on them (bigger on the near side) | a central object or icon | 0.5 s + loop | v1.5 | Studio stage reel (user reference) |
+| `roll_in` | Rolls in and stops; the spin matches the distance | balls, eyes, coins, bulbs | 0.7 s | v1.5 | Studio stage reel (user reference) |
+| `whip` *(transition)* | Both frames slide with a strong directional smear peaking mid-way | every cut in Style H | 0.26 s | v1.5 | Studio stage reel (user reference) |
 | `split_reveal` | The name parts in the middle and fades back; the logo pops into the gap | endings, brand reveal | 0.7 s | v1.3 | Editorial poster reel (user reference) |
 
 ## Signature moves inside the templates

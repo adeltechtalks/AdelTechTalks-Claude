@@ -10,7 +10,7 @@ Shoot, ingest and edit with the same standard every time.
 
 | Step | Skill | What it does | Tier | Get it |
 |:-:|:--|:--|:-:|:-:|
-| 09 | **[Motion Templates](motion-templates/)** | Motion-graphics reels (9:16) rendered from code in your own brand — 4 locked styles, original SFX and music, one command to a finished mp4. | Free | [**⬇ ZIP**](https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/motion-templates.zip) · 🧪 |
+| 09 | **[Motion Templates](motion-templates/)** | Motion-graphics reels (9:16) rendered from code in your own brand — 5 locked styles, original SFX and music, one command to a finished mp4. | Free | [**⬇ ZIP**](https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/motion-templates.zip) · 🧪 |
 | 08 | **Footage Ingest** | Project folder, file naming and backup checklist from every device. | 🔒 Pro | Soon |
 | 09 | **Edit Plan** | A beat-by-beat editor brief: cuts, on-screen text, motion, SFX and B-roll. | 🔒 Pro | Soon |
 | 09 | **Captions** | Clean, correctly shaped captions and subtitles in any language. | Free | Soon |

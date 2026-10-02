@@ -27,6 +27,8 @@ STYLES = {
               sfx="sfx/sfx_style_f.py", sfx_wav="sfx_kt.wav", dur=22.5, drop=4.6875, end=20.625, test_t=(1.0, 10.0, 20.0)),
     "g": dict(name="G · Editorial Poster", template="templates/core/style_g_editorial_poster.py", video="ep_v.mp4", test="epsheet.png",
               sfx="sfx/sfx_style_g.py", sfx_wav="sfx_ep.wav", dur=22.5, drop=3.75, end=16.875, test_t=(2.5, 8.5, 14.5, 20.5)),
+    "h": dict(name="H · Studio Stage", template="templates/core/style_h_studio_stage.py", video="ss_v.mp4", test="sssheet.png",
+              sfx="sfx/sfx_style_h.py", sfx_wav="sfx_ss.wav", dur=24.375, drop=5.625, end=20.625, test_t=(2.2, 7.6, 14.6, 17.6, 22.5)),
 }
 
 MIX_FILTER = ("[0:a]volume=0.5[m];[1:a]asplit=2[s1][s2];"
@@ -43,7 +45,7 @@ def run(step, cmd, env):
 
 def main():
     ap = argparse.ArgumentParser(description="Render a motion reel end to end.")
-    ap.add_argument("--style", required=True, choices=sorted(STYLES), help="a (Morphing UI), e (Orange Balls), f (Kinetic Type) or g (Editorial Poster)")
+    ap.add_argument("--style", required=True, choices=sorted(STYLES), help="a (Morphing UI), e (Orange Balls), f (Kinetic Type), g (Editorial Poster) or h (Studio Stage)")
     ap.add_argument("--out", default="output", help="folder for the final mp4 (default: output/)")
     ap.add_argument("--work", default=None, help="folder for intermediate files (default: ./work)")
     ap.add_argument("--input", default=None, help="folder with per-video inputs (default: ./input)")
