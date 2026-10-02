@@ -330,10 +330,12 @@ def wide(img, S, B, a, E, tpl):
 
 def _badge(c, x_right, y, text, B, size=26):
     if not text: return
-    d = ImageDraw.Draw(c.im); bf = font(B['font_latin'], size, 800); b = d.textbbox((0, 0), text, font=bf); bw = b[2] - b[0] + 64
+    ar = rtl(text); kw = dict(direction='rtl', language='ar') if ar else {}
+    d = ImageDraw.Draw(c.im); bf = font(B['font_arabic'] if ar else B['font_latin'], size, 800)
+    b = d.textbbox((0, 0), text, font=bf, **kw); bw = b[2] - b[0] + 64
     d.rounded_rectangle((x_right - bw, y, x_right, y + 50), radius=25, fill=rgb(B['dark']))
     d.ellipse((x_right - bw + 18, y + 18, x_right - bw + 32, y + 32), fill=rgb(B['primary']))
-    d.text((x_right - bw + 42 - b[0], y + 12 - b[1] + 4), text, font=bf, fill=(255, 255, 255))
+    d.text((x_right - bw + 42 - b[0], y + 25 - (b[1] + b[3]) / 2), text, font=bf, fill=(255, 255, 255), **kw)
 
 def _crop_to(img, box_xy, W, H, fill_ratio=0.9):
     """Crop the photo so the subject fills `fill_ratio` of the frame width (or height), centered."""
