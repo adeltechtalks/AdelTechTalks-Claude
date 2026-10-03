@@ -40,6 +40,8 @@ Not for: one-off post ideas, scripts, captions, or logo/colour work.
 6. **Passion ≠ content.** Something they love (gaming, gadgets) can stay a hobby, a side account, or a later business. It doesn't have to be a pillar.
 7. **Their words, not yours.** Keep their phrases, dialect and existing bio style. If they share a screenshot of their profile, keep its format and change only what the decisions require.
 8. **Data beats opinion.** If they share analytics or a profile grid, note which posts performed and use it as evidence.
+9. **One audience first.** The people who *watch* and the people who *pay* are often different (free learners vs. business owners). Name one primary audience, write every video for them, and list the others as later segments.
+10. **Look for the origin story.** Ask what made them start. The problem they hit themselves ("I needed a team and had no money") is usually the positioning, the first video and the audience at once.
 
 ## Workflow
 
@@ -53,10 +55,10 @@ Ask 1–4 questions per round. Use options from their own earlier answers whenev
 
 | Round | Goal | Questions |
 |:-:|:--|:--|
-| **1 · Who** | Background and credibility | What have you done for work, and for how long? Where have you lived or worked? What do people already come to you for? |
+| **1 · Who** | Background and credibility | What have you done for work, and for how long? Where have you lived or worked? What do people already come to you for? What made you want to start this? |
 | **2 · I know** | Skills, now and next | What can you do better than most people around you? What are you ready to learn in the next 6 months? |
 | **3 · I love** | Real passion | What do you do even when nobody pays or watches? What could you talk about for an hour without notes? |
-| **4 · People need** | Audience and market | Who exactly do you want to help, and what keeps them stuck? Where is the market going? *(If web search is available, check 2–3 trends and cite them.)* |
+| **4 · People need** | Audience and market | Think of yourself a few years ago: what do you know now that you wish you'd known then? Who is that person today, and what keeps them stuck? Who watches, and who would pay? Where is the market going? *(If web search is available, check 2–3 trends and cite them.)* |
 | **5 · Money** | Believable income | Which income source do you actually believe you can get within 12 months: courses, affiliate, brand deals, services/systems, product? Any deals or affiliate codes already running? |
 | **6 · Vision** | Where this goes | Where do you want to be in 1 year? In 5 years: where do you live, what do people call you, what do you own? |
 | **7 · The cut** | Force the decision | If you could make only **one** type of video for a year, which? In 5 years people say "That's the ___ person." What are you willing to drop or postpone? |
@@ -86,7 +88,7 @@ python scripts/render_one_pager.py one-pager.json --out out
 
 It writes `out/one-pager.html` (responsive, prints cleanly) and `out/one-pager.pdf` when Chromium is available. Standard library only. Rules for the content:
 
-- **`line`, `who`, `what`, `why`, `audience`:** two to four lines each. Plain words, their dialect.
+- **`line`, `who`, `what`, `why`, `audience`:** two to four lines each. Plain words, their dialect. `audience` starts with **one** primary audience (mark it ⭐, often "you, N years ago"), then later segments.
 - **`vision`:** `year1` (concrete: clients, followers, income) and `year5` (where they live, what people call them, what they own).
 - **`identity`:** `type` (personal / brand / personal name on a brand handle), `name`, `handle`, `why` (one line on the choice), `tagline_options` (2–3) and `tagline` (leave it out if they haven't chosen: the page shows "still to decide"), `channels` (main account + any side account with its role), `platforms`, `language`, `market`. Keep handles and companies they already own; don't put a company in the bio if the audience doesn't need it.
 - **`rhythm`:** `hours` per week, `cadence` (posts per week they can sustain, not hope for) and `workflow` (how a post gets made: batching, tools, agents, who approves).
@@ -112,6 +114,7 @@ Before rendering, show a short preview of the starter ideas and ask if any feel 
 
 - [ ] Every section of the template is filled; nothing generic like "provide value".
 - [ ] The positioning line fits in one breath and names the audience.
+- [ ] One primary audience is named; later segments are marked as later.
 - [ ] The person sounds as experienced as they really are.
 - [ ] Vision, brand type, tagline status, channels and weekly rhythm are filled from their answers, not guessed. Ask if hours per week is missing.
 - [ ] No phrase can be misread as a promise they don't make (jobs, guaranteed income).
