@@ -1,0 +1,216 @@
+{
+ "lang": "en",
+ "name": "Sara Ahmed",
+ "handle": "@sara.bakes",
+ "brand": {
+  "primary": "#C2410C",
+  "deep": "#7C2D12",
+  "accent": "#FBBF24",
+  "ice": "#FFEDD5"
+ },
+ "line": "I turn home baking into a small business, and show you every step so you can sell your first cake.",
+ "who": "Pastry chef for 8 years in hotels; now runs a home bakery.",
+ "what": "Recipes, pricing and selling, all from a home kitchen.",
+ "why": "Home bakers want to earn from what they love but don't know how to price or sell.",
+ "audience": [
+  "Home bakers",
+  "Stay-at-home parents",
+  "Side-hustle seekers"
+ ],
+ "vision": {
+  "year1": "30 regular customers, a $79 course with 100 students, 10K followers.",
+  "year5": "A small bakery shop of her own and a baking school known across the city."
+ },
+ "identity": {
+  "type": "Personal brand",
+  "name": "Sara Ahmed",
+  "handle": "@sara.bakes",
+  "why": "People buy from a baker they trust, not a logo.",
+  "tagline_options": [
+   "Bake it. Price it. Sell it.",
+   "From home kitchen to small business",
+   "Your first cake sale starts here"
+  ],
+  "tagline": "Bake it. Price it. Sell it.",
+  "channels": [
+   {
+    "name": "@sara.bakes",
+    "role": "Main: baking and selling"
+   },
+   {
+    "name": "Family recipes",
+    "role": "Parked: maybe a side account later"
+   }
+  ],
+  "platforms": [
+   "Instagram",
+   "TikTok",
+   "YouTube Shorts"
+  ],
+  "language": "English",
+  "market": "Home bakers in the US and Canada"
+ },
+ "pillars": [
+  {
+   "name": "Bake it right",
+   "question": "How do I make it look and taste professional?",
+   "types": "Recipe in 60 s · Fix my mistake"
+  },
+  {
+   "name": "Sell it",
+   "question": "How do I price and sell from home?",
+   "types": "Pricing breakdown · First order story"
+  },
+  {
+   "name": "Behind the bakery",
+   "question": "What does a real week look like?",
+   "types": "Order day · Wins and fails"
+  }
+ ],
+ "filter": {
+  "questions": [
+   "Does it help someone bake or sell from home?",
+   "Can a beginner do it this week?",
+   "Does it fit a pillar?"
+  ],
+  "examples": [
+   {
+    "idea": "My trip to Paris",
+    "ok": false,
+    "note": "Lifestyle, no baking"
+   },
+   {
+    "idea": "3 Paris pastries you can sell at home",
+    "ok": true,
+    "note": "Pillar 2"
+   },
+   {
+    "idea": "Review of a new stand mixer",
+    "ok": false,
+    "note": "Gear review on its own"
+   },
+   {
+    "idea": "I baked 40 cupcakes in 2 hours with this mixer",
+    "ok": true,
+    "note": "Pillar 3"
+   },
+   {
+    "idea": "Celebrity cake drama",
+    "ok": false,
+    "note": "News, nothing to bake or sell"
+   },
+   {
+    "idea": "Copying a viral cake for $12 in costs",
+    "ok": true,
+    "note": "Pillar 1"
+   }
+  ],
+  "commit_months": 6,
+  "off_limits": "Travel vlogs, restaurant reviews"
+ },
+ "starter": {
+  "ideas": [
+   {
+    "title": "How I priced my first cake",
+    "pillar": 2
+   },
+   {
+    "title": "The 3 mistakes that make cakes sink",
+    "pillar": 1
+   },
+   {
+    "title": "My order day, start to finish",
+    "pillar": 3
+   },
+   {
+    "title": "A $5 cake that sells for $40",
+    "pillar": 2
+   },
+   {
+    "title": "Smooth buttercream in 60 seconds",
+    "pillar": 1
+   },
+   {
+    "title": "My first bad review, and what I changed",
+    "pillar": 3
+   },
+   {
+    "title": "Where to find your first 10 customers",
+    "pillar": 2
+   },
+   {
+    "title": "Fix a cracked cheesecake",
+    "pillar": 1
+   },
+   {
+    "title": "What I earned in my first month",
+    "pillar": 3
+   },
+   {
+    "title": "Packaging that makes people pay more",
+    "pillar": 2
+   }
+  ],
+  "week": [
+   {
+    "day": "Day 1",
+    "post": "How I priced my first cake"
+   },
+   {
+    "day": "Day 3",
+    "post": "Cakes that sink: 3 fixes"
+   },
+   {
+    "day": "Day 5",
+    "post": "My order day, start to finish"
+   }
+  ]
+ },
+ "rhythm": {
+  "hours": "6 h/week",
+  "cadence": "3 posts/week",
+  "workflow": "Film all 3 on Sunday while baking orders, edit on Monday, schedule for Tue, Thu and Sat."
+ },
+ "money": [
+  {
+   "step": "Free",
+   "what": "Recipes and a pricing sheet for your email",
+   "price": "0"
+  },
+  {
+   "step": "Small product",
+   "what": "Pricing calculator",
+   "price": "$15"
+  },
+  {
+   "step": "Course",
+   "what": "Sell your first 10 cakes",
+   "price": "$79",
+   "focus": true
+  },
+  {
+   "step": "Deals and affiliate",
+   "what": "Baking tools",
+   "price": "Commission"
+  }
+ ],
+ "kdp": {
+  "keep": [
+   "Baking",
+   "Selling from home"
+  ],
+  "drop": [
+   "Restaurant reviews"
+  ],
+  "postpone": [
+   {
+    "item": "Opening a shop",
+    "when": "after 100 regular customers"
+   }
+  ]
+ },
+ "bios": {
+  "Instagram": "Pastry chef → home bakery 🍰\nI show you how to bake it and sell it\n⬇️ Free pricing sheet",
+  "TikTok": "Bake it. Price it. Sell it. 🍰"
+ }
+}

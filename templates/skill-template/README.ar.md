@@ -49,11 +49,15 @@
 
 ## ابدأ
 
-### 1 · Install: مرة واحدة
+### 1 · Install: مرة واحدة، 5 دقايق
 
-1. **[حمّل ملف الـ ZIP](https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/skill-name.zip)**.
-2. في Claude روح لـ **Settings → Capabilities**، وشغّل **Code execution and file creation** *(لو الـ Skill بتشغّل كود)*.
-3. روح لـ **Customize → Skills**، ودوس **+**، وارفع ملف الـ ZIP زي ما هو، **من غير ما تفكه**.
+</div>
+
+<a href="https://github.com/adeltechtalks/AdelTechTalks-Claude/raw/main/downloads/skill-name.zip"><img src="../../../docs/skill-name/install-ar.svg" alt="1 حمّل الـ ZIP · 2 Settings → Capabilities وشغّل Code execution and file creation · 3 Customize → Skills → + وارفع الـ ZIP" width="100%"></a>
+
+<div dir="rtl">
+
+<sub>دوس على الصورة عشان تحمّل · Settings → Capabilities → **Code execution and file creation** · Customize → Skills → **+** → ارفع الـ ZIP زي ما هو.</sub>
 
 ### 2 · [إعداد مرة واحدة، لو فيه]
 

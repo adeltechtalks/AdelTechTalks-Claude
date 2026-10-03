@@ -13,9 +13,9 @@
           "slug": "niche-compass",
           "name": "Niche Compass",
           "tier": "free",
-          "status": "planned",
-          "desc": "Find your sweet spot and turn it into content pillars and a one-line positioning.",
-          "desc_ar": "تلاقي الـ Sweet Spot بتاعك وتطلع منه الـ Pillars والـ Positioning."
+          "status": "testing",
+          "desc": "An 8-round interview that turns “I feel lost” into your foundations: vision, brand and tagline, 3 pillars, an idea filter, weekly rhythm, money and bios.",
+          "desc_ar": "Interview من 8 جولات بيحوّل «أنا تايه» للـ Foundations: الرؤية، والبراند والـ Tagline، و3 Pillars، وفلتر للأفكار، ووقتك، والفلوس، والـ Bios."
         },
         {
           "slug": "brand-foundations",
