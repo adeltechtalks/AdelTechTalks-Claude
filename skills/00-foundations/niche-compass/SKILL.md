@@ -43,6 +43,15 @@ Not for: one-off post ideas, scripts, captions, or logo/colour work.
 9. **One audience first.** The people who *watch* and the people who *pay* are often different (free learners vs. business owners). Name one primary audience, write every video for them, and list the others as later segments.
 10. **Look for the origin story.** Ask what made them start. The problem they hit themselves ("I needed a team and had no money") is usually the positioning, the first video and the audience at once.
 
+### Angles that keep a niche alive
+
+Offer these when they ask "can I also post about X?". Each one lets a passion or a trend in without leaving the pillars:
+
+- **The setting is background; the story is the content.** Talking to camera at the desk, while unboxing or mid-game is fine. The filter applies to what they *say*, not where they film.
+- **Show the payoff.** People want the result, not the tool: time back for a hobby or family. Show proof of what the system really did, even if it needed a small fix.
+- **News through their own work.** Not "today's news" but "my agent / my research found this overnight". Verify every link and claim before posting; one wrong "free certificate" costs trust.
+- **Call out with "If you're…".** "If you're getting into ___, this will help" pulls the right people in, as long as it speaks to non-experts and the topic stays occasional when it's outside the main audience.
+
 ## Workflow
 
 ### Step 0 — Set the frame (one message)
@@ -99,7 +108,7 @@ It writes `out/one-pager.html` (responsive, prints cleanly) and `out/one-pager.p
   - `week`: the first 3 posts, in order, starting with the easiest to film.
 - **`money`:** free → small product → course/workshop → service → deals/affiliate, rough prices, and `"focus": true` on the **one** to start with. Mention `#ad` for paid or affiliate posts in your message.
 - **`kdp`:** keep / drop / postpone (with when to revisit), so parked ideas don't sneak back in.
-- **`bios`:** Instagram (≤150, name ≤30), TikTok (≤80), X (≤160), LinkedIn headline (≤220). The page shows each length; fix anything over the limit. Keep their handle and existing bio style.
+- **`bios`:** Instagram (≤150, name ≤30), TikTok (≤80), X (≤160), LinkedIn headline (≤220). The page shows each length; fix anything over the limit. Keep their handle and existing bio style. Count with UTF-16 length (emoji count as 2). In your message, also give the profile setup around the bio: a searchable name field, 3–4 Highlights that match the pillars, 3 pinned posts (the origin story first), and what the link in bio points to.
 - **`brand`** (optional): their colours if known; otherwise leave it out.
 
 Before rendering, show a short preview of the starter ideas and ask if any feel wrong.
